@@ -2935,7 +2935,7 @@ module.exports = (app) => {
             context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYml);
           }
 
-          /*if (r.SUCURSAL == "MCAL. LOPEZ URGENCIAS") {
+          if (r.SUCURSAL == "MCAL. LOPEZ URGENCIAS") {
             // Busca los turnos por sucursal y los dibuja en el canva
             // for (let t of losTurnosCantidades) {
             //   if (r.SUCURSAL == t.SUCURSAL) {
@@ -2959,41 +2959,33 @@ module.exports = (app) => {
             //   }
             // }
 
-            // Se dibuja los datos del cierre
-            context.font = "bold 15px Arial";
-            context.fillStyle = "#34495E";
-            context.textAlign = "left";
-            context.fillText(r.FECHA, ejeXfecha, ejeYmlurg);
-
-            context.font = "bold 13px Arial";
-            context.fillStyle = "#34495E";
-            context.textAlign = "left";
-            context.fillText(r.SUCURSAL, ejeXsucu, ejeYmlurg);
+            // Se dibuja los datos del acumulado mes actual
+            
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(r.CUOTA_SOCIAL, ejeXcuota, ejeYmlurg);
+            context.fillText(r.CUOTA_SOCIAL, ejeXcuota_, ejeYmlurg);
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(r.TRATAMIENTO, ejeXtrata, ejeYmlurg);
+            context.fillText(r.TRATAMIENTO, ejeXtrata_, ejeYmlurg);
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(r.COBRADOR, ejeXcobra, ejeYmlurg);
+            context.fillText(r.COBRADOR, ejeXcobra_, ejeYmlurg);
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(r.VENTA_NUEVA, ejeXventa, ejeYmlurg);
+            context.fillText(r.VENTA_NUEVA, ejeXventa_, ejeYmlurg);
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(r.MONTO_TOTAL, ejeXmonto, ejeYmlurg);
+            context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYmlurg);
           }
 
           if (r.SUCURSAL == "AVENIDA QUINTA") {
@@ -3020,41 +3012,33 @@ module.exports = (app) => {
             //   }
             // }
 
-            // Se dibuja los datos del cierre
-            context.font = "bold 15px Arial";
-            context.fillStyle = "#34495E";
-            context.textAlign = "left";
-            context.fillText(r.FECHA, ejeXfecha, ejeYaq);
-
-            context.font = "bold 15px Arial";
-            context.fillStyle = "#34495E";
-            context.textAlign = "left";
-            context.fillText(r.SUCURSAL, ejeXsucu, ejeYaq);
+            // Se dibuja los datos del acumulado mes actual
+           
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(r.CUOTA_SOCIAL, ejeXcuota, ejeYaq);
+            context.fillText(r.CUOTA_SOCIAL, ejeXcuota_, ejeYaq);
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(r.TRATAMIENTO, ejeXtrata, ejeYaq);
+            context.fillText(r.TRATAMIENTO, ejeXtrata_, ejeYaq);
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(r.COBRADOR, ejeXcobra, ejeYaq);
+            context.fillText(r.COBRADOR, ejeXcobra_, ejeYaq);
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(r.VENTA_NUEVA, ejeXventa, ejeYaq);
+            context.fillText(r.VENTA_NUEVA, ejeXventa_, ejeYaq);
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(r.MONTO_TOTAL, ejeXmonto, ejeYaq);
+            context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYaq);
           }
 
           if (r.SUCURSAL == "VILLA MORRA") {
@@ -3081,41 +3065,33 @@ module.exports = (app) => {
             //   }
             // }
 
-            // Se dibuja los datos del cierre
-            context.font = "bold 15px Arial";
-            context.fillStyle = "#34495E";
-            context.textAlign = "left";
-            context.fillText(r.FECHA, ejeXfecha, ejeYvm);
-
-            context.font = "bold 15px Arial";
-            context.fillStyle = "#34495E";
-            context.textAlign = "left";
-            context.fillText(r.SUCURSAL, ejeXsucu, ejeYvm);
+            // Se dibuja los datos del acumulado mes actual
+            
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(r.CUOTA_SOCIAL, ejeXcuota, ejeYvm);
+            context.fillText(r.CUOTA_SOCIAL, ejeXcuota_, ejeYvm);
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(r.TRATAMIENTO, ejeXtrata, ejeYvm);
+            context.fillText(r.TRATAMIENTO, ejeXtrata_, ejeYvm);
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(r.COBRADOR, ejeXcobra, ejeYvm);
+            context.fillText(r.COBRADOR, ejeXcobra_, ejeYvm);
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(r.VENTA_NUEVA, ejeXventa, ejeYvm);
+            context.fillText(r.VENTA_NUEVA, ejeXventa_, ejeYvm);
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(r.MONTO_TOTAL, ejeXmonto, ejeYvm);
+            context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYvm);
           }
 
           if (r.SUCURSAL == "ARTIGAS") {
@@ -3142,41 +3118,33 @@ module.exports = (app) => {
             //   }
             // }
 
-            // Se dibuja los datos del cierre
-            context.font = "bold 15px Arial";
-            context.fillStyle = "#34495E";
-            context.textAlign = "left";
-            context.fillText(r.FECHA, ejeXfecha, ejeYar);
-
-            context.font = "bold 15px Arial";
-            context.fillStyle = "#34495E";
-            context.textAlign = "left";
-            context.fillText(r.SUCURSAL, ejeXsucu, ejeYar);
+            // Se dibuja los datos del acumulado mes actual
+            
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(r.CUOTA_SOCIAL, ejeXcuota, ejeYar);
+            context.fillText(r.CUOTA_SOCIAL, ejeXcuota_, ejeYar);
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(r.TRATAMIENTO, ejeXtrata, ejeYar);
+            context.fillText(r.TRATAMIENTO, ejeXtrata_, ejeYar);
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(r.COBRADOR, ejeXcobra, ejeYar);
+            context.fillText(r.COBRADOR, ejeXcobra_, ejeYar);
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(r.VENTA_NUEVA, ejeXventa, ejeYar);
+            context.fillText(r.VENTA_NUEVA, ejeXventa_, ejeYar);
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(r.MONTO_TOTAL, ejeXmonto, ejeYar);
+            context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYar);
           }
 
           if (r.SUCURSAL == "LUISITO") {
@@ -3203,41 +3171,33 @@ module.exports = (app) => {
             //   }
             // }
 
-            // Se dibuja los datos del cierre
-            context.font = "bold 15px Arial";
-            context.fillStyle = "#34495E";
-            context.textAlign = "left";
-            context.fillText(r.FECHA, ejeXfecha, ejeYlu);
-
-            context.font = "bold 15px Arial";
-            context.fillStyle = "#34495E";
-            context.textAlign = "left";
-            context.fillText(r.SUCURSAL, ejeXsucu, ejeYlu);
+            // Se dibuja los datos del acumulado mes actual
+         
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(r.CUOTA_SOCIAL, ejeXcuota, ejeYlu);
+            context.fillText(r.CUOTA_SOCIAL, ejeXcuota_, ejeYlu);
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(r.TRATAMIENTO, ejeXtrata, ejeYlu);
+            context.fillText(r.TRATAMIENTO, ejeXtrata_, ejeYlu);
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(r.COBRADOR, ejeXcobra, ejeYlu);
+            context.fillText(r.COBRADOR, ejeXcobra_, ejeYlu);
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(r.VENTA_NUEVA, ejeXventa, ejeYlu);
+            context.fillText(r.VENTA_NUEVA, ejeXventa_, ejeYlu);
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(r.MONTO_TOTAL, ejeXmonto, ejeYlu);
+            context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYlu);
           }
 
           if (r.SUCURSAL == "PALMA") {
@@ -3264,41 +3224,33 @@ module.exports = (app) => {
             //   }
             // }
 
-            // Se dibuja los datos del cierre
-            context.font = "bold 15px Arial";
-            context.fillStyle = "#34495E";
-            context.textAlign = "left";
-            context.fillText(r.FECHA, ejeXfecha, ejeYpa);
-
-            context.font = "bold 15px Arial";
-            context.fillStyle = "#34495E";
-            context.textAlign = "left";
-            context.fillText(r.SUCURSAL, ejeXsucu, ejeYpa);
+            // Se dibuja los datos del acumulado mes actual
+         
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(r.CUOTA_SOCIAL, ejeXcuota, ejeYpa);
+            context.fillText(r.CUOTA_SOCIAL, ejeXcuota_, ejeYpa);
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(r.TRATAMIENTO, ejeXtrata, ejeYpa);
+            context.fillText(r.TRATAMIENTO, ejeXtrata_, ejeYpa);
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(r.COBRADOR, ejeXcobra, ejeYpa);
+            context.fillText(r.COBRADOR, ejeXcobra_, ejeYpa);
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(r.VENTA_NUEVA, ejeXventa, ejeYpa);
+            context.fillText(r.VENTA_NUEVA, ejeXventa_, ejeYpa);
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(r.MONTO_TOTAL, ejeXmonto, ejeYpa);
+            context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYpa);
           }
 
           // Zona Gran ASU
@@ -3326,41 +3278,33 @@ module.exports = (app) => {
             //   }
             // }
 
-            // Se dibuja los datos del cierre
-            context.font = "bold 15px Arial";
-            context.fillStyle = "#34495E";
-            context.textAlign = "left";
-            context.fillText(r.FECHA, ejeXfecha, ejeYlam);
-
-            context.font = "bold 15px Arial";
-            context.fillStyle = "#34495E";
-            context.textAlign = "left";
-            context.fillText(r.SUCURSAL, ejeXsucu, ejeYlam);
+            // Se dibuja los datos del acumulado mes actual
+        
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(r.CUOTA_SOCIAL, ejeXcuota, ejeYlam);
+            context.fillText(r.CUOTA_SOCIAL, ejeXcuota_, ejeYlam);
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(r.TRATAMIENTO, ejeXtrata, ejeYlam);
+            context.fillText(r.TRATAMIENTO, ejeXtrata_, ejeYlam);
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(r.COBRADOR, ejeXcobra, ejeYlam);
+            context.fillText(r.COBRADOR, ejeXcobra_, ejeYlam);
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(r.VENTA_NUEVA, ejeXventa, ejeYlam);
+            context.fillText(r.VENTA_NUEVA, ejeXventa_, ejeYlam);
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(r.MONTO_TOTAL, ejeXmonto, ejeYlam);
+            context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYlam);
           }
 
           if (r.SUCURSAL == "CATEDRAL") {
@@ -3387,41 +3331,31 @@ module.exports = (app) => {
             //   }
             // }
 
-            // Se dibuja los datos del cierre
+            // Se dibuja los datos del acumulado mes actual
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
-            context.textAlign = "left";
-            context.fillText(r.FECHA, ejeXfecha, ejeYcat);
-
-            context.font = "bold 15px Arial";
-            context.fillStyle = "#34495E";
-            context.textAlign = "left";
-            context.fillText(r.SUCURSAL, ejeXsucu, ejeYcat);
+            context.textAlign = "center";
+            context.fillText(r.CUOTA_SOCIAL, ejeXcuota_, ejeYcat);
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(r.CUOTA_SOCIAL, ejeXcuota, ejeYcat);
+            context.fillText(r.TRATAMIENTO, ejeXtrata_, ejeYcat);
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(r.TRATAMIENTO, ejeXtrata, ejeYcat);
+            context.fillText(r.COBRADOR, ejeXcobra_, ejeYcat);
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(r.COBRADOR, ejeXcobra, ejeYcat);
+            context.fillText(r.VENTA_NUEVA, ejeXventa_, ejeYcat);
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(r.VENTA_NUEVA, ejeXventa, ejeYcat);
-
-            context.font = "bold 15px Arial";
-            context.fillStyle = "#34495E";
-            context.textAlign = "center";
-            context.fillText(r.MONTO_TOTAL, ejeXmonto, ejeYcat);
+            context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYcat);
           }
 
           if (r.SUCURSAL == "LUQUE") {
@@ -3448,41 +3382,32 @@ module.exports = (app) => {
             //   }
             // }
 
-            // Se dibuja los datos del cierre
-            context.font = "bold 15px Arial";
-            context.fillStyle = "#34495E";
-            context.textAlign = "left";
-            context.fillText(r.FECHA, ejeXfecha, ejeYluq);
-
-            context.font = "bold 15px Arial";
-            context.fillStyle = "#34495E";
-            context.textAlign = "left";
-            context.fillText(r.SUCURSAL, ejeXsucu, ejeYluq);
+            // Se dibuja los datos del acumulado mes actual
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(r.CUOTA_SOCIAL, ejeXcuota, ejeYluq);
+            context.fillText(r.CUOTA_SOCIAL, ejeXcuota_, ejeYluq);
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(r.TRATAMIENTO, ejeXtrata, ejeYluq);
+            context.fillText(r.TRATAMIENTO, ejeXtrata_, ejeYluq);
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(r.COBRADOR, ejeXcobra, ejeYluq);
+            context.fillText(r.COBRADOR, ejeXcobra_, ejeYluq);
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(r.VENTA_NUEVA, ejeXventa, ejeYluq);
+            context.fillText(r.VENTA_NUEVA, ejeXventa_, ejeYluq);
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(r.MONTO_TOTAL, ejeXmonto, ejeYluq);
+            context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYluq);
           }
 
           if (r.SUCURSAL == "LA RURAL") {
@@ -3509,41 +3434,32 @@ module.exports = (app) => {
             //   }
             // }
 
-            // Se dibuja los datos del cierre
-            context.font = "bold 15px Arial";
-            context.fillStyle = "#34495E";
-            context.textAlign = "left";
-            context.fillText(r.FECHA, ejeXfecha, ejeYlar);
-
-            context.font = "bold 15px Arial";
-            context.fillStyle = "#34495E";
-            context.textAlign = "left";
-            context.fillText(r.SUCURSAL, ejeXsucu, ejeYlar);
+            // Se dibuja los datos del acumulado mes actual
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(r.CUOTA_SOCIAL, ejeXcuota, ejeYlar);
+            context.fillText(r.CUOTA_SOCIAL, ejeXcuota_, ejeYlar);
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(r.TRATAMIENTO, ejeXtrata, ejeYlar);
+            context.fillText(r.TRATAMIENTO, ejeXtrata_, ejeYlar);
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(r.COBRADOR, ejeXcobra, ejeYlar);
+            context.fillText(r.COBRADOR, ejeXcobra_, ejeYlar);
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(r.VENTA_NUEVA, ejeXventa, ejeYlar);
+            context.fillText(r.VENTA_NUEVA, ejeXventa_, ejeYlar);
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(r.MONTO_TOTAL, ejeXmonto, ejeYlar);
+            context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYlar);
           }
 
           if (r.SUCURSAL == "ÑEMBY") {
@@ -3570,41 +3486,32 @@ module.exports = (app) => {
             //   }
             // }
 
-            // Se dibuja los datos del cierre
-            context.font = "bold 15px Arial";
-            context.fillStyle = "#34495E";
-            context.textAlign = "left";
-            context.fillText(r.FECHA, ejeXfecha, ejeYnem);
-
-            context.font = "bold 15px Arial";
-            context.fillStyle = "#34495E";
-            context.textAlign = "left";
-            context.fillText(r.SUCURSAL, ejeXsucu, ejeYnem);
+            // Se dibuja los datos del acumulado mes actual
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(r.CUOTA_SOCIAL, ejeXcuota, ejeYnem);
+            context.fillText(r.CUOTA_SOCIAL, ejeXcuota_, ejeYnem);
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(r.TRATAMIENTO, ejeXtrata, ejeYnem);
+            context.fillText(r.TRATAMIENTO, ejeXtrata_, ejeYnem);
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(r.COBRADOR, ejeXcobra, ejeYnem);
+            context.fillText(r.COBRADOR, ejeXcobra_, ejeYnem);
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(r.VENTA_NUEVA, ejeXventa, ejeYnem);
+            context.fillText(r.VENTA_NUEVA, ejeXventa_, ejeYnem);
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(r.MONTO_TOTAL, ejeXmonto, ejeYnem);
+            context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYnem);
           }
 
           if (r.SUCURSAL == "ITAUGUA") {
@@ -3631,41 +3538,32 @@ module.exports = (app) => {
             //   }
             // }
 
-            // Se dibuja los datos del cierre
-            context.font = "bold 15px Arial";
-            context.fillStyle = "#34495E";
-            context.textAlign = "left";
-            context.fillText(r.FECHA, ejeXfecha, ejeYita);
-
-            context.font = "bold 15px Arial";
-            context.fillStyle = "#34495E";
-            context.textAlign = "left";
-            context.fillText(r.SUCURSAL, ejeXsucu, ejeYita);
+            // Se dibuja los datos del acumulado mes actual
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(r.CUOTA_SOCIAL, ejeXcuota, ejeYita);
+            context.fillText(r.CUOTA_SOCIAL, ejeXcuota_, ejeYita);
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(r.TRATAMIENTO, ejeXtrata, ejeYita);
+            context.fillText(r.TRATAMIENTO, ejeXtrata_, ejeYita);
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(r.COBRADOR, ejeXcobra, ejeYita);
+            context.fillText(r.COBRADOR, ejeXcobra_, ejeYita);
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(r.VENTA_NUEVA, ejeXventa, ejeYita);
+            context.fillText(r.VENTA_NUEVA, ejeXventa_, ejeYita);
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(r.MONTO_TOTAL, ejeXmonto, ejeYita);
+            context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYita);
           }
 
           if (r.SUCURSAL == "1811 SUCURSAL") {
@@ -3692,41 +3590,32 @@ module.exports = (app) => {
             //   }
             // }
 
-            // Se dibuja los datos del cierre
-            context.font = "bold 15px Arial";
-            context.fillStyle = "#34495E";
-            context.textAlign = "left";
-            context.fillText(r.FECHA, ejeXfecha, ejeY1811);
-
-            context.font = "bold 15px Arial";
-            context.fillStyle = "#34495E";
-            context.textAlign = "left";
-            context.fillText(r.SUCURSAL, ejeXsucu, ejeY1811);
+            // Se dibuja los datos del acumulado mes actual
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(r.CUOTA_SOCIAL, ejeXcuota, ejeY1811);
+            context.fillText(r.CUOTA_SOCIAL, ejeXcuota_, ejeY1811);
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(r.TRATAMIENTO, ejeXtrata, ejeY1811);
+            context.fillText(r.TRATAMIENTO, ejeXtrata_, ejeY1811);
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(r.COBRADOR, ejeXcobra, ejeY1811);
+            context.fillText(r.COBRADOR, ejeXcobra_, ejeY1811);
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(r.VENTA_NUEVA, ejeXventa, ejeY1811);
+            context.fillText(r.VENTA_NUEVA, ejeXventa_, ejeY1811);
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(r.MONTO_TOTAL, ejeXmonto, ejeY1811);
+            context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeY1811);
           }
 
           if (r.SUCURSAL == "KM 14 Y MEDIO") {
@@ -3753,41 +3642,32 @@ module.exports = (app) => {
             //   }
             // }
 
-            // Se dibuja los datos del cierre
-            context.font = "bold 15px Arial";
-            context.fillStyle = "#34495E";
-            context.textAlign = "left";
-            context.fillText(r.FECHA, ejeXfecha, ejeYkm14);
-
-            context.font = "bold 15px Arial";
-            context.fillStyle = "#34495E";
-            context.textAlign = "left";
-            context.fillText(r.SUCURSAL, ejeXsucu, ejeYkm14);
+            // Se dibuja los datos del acumulado mes actual
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(r.CUOTA_SOCIAL, ejeXcuota, ejeYkm14);
+            context.fillText(r.CUOTA_SOCIAL, ejeXcuota_, ejeYkm14);
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(r.TRATAMIENTO, ejeXtrata, ejeYkm14);
+            context.fillText(r.TRATAMIENTO, ejeXtrata_, ejeYkm14);
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(r.COBRADOR, ejeXcobra, ejeYkm14);
+            context.fillText(r.COBRADOR, ejeXcobra_, ejeYkm14);
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(r.VENTA_NUEVA, ejeXventa, ejeYkm14);
+            context.fillText(r.VENTA_NUEVA, ejeXventa_, ejeYkm14);
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(r.MONTO_TOTAL, ejeXmonto, ejeYkm14);
+            context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYkm14);
           }
 
           if (r.SUCURSAL == "CAPIATA") {
@@ -3814,41 +3694,32 @@ module.exports = (app) => {
             //   }
             // }
 
-            // Se dibuja los datos del cierre
-            context.font = "bold 15px Arial";
-            context.fillStyle = "#34495E";
-            context.textAlign = "left";
-            context.fillText(r.FECHA, ejeXfecha, ejeYcap);
-
-            context.font = "bold 15px Arial";
-            context.fillStyle = "#34495E";
-            context.textAlign = "left";
-            context.fillText(r.SUCURSAL, ejeXsucu, ejeYcap);
+            // Se dibuja los datos del acumulado mes actual
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(r.CUOTA_SOCIAL, ejeXcuota, ejeYcap);
+            context.fillText(r.CUOTA_SOCIAL, ejeXcuota_, ejeYcap);
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(r.TRATAMIENTO, ejeXtrata, ejeYcap);
+            context.fillText(r.TRATAMIENTO, ejeXtrata_, ejeYcap);
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(r.COBRADOR, ejeXcobra, ejeYcap);
+            context.fillText(r.COBRADOR, ejeXcobra_, ejeYcap);
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(r.VENTA_NUEVA, ejeXventa, ejeYcap);
+            context.fillText(r.VENTA_NUEVA, ejeXventa_, ejeYcap);
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(r.MONTO_TOTAL, ejeXmonto, ejeYcap);
+            context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYcap);
           }
 
           // Zona Ruta 2
@@ -3876,41 +3747,32 @@ module.exports = (app) => {
             //   }
             // }
 
-            // Se dibuja los datos del cierre
-            context.font = "bold 15px Arial";
-            context.fillStyle = "#34495E";
-            context.textAlign = "left";
-            context.fillText(r.FECHA, ejeXfecha, ejeYcaac);
-
-            context.font = "bold 15px Arial";
-            context.fillStyle = "#34495E";
-            context.textAlign = "left";
-            context.fillText(r.SUCURSAL, ejeXsucu, ejeYcaac);
+            // Se dibuja los datos del acumulado mes actual
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(r.CUOTA_SOCIAL, ejeXcuota, ejeYcaac);
+            context.fillText(r.CUOTA_SOCIAL, ejeXcuota_, ejeYcaac);
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(r.TRATAMIENTO, ejeXtrata, ejeYcaac);
+            context.fillText(r.TRATAMIENTO, ejeXtrata_, ejeYcaac);
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(r.COBRADOR, ejeXcobra, ejeYcaac);
+            context.fillText(r.COBRADOR, ejeXcobra_, ejeYcaac);
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(r.VENTA_NUEVA, ejeXventa, ejeYcaac);
+            context.fillText(r.VENTA_NUEVA, ejeXventa_, ejeYcaac);
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(r.MONTO_TOTAL, ejeXmonto, ejeYcaac);
+            context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYcaac);
           }
 
           if (r.SUCURSAL == "CORONEL OVIEDO") {
@@ -3937,41 +3799,32 @@ module.exports = (app) => {
             //   }
             // }
 
-            // Se dibuja los datos del cierre
-            context.font = "bold 15px Arial";
-            context.fillStyle = "#34495E";
-            context.textAlign = "left";
-            context.fillText(r.FECHA, ejeXfecha, ejeYcoro);
-
-            context.font = "bold 15px Arial";
-            context.fillStyle = "#34495E";
-            context.textAlign = "left";
-            context.fillText(r.SUCURSAL, ejeXsucu, ejeYcoro);
+            // Se dibuja los datos del acumulado mes actual
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(r.CUOTA_SOCIAL, ejeXcuota, ejeYcoro);
+            context.fillText(r.CUOTA_SOCIAL, ejeXcuota_, ejeYcoro);
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(r.TRATAMIENTO, ejeXtrata, ejeYcoro);
+            context.fillText(r.TRATAMIENTO, ejeXtrata_, ejeYcoro);
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(r.COBRADOR, ejeXcobra, ejeYcoro);
+            context.fillText(r.COBRADOR, ejeXcobra_, ejeYcoro);
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(r.VENTA_NUEVA, ejeXventa, ejeYcoro);
+            context.fillText(r.VENTA_NUEVA, ejeXventa_, ejeYcoro);
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(r.MONTO_TOTAL, ejeXmonto, ejeYcoro);
+            context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYcoro);
           }
 
           // Zona Itapua
@@ -3999,41 +3852,32 @@ module.exports = (app) => {
             //   }
             // }
 
-            // Se dibuja los datos del cierre
-            context.font = "bold 15px Arial";
-            context.fillStyle = "#34495E";
-            context.textAlign = "left";
-            context.fillText(r.FECHA, ejeXfecha, ejeYhohe);
-
-            context.font = "bold 15px Arial";
-            context.fillStyle = "#34495E";
-            context.textAlign = "left";
-            context.fillText(r.SUCURSAL, ejeXsucu, ejeYhohe);
+            // Se dibuja los datos del acumulado mes actual
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(r.CUOTA_SOCIAL, ejeXcuota, ejeYhohe);
+            context.fillText(r.CUOTA_SOCIAL, ejeXcuota_, ejeYhohe);
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(r.TRATAMIENTO, ejeXtrata, ejeYhohe);
+            context.fillText(r.TRATAMIENTO, ejeXtrata_, ejeYhohe);
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(r.COBRADOR, ejeXcobra, ejeYhohe);
+            context.fillText(r.COBRADOR, ejeXcobra_, ejeYhohe);
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(r.VENTA_NUEVA, ejeXventa, ejeYhohe);
+            context.fillText(r.VENTA_NUEVA, ejeXventa_, ejeYhohe);
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(r.MONTO_TOTAL, ejeXmonto, ejeYhohe);
+            context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYhohe);
           }
 
           if (r.SUCURSAL == "ENCARNACION CENTRO") {
@@ -4060,41 +3904,31 @@ module.exports = (app) => {
             //   }
             // }
 
-            // Se dibuja los datos del cierre
+            // Se dibuja los datos del acumulado mes actual
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
-            context.textAlign = "left";
-            context.fillText(r.FECHA, ejeXfecha, ejeYencar);
-
-            context.font = "bold 15px Arial";
-            context.fillStyle = "#34495E";
-            context.textAlign = "left";
-            context.fillText(r.SUCURSAL, ejeXsucu, ejeYencar);
+            context.textAlign = "center";
+            context.fillText(r.CUOTA_SOCIAL, ejeXcuota_, ejeYencar);
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(r.CUOTA_SOCIAL, ejeXcuota, ejeYencar);
+            context.fillText(r.TRATAMIENTO, ejeXtrata_, ejeYencar);
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(r.TRATAMIENTO, ejeXtrata, ejeYencar);
+            context.fillText(r.COBRADOR, ejeXcobra_, ejeYencar);
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(r.COBRADOR, ejeXcobra, ejeYencar);
+            context.fillText(r.VENTA_NUEVA, ejeXventa_, ejeYencar);
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(r.VENTA_NUEVA, ejeXventa, ejeYencar);
-
-            context.font = "bold 15px Arial";
-            context.fillStyle = "#34495E";
-            context.textAlign = "center";
-            context.fillText(r.MONTO_TOTAL, ejeXmonto, ejeYencar);
+            context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYencar);
           }
 
           if (r.SUCURSAL == "MARIA AUXILIADORA") {
@@ -4121,41 +3955,32 @@ module.exports = (app) => {
             //   }
             // }
 
-            // Se dibuja los datos del cierre
-            context.font = "bold 15px Arial";
-            context.fillStyle = "#34495E";
-            context.textAlign = "left";
-            context.fillText(r.FECHA, ejeXfecha, ejeYmaria);
-
-            context.font = "bold 15px Arial";
-            context.fillStyle = "#34495E";
-            context.textAlign = "left";
-            context.fillText(r.SUCURSAL, ejeXsucu, ejeYmaria);
+            // Se dibuja los datos del acumulado mes actual
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(r.CUOTA_SOCIAL, ejeXcuota, ejeYmaria);
+            context.fillText(r.CUOTA_SOCIAL, ejeXcuota_, ejeYmaria);
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(r.TRATAMIENTO, ejeXtrata, ejeYmaria);
+            context.fillText(r.TRATAMIENTO, ejeXtrata_, ejeYmaria);
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(r.COBRADOR, ejeXcobra, ejeYmaria);
+            context.fillText(r.COBRADOR, ejeXcobra_, ejeYmaria);
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(r.VENTA_NUEVA, ejeXventa, ejeYmaria);
+            context.fillText(r.VENTA_NUEVA, ejeXventa_, ejeYmaria);
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(r.MONTO_TOTAL, ejeXmonto, ejeYmaria);
+            context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYmaria);
           }
 
           if (r.SUCURSAL == "AYOLAS") {
@@ -4182,41 +4007,32 @@ module.exports = (app) => {
             //   }
             // }
 
-            // Se dibuja los datos del cierre
-            context.font = "bold 15px Arial";
-            context.fillStyle = "#34495E";
-            context.textAlign = "left";
-            context.fillText(r.FECHA, ejeXfecha, ejeYayo);
-
-            context.font = "bold 15px Arial";
-            context.fillStyle = "#34495E";
-            context.textAlign = "left";
-            context.fillText(r.SUCURSAL, ejeXsucu, ejeYayo);
+            // Se dibuja los datos del acumulado mes actual
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(r.CUOTA_SOCIAL, ejeXcuota, ejeYayo);
+            context.fillText(r.CUOTA_SOCIAL, ejeXcuota_, ejeYayo);
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(r.TRATAMIENTO, ejeXtrata, ejeYayo);
+            context.fillText(r.TRATAMIENTO, ejeXtrata_, ejeYayo);
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(r.COBRADOR, ejeXcobra, ejeYayo);
+            context.fillText(r.COBRADOR, ejeXcobra_, ejeYayo);
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(r.VENTA_NUEVA, ejeXventa, ejeYayo);
+            context.fillText(r.VENTA_NUEVA, ejeXventa_, ejeYayo);
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(r.MONTO_TOTAL, ejeXmonto, ejeYayo);
+            context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYayo);
           }
 
           // Zona Alto Parana
@@ -4244,41 +4060,32 @@ module.exports = (app) => {
             //   }
             // }
 
-            // Se dibuja los datos del cierre
-            context.font = "bold 15px Arial";
-            context.fillStyle = "#34495E";
-            context.textAlign = "left";
-            context.fillText(r.FECHA, ejeXfecha, ejeYkm7);
-
-            context.font = "bold 15px Arial";
-            context.fillStyle = "#34495E";
-            context.textAlign = "left";
-            context.fillText(r.SUCURSAL, ejeXsucu, ejeYkm7);
+            // Se dibuja los datos del acumulado mes actual
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(r.CUOTA_SOCIAL, ejeXcuota, ejeYkm7);
+            context.fillText(r.CUOTA_SOCIAL, ejeXcuota_, ejeYkm7);
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(r.TRATAMIENTO, ejeXtrata, ejeYkm7);
+            context.fillText(r.TRATAMIENTO, ejeXtrata_, ejeYkm7);
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(r.COBRADOR, ejeXcobra, ejeYkm7);
+            context.fillText(r.COBRADOR, ejeXcobra_, ejeYkm7);
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(r.VENTA_NUEVA, ejeXventa, ejeYkm7);
+            context.fillText(r.VENTA_NUEVA, ejeXventa_, ejeYkm7);
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(r.MONTO_TOTAL, ejeXmonto, ejeYkm7);
+            context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYkm7);
           }
 
           if (r.SUCURSAL == "SANTA RITA") {
@@ -4305,41 +4112,32 @@ module.exports = (app) => {
             //   }
             // }
 
-            // Se dibuja los datos del cierre
-            context.font = "bold 15px Arial";
-            context.fillStyle = "#34495E";
-            context.textAlign = "left";
-            context.fillText(r.FECHA, ejeXfecha, ejeYsanta);
-
-            context.font = "bold 15px Arial";
-            context.fillStyle = "#34495E";
-            context.textAlign = "left";
-            context.fillText(r.SUCURSAL, ejeXsucu, ejeYsanta);
+            // Se dibuja los datos del acumulado mes actual
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(r.CUOTA_SOCIAL, ejeXcuota, ejeYsanta);
+            context.fillText(r.CUOTA_SOCIAL, ejeXcuota_, ejeYsanta);
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(r.TRATAMIENTO, ejeXtrata, ejeYsanta);
+            context.fillText(r.TRATAMIENTO, ejeXtrata_, ejeYsanta);
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(r.COBRADOR, ejeXcobra, ejeYsanta);
+            context.fillText(r.COBRADOR, ejeXcobra_, ejeYsanta);
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(r.VENTA_NUEVA, ejeXventa, ejeYsanta);
+            context.fillText(r.VENTA_NUEVA, ejeXventa_, ejeYsanta);
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(r.MONTO_TOTAL, ejeXmonto, ejeYsanta);
+            context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYsanta);
           }
 
           if (r.SUCURSAL == "CAMPO 9") {
@@ -4366,41 +4164,32 @@ module.exports = (app) => {
             //   }
             // }
 
-            // Se dibuja los datos del cierre
-            context.font = "bold 15px Arial";
-            context.fillStyle = "#34495E";
-            context.textAlign = "left";
-            context.fillText(r.FECHA, ejeXfecha, ejeYcampo);
-
-            context.font = "bold 15px Arial";
-            context.fillStyle = "#34495E";
-            context.textAlign = "left";
-            context.fillText(r.SUCURSAL, ejeXsucu, ejeYcampo);
+            // Se dibuja los datos acumulado mes actual
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(r.CUOTA_SOCIAL, ejeXcuota, ejeYcampo);
+            context.fillText(r.CUOTA_SOCIAL, ejeXcuota_, ejeYcampo);
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(r.TRATAMIENTO, ejeXtrata, ejeYcampo);
+            context.fillText(r.TRATAMIENTO, ejeXtrata_, ejeYcampo);
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(r.COBRADOR, ejeXcobra, ejeYcampo);
+            context.fillText(r.COBRADOR, ejeXcobra_, ejeYcampo);
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(r.VENTA_NUEVA, ejeXventa, ejeYcampo);
+            context.fillText(r.VENTA_NUEVA, ejeXventa_, ejeYcampo);
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(r.MONTO_TOTAL, ejeXmonto, ejeYcampo);
+            context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYcampo);
           }
 
           // Zona San Pedro
@@ -4428,42 +4217,33 @@ module.exports = (app) => {
             //   }
             // }
 
-            // Se dibuja los datos del cierre
-            context.font = "bold 15px Arial";
-            context.fillStyle = "#34495E";
-            context.textAlign = "left";
-            context.fillText(r.FECHA, ejeXfecha, ejeYsantani);
-
-            context.font = "bold 15px Arial";
-            context.fillStyle = "#34495E";
-            context.textAlign = "left";
-            context.fillText(r.SUCURSAL, ejeXsucu, ejeYsantani);
+            // Se dibuja los datos del acumulado mes actual
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(r.CUOTA_SOCIAL, ejeXcuota, ejeYsantani);
+            context.fillText(r.CUOTA_SOCIAL, ejeXcuota_, ejeYsantani);
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(r.TRATAMIENTO, ejeXtrata, ejeYsantani);
+            context.fillText(r.TRATAMIENTO, ejeXtrata_, ejeYsantani);
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(r.COBRADOR, ejeXcobra, ejeYsantani);
+            context.fillText(r.COBRADOR, ejeXcobra_, ejeYsantani);
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(r.VENTA_NUEVA, ejeXventa, ejeYsantani);
+            context.fillText(r.VENTA_NUEVA, ejeXventa_, ejeYsantani);
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(r.MONTO_TOTAL, ejeXmonto, ejeYsantani);
-          }*/
+            context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYsantani);
+          }
         }
 
         // Fila totales ZONA ASUNCION
