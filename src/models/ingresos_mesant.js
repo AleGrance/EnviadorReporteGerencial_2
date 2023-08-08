@@ -1,0 +1,46 @@
+module.exports = (sequelize, DataType) => {
+  const Ingresos_mesant = sequelize.define(
+    "Ingresos_mesant",
+    {
+      id_ingresos_mesant: {
+        type: DataType.INTEGER,
+        primaryKey: true,
+        autoIncrement: true,
+      },
+
+      FECHA: {
+        type: DataType.DATEONLY,
+        allowNull: false,
+      },
+
+      TIPO: {
+        type: DataType.STRING,
+        allowNull: false,
+      },
+
+      CONCEPTO: {
+        type: DataType.STRING,
+        allowNull: false,
+      },
+
+      MONTO: {
+        type: DataType.STRING,
+        allowNull: false,
+      },
+    },
+    {
+      freezeTableName: true, // Evita la pluralización del nombre de la tabla
+    }
+  );
+
+  Ingresos_mesant.associate = (models) => {
+    Ingresos_mesant.belongsTo(models.Users, {
+      foreignKey: {
+        name: "user_id",
+        allowNull: true,
+        defaultValue: 1,
+      },
+    });
+  };
+  return Ingresos_mesant;
+};
