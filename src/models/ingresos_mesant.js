@@ -18,12 +18,27 @@ module.exports = (sequelize, DataType) => {
         allowNull: false,
       },
 
-      CONCEPTO: {
+      CUOTA_SOCIAL: {
         type: DataType.STRING,
         allowNull: false,
       },
 
-      MONTO: {
+      TRATAMIENTO: {
+        type: DataType.STRING,
+        allowNull: false,
+      },
+
+      COBRADOR: {
+        type: DataType.STRING,
+        allowNull: false,
+      },
+
+      VENTA_NUEVA: {
+        type: DataType.STRING,
+        allowNull: false,
+      },
+
+      MONTO_TOTAL: {
         type: DataType.STRING,
         allowNull: false,
       },
