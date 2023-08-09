@@ -66,6 +66,8 @@ let todasSucursalesActivas = [];
 let todosTiposPagos = ["PAGOS ELECTRONICOS", "ASO. DEB.", "LICITACIONES", "TRANSF. GIROS PALMA"];
 
 let fechaConsulta = "";
+let fechaConsultaMesAct = "09-08-2023";
+let fechaConsultaMesAnt = "09-07-2023";
 
 module.exports = (app) => {
   const Acumulado_mesact = app.db.models.Acumulado_mesact;
@@ -111,18 +113,13 @@ module.exports = (app) => {
   });
 
   function iniciarConsultas() {
-    // const fechaHoy = new Date();
-    // let year = fechaHoy.getFullYear();
-    // let month = fechaHoy.getMonth() + 1;
-    // let day = fechaHoy.getDate();
-
-    // La fecha con que se registran los datos
-    //let fechaHoyFormateado = year + "-" + month + "-" + day;
-    //fechaConsulta = year + "-" + month + "-" + day;
-
     // Obtiene la fecha y hora actual
     const fechaActual = moment();
+    const fechaMesAnterior = moment(fechaActual).subtract(1, 'months');
+
     fechaConsulta = fechaActual.format("YYYY-MM-DD");
+    fechaConsultaMesAct = fechaActual.format("DD-MM-YYYY");
+    fechaConsultaMesAnt = fechaMesAnterior.format("DD-MM-YYYY")
 
     return new Promise((resolve, reject) => {
       console.log("Inicia las consultas!", fechaConsulta);
@@ -529,9 +526,13 @@ module.exports = (app) => {
             db.detach();
             console.log("ejecutado getIngresoMesAnt");
             resolve();
-            // console.log(
-            //   "Llama a la funcion iniciar envio que se retrasa 1 min en ejecutarse Tickets"
-            // );
+            console.log(
+              "Llama a la funcion iniciar envio que se retrasa 1 min en ejecutarse Tickets"
+            );
+
+            setTimeout(() => {
+              iniciarEnvio();
+            }, 1000 * 60);
           }
         );
       });
@@ -575,7 +576,7 @@ module.exports = (app) => {
   let losIngresosMesAnt = [];
 
   // Sub Totales Zona Asuncion
-  let sumTotalesAsuncionCS = 0; 
+  let sumTotalesAsuncionCS = 0;
   let sumTotalesAsuncionTT = 0;
   let sumTotalesAsuncionCO = 0;
   let sumTotalesAsuncionVN = 0;
@@ -583,8 +584,8 @@ module.exports = (app) => {
   let sumTotalesAsuncionAG = 0;
   let sumTotalesAsuncionAS = 0;
   let sumTotalesAsuncionPR = 0;
-  
-  let sumTotalesAsuncionCS_ = 0; 
+
+  let sumTotalesAsuncionCS_ = 0;
   let sumTotalesAsuncionTT_ = 0;
   let sumTotalesAsuncionCO_ = 0;
   let sumTotalesAsuncionVN_ = 0;
@@ -1226,6 +1227,12 @@ module.exports = (app) => {
       .then((image) => {
         // Dibuja la imagen de fondo
         context.drawImage(image, 0, 0, width, height);
+
+        // Eje X e Y de las fechas
+        let ejeXFechaAct = 1010;
+        let ejeXFechaAnt = 550;
+        let ejeYFechaAct = 75;
+        let ejeYFechaAnt = 75;
 
         // Eje X de cada celda - Cierres
         //let ejeXfecha = 125;
@@ -2960,7 +2967,6 @@ module.exports = (app) => {
             // }
 
             // Se dibuja los datos del acumulado mes actual
-            
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
@@ -3013,7 +3019,6 @@ module.exports = (app) => {
             // }
 
             // Se dibuja los datos del acumulado mes actual
-           
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
@@ -3066,7 +3071,6 @@ module.exports = (app) => {
             // }
 
             // Se dibuja los datos del acumulado mes actual
-            
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
@@ -3119,7 +3123,6 @@ module.exports = (app) => {
             // }
 
             // Se dibuja los datos del acumulado mes actual
-            
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
@@ -3172,7 +3175,6 @@ module.exports = (app) => {
             // }
 
             // Se dibuja los datos del acumulado mes actual
-         
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
@@ -3225,7 +3227,6 @@ module.exports = (app) => {
             // }
 
             // Se dibuja los datos del acumulado mes actual
-         
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
@@ -3279,7 +3280,6 @@ module.exports = (app) => {
             // }
 
             // Se dibuja los datos del acumulado mes actual
-        
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
@@ -4246,6 +4246,19 @@ module.exports = (app) => {
           }
         }
 
+        // Dibujar las fechas
+        // Mes Anterior
+        context.font = "bold 13px Arial";
+        context.fillStyle = "white";
+        context.textAlign = "left";
+        context.fillText(fechaConsultaMesAnt, ejeXFechaAnt, ejeYFechaAnt);
+        // Mes actual
+        context.font = "bold 13px Arial";
+        context.fillStyle = "white";
+        context.textAlign = "left";
+        context.fillText(fechaConsultaMesAct, ejeXFechaAct, ejeYFechaAct);
+
+
         // Fila totales ZONA ASUNCION
         // SUM - Monto Total ZONA ASUNCION
         context.font = "bold 15px Arial";
@@ -4977,7 +4990,7 @@ module.exports = (app) => {
 
         // Escribe la imagen a archivo
         const buffer = canvas.toBuffer("image/png");
-        fs.writeFileSync("./Reporte - Acumulado 2023-07-19.png", buffer);
+        fs.writeFileSync("./Reporte - Acumulado " + fechaConsulta + ".png", buffer);
 
         // Convierte el canvas en una imagen base64
         const base64Image = canvas.toDataURL();
