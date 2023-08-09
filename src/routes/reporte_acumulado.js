@@ -115,11 +115,11 @@ module.exports = (app) => {
   function iniciarConsultas() {
     // Obtiene la fecha y hora actual
     const fechaActual = moment();
-    const fechaMesAnterior = moment(fechaActual).subtract(1, 'months');
+    const fechaMesAnterior = moment(fechaActual).subtract(1, "months");
 
     fechaConsulta = fechaActual.format("YYYY-MM-DD");
     fechaConsultaMesAct = fechaActual.format("DD-MM-YYYY");
-    fechaConsultaMesAnt = fechaMesAnterior.format("DD-MM-YYYY")
+    fechaConsultaMesAnt = fechaMesAnterior.format("DD-MM-YYYY");
 
     return new Promise((resolve, reject) => {
       console.log("Inicia las consultas!", fechaConsulta);
@@ -729,70 +729,6 @@ module.exports = (app) => {
       //     });
       //   });
 
-      // Datos del mes Actual
-      Acumulado_mesact.findAll({
-        where: { FECHA: fechaLocal },
-        //order: [["createdAt", "ASC"]],
-      })
-        .then((result) => {
-          losAcumuladosMesAct = result;
-          console.log("Preparando reporte:", losAcumuladosMesAct.length);
-
-          // Funcion que suma los montos totales
-          sumarMontos(losAcumuladosMesAct);
-
-          losAcumuladosMesActForma = result.map((objeto) => ({
-            ...objeto,
-            FECHA: fechaLocal,
-            SUCURSAL: objeto.SUCURSAL,
-            CUOTA_SOCIAL:
-              objeto.CUOTA_SOCIAL !== "0"
-                ? parseFloat(objeto.CUOTA_SOCIAL).toLocaleString("es", {
-                    minimumFractionDigits: 0,
-                    maximumFractionDigits: 0,
-                  })
-                : objeto.CUOTA_SOCIAL,
-            TRATAMIENTO:
-              objeto.TRATAMIENTO !== "0"
-                ? parseFloat(objeto.TRATAMIENTO).toLocaleString("es", {
-                    minimumFractionDigits: 0,
-                    maximumFractionDigits: 0,
-                  })
-                : objeto.TRATAMIENTO,
-            COBRADOR:
-              objeto.COBRADOR !== "0"
-                ? parseFloat(objeto.COBRADOR).toLocaleString("es", {
-                    minimumFractionDigits: 0,
-                    maximumFractionDigits: 0,
-                  })
-                : objeto.COBRADOR,
-            VENTA_NUEVA:
-              objeto.VENTA_NUEVA !== "0"
-                ? parseFloat(objeto.VENTA_NUEVA).toLocaleString("es", {
-                    minimumFractionDigits: 0,
-                    maximumFractionDigits: 0,
-                  })
-                : objeto.VENTA_NUEVA,
-            MONTO_TOTAL:
-              objeto.MONTO_TOTAL !== "0"
-                ? parseFloat(objeto.MONTO_TOTAL).toLocaleString("es", {
-                    minimumFractionDigits: 0,
-                    maximumFractionDigits: 0,
-                  })
-                : objeto.MONTO_TOTAL,
-          }));
-
-          console.log(losAcumuladosMesActForma[0]);
-        })
-        .then(() => {
-          //enviarMensaje();
-        })
-        .catch((error) => {
-          res.status(402).json({
-            msg: error.menssage,
-          });
-        });
-
       // Datos del mes Anterior
       Acumulado_mesant.findAll({
         where: { FECHA: fechaLocal },
@@ -849,6 +785,70 @@ module.exports = (app) => {
           console.log(losAcumuladosMesAntForma[0]);
         })
         .then(() => {
+          //enviarMensaje();
+        })
+        .catch((error) => {
+          res.status(402).json({
+            msg: error.menssage,
+          });
+        });
+
+      // Datos del mes Actual
+      Acumulado_mesact.findAll({
+        where: { FECHA: fechaLocal },
+        //order: [["createdAt", "ASC"]],
+      })
+        .then((result) => {
+          losAcumuladosMesAct = result;
+          console.log("Preparando reporte:", losAcumuladosMesAct.length);
+
+          // Funcion que suma los montos totales
+          sumarMontosMesActual(losAcumuladosMesAct);
+
+          losAcumuladosMesActForma = result.map((objeto) => ({
+            ...objeto,
+            FECHA: fechaLocal,
+            SUCURSAL: objeto.SUCURSAL,
+            CUOTA_SOCIAL:
+              objeto.CUOTA_SOCIAL !== "0"
+                ? parseFloat(objeto.CUOTA_SOCIAL).toLocaleString("es", {
+                    minimumFractionDigits: 0,
+                    maximumFractionDigits: 0,
+                  })
+                : objeto.CUOTA_SOCIAL,
+            TRATAMIENTO:
+              objeto.TRATAMIENTO !== "0"
+                ? parseFloat(objeto.TRATAMIENTO).toLocaleString("es", {
+                    minimumFractionDigits: 0,
+                    maximumFractionDigits: 0,
+                  })
+                : objeto.TRATAMIENTO,
+            COBRADOR:
+              objeto.COBRADOR !== "0"
+                ? parseFloat(objeto.COBRADOR).toLocaleString("es", {
+                    minimumFractionDigits: 0,
+                    maximumFractionDigits: 0,
+                  })
+                : objeto.COBRADOR,
+            VENTA_NUEVA:
+              objeto.VENTA_NUEVA !== "0"
+                ? parseFloat(objeto.VENTA_NUEVA).toLocaleString("es", {
+                    minimumFractionDigits: 0,
+                    maximumFractionDigits: 0,
+                  })
+                : objeto.VENTA_NUEVA,
+            MONTO_TOTAL:
+              objeto.MONTO_TOTAL !== "0"
+                ? parseFloat(objeto.MONTO_TOTAL).toLocaleString("es", {
+                    minimumFractionDigits: 0,
+                    maximumFractionDigits: 0,
+                  })
+                : objeto.MONTO_TOTAL,
+          }));
+
+          console.log(losAcumuladosMesActForma[0]);
+        })
+        .then(() => {
           enviarMensaje();
         })
         .catch((error) => {
@@ -861,8 +861,8 @@ module.exports = (app) => {
 
   iniciarEnvio();
 
-  // Sumar montos de acumulados mes actual
-  function sumarMontos(los_acumulados_mes_act) {
+  // Sumar montos de acumulados mes anterior
+  function sumarMontosMesAnterior(los_acumulados_mes_ant) {
     let arrayAsuncion = [
       "ADMINISTRACION",
       "MARISCAL LOPEZ",
@@ -889,9 +889,9 @@ module.exports = (app) => {
     let arrayAltop = ["KM 7", "SANTA RITA", "CAMPO 9"];
     let arraySanpe = ["SANTANI"];
 
-    //console.log('DESDE SUMAR MONTOS', los_acumulados_mes_act.length);
+    //console.log('DESDE SUMAR MONTOS');
 
-    for (let r of los_acumulados_mes_act) {
+    for (let r of los_acumulados_mes_ant) {
       // Suma los montos de los acumulados mes actual
       if (arrayAsuncion.includes(r.SUCURSAL)) {
         sumTotalesAsuncionCS += parseInt(r.CUOTA_SOCIAL);
@@ -942,7 +942,7 @@ module.exports = (app) => {
       }
     }
 
-    // Totales Generales - CIERRES DE CAJA
+    // Totales Generales
     totalGenCuotaSocial =
       sumTotalesAsuncionCS +
       sumTotalesGAsuncionCS +
@@ -1039,8 +1039,8 @@ module.exports = (app) => {
       sumTotalesApPR;
   }
 
-  // Sumar montos de acumulados mes anterior
-  function sumarMontosMesAnterior(los_acumulados_mes_ant) {
+  // Sumar montos de acumulados mes actual
+  function sumarMontosMesActual(los_acumulados_mes_act) {
     let arrayAsuncion = [
       "ADMINISTRACION",
       "MARISCAL LOPEZ",
@@ -1069,7 +1069,7 @@ module.exports = (app) => {
 
     //console.log('DESDE SUMAR MONTOS', los_acumulados_mes_ant.length);
 
-    for (let r of los_acumulados_mes_ant) {
+    for (let r of los_acumulados_mes_act) {
       // Suma los montos de los acumulados mes anterior
       if (arrayAsuncion.includes(r.SUCURSAL)) {
         sumTotalesAsuncionCS_ += parseInt(r.CUOTA_SOCIAL);
@@ -1120,7 +1120,7 @@ module.exports = (app) => {
       }
     }
 
-    // Totales Generales - CIERRES DE CAJA
+    // Totales Generales
     totalGenCuotaSocial_ =
       sumTotalesAsuncionCS_ +
       sumTotalesGAsuncionCS_ +
@@ -1234,7 +1234,7 @@ module.exports = (app) => {
         let ejeYFechaAct = 75;
         let ejeYFechaAnt = 75;
 
-        // Eje X de cada celda - Cierres
+        // Eje X de cada celda
         //let ejeXfecha = 125;
         let ejeXsucu = 30;
         let ejeXcuota = 250;
@@ -1250,7 +1250,7 @@ module.exports = (app) => {
         let ejeXventa_ = 1020;
         let ejeXmonto_ = 1120;
 
-        // Eje X de cada celda - Cantiad turnos
+        // Eje X de cada celda
         let ejeXagendado = 1060;
         let ejeXasistido = 1160;
         let ejeXprofesional = 1260;
@@ -4258,9 +4258,8 @@ module.exports = (app) => {
         context.textAlign = "left";
         context.fillText(fechaConsultaMesAct, ejeXFechaAct, ejeYFechaAct);
 
-
         // Fila totales ZONA ASUNCION
-        // SUM - Monto Total ZONA ASUNCION
+        // SUM - Monto Total ZONA ASUNCION - MES ANTERIOR
         context.font = "bold 15px Arial";
         context.fillStyle = "#34495E";
         context.textAlign = "left";
@@ -4327,6 +4326,68 @@ module.exports = (app) => {
           ejeYtotalesAsu
         );
 
+        // SUM - Monto Total ZONA ASUNCION - MES ACTUAL
+        context.font = "bold 15px Arial";
+        context.fillStyle = "#34495E";
+        context.textAlign = "center";
+        context.fillText(
+          sumTotalesAsuncionCS_.toLocaleString("es", {
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0,
+          }),
+          ejeXcuota_,
+          ejeYtotalesAsu
+        );
+
+        context.font = "bold 15px Arial";
+        context.fillStyle = "#34495E";
+        context.textAlign = "center";
+        context.fillText(
+          sumTotalesAsuncionTT_.toLocaleString("es", {
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0,
+          }),
+          ejeXtrata_,
+          ejeYtotalesAsu
+        );
+
+        context.font = "bold 15px Arial";
+        context.fillStyle = "#34495E";
+        context.textAlign = "center";
+        context.fillText(
+          sumTotalesAsuncionCO_.toLocaleString("es", {
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0,
+          }),
+          ejeXcobra_,
+          ejeYtotalesAsu
+        );
+
+        context.font = "bold 15px Arial";
+        context.fillStyle = "#34495E";
+        context.textAlign = "center";
+        context.fillText(
+          sumTotalesAsuncionVN_.toLocaleString("es", {
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0,
+          }),
+          ejeXventa_,
+          ejeYtotalesAsu
+        );
+
+        // MONTO TOTAL
+        context.font = "bold 15px Arial";
+        context.fillStyle = "#34495E";
+        context.textAlign = "center";
+        context.fillText(
+          sumTotalesAsuncionMT_.toLocaleString("es", {
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0,
+          }),
+          ejeXmonto_,
+          ejeYtotalesAsu
+        );
+
         // AGENDADOS
         /*context.font = "bold 15px Arial";
         context.fillStyle = "#34495E";
@@ -4364,7 +4425,7 @@ module.exports = (app) => {
           ejeYtotalesAsu
         ); */
 
-        // SUM - Monto Total ZONA GRAN ASUNCION
+        // SUM - Monto Total ZONA GRAN ASUNCION - MES ANTERIOR
         context.font = "bold 15px Arial";
         context.fillStyle = "#34495E";
         context.textAlign = "left";
@@ -4431,6 +4492,68 @@ module.exports = (app) => {
           ejeYtotalesGranAsu
         );
 
+        // SUM - Monto Total ZONA GRAN ASUNCION - MES ACTUAL
+        context.font = "bold 15px Arial";
+        context.fillStyle = "#34495E";
+        context.textAlign = "center";
+        context.fillText(
+          sumTotalesGAsuncionCS_.toLocaleString("es", {
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0,
+          }),
+          ejeXcuota_,
+          ejeYtotalesGranAsu
+        );
+
+        context.font = "bold 15px Arial";
+        context.fillStyle = "#34495E";
+        context.textAlign = "center";
+        context.fillText(
+          sumTotalesGAsuncionTT_.toLocaleString("es", {
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0,
+          }),
+          ejeXtrata_,
+          ejeYtotalesGranAsu
+        );
+
+        context.font = "bold 15px Arial";
+        context.fillStyle = "#34495E";
+        context.textAlign = "center";
+        context.fillText(
+          sumTotalesGAsuncionCO_.toLocaleString("es", {
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0,
+          }),
+          ejeXcobra_,
+          ejeYtotalesGranAsu
+        );
+
+        context.font = "bold 15px Arial";
+        context.fillStyle = "#34495E";
+        context.textAlign = "center";
+        context.fillText(
+          sumTotalesGAsuncionVN_.toLocaleString("es", {
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0,
+          }),
+          ejeXventa_,
+          ejeYtotalesGranAsu
+        );
+
+        // MONTO TOTAL
+        context.font = "bold 15px Arial";
+        context.fillStyle = "#34495E";
+        context.textAlign = "center";
+        context.fillText(
+          sumTotalesGAsuncionMT_.toLocaleString("es", {
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0,
+          }),
+          ejeXmonto_,
+          ejeYtotalesGranAsu
+        );
+
         // AGENDADOS
         /*context.font = "bold 15px Arial";
         context.fillStyle = "#34495E";
@@ -4468,7 +4591,7 @@ module.exports = (app) => {
           ejeYtotalesGranAsu
         );*/
 
-        // SUM - Monto Total ZONA RUTA 2
+        // SUM - Monto Total ZONA RUTA 2 - MES ANTERIOR
         context.font = "bold 15px Arial";
         context.fillStyle = "#34495E";
         context.textAlign = "left";
@@ -4535,6 +4658,68 @@ module.exports = (app) => {
           ejeYtotalesRuta2
         );
 
+        // SUM - Monto Total ZONA RUTA 2 - MES ACTUAL
+        context.font = "bold 15px Arial";
+        context.fillStyle = "#34495E";
+        context.textAlign = "center";
+        context.fillText(
+          sumTotalesR2CS_.toLocaleString("es", {
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0,
+          }),
+          ejeXcuota_,
+          ejeYtotalesRuta2
+        );
+
+        context.font = "bold 15px Arial";
+        context.fillStyle = "#34495E";
+        context.textAlign = "center";
+        context.fillText(
+          sumTotalesR2TT_.toLocaleString("es", {
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0,
+          }),
+          ejeXtrata_,
+          ejeYtotalesRuta2
+        );
+
+        context.font = "bold 15px Arial";
+        context.fillStyle = "#34495E";
+        context.textAlign = "center";
+        context.fillText(
+          sumTotalesR2CO_.toLocaleString("es", {
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0,
+          }),
+          ejeXcobra_,
+          ejeYtotalesRuta2
+        );
+
+        context.font = "bold 15px Arial";
+        context.fillStyle = "#34495E";
+        context.textAlign = "center";
+        context.fillText(
+          sumTotalesR2VN_.toLocaleString("es", {
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0,
+          }),
+          ejeXventa_,
+          ejeYtotalesRuta2
+        );
+
+        // MONTO TOTAL
+        context.font = "bold 15px Arial";
+        context.fillStyle = "#34495E";
+        context.textAlign = "center";
+        context.fillText(
+          sumTotalesR2MT_.toLocaleString("es", {
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0,
+          }),
+          ejeXmonto_,
+          ejeYtotalesRuta2
+        );
+
         // AGENDADOS
         /*context.font = "bold 15px Arial";
         context.fillStyle = "#34495E";
@@ -4572,7 +4757,7 @@ module.exports = (app) => {
           ejeYtotalesRuta2
         );*/
 
-        // SUM - Monto Total ZONA ITAPUA
+        // SUM - Monto Total ZONA ITAPUA - MES ANTERIOR
         context.font = "bold 15px Arial";
         context.fillStyle = "#34495E";
         context.textAlign = "left";
@@ -4639,6 +4824,68 @@ module.exports = (app) => {
           ejeYtotalesItapua
         );
 
+        // SUM - Monto Total ZONA ITAPUA - MES ACTUAL
+        context.font = "bold 15px Arial";
+        context.fillStyle = "#34495E";
+        context.textAlign = "center";
+        context.fillText(
+          sumTotalesItaCS_.toLocaleString("es", {
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0,
+          }),
+          ejeXcuota_,
+          ejeYtotalesItapua
+        );
+
+        context.font = "bold 15px Arial";
+        context.fillStyle = "#34495E";
+        context.textAlign = "center";
+        context.fillText(
+          sumTotalesItaTT_.toLocaleString("es", {
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0,
+          }),
+          ejeXtrata_,
+          ejeYtotalesItapua
+        );
+
+        context.font = "bold 15px Arial";
+        context.fillStyle = "#34495E";
+        context.textAlign = "center";
+        context.fillText(
+          sumTotalesItaCO_.toLocaleString("es", {
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0,
+          }),
+          ejeXcobra_,
+          ejeYtotalesItapua
+        );
+
+        context.font = "bold 15px Arial";
+        context.fillStyle = "#34495E";
+        context.textAlign = "center";
+        context.fillText(
+          sumTotalesItaVN_.toLocaleString("es", {
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0,
+          }),
+          ejeXventa_,
+          ejeYtotalesItapua
+        );
+
+        // MONTO TOTAL
+        context.font = "bold 15px Arial";
+        context.fillStyle = "#34495E";
+        context.textAlign = "center";
+        context.fillText(
+          sumTotalesItaMT_.toLocaleString("es", {
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0,
+          }),
+          ejeXmonto_,
+          ejeYtotalesItapua
+        );
+
         // AGENDADOS
         /*context.font = "bold 15px Arial";
         context.fillStyle = "#34495E";
@@ -4676,7 +4923,7 @@ module.exports = (app) => {
           ejeYtotalesItapua
         );*/
 
-        // SUM - Monto Total ZONA ALTO PARANA
+        // SUM - Monto Total ZONA ALTO PARANA - MES ANTERIOR
         context.font = "bold 15px Arial";
         context.fillStyle = "#34495E";
         context.textAlign = "left";
@@ -4743,6 +4990,68 @@ module.exports = (app) => {
           ejeYtotalesAltoP
         );
 
+        // SUM - Monto Total ZONA ALTO PARANA - MES ACTUAL
+        context.font = "bold 15px Arial";
+        context.fillStyle = "#34495E";
+        context.textAlign = "center";
+        context.fillText(
+          sumTotalesApCS_.toLocaleString("es", {
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0,
+          }),
+          ejeXcuota_,
+          ejeYtotalesAltoP
+        );
+
+        context.font = "bold 15px Arial";
+        context.fillStyle = "#34495E";
+        context.textAlign = "center";
+        context.fillText(
+          sumTotalesApTT_.toLocaleString("es", {
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0,
+          }),
+          ejeXtrata_,
+          ejeYtotalesAltoP
+        );
+
+        context.font = "bold 15px Arial";
+        context.fillStyle = "#34495E";
+        context.textAlign = "center";
+        context.fillText(
+          sumTotalesApCO_.toLocaleString("es", {
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0,
+          }),
+          ejeXcobra_,
+          ejeYtotalesAltoP
+        );
+
+        context.font = "bold 15px Arial";
+        context.fillStyle = "#34495E";
+        context.textAlign = "center";
+        context.fillText(
+          sumTotalesApVN_.toLocaleString("es", {
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0,
+          }),
+          ejeXventa_,
+          ejeYtotalesAltoP
+        );
+
+        // MONTO TOTAL
+        context.font = "bold 15px Arial";
+        context.fillStyle = "#34495E";
+        context.textAlign = "center";
+        context.fillText(
+          sumTotalesApMT_.toLocaleString("es", {
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0,
+          }),
+          ejeXmonto_,
+          ejeYtotalesAltoP
+        );
+
         // AGENDADOS
         /*context.font = "bold 15px Arial";
         context.fillStyle = "#34495E";
@@ -4780,7 +5089,7 @@ module.exports = (app) => {
           ejeYtotalesAltoP
         );*/
 
-        // SUM - Monto Total ZONA SAN PEDRO
+        // SUM - Monto Total ZONA SAN PEDRO - MES ANTERIOR
         context.font = "bold 15px Arial";
         context.fillStyle = "#34495E";
         context.textAlign = "left";
@@ -4847,6 +5156,68 @@ module.exports = (app) => {
           ejeYtotalesSanPe
         );
 
+        // SUM - Monto Total ZONA SAN PEDRO - MES ACTUAL
+        context.font = "bold 15px Arial";
+        context.fillStyle = "#34495E";
+        context.textAlign = "center";
+        context.fillText(
+          sumTotalesSpCS_.toLocaleString("es", {
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0,
+          }),
+          ejeXcuota_,
+          ejeYtotalesSanPe
+        );
+
+        context.font = "bold 15px Arial";
+        context.fillStyle = "#34495E";
+        context.textAlign = "center";
+        context.fillText(
+          sumTotalesSpTT_.toLocaleString("es", {
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0,
+          }),
+          ejeXtrata_,
+          ejeYtotalesSanPe
+        );
+
+        context.font = "bold 15px Arial";
+        context.fillStyle = "#34495E";
+        context.textAlign = "center";
+        context.fillText(
+          sumTotalesSpCO_.toLocaleString("es", {
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0,
+          }),
+          ejeXcobra_,
+          ejeYtotalesSanPe
+        );
+
+        context.font = "bold 15px Arial";
+        context.fillStyle = "#34495E";
+        context.textAlign = "center";
+        context.fillText(
+          sumTotalesSpVN_.toLocaleString("es", {
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0,
+          }),
+          ejeXventa_,
+          ejeYtotalesSanPe
+        );
+
+        // MONTO TOTAL
+        context.font = "bold 15px Arial";
+        context.fillStyle = "#34495E";
+        context.textAlign = "center";
+        context.fillText(
+          sumTotalesSpMT_.toLocaleString("es", {
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0,
+          }),
+          ejeXmonto_,
+          ejeYtotalesSanPe
+        );
+
         // AGENDADOS
         /*context.font = "bold 15px Arial";
         context.fillStyle = "#34495E";
@@ -4884,7 +5255,7 @@ module.exports = (app) => {
           ejeYtotalesSanPe
         );*/
 
-        // SUM - TOTALES GENERALES
+        // SUM - TOTALES GENERALES - MES ANTERIOR
         context.font = "bold 15px Arial";
         context.fillStyle = "#34495E";
         context.textAlign = "left";
