@@ -163,6 +163,7 @@ module.exports = (app) => {
 
   // EL QUE TRAE LA COBRANZA DE LAS SUCURSALES ACUMULADAS DEL MES ACTUAL
   function getAcumuladosMesAct() {
+    console.log('Obteninendo Acumulados Mes Actual');
     let todasSucursalesReporte = [];
     return new Promise((resolve, reject) => {
       Firebird.attach(odontos, function (err, db) {
@@ -174,7 +175,7 @@ module.exports = (app) => {
 
           function (err, result) {
             console.log("Cant de registros obtenidos getAcumuladoMesAct:", result.length);
-            console.log(result);
+            //console.log(result);
 
             // Se cargan todas las sucursales que trajo la consulta
             for (let r of result) {
@@ -232,7 +233,7 @@ module.exports = (app) => {
               return acumulador;
             }, []);
 
-            console.log("Array formateado para insertar en el POSTGRESQL", nuevoArray);
+            //console.log("Array formateado para insertar en el POSTGRESQL", nuevoArray);
 
             // Recorre el array que contiene los datos e inserta en la base de postgresql
             nuevoArray.forEach((e) => {
@@ -254,6 +255,7 @@ module.exports = (app) => {
 
   // EL QUE TRAE LA COBRANZA DE LAS SUCURSALES ACUMULADAS DEL MES ATERIOR
   function getAcumuladosMesAnt() {
+    console.log('Obteninendo Acumulados Mes Anterior');
     let todasSucursalesReporte = [];
     return new Promise((resolve, reject) => {
       Firebird.attach(odontos, function (err, db) {
@@ -265,7 +267,7 @@ module.exports = (app) => {
 
           function (err, result) {
             console.log("Cant de registros obtenidos getAcumuladoMesAct:", result.length);
-            console.log(result);
+            //console.log(result);
 
             // Se cargan todas las sucursales que trajo la consulta
             for (let r of result) {
@@ -323,7 +325,7 @@ module.exports = (app) => {
               return acumulador;
             }, []);
 
-            console.log("Array formateado para insertar en el POSTGRESQL", nuevoArray);
+            //console.log("Array formateado para insertar en el POSTGRESQL", nuevoArray);
 
             // Recorre el array que contiene los datos e inserta en la base de postgresql
             nuevoArray.forEach((e) => {
@@ -345,6 +347,8 @@ module.exports = (app) => {
 
   // EL QUE TRAE LAS COBRANZAS POR TIPO DEL MES ACTUAL
   function getIngresosMesAct() {
+    console.log('Obteninendo Ingresos Mes Actual');
+
     let todosTiposPagosConsulta = [];
 
     return new Promise((resolve, reject) => {
@@ -359,7 +363,7 @@ module.exports = (app) => {
 
           function (err, result) {
             console.log("Cant de registros obtenidos getIngresoMesAct:", result.length);
-            console.log(result);
+            //console.log(result);
 
             // Se carga de los tipos de pagos que trae la consulta
             for (let r of result) {
@@ -416,7 +420,7 @@ module.exports = (app) => {
               return acumulador;
             }, []);
 
-            console.log("Array formateado para insertar en el POSTGRESQL", nuevoArray);
+            //console.log("Array formateado para insertar en el POSTGRESQL", nuevoArray);
 
             // Recorre el array que contiene los datos e inserta en la base de postgresql
             nuevoArray.forEach((e) => {
@@ -441,6 +445,8 @@ module.exports = (app) => {
 
   // EL QUE TRAE LAS COBRANZAS POR TIPO DEL MES ANTERIOR
   function getIngresosMesAnt() {
+    console.log('Obteninendo Ingresos Mes Anterior');
+
     let todosTiposPagosConsulta = [];
 
     return new Promise((resolve, reject) => {
@@ -455,7 +461,7 @@ module.exports = (app) => {
 
           function (err, result) {
             console.log("Cant de registros obtenidos getIngresoMesAct:", result.length);
-            console.log(result);
+            //console.log(result);
 
             // Se carga de los tipos de pagos que trae la consulta
             for (let r of result) {
@@ -512,7 +518,7 @@ module.exports = (app) => {
               return acumulador;
             }, []);
 
-            console.log("Array formateado para insertar en el POSTGRESQL", nuevoArray);
+            //console.log("Array formateado para insertar en el POSTGRESQL", nuevoArray);
 
             // Recorre el array que contiene los datos e inserta en la base de postgresql
             nuevoArray.forEach((e) => {
@@ -736,7 +742,7 @@ module.exports = (app) => {
       })
         .then((result) => {
           losAcumuladosMesAnt = result;
-          console.log("Preparando reporte:", losAcumuladosMesAnt.length);
+          //console.log("Acumulados :", losAcumuladosMesAnt);
 
           // Funcion que suma los montos totales
           sumarMontosMesAnterior(losAcumuladosMesAnt);
@@ -782,7 +788,7 @@ module.exports = (app) => {
                 : objeto.MONTO_TOTAL,
           }));
 
-          console.log(losAcumuladosMesAntForma[0]);
+          //console.log(losAcumuladosMesAntForma[0]);
         })
         .then(() => {
           //enviarMensaje();
@@ -846,7 +852,7 @@ module.exports = (app) => {
                 : objeto.MONTO_TOTAL,
           }));
 
-          console.log(losAcumuladosMesActForma[0]);
+          //console.log(losAcumuladosMesActForma[0]);
         })
         .then(() => {
           enviarMensaje();
@@ -860,6 +866,43 @@ module.exports = (app) => {
   }
 
   iniciarEnvio();
+
+  // Diferencias de montos
+  let totalAdministracion = 0;
+  let totalAdministracion_ = 0;
+  let totalDifAdministracion = 0;
+
+  let totalML = 0;
+  let totalML_ = 0;
+  let totalDifML = 0;
+
+  let totalMLU = 0;
+  let totalMLU_ = 0;
+  let totalDifMLU = 0;
+
+  let totalAQ = 0;
+  let totalAQ_ = 0;
+  let totalDifAQ = 0;
+
+  let totalVM = 0;
+  let totalVM_ = 0;
+  let totalDifVM = 0;
+
+  let totalART = 0;
+  let totalART_ = 0;
+  let totalDifART = 0;
+
+  let totalLUI = 0;
+  let totalLUI_ = 0;
+  let totalDifLUI = 0;
+
+  let totalPAL = 0;
+  let totalPAL_ = 0;
+  let totalDifPAL = 0;
+
+  let totalLAM = 0;
+  let totalLAM_ = 0;
+  let totalDifLAM = 0;
 
   // Sumar montos de acumulados mes anterior
   function sumarMontosMesAnterior(los_acumulados_mes_ant) {
@@ -899,6 +942,38 @@ module.exports = (app) => {
         sumTotalesAsuncionCO += parseInt(r.COBRADOR);
         sumTotalesAsuncionVN += parseInt(r.VENTA_NUEVA);
         sumTotalesAsuncionMT += parseInt(r.MONTO_TOTAL);
+
+        if (r.SUCURSAL == "ADMINISTRACION") {
+          totalAdministracion = r.MONTO_TOTAL;
+        }
+
+        if (r.SUCURSAL == "MARISCAL LOPEZ") {
+          totalML = r.MONTO_TOTAL;
+        }
+
+        if (r.SUCURSAL == "MCAL. LOPEZ URGENCIAS") {
+          totalMLU = r.MONTO_TOTAL;
+        }
+
+        if (r.SUCURSAL == "AVENIDA QUINTA") {
+          totalAQ = r.MONTO_TOTAL;
+        }
+
+        if (r.SUCURSAL == "VILLA MORRA") {
+          totalVM = r.MONTO_TOTAL;
+        }
+
+        if (r.SUCURSAL == "ARTIGAS") {
+          totalART = r.MONTO_TOTAL;
+        }
+
+        if (r.SUCURSAL == "LUISITO") {
+          totalLUI = r.MONTO_TOTAL;
+        }
+
+        if (r.SUCURSAL == "PALMA") {
+          totalPAL = r.MONTO_TOTAL;
+        }
       }
 
       if (arrayGAsuncion.includes(r.SUCURSAL)) {
@@ -1077,6 +1152,38 @@ module.exports = (app) => {
         sumTotalesAsuncionCO_ += parseInt(r.COBRADOR);
         sumTotalesAsuncionVN_ += parseInt(r.VENTA_NUEVA);
         sumTotalesAsuncionMT_ += parseInt(r.MONTO_TOTAL);
+
+        if (r.SUCURSAL == "ADMINISTRACION") {
+          totalAdministracion_ = r.MONTO_TOTAL;
+        }
+
+        if (r.SUCURSAL == "MARISCAL LOPEZ") {
+          totalML_ = r.MONTO_TOTAL;
+        }
+
+        if (r.SUCURSAL == "MCAL. LOPEZ URGENCIAS") {
+          totalMLU_ = r.MONTO_TOTAL;
+        }
+
+        if (r.SUCURSAL == "AVENIDA QUINTA") {
+          totalAQ_ = r.MONTO_TOTAL;
+        }
+
+        if (r.SUCURSAL == "VILLA MORRA") {
+          totalVM_ = r.MONTO_TOTAL;
+        }
+
+        if (r.SUCURSAL == "ARTIGAS") {
+          totalART_ = r.MONTO_TOTAL;
+        }
+
+        if (r.SUCURSAL == "LUISITO") {
+          totalLUI_ = r.MONTO_TOTAL;
+        }
+
+        if (r.SUCURSAL == "PALMA") {
+          totalPAL_ = r.MONTO_TOTAL;
+        }
       }
 
       if (arrayGAsuncion.includes(r.SUCURSAL)) {
@@ -1156,6 +1263,19 @@ module.exports = (app) => {
       sumTotalesItaMT_ +
       sumTotalesApMT_ +
       sumTotalesSpMT_;
+
+    // Diferencias
+    totalDifAdministracion = parseInt(totalAdministracion_ - totalAdministracion);
+    totalDifML = parseInt(totalML_ - totalML);
+    totalDifMLU = parseInt(totalMLU_ - totalMLU);
+    totalDifAQ = parseInt(totalAQ_ - totalAQ);
+    totalDifVM = parseInt(totalVM_ - totalVM);
+    totalDifART = parseInt(totalART_ - totalART);
+    totalDifLUI = parseInt(totalLUI_ - totalLUI);
+    totalDifPAL = parseInt(totalPAL_ - totalPAL);
+
+
+    console.log("Total diferencia administracion", totalDifAdministracion);
 
     // Suma las cantidades de los turnos
     // for (let t of losTurnosCantidades) {
@@ -1249,6 +1369,7 @@ module.exports = (app) => {
         let ejeXcobra_ = 940;
         let ejeXventa_ = 1020;
         let ejeXmonto_ = 1120;
+        let ejeXdiferencia_ = 1220;
 
         // Eje X de cada celda
         let ejeXagendado = 1060;
@@ -2884,6 +3005,16 @@ module.exports = (app) => {
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYadm);
+
+            context.font = "bold 15px Arial";
+            context.fillStyle = "#34495E";
+            context.textAlign = "center";
+            context.fillText(totalDifAdministracion.toLocaleString("es", {
+              minimumFractionDigits: 0,
+              maximumFractionDigits: 0,
+            }) , ejeXdiferencia_, ejeYadm);
+
+            
           }
 
           if (r.SUCURSAL == "MARISCAL LOPEZ") {
@@ -2940,6 +3071,14 @@ module.exports = (app) => {
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYml);
+
+            context.font = "bold 15px Arial";
+            context.fillStyle = "#34495E";
+            context.textAlign = "center";
+            context.fillText(totalDifML.toLocaleString("es", {
+              minimumFractionDigits: 0,
+              maximumFractionDigits: 0,
+            }) , ejeXdiferencia_, ejeYml);
           }
 
           if (r.SUCURSAL == "MCAL. LOPEZ URGENCIAS") {
@@ -2992,6 +3131,14 @@ module.exports = (app) => {
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYmlurg);
+
+            context.font = "bold 15px Arial";
+            context.fillStyle = "#34495E";
+            context.textAlign = "center";
+            context.fillText(totalDifMLU.toLocaleString("es", {
+              minimumFractionDigits: 0,
+              maximumFractionDigits: 0,
+            }) , ejeXdiferencia_, ejeYmlurg);
           }
 
           if (r.SUCURSAL == "AVENIDA QUINTA") {
@@ -3044,6 +3191,14 @@ module.exports = (app) => {
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYaq);
+
+            context.font = "bold 15px Arial";
+            context.fillStyle = "#34495E";
+            context.textAlign = "center";
+            context.fillText(totalDifAQ.toLocaleString("es", {
+              minimumFractionDigits: 0,
+              maximumFractionDigits: 0,
+            }) , ejeXdiferencia_, ejeYaq);
           }
 
           if (r.SUCURSAL == "VILLA MORRA") {
@@ -3096,6 +3251,14 @@ module.exports = (app) => {
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYvm);
+
+            context.font = "bold 15px Arial";
+            context.fillStyle = "#34495E";
+            context.textAlign = "center";
+            context.fillText(totalDifVM.toLocaleString("es", {
+              minimumFractionDigits: 0,
+              maximumFractionDigits: 0,
+            }) , ejeXdiferencia_, ejeYvm);
           }
 
           if (r.SUCURSAL == "ARTIGAS") {
@@ -3148,6 +3311,14 @@ module.exports = (app) => {
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYar);
+
+            context.font = "bold 15px Arial";
+            context.fillStyle = "#34495E";
+            context.textAlign = "center";
+            context.fillText(totalDifART.toLocaleString("es", {
+              minimumFractionDigits: 0,
+              maximumFractionDigits: 0,
+            }) , ejeXdiferencia_, ejeYar);
           }
 
           if (r.SUCURSAL == "LUISITO") {
@@ -3200,6 +3371,14 @@ module.exports = (app) => {
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYlu);
+
+            context.font = "bold 15px Arial";
+            context.fillStyle = "#34495E";
+            context.textAlign = "center";
+            context.fillText(totalDifLUI.toLocaleString("es", {
+              minimumFractionDigits: 0,
+              maximumFractionDigits: 0,
+            }) , ejeXdiferencia_, ejeYlu);
           }
 
           if (r.SUCURSAL == "PALMA") {
@@ -3252,6 +3431,14 @@ module.exports = (app) => {
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYpa);
+
+            context.font = "bold 15px Arial";
+            context.fillStyle = "#34495E";
+            context.textAlign = "center";
+            context.fillText(totalDifPAL.toLocaleString("es", {
+              minimumFractionDigits: 0,
+              maximumFractionDigits: 0,
+            }) , ejeXdiferencia_, ejeYpa);
           }
 
           // Zona Gran ASU
@@ -5259,7 +5446,7 @@ module.exports = (app) => {
         context.font = "bold 15px Arial";
         context.fillStyle = "#34495E";
         context.textAlign = "left";
-        context.fillText("TOTAL GENERAL", ejeXsucu, ejeYTotalGeneral);
+        context.fillText("TOTAL SUCURSALES", ejeXsucu, ejeYTotalGeneral);
 
         context.font = "bold 15px Arial";
         context.fillStyle = "#34495E";
@@ -5319,6 +5506,68 @@ module.exports = (app) => {
             maximumFractionDigits: 0,
           }),
           ejeXmonto,
+          ejeYTotalGeneral
+        );
+
+        // SUM - TOTALES GENERALES - MES ACTUAL
+        context.font = "bold 15px Arial";
+        context.fillStyle = "#34495E";
+        context.textAlign = "center";
+        context.fillText(
+          totalGenCuotaSocial_.toLocaleString("es", {
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0,
+          }),
+          ejeXcuota_,
+          ejeYTotalGeneral
+        );
+
+        context.font = "bold 15px Arial";
+        context.fillStyle = "#34495E";
+        context.textAlign = "center";
+        context.fillText(
+          totalGenTratamiento_.toLocaleString("es", {
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0,
+          }),
+          ejeXtrata_,
+          ejeYTotalGeneral
+        );
+
+        context.font = "bold 15px Arial";
+        context.fillStyle = "#34495E";
+        context.textAlign = "center";
+        context.fillText(
+          totalGenCobrador_.toLocaleString("es", {
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0,
+          }),
+          ejeXcobra_,
+          ejeYTotalGeneral
+        );
+
+        context.font = "bold 15px Arial";
+        context.fillStyle = "#34495E";
+        context.textAlign = "center";
+        context.fillText(
+          totalGenVentaNueva_.toLocaleString("es", {
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0,
+          }),
+          ejeXventa_,
+          ejeYTotalGeneral
+        );
+
+        // MONTO TOTAL
+        context.font = "bold 15px Arial";
+        context.fillStyle = "#34495E";
+        context.textAlign = "center";
+        context.fillText(
+          totalGenMontoTotal_.toLocaleString("es", {
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0,
+          }),
+          ejeXmonto_,
           ejeYTotalGeneral
         );
 
