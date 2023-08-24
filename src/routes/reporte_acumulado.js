@@ -904,6 +904,38 @@ module.exports = (app) => {
   let totalLAM_ = 0;
   let totalDifLAM = 0;
 
+  let totalCAT = 0;
+  let totalCAT_ = 0;
+  let totalDifCAT = 0;
+
+  let totalLUQ = 0;
+  let totalLUQ_ = 0;
+  let totalDifLUQ = 0;
+
+  let totalLAR = 0;
+  let totalLAR_ = 0;
+  let totalDifLAR = 0;
+
+  let totalNEM = 0;
+  let totalNEM_ = 0;
+  let totalDifNEM = 0;
+
+  let totalITA = 0;
+  let totalITA_ = 0;
+  let totalDifITA = 0;
+
+  let total1811 = 0;
+  let total1811_ = 0;
+  let totalDif1811 = 0;
+
+  let totalKM14 = 0;
+  let totalKM14_ = 0;
+  let totalDifKM14 = 0;
+
+  let totalCAP = 0;
+  let totalCAP_ = 0;
+  let totalDifCAP = 0;
+
   // Sumar montos de acumulados mes anterior
   function sumarMontosMesAnterior(los_acumulados_mes_ant) {
     let arrayAsuncion = [
@@ -1192,6 +1224,42 @@ module.exports = (app) => {
         sumTotalesGAsuncionCO_ += parseInt(r.COBRADOR);
         sumTotalesGAsuncionVN_ += parseInt(r.VENTA_NUEVA);
         sumTotalesGAsuncionMT_ += parseInt(r.MONTO_TOTAL);
+
+        if (r.SUCURSAL == "LAMBARE") {
+          totalLAM_ = r.MONTO_TOTAL;
+        }
+
+        if (r.SUCURSAL == "CATEDRAL") {
+          totalCAT_ = r.MONTO_TOTAL;
+        }
+
+        if (r.SUCURSAL == "LUQUE") {
+          totalLUQ_ = r.MONTO_TOTAL;
+        }
+
+        if (r.SUCURSAL == "LA RURAL") {
+          totalLAR_ = r.MONTO_TOTAL;
+        }
+
+        if (r.SUCURSAL == "ÑEMBY") {
+          totalNEM_ = r.MONTO_TOTAL;
+        }
+
+        if (r.SUCURSAL == "ITAUGUA") {
+          totalITA_ = r.MONTO_TOTAL;
+        }
+
+        if (r.SUCURSAL == "1811 SUCURSAL") {
+          total1811_ = r.MONTO_TOTAL;
+        }
+
+        if (r.SUCURSAL == "KM 14 Y MEDIO") {
+          totalKM14_ = r.MONTO_TOTAL;
+        }
+
+        if (r.SUCURSAL == "CAPIATA") {
+          totalCAP_ = r.MONTO_TOTAL;
+        }
       }
 
       if (arrayRuta2.includes(r.SUCURSAL)) {
@@ -1274,8 +1342,16 @@ module.exports = (app) => {
     totalDifLUI = parseInt(totalLUI_ - totalLUI);
     totalDifPAL = parseInt(totalPAL_ - totalPAL);
 
+    totalDifLAM = parseInt(totalLAM_ - totalLAM);
+    totalDifCAT = parseInt(totalCAT_ - totalCAT);
+    totalDifLUQ = parseInt(totalLUQ_ - totalLUQ);
+    totalDifLAR = parseInt(totalLAR_ - totalLAR);
+    totalDifNEM = parseInt(totalNEM_ - totalNEM);
+    totalDifITA = parseInt(totalITA_ - totalITA);
+    totalDif1811 = parseInt(total1811_ - total1811);
+    totalDifKM14 = parseInt(totalKM14_ - totalKM14);
+    totalDifCAP = parseInt(totalCAP_ - totalCAP);
 
-    console.log("Total diferencia administracion", totalDifAdministracion);
 
     // Suma las cantidades de los turnos
     // for (let t of losTurnosCantidades) {
@@ -3492,6 +3568,14 @@ module.exports = (app) => {
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYlam);
+
+            context.font = "bold 15px Arial";
+            context.fillStyle = "#34495E";
+            context.textAlign = "center";
+            context.fillText(totalDifLAM.toLocaleString("es", {
+              minimumFractionDigits: 0,
+              maximumFractionDigits: 0,
+            }) , ejeXdiferencia_, ejeYlam);
           }
 
           if (r.SUCURSAL == "CATEDRAL") {
@@ -3543,6 +3627,14 @@ module.exports = (app) => {
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYcat);
+
+            context.font = "bold 15px Arial";
+            context.fillStyle = "#34495E";
+            context.textAlign = "center";
+            context.fillText(totalDifCAT.toLocaleString("es", {
+              minimumFractionDigits: 0,
+              maximumFractionDigits: 0,
+            }) , ejeXdiferencia_, ejeYcat);
           }
 
           if (r.SUCURSAL == "LUQUE") {
@@ -3595,6 +3687,14 @@ module.exports = (app) => {
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYluq);
+
+            context.font = "bold 15px Arial";
+            context.fillStyle = "#34495E";
+            context.textAlign = "center";
+            context.fillText(totalDifLUQ.toLocaleString("es", {
+              minimumFractionDigits: 0,
+              maximumFractionDigits: 0,
+            }) , ejeXdiferencia_, ejeYluq);
           }
 
           if (r.SUCURSAL == "LA RURAL") {
@@ -3647,6 +3747,14 @@ module.exports = (app) => {
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYlar);
+
+            context.font = "bold 15px Arial";
+            context.fillStyle = "#34495E";
+            context.textAlign = "center";
+            context.fillText(totalDifLAR.toLocaleString("es", {
+              minimumFractionDigits: 0,
+              maximumFractionDigits: 0,
+            }) , ejeXdiferencia_, ejeYlar);
           }
 
           if (r.SUCURSAL == "ÑEMBY") {
@@ -3699,6 +3807,14 @@ module.exports = (app) => {
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYnem);
+
+            context.font = "bold 15px Arial";
+            context.fillStyle = "#34495E";
+            context.textAlign = "center";
+            context.fillText(totalDifNEM.toLocaleString("es", {
+              minimumFractionDigits: 0,
+              maximumFractionDigits: 0,
+            }) , ejeXdiferencia_, ejeYnem);
           }
 
           if (r.SUCURSAL == "ITAUGUA") {
@@ -3751,6 +3867,14 @@ module.exports = (app) => {
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYita);
+
+            context.font = "bold 15px Arial";
+            context.fillStyle = "#34495E";
+            context.textAlign = "center";
+            context.fillText(totalDifITA.toLocaleString("es", {
+              minimumFractionDigits: 0,
+              maximumFractionDigits: 0,
+            }) , ejeXdiferencia_, ejeYita);
           }
 
           if (r.SUCURSAL == "1811 SUCURSAL") {
@@ -3803,6 +3927,14 @@ module.exports = (app) => {
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeY1811);
+
+            context.font = "bold 15px Arial";
+            context.fillStyle = "#34495E";
+            context.textAlign = "center";
+            context.fillText(totalDif1811.toLocaleString("es", {
+              minimumFractionDigits: 0,
+              maximumFractionDigits: 0,
+            }) , ejeXdiferencia_, ejeY1811);
           }
 
           if (r.SUCURSAL == "KM 14 Y MEDIO") {
@@ -3855,6 +3987,14 @@ module.exports = (app) => {
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYkm14);
+
+            context.font = "bold 15px Arial";
+            context.fillStyle = "#34495E";
+            context.textAlign = "center";
+            context.fillText(totalDifKM14.toLocaleString("es", {
+              minimumFractionDigits: 0,
+              maximumFractionDigits: 0,
+            }) , ejeXdiferencia_, ejeYkm14);
           }
 
           if (r.SUCURSAL == "CAPIATA") {
@@ -3907,6 +4047,14 @@ module.exports = (app) => {
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYcap);
+
+            context.font = "bold 15px Arial";
+            context.fillStyle = "#34495E";
+            context.textAlign = "center";
+            context.fillText(totalDifCAP.toLocaleString("es", {
+              minimumFractionDigits: 0,
+              maximumFractionDigits: 0,
+            }) , ejeXdiferencia_, ejeYcap);
           }
 
           // Zona Ruta 2
@@ -5630,7 +5778,7 @@ module.exports = (app) => {
             fileSize: "",
           };
 
-          // Envia el mensaje
+          // Envia el mensaje por la API free WWA
           // axios
           //   .post(wwaUrl, mensajeBody)
           //   .then((response) => {
