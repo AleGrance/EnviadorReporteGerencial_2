@@ -163,7 +163,7 @@ module.exports = (app) => {
 
   // EL QUE TRAE LA COBRANZA DE LAS SUCURSALES ACUMULADAS DEL MES ACTUAL
   function getAcumuladosMesAct() {
-    console.log('Obteninendo Acumulados Mes Actual');
+    console.log("Obteninendo Acumulados Mes Actual");
     let todasSucursalesReporte = [];
     return new Promise((resolve, reject) => {
       Firebird.attach(odontos, function (err, db) {
@@ -255,7 +255,7 @@ module.exports = (app) => {
 
   // EL QUE TRAE LA COBRANZA DE LAS SUCURSALES ACUMULADAS DEL MES ATERIOR
   function getAcumuladosMesAnt() {
-    console.log('Obteninendo Acumulados Mes Anterior');
+    console.log("Obteninendo Acumulados Mes Anterior");
     let todasSucursalesReporte = [];
     return new Promise((resolve, reject) => {
       Firebird.attach(odontos, function (err, db) {
@@ -347,7 +347,7 @@ module.exports = (app) => {
 
   // EL QUE TRAE LAS COBRANZAS POR TIPO DEL MES ACTUAL
   function getIngresosMesAct() {
-    console.log('Obteninendo Ingresos Mes Actual');
+    console.log("Obteninendo Ingresos Mes Actual");
 
     let todosTiposPagosConsulta = [];
 
@@ -445,7 +445,7 @@ module.exports = (app) => {
 
   // EL QUE TRAE LAS COBRANZAS POR TIPO DEL MES ANTERIOR
   function getIngresosMesAnt() {
-    console.log('Obteninendo Ingresos Mes Anterior');
+    console.log("Obteninendo Ingresos Mes Anterior");
 
     let todosTiposPagosConsulta = [];
 
@@ -936,6 +936,53 @@ module.exports = (app) => {
   let totalCAP_ = 0;
   let totalDifCAP = 0;
 
+  let totalCAACU = 0;
+  let totalCAACU_ = 0;
+  let totalDifCAACU = 0;
+
+  let totalCORO = 0;
+  let totalCORO_ = 0;
+  let totalDifCORO = 0;
+
+  let totalHOHE = 0;
+  let totalHOHE_ = 0;
+  let totalDifHOHE = 0;
+
+  let totalENCAR = 0;
+  let totalENCAR_ = 0;
+  let totalDifENCAR = 0;
+
+  let totalMARAUX = 0;
+  let totalMARAUX_ = 0;
+  let totalDifMARAUX = 0;
+
+  let totalAYO = 0;
+  let totalAYO_ = 0;
+  let totalDifAYO = 0;
+
+  let totalKM7 = 0;
+  let totalKM7_ = 0;
+  let totalDifKM7 = 0;
+
+  let totalSANRIT = 0;
+  let totalSANRIT_ = 0;
+  let totalDifSANRIT = 0;
+
+  let totalCAM9 = 0;
+  let totalCAM9_ = 0;
+  let totalDifCAM9 = 0;
+
+  let totalSANTANI = 0;
+  let totalSANTANI_ = 0;
+  let totalDifSANTANI = 0;
+
+  let difTotalesAsuncionMT = 0;
+  let difTotalesGAsuncionMT = 0;
+  let difTotalesR2MT = 0;
+  let difTotalesItaMT = 0;
+  let difTotalesApMT = 0;
+  let difTotalesSpMT = 0;
+
   // Sumar montos de acumulados mes anterior
   function sumarMontosMesAnterior(los_acumulados_mes_ant) {
     let arrayAsuncion = [
@@ -1014,6 +1061,42 @@ module.exports = (app) => {
         sumTotalesGAsuncionCO += parseInt(r.COBRADOR);
         sumTotalesGAsuncionVN += parseInt(r.VENTA_NUEVA);
         sumTotalesGAsuncionMT += parseInt(r.MONTO_TOTAL);
+
+        if (r.SUCURSAL == "LAMBARE") {
+          totalLAM = r.MONTO_TOTAL;
+        }
+
+        if (r.SUCURSAL == "CATEDRAL") {
+          totalCAT = r.MONTO_TOTAL;
+        }
+
+        if (r.SUCURSAL == "LUQUE") {
+          totalLUQ = r.MONTO_TOTAL;
+        }
+
+        if (r.SUCURSAL == "LA RURAL") {
+          totalLAR = r.MONTO_TOTAL;
+        }
+
+        if (r.SUCURSAL == "ÑEMBY") {
+          totalNEM = r.MONTO_TOTAL;
+        }
+
+        if (r.SUCURSAL == "ITAUGUA") {
+          totalCAT = r.MONTO_TOTAL;
+        }
+
+        if (r.SUCURSAL == "1811 SUCURSAL") {
+          total1811 = r.MONTO_TOTAL;
+        }
+
+        if (r.SUCURSAL == "KM 14 Y MEDIO") {
+          totalKM14 = r.MONTO_TOTAL;
+        }
+
+        if (r.SUCURSAL == "CAPIATA") {
+          totalCAP = r.MONTO_TOTAL;
+        }
       }
 
       if (arrayRuta2.includes(r.SUCURSAL)) {
@@ -1022,6 +1105,14 @@ module.exports = (app) => {
         sumTotalesR2CO += parseInt(r.COBRADOR);
         sumTotalesR2VN += parseInt(r.VENTA_NUEVA);
         sumTotalesR2MT += parseInt(r.MONTO_TOTAL);
+
+        if (r.SUCURSAL == "CAACUPE") {
+          totalCAACU = r.MONTO_TOTAL;
+        }
+
+        if (r.SUCURSAL == "CORONEL OVIEDO") {
+          totalCORO = r.MONTO_TOTAL;
+        }
       }
 
       if (arrayItapua.includes(r.SUCURSAL)) {
@@ -1030,6 +1121,22 @@ module.exports = (app) => {
         sumTotalesItaCO += parseInt(r.COBRADOR);
         sumTotalesItaVN += parseInt(r.VENTA_NUEVA);
         sumTotalesItaMT += parseInt(r.MONTO_TOTAL);
+
+        if (r.SUCURSAL == "HOHENAU") {
+          totalHOHE = r.MONTO_TOTAL;
+        }
+
+        if (r.SUCURSAL == "ENCARNACION CENTRO") {
+          totalENCAR = r.MONTO_TOTAL;
+        }
+
+        if (r.SUCURSAL == "MARIA AUXILIADORA") {
+          totalMARAUX = r.MONTO_TOTAL;
+        }
+
+        if (r.SUCURSAL == "AYOLAS") {
+          totalAYO = r.MONTO_TOTAL;
+        }
       }
 
       if (arrayAltop.includes(r.SUCURSAL)) {
@@ -1038,6 +1145,18 @@ module.exports = (app) => {
         sumTotalesApCO += parseInt(r.COBRADOR);
         sumTotalesApVN += parseInt(r.VENTA_NUEVA);
         sumTotalesApMT += parseInt(r.MONTO_TOTAL);
+
+        if (r.SUCURSAL == "KM 7") {
+          totalKM7 = r.MONTO_TOTAL;
+        }
+
+        if (r.SUCURSAL == "SANTA RITA") {
+          totalSANRIT = r.MONTO_TOTAL;
+        }
+
+        if (r.SUCURSAL == "CAMPO 9") {
+          totalCAM9 = r.MONTO_TOTAL;
+        }
       }
 
       if (arraySanpe.includes(r.SUCURSAL)) {
@@ -1046,6 +1165,10 @@ module.exports = (app) => {
         sumTotalesSpCO += parseInt(r.COBRADOR);
         sumTotalesSpVN += parseInt(r.VENTA_NUEVA);
         sumTotalesSpMT += parseInt(r.MONTO_TOTAL);
+
+        if (r.SUCURSAL == "SANTANI") {
+          totalSANTANI = r.MONTO_TOTAL;
+        }
       }
     }
 
@@ -1268,6 +1391,14 @@ module.exports = (app) => {
         sumTotalesR2CO_ += parseInt(r.COBRADOR);
         sumTotalesR2VN_ += parseInt(r.VENTA_NUEVA);
         sumTotalesR2MT_ += parseInt(r.MONTO_TOTAL);
+
+        if (r.SUCURSAL == "CAACUPE") {
+          totalCAACU_ = r.MONTO_TOTAL;
+        }
+
+        if (r.SUCURSAL == "CORONEL OVIEDO") {
+          totalCORO_ = r.MONTO_TOTAL;
+        }
       }
 
       if (arrayItapua.includes(r.SUCURSAL)) {
@@ -1276,6 +1407,22 @@ module.exports = (app) => {
         sumTotalesItaCO_ += parseInt(r.COBRADOR);
         sumTotalesItaVN_ += parseInt(r.VENTA_NUEVA);
         sumTotalesItaMT_ += parseInt(r.MONTO_TOTAL);
+
+        if (r.SUCURSAL == "HOHENAU") {
+          totalHOHE_ = r.MONTO_TOTAL;
+        }
+
+        if (r.SUCURSAL == "ENCARNACION CENTRO") {
+          totalENCAR_ = r.MONTO_TOTAL;
+        }
+
+        if (r.SUCURSAL == "MARIA AUXILIADORA") {
+          totalMARAUX_ = r.MONTO_TOTAL;
+        }
+
+        if (r.SUCURSAL == "AYOLAS") {
+          totalAYO_ = r.MONTO_TOTAL;
+        }
       }
 
       if (arrayAltop.includes(r.SUCURSAL)) {
@@ -1284,6 +1431,18 @@ module.exports = (app) => {
         sumTotalesApCO_ += parseInt(r.COBRADOR);
         sumTotalesApVN_ += parseInt(r.VENTA_NUEVA);
         sumTotalesApMT_ += parseInt(r.MONTO_TOTAL);
+
+        if (r.SUCURSAL == "KM 7") {
+          totalKM7_ = r.MONTO_TOTAL;
+        }
+
+        if (r.SUCURSAL == "SANTA RITA") {
+          totalSANRIT_ = r.MONTO_TOTAL;
+        }
+
+        if (r.SUCURSAL == "CAMPO 9") {
+          totalCAM9_ = r.MONTO_TOTAL;
+        }
       }
 
       if (arraySanpe.includes(r.SUCURSAL)) {
@@ -1352,6 +1511,27 @@ module.exports = (app) => {
     totalDifKM14 = parseInt(totalKM14_ - totalKM14);
     totalDifCAP = parseInt(totalCAP_ - totalCAP);
 
+    totalDifCAACU = parseInt(totalCAACU_ - totalCAACU);
+    totalDifCORO = parseInt(totalCORO_ - totalCORO);
+
+    totalDifHOHE = parseInt(totalHOHE_ - totalHOHE);
+    totalDifENCAR = parseInt(totalENCAR_ - totalENCAR);
+    totalDifMARAUX = parseInt(totalMARAUX_ - totalMARAUX);
+    totalDifAYO = parseInt(totalAYO_ - totalAYO);
+
+    totalDifKM7 = parseInt(totalKM7_ - totalKM7);
+    totalDifSANRIT = parseInt(totalSANRIT_ - totalSANRIT);
+    totalDifCAM9 = parseInt(totalCAM9_ - totalCAM9);
+
+    totalDifSANTANI = parseInt(totalSANTANI_ - totalSANTANI);
+
+    // Diferencias de totales
+    difTotalesAsuncionMT = parseInt(sumTotalesAsuncionMT_ - sumTotalesAsuncionMT);
+    difTotalesGAsuncionMT = parseInt(sumTotalesGAsuncionMT_ - sumTotalesGAsuncionMT);
+    difTotalesR2MT = parseInt(sumTotalesR2MT_ - sumTotalesR2MT);
+    difTotalesItaMT = parseInt(sumTotalesItaMT_ - sumTotalesItaMT);
+    difTotalesApMT = parseInt(sumTotalesApMT_ - sumTotalesApMT);
+    difTotalesSpMT = parseInt(sumTotalesSpMT_ - sumTotalesSpMT);
 
     // Suma las cantidades de los turnos
     // for (let t of losTurnosCantidades) {
@@ -3085,12 +3265,14 @@ module.exports = (app) => {
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(totalDifAdministracion.toLocaleString("es", {
-              minimumFractionDigits: 0,
-              maximumFractionDigits: 0,
-            }) , ejeXdiferencia_, ejeYadm);
-
-            
+            context.fillText(
+              totalDifAdministracion.toLocaleString("es", {
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0,
+              }),
+              ejeXdiferencia_,
+              ejeYadm
+            );
           }
 
           if (r.SUCURSAL == "MARISCAL LOPEZ") {
@@ -3151,10 +3333,14 @@ module.exports = (app) => {
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(totalDifML.toLocaleString("es", {
-              minimumFractionDigits: 0,
-              maximumFractionDigits: 0,
-            }) , ejeXdiferencia_, ejeYml);
+            context.fillText(
+              totalDifML.toLocaleString("es", {
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0,
+              }),
+              ejeXdiferencia_,
+              ejeYml
+            );
           }
 
           if (r.SUCURSAL == "MCAL. LOPEZ URGENCIAS") {
@@ -3211,10 +3397,14 @@ module.exports = (app) => {
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(totalDifMLU.toLocaleString("es", {
-              minimumFractionDigits: 0,
-              maximumFractionDigits: 0,
-            }) , ejeXdiferencia_, ejeYmlurg);
+            context.fillText(
+              totalDifMLU.toLocaleString("es", {
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0,
+              }),
+              ejeXdiferencia_,
+              ejeYmlurg
+            );
           }
 
           if (r.SUCURSAL == "AVENIDA QUINTA") {
@@ -3271,10 +3461,14 @@ module.exports = (app) => {
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(totalDifAQ.toLocaleString("es", {
-              minimumFractionDigits: 0,
-              maximumFractionDigits: 0,
-            }) , ejeXdiferencia_, ejeYaq);
+            context.fillText(
+              totalDifAQ.toLocaleString("es", {
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0,
+              }),
+              ejeXdiferencia_,
+              ejeYaq
+            );
           }
 
           if (r.SUCURSAL == "VILLA MORRA") {
@@ -3331,10 +3525,14 @@ module.exports = (app) => {
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(totalDifVM.toLocaleString("es", {
-              minimumFractionDigits: 0,
-              maximumFractionDigits: 0,
-            }) , ejeXdiferencia_, ejeYvm);
+            context.fillText(
+              totalDifVM.toLocaleString("es", {
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0,
+              }),
+              ejeXdiferencia_,
+              ejeYvm
+            );
           }
 
           if (r.SUCURSAL == "ARTIGAS") {
@@ -3391,10 +3589,14 @@ module.exports = (app) => {
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(totalDifART.toLocaleString("es", {
-              minimumFractionDigits: 0,
-              maximumFractionDigits: 0,
-            }) , ejeXdiferencia_, ejeYar);
+            context.fillText(
+              totalDifART.toLocaleString("es", {
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0,
+              }),
+              ejeXdiferencia_,
+              ejeYar
+            );
           }
 
           if (r.SUCURSAL == "LUISITO") {
@@ -3451,10 +3653,14 @@ module.exports = (app) => {
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(totalDifLUI.toLocaleString("es", {
-              minimumFractionDigits: 0,
-              maximumFractionDigits: 0,
-            }) , ejeXdiferencia_, ejeYlu);
+            context.fillText(
+              totalDifLUI.toLocaleString("es", {
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0,
+              }),
+              ejeXdiferencia_,
+              ejeYlu
+            );
           }
 
           if (r.SUCURSAL == "PALMA") {
@@ -3511,10 +3717,14 @@ module.exports = (app) => {
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(totalDifPAL.toLocaleString("es", {
-              minimumFractionDigits: 0,
-              maximumFractionDigits: 0,
-            }) , ejeXdiferencia_, ejeYpa);
+            context.fillText(
+              totalDifPAL.toLocaleString("es", {
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0,
+              }),
+              ejeXdiferencia_,
+              ejeYpa
+            );
           }
 
           // Zona Gran ASU
@@ -3572,10 +3782,14 @@ module.exports = (app) => {
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(totalDifLAM.toLocaleString("es", {
-              minimumFractionDigits: 0,
-              maximumFractionDigits: 0,
-            }) , ejeXdiferencia_, ejeYlam);
+            context.fillText(
+              totalDifLAM.toLocaleString("es", {
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0,
+              }),
+              ejeXdiferencia_,
+              ejeYlam
+            );
           }
 
           if (r.SUCURSAL == "CATEDRAL") {
@@ -3631,10 +3845,14 @@ module.exports = (app) => {
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(totalDifCAT.toLocaleString("es", {
-              minimumFractionDigits: 0,
-              maximumFractionDigits: 0,
-            }) , ejeXdiferencia_, ejeYcat);
+            context.fillText(
+              totalDifCAT.toLocaleString("es", {
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0,
+              }),
+              ejeXdiferencia_,
+              ejeYcat
+            );
           }
 
           if (r.SUCURSAL == "LUQUE") {
@@ -3691,10 +3909,14 @@ module.exports = (app) => {
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(totalDifLUQ.toLocaleString("es", {
-              minimumFractionDigits: 0,
-              maximumFractionDigits: 0,
-            }) , ejeXdiferencia_, ejeYluq);
+            context.fillText(
+              totalDifLUQ.toLocaleString("es", {
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0,
+              }),
+              ejeXdiferencia_,
+              ejeYluq
+            );
           }
 
           if (r.SUCURSAL == "LA RURAL") {
@@ -3751,10 +3973,14 @@ module.exports = (app) => {
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(totalDifLAR.toLocaleString("es", {
-              minimumFractionDigits: 0,
-              maximumFractionDigits: 0,
-            }) , ejeXdiferencia_, ejeYlar);
+            context.fillText(
+              totalDifLAR.toLocaleString("es", {
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0,
+              }),
+              ejeXdiferencia_,
+              ejeYlar
+            );
           }
 
           if (r.SUCURSAL == "ÑEMBY") {
@@ -3811,10 +4037,14 @@ module.exports = (app) => {
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(totalDifNEM.toLocaleString("es", {
-              minimumFractionDigits: 0,
-              maximumFractionDigits: 0,
-            }) , ejeXdiferencia_, ejeYnem);
+            context.fillText(
+              totalDifNEM.toLocaleString("es", {
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0,
+              }),
+              ejeXdiferencia_,
+              ejeYnem
+            );
           }
 
           if (r.SUCURSAL == "ITAUGUA") {
@@ -3871,10 +4101,14 @@ module.exports = (app) => {
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(totalDifITA.toLocaleString("es", {
-              minimumFractionDigits: 0,
-              maximumFractionDigits: 0,
-            }) , ejeXdiferencia_, ejeYita);
+            context.fillText(
+              totalDifITA.toLocaleString("es", {
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0,
+              }),
+              ejeXdiferencia_,
+              ejeYita
+            );
           }
 
           if (r.SUCURSAL == "1811 SUCURSAL") {
@@ -3931,10 +4165,14 @@ module.exports = (app) => {
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(totalDif1811.toLocaleString("es", {
-              minimumFractionDigits: 0,
-              maximumFractionDigits: 0,
-            }) , ejeXdiferencia_, ejeY1811);
+            context.fillText(
+              totalDif1811.toLocaleString("es", {
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0,
+              }),
+              ejeXdiferencia_,
+              ejeY1811
+            );
           }
 
           if (r.SUCURSAL == "KM 14 Y MEDIO") {
@@ -3991,10 +4229,14 @@ module.exports = (app) => {
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(totalDifKM14.toLocaleString("es", {
-              minimumFractionDigits: 0,
-              maximumFractionDigits: 0,
-            }) , ejeXdiferencia_, ejeYkm14);
+            context.fillText(
+              totalDifKM14.toLocaleString("es", {
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0,
+              }),
+              ejeXdiferencia_,
+              ejeYkm14
+            );
           }
 
           if (r.SUCURSAL == "CAPIATA") {
@@ -4051,10 +4293,14 @@ module.exports = (app) => {
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
             context.textAlign = "center";
-            context.fillText(totalDifCAP.toLocaleString("es", {
-              minimumFractionDigits: 0,
-              maximumFractionDigits: 0,
-            }) , ejeXdiferencia_, ejeYcap);
+            context.fillText(
+              totalDifCAP.toLocaleString("es", {
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0,
+              }),
+              ejeXdiferencia_,
+              ejeYcap
+            );
           }
 
           // Zona Ruta 2
@@ -4108,6 +4354,18 @@ module.exports = (app) => {
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYcaac);
+
+            context.font = "bold 15px Arial";
+            context.fillStyle = "#34495E";
+            context.textAlign = "center";
+            context.fillText(
+              totalDifCAACU.toLocaleString("es", {
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0,
+              }),
+              ejeXdiferencia_,
+              ejeYcaac
+            );
           }
 
           if (r.SUCURSAL == "CORONEL OVIEDO") {
@@ -4160,6 +4418,18 @@ module.exports = (app) => {
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYcoro);
+
+            context.font = "bold 15px Arial";
+            context.fillStyle = "#34495E";
+            context.textAlign = "center";
+            context.fillText(
+              totalDifCORO.toLocaleString("es", {
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0,
+              }),
+              ejeXdiferencia_,
+              ejeYcoro
+            );
           }
 
           // Zona Itapua
@@ -4213,6 +4483,18 @@ module.exports = (app) => {
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYhohe);
+
+            context.font = "bold 15px Arial";
+            context.fillStyle = "#34495E";
+            context.textAlign = "center";
+            context.fillText(
+              totalDifHOHE.toLocaleString("es", {
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0,
+              }),
+              ejeXdiferencia_,
+              ejeYhohe
+            );
           }
 
           if (r.SUCURSAL == "ENCARNACION CENTRO") {
@@ -4264,6 +4546,18 @@ module.exports = (app) => {
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYencar);
+
+            context.font = "bold 15px Arial";
+            context.fillStyle = "#34495E";
+            context.textAlign = "center";
+            context.fillText(
+              totalDifENCAR.toLocaleString("es", {
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0,
+              }),
+              ejeXdiferencia_,
+              ejeYencar
+            );
           }
 
           if (r.SUCURSAL == "MARIA AUXILIADORA") {
@@ -4316,6 +4610,18 @@ module.exports = (app) => {
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYmaria);
+
+            context.font = "bold 15px Arial";
+            context.fillStyle = "#34495E";
+            context.textAlign = "center";
+            context.fillText(
+              totalDifMARAUX.toLocaleString("es", {
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0,
+              }),
+              ejeXdiferencia_,
+              ejeYmaria
+            );
           }
 
           if (r.SUCURSAL == "AYOLAS") {
@@ -4368,6 +4674,18 @@ module.exports = (app) => {
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYayo);
+
+            context.font = "bold 15px Arial";
+            context.fillStyle = "#34495E";
+            context.textAlign = "center";
+            context.fillText(
+              totalDifAYO.toLocaleString("es", {
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0,
+              }),
+              ejeXdiferencia_,
+              ejeYayo
+            );
           }
 
           // Zona Alto Parana
@@ -4421,6 +4739,18 @@ module.exports = (app) => {
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYkm7);
+
+            context.font = "bold 15px Arial";
+            context.fillStyle = "#34495E";
+            context.textAlign = "center";
+            context.fillText(
+              totalDifKM7.toLocaleString("es", {
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0,
+              }),
+              ejeXdiferencia_,
+              ejeYkm7
+            );
           }
 
           if (r.SUCURSAL == "SANTA RITA") {
@@ -4473,6 +4803,18 @@ module.exports = (app) => {
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYsanta);
+
+            context.font = "bold 15px Arial";
+            context.fillStyle = "#34495E";
+            context.textAlign = "center";
+            context.fillText(
+              totalDifSANRIT.toLocaleString("es", {
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0,
+              }),
+              ejeXdiferencia_,
+              ejeYsanta
+            );
           }
 
           if (r.SUCURSAL == "CAMPO 9") {
@@ -4525,6 +4867,18 @@ module.exports = (app) => {
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYcampo);
+
+            context.font = "bold 15px Arial";
+            context.fillStyle = "#34495E";
+            context.textAlign = "center";
+            context.fillText(
+              totalDifCAM9.toLocaleString("es", {
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0,
+              }),
+              ejeXdiferencia_,
+              ejeYcampo
+            );
           }
 
           // Zona San Pedro
@@ -4578,6 +4932,18 @@ module.exports = (app) => {
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYsantani);
+
+            context.font = "bold 15px Arial";
+            context.fillStyle = "#34495E";
+            context.textAlign = "center";
+            context.fillText(
+              totalDifSANTANI.toLocaleString("es", {
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0,
+              }),
+              ejeXdiferencia_,
+              ejeYsantani
+            );
           }
         }
 
@@ -4720,6 +5086,18 @@ module.exports = (app) => {
             maximumFractionDigits: 0,
           }),
           ejeXmonto_,
+          ejeYtotalesAsu
+        );
+
+        context.font = "bold 15px Arial";
+        context.fillStyle = "#34495E";
+        context.textAlign = "center";
+        context.fillText(
+          difTotalesAsuncionMT.toLocaleString("es", {
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0,
+          }),
+          ejeXdiferencia_,
           ejeYtotalesAsu
         );
 
@@ -4889,6 +5267,18 @@ module.exports = (app) => {
           ejeYtotalesGranAsu
         );
 
+        context.font = "bold 15px Arial";
+        context.fillStyle = "#34495E";
+        context.textAlign = "center";
+        context.fillText(
+          difTotalesGAsuncionMT.toLocaleString("es", {
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0,
+          }),
+          ejeXdiferencia_,
+          ejeYtotalesGranAsu
+        );
+
         // AGENDADOS
         /*context.font = "bold 15px Arial";
         context.fillStyle = "#34495E";
@@ -5052,6 +5442,18 @@ module.exports = (app) => {
             maximumFractionDigits: 0,
           }),
           ejeXmonto_,
+          ejeYtotalesRuta2
+        );
+
+        context.font = "bold 15px Arial";
+        context.fillStyle = "#34495E";
+        context.textAlign = "center";
+        context.fillText(
+          difTotalesR2MT.toLocaleString("es", {
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0,
+          }),
+          ejeXdiferencia_,
           ejeYtotalesRuta2
         );
 
@@ -5221,6 +5623,18 @@ module.exports = (app) => {
           ejeYtotalesItapua
         );
 
+        context.font = "bold 15px Arial";
+        context.fillStyle = "#34495E";
+        context.textAlign = "center";
+        context.fillText(
+          difTotalesItaMT.toLocaleString("es", {
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0,
+          }),
+          ejeXdiferencia_,
+          ejeYtotalesItapua
+        );
+
         // AGENDADOS
         /*context.font = "bold 15px Arial";
         context.fillStyle = "#34495E";
@@ -5384,6 +5798,18 @@ module.exports = (app) => {
             maximumFractionDigits: 0,
           }),
           ejeXmonto_,
+          ejeYtotalesAltoP
+        );
+
+        context.font = "bold 15px Arial";
+        context.fillStyle = "#34495E";
+        context.textAlign = "center";
+        context.fillText(
+          difTotalesApMT.toLocaleString("es", {
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0,
+          }),
+          ejeXdiferencia_,
           ejeYtotalesAltoP
         );
 
@@ -5553,6 +5979,18 @@ module.exports = (app) => {
           ejeYtotalesSanPe
         );
 
+        context.font = "bold 15px Arial";
+        context.fillStyle = "#34495E";
+        context.textAlign = "center";
+        context.fillText(
+          difTotalesSpMT.toLocaleString("es", {
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0,
+          }),
+          ejeXdiferencia_,
+          ejeYtotalesSanPe
+        );
+
         // AGENDADOS
         /*context.font = "bold 15px Arial";
         context.fillStyle = "#34495E";
@@ -5716,6 +6154,19 @@ module.exports = (app) => {
             maximumFractionDigits: 0,
           }),
           ejeXmonto_,
+          ejeYTotalGeneral
+        );
+
+        // DIFERENCIA TOTAL GENERAL
+        context.font = "bold 15px Arial";
+        context.fillStyle = "#34495E";
+        context.textAlign = "center";
+        context.fillText(
+          (totalGenMontoTotal_ - totalGenMontoTotal).toLocaleString("es", {
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0,
+          }),
+          ejeXdiferencia_,
           ejeYTotalGeneral
         );
 
