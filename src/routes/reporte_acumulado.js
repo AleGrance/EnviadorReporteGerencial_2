@@ -587,18 +587,18 @@ module.exports = (app) => {
   let sumTotalesAsuncionCO = 0;
   let sumTotalesAsuncionVN = 0;
   let sumTotalesAsuncionMT = 0;
-  let sumTotalesAsuncionAG = 0;
-  let sumTotalesAsuncionAS = 0;
-  let sumTotalesAsuncionPR = 0;
+  // let sumTotalesAsuncionAG = 0;
+  // let sumTotalesAsuncionAS = 0;
+  // let sumTotalesAsuncionPR = 0;
 
   let sumTotalesAsuncionCS_ = 0;
   let sumTotalesAsuncionTT_ = 0;
   let sumTotalesAsuncionCO_ = 0;
   let sumTotalesAsuncionVN_ = 0;
   let sumTotalesAsuncionMT_ = 0;
-  let sumTotalesAsuncionAG_ = 0;
-  let sumTotalesAsuncionAS_ = 0;
-  let sumTotalesAsuncionPR_ = 0;
+  // let sumTotalesAsuncionAG_ = 0;
+  // let sumTotalesAsuncionAS_ = 0;
+  // let sumTotalesAsuncionPR_ = 0;
 
   // Sub Totales Zona Gran Asuncion
   let sumTotalesGAsuncionCS = 0;
@@ -606,18 +606,18 @@ module.exports = (app) => {
   let sumTotalesGAsuncionCO = 0;
   let sumTotalesGAsuncionVN = 0;
   let sumTotalesGAsuncionMT = 0;
-  let sumTotalesGAsuncionAG = 0;
-  let sumTotalesGAsuncionAS = 0;
-  let sumTotalesGAsuncionPR = 0;
+  // let sumTotalesGAsuncionAG = 0;
+  // let sumTotalesGAsuncionAS = 0;
+  // let sumTotalesGAsuncionPR = 0;
 
   let sumTotalesGAsuncionCS_ = 0;
   let sumTotalesGAsuncionTT_ = 0;
   let sumTotalesGAsuncionCO_ = 0;
   let sumTotalesGAsuncionVN_ = 0;
   let sumTotalesGAsuncionMT_ = 0;
-  let sumTotalesGAsuncionAG_ = 0;
-  let sumTotalesGAsuncionAS_ = 0;
-  let sumTotalesGAsuncionPR_ = 0;
+  // let sumTotalesGAsuncionAG_ = 0;
+  // let sumTotalesGAsuncionAS_ = 0;
+  // let sumTotalesGAsuncionPR_ = 0;
 
   // Sub Totales Zona Ruta 2
   let sumTotalesR2CS = 0;
@@ -625,18 +625,18 @@ module.exports = (app) => {
   let sumTotalesR2CO = 0;
   let sumTotalesR2VN = 0;
   let sumTotalesR2MT = 0;
-  let sumTotalesR2AG = 0;
-  let sumTotalesR2AS = 0;
-  let sumTotalesR2PR = 0;
+  // let sumTotalesR2AG = 0;
+  // let sumTotalesR2AS = 0;
+  // let sumTotalesR2PR = 0;
 
   let sumTotalesR2CS_ = 0;
   let sumTotalesR2TT_ = 0;
   let sumTotalesR2CO_ = 0;
   let sumTotalesR2VN_ = 0;
   let sumTotalesR2MT_ = 0;
-  let sumTotalesR2AG_ = 0;
-  let sumTotalesR2AS_ = 0;
-  let sumTotalesR2PR_ = 0;
+  // let sumTotalesR2AG_ = 0;
+  // let sumTotalesR2AS_ = 0;
+  // let sumTotalesR2PR_ = 0;
 
   // Sub Totales Zona Itapua
   let sumTotalesItaCS = 0;
@@ -644,18 +644,18 @@ module.exports = (app) => {
   let sumTotalesItaCO = 0;
   let sumTotalesItaVN = 0;
   let sumTotalesItaMT = 0;
-  let sumTotalesItaAG = 0;
-  let sumTotalesItaAS = 0;
-  let sumTotalesItaPR = 0;
+  // let sumTotalesItaAG = 0;
+  // let sumTotalesItaAS = 0;
+  // let sumTotalesItaPR = 0;
 
   let sumTotalesItaCS_ = 0;
   let sumTotalesItaTT_ = 0;
   let sumTotalesItaCO_ = 0;
   let sumTotalesItaVN_ = 0;
   let sumTotalesItaMT_ = 0;
-  let sumTotalesItaAG_ = 0;
-  let sumTotalesItaAS_ = 0;
-  let sumTotalesItaPR_ = 0;
+  // let sumTotalesItaAG_ = 0;
+  // let sumTotalesItaAS_ = 0;
+  // let sumTotalesItaPR_ = 0;
 
   // Sub Totales Zona Alto Parana
   let sumTotalesApCS = 0;
@@ -663,18 +663,18 @@ module.exports = (app) => {
   let sumTotalesApCO = 0;
   let sumTotalesApVN = 0;
   let sumTotalesApMT = 0;
-  let sumTotalesApAG = 0;
-  let sumTotalesApAS = 0;
-  let sumTotalesApPR = 0;
+  // let sumTotalesApAG = 0;
+  // let sumTotalesApAS = 0;
+  // let sumTotalesApPR = 0;
 
   let sumTotalesApCS_ = 0;
   let sumTotalesApTT_ = 0;
   let sumTotalesApCO_ = 0;
   let sumTotalesApVN_ = 0;
   let sumTotalesApMT_ = 0;
-  let sumTotalesApAG_ = 0;
-  let sumTotalesApAS_ = 0;
-  let sumTotalesApPR_ = 0;
+  // let sumTotalesApAG_ = 0;
+  // let sumTotalesApAS_ = 0;
+  // let sumTotalesApPR_ = 0;
 
   // Sub Totales Zona San Pedro
   let sumTotalesSpCS = 0;
@@ -682,18 +682,18 @@ module.exports = (app) => {
   let sumTotalesSpCO = 0;
   let sumTotalesSpVN = 0;
   let sumTotalesSpMT = 0;
-  let sumTotalesSpAG = 0;
-  let sumTotalesSpAS = 0;
-  let sumTotalesSpPR = 0;
+  // let sumTotalesSpAG = 0;
+  // let sumTotalesSpAS = 0;
+  // let sumTotalesSpPR = 0;
 
   let sumTotalesSpCS_ = 0;
   let sumTotalesSpTT_ = 0;
   let sumTotalesSpCO_ = 0;
   let sumTotalesSpVN_ = 0;
   let sumTotalesSpMT_ = 0;
-  let sumTotalesSpAG_ = 0;
-  let sumTotalesSpAS_ = 0;
-  let sumTotalesSpPR_ = 0;
+  // let sumTotalesSpAG_ = 0;
+  // let sumTotalesSpAS_ = 0;
+  // let sumTotalesSpPR_ = 0;
 
   // Totales Generales
   let totalGenCuotaSocial = 0;
@@ -701,18 +701,18 @@ module.exports = (app) => {
   let totalGenCobrador = 0;
   let totalGenVentaNueva = 0;
   let totalGenMontoTotal = 0;
-  let totalGenAgendado = 0;
-  let totalGenAsistido = 0;
-  let totalGenProfesional = 0;
+  // let totalGenAgendado = 0;
+  // let totalGenAsistido = 0;
+  // let totalGenProfesional = 0;
 
   let totalGenCuotaSocial_ = 0;
   let totalGenTratamiento_ = 0;
   let totalGenCobrador_ = 0;
   let totalGenVentaNueva_ = 0;
   let totalGenMontoTotal_ = 0;
-  let totalGenAgendado_ = 0;
-  let totalGenAsistido_ = 0;
-  let totalGenProfesional_ = 0;
+  // let totalGenAgendado_ = 0;
+  // let totalGenAsistido_ = 0;
+  // let totalGenProfesional_ = 0;
 
   function iniciarEnvio() {
     const fechaActual = moment();
@@ -1249,24 +1249,24 @@ module.exports = (app) => {
     // }
 
     // Totales Generales - CANTIDAD DE TURNOS
-    totalGenAgendado =
-      sumTotalesAsuncionAG +
-      sumTotalesGAsuncionAG +
-      sumTotalesR2AG +
-      sumTotalesItaAG +
-      sumTotalesApAG;
-    totalGenAsistido =
-      sumTotalesAsuncionAS +
-      sumTotalesGAsuncionAS +
-      sumTotalesR2AS +
-      sumTotalesItaAS +
-      sumTotalesApAS;
-    totalGenProfesional =
-      sumTotalesAsuncionPR +
-      sumTotalesGAsuncionPR +
-      sumTotalesR2PR +
-      sumTotalesItaPR +
-      sumTotalesApPR;
+    // totalGenAgendado =
+    //   sumTotalesAsuncionAG +
+    //   sumTotalesGAsuncionAG +
+    //   sumTotalesR2AG +
+    //   sumTotalesItaAG +
+    //   sumTotalesApAG;
+    // totalGenAsistido =
+    //   sumTotalesAsuncionAS +
+    //   sumTotalesGAsuncionAS +
+    //   sumTotalesR2AS +
+    //   sumTotalesItaAS +
+    //   sumTotalesApAS;
+    // totalGenProfesional =
+    //   sumTotalesAsuncionPR +
+    //   sumTotalesGAsuncionPR +
+    //   sumTotalesR2PR +
+    //   sumTotalesItaPR +
+    //   sumTotalesApPR;
   }
 
   // Sumar montos de acumulados mes actual
@@ -1573,24 +1573,24 @@ module.exports = (app) => {
     // }
 
     // Totales Generales - CANTIDAD DE TURNOS
-    totalGenAgendado =
-      sumTotalesAsuncionAG +
-      sumTotalesGAsuncionAG +
-      sumTotalesR2AG +
-      sumTotalesItaAG +
-      sumTotalesApAG;
-    totalGenAsistido =
-      sumTotalesAsuncionAS +
-      sumTotalesGAsuncionAS +
-      sumTotalesR2AS +
-      sumTotalesItaAS +
-      sumTotalesApAS;
-    totalGenProfesional =
-      sumTotalesAsuncionPR +
-      sumTotalesGAsuncionPR +
-      sumTotalesR2PR +
-      sumTotalesItaPR +
-      sumTotalesApPR;
+    // totalGenAgendado =
+    //   sumTotalesAsuncionAG +
+    //   sumTotalesGAsuncionAG +
+    //   sumTotalesR2AG +
+    //   sumTotalesItaAG +
+    //   sumTotalesApAG;
+    // totalGenAsistido =
+    //   sumTotalesAsuncionAS +
+    //   sumTotalesGAsuncionAS +
+    //   sumTotalesR2AS +
+    //   sumTotalesItaAS +
+    //   sumTotalesApAS;
+    // totalGenProfesional =
+    //   sumTotalesAsuncionPR +
+    //   sumTotalesGAsuncionPR +
+    //   sumTotalesR2PR +
+    //   sumTotalesItaPR +
+    //   sumTotalesApPR;
   }
 
   // Envia los mensajes
