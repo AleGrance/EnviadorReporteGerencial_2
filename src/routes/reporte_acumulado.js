@@ -22,9 +22,9 @@ odontos.role = null; // default
 odontos.retryConnectionInterval = 1000; // reconnect interval in case of connection drop
 odontos.blobAsText = false;
 
-// Dimensiones del ticket
-const width = 1480;
-const height = 850;
+// Dimensiones del flyer
+const width = 1668;
+const height = 1152;
 
 // Instantiate the canvas object
 const canvas = createCanvas(width, height);
@@ -701,40 +701,29 @@ module.exports = (app) => {
   let totalGenCobrador = 0;
   let totalGenVentaNueva = 0;
   let totalGenMontoTotal = 0;
-  // let totalGenAgendado = 0;
-  // let totalGenAsistido = 0;
-  // let totalGenProfesional = 0;
+  let totalGenINCuotaSocial = 0;
+  let totalGenINTratamiento = 0;
+  let totalGenINCobrador = 0;
+  let totalGenINVentaNueva = 0;
+  let totalGenINMontoTotal = 0;
 
   let totalGenCuotaSocial_ = 0;
   let totalGenTratamiento_ = 0;
   let totalGenCobrador_ = 0;
   let totalGenVentaNueva_ = 0;
   let totalGenMontoTotal_ = 0;
-  // let totalGenAgendado_ = 0;
-  // let totalGenAsistido_ = 0;
-  // let totalGenProfesional_ = 0;
+  let totalGenINCuotaSocial_ = 0;
+  let totalGenINTratamiento_ = 0;
+  let totalGenINCobrador_ = 0;
+  let totalGenINVentaNueva_ = 0;
+  let totalGenINMontoTotal_ = 0;
 
   function iniciarEnvio() {
     const fechaActual = moment();
-    let fechaLocal = fechaActual.format("YYYY-MM-DD");
+    //let fechaLocal = fechaActual.format("YYYY-MM-DD");
+    let fechaLocal = "2023-09-18";
 
     setTimeout(() => {
-      // Get datos del PostgreSQL
-      // Datos de los acumulados actuales
-      // Acumulado_mesact.findAll({
-      //   where: { FECHA: fechaHoyFiltro },
-      //   //order: [["createdAt", "ASC"]],
-      // })
-      //   .then((result) => {
-      //     losAcumuladosMesAct = result;
-      //     //console.log(losTurnosCantidades);
-      //   })
-      //   .catch((error) => {
-      //     res.status(402).json({
-      //       msg: error.menssage,
-      //     });
-      //   });
-
       // Datos del mes Anterior
       Acumulado_mesant.findAll({
         where: { FECHA: fechaLocal },
@@ -863,6 +852,36 @@ module.exports = (app) => {
           });
         });
     }, tiempoRetrasoPGSQL);
+
+    // Datos ingresos mes Anterior
+    Ingresos_mesant.findAll({
+      where: { FECHA: fechaLocal },
+      //order: [["createdAt", "ASC"]],
+    })
+      .then((result) => {
+        losIngresosMesAnt = result;
+        //console.log(losTurnosCantidades);
+      })
+      .catch((error) => {
+        res.status(402).json({
+          msg: error.menssage,
+        });
+      });
+
+    // Datos ingresos mes Actual
+    Ingresos_mesact.findAll({
+      where: { FECHA: fechaLocal },
+      //order: [["createdAt", "ASC"]],
+    })
+      .then((result) => {
+        losIngresosMesAct = result;
+        //console.log(losTurnosCantidades);
+      })
+      .catch((error) => {
+        res.status(402).json({
+          msg: error.menssage,
+        });
+      });
   }
 
   iniciarEnvio();
@@ -975,6 +994,24 @@ module.exports = (app) => {
   let totalSANTANI = 0;
   let totalSANTANI_ = 0;
   let totalDifSANTANI = 0;
+
+  let totalPagosElectronicos = 0;
+  let totalPagosElectronicos_ = 0;
+  let totalDifPagoElectronico = 0;
+
+  let totalAsoDeb = 0;
+  let totalAsoDeb_ = 0;
+  let totalDifAsoDeb = 0;
+
+  let totalLicitaciones = 0;
+  let totalLicitaciones_ = 0;
+  let totalDifLicitaciones = 0;
+
+  let totalTransGirosPalma = 0;
+  let totalTransGirosPalma_ = 0;
+  let totalDifTransGirosPalma = 0;
+
+  let totalDifTotalADM = 0;
 
   let difTotalesAsuncionMT = 0;
   let difTotalesGAsuncionMT = 0;
@@ -1172,7 +1209,7 @@ module.exports = (app) => {
       }
     }
 
-    // Totales Generales
+    // Totales Generales mes anterior
     totalGenCuotaSocial =
       sumTotalesAsuncionCS +
       sumTotalesGAsuncionCS +
@@ -1209,64 +1246,32 @@ module.exports = (app) => {
       sumTotalesApMT +
       sumTotalesSpMT;
 
-    // Suma las cantidades de los turnos
-    // for (let t of losTurnosCantidades) {
-    //   if (arrayAsuncion.includes(t.SUCURSAL)) {
-    //     sumTotalesAsuncionAG += parseInt(t.AGENDADOS);
-    //     sumTotalesAsuncionAS += parseInt(t.ASISTIDOS);
-    //     sumTotalesAsuncionPR += parseInt(t.PROFESIONAL);
-    //   }
+    // Suma las cantidades de los ingresos mes anterior
+    for (let t of losIngresosMesAnt) {
+      // Totales generales
+      totalGenINCuotaSocial += parseInt(t.CUOTA_SOCIAL);
+      totalGenINTratamiento += parseInt(t.TRATAMIENTO);
+      totalGenINCobrador += parseInt(t.COBRADOR);
+      totalGenINVentaNueva += parseInt(t.VENTA_NUEVA);
+      totalGenINMontoTotal += parseInt(t.MONTO_TOTAL);
 
-    //   if (arrayGAsuncion.includes(t.SUCURSAL)) {
-    //     sumTotalesGAsuncionAG += parseInt(t.AGENDADOS);
-    //     sumTotalesGAsuncionAS += parseInt(t.ASISTIDOS);
-    //     sumTotalesGAsuncionPR += parseInt(t.PROFESIONAL);
-    //   }
+      // Totales por TIPO
+      if (t.TIPO == "PAGOS ELECTRONICOS") {
+        totalPagosElectronicos = parseFloat(t.MONTO_TOTAL);
+      }
 
-    //   if (arrayRuta2.includes(t.SUCURSAL)) {
-    //     sumTotalesR2AG += parseInt(t.AGENDADOS);
-    //     sumTotalesR2AS += parseInt(t.ASISTIDOS);
-    //     sumTotalesR2PR += parseInt(t.PROFESIONAL);
-    //   }
+      if (t.TIPO == "ASO. DEB.") {
+        totalAsoDeb = parseFloat(t.MONTO_TOTAL);
+      }
 
-    //   if (arrayItapua.includes(t.SUCURSAL)) {
-    //     sumTotalesItaAG += parseInt(t.AGENDADOS);
-    //     sumTotalesItaAS += parseInt(t.ASISTIDOS);
-    //     sumTotalesItaPR += parseInt(t.PROFESIONAL);
-    //   }
+      if (t.TIPO == "LICITACIONES") {
+        totalLicitaciones = parseFloat(t.MONTO_TOTAL);
+      }
 
-    //   if (arrayAltop.includes(t.SUCURSAL)) {
-    //     sumTotalesApAG += parseInt(t.AGENDADOS);
-    //     sumTotalesApAS += parseInt(t.ASISTIDOS);
-    //     sumTotalesApPR += parseInt(t.PROFESIONAL);
-    //   }
-
-    //   if (arraySanpe.includes(t.SUCURSAL)) {
-    //     sumTotalesSpAG += parseInt(t.AGENDADOS);
-    //     sumTotalesSpAS += parseInt(t.ASISTIDOS);
-    //     sumTotalesSpPR += parseInt(t.PROFESIONAL);
-    //   }
-    // }
-
-    // Totales Generales - CANTIDAD DE TURNOS
-    // totalGenAgendado =
-    //   sumTotalesAsuncionAG +
-    //   sumTotalesGAsuncionAG +
-    //   sumTotalesR2AG +
-    //   sumTotalesItaAG +
-    //   sumTotalesApAG;
-    // totalGenAsistido =
-    //   sumTotalesAsuncionAS +
-    //   sumTotalesGAsuncionAS +
-    //   sumTotalesR2AS +
-    //   sumTotalesItaAS +
-    //   sumTotalesApAS;
-    // totalGenProfesional =
-    //   sumTotalesAsuncionPR +
-    //   sumTotalesGAsuncionPR +
-    //   sumTotalesR2PR +
-    //   sumTotalesItaPR +
-    //   sumTotalesApPR;
+      if (t.TIPO == "TRANSF. GIROS PALMA") {
+        totalTransGirosPalma = parseFloat(t.MONTO_TOTAL);
+      }
+    }
   }
 
   // Sumar montos de acumulados mes actual
@@ -1454,7 +1459,7 @@ module.exports = (app) => {
       }
     }
 
-    // Totales Generales
+    // Totales Generales mes actual
     totalGenCuotaSocial_ =
       sumTotalesAsuncionCS_ +
       sumTotalesGAsuncionCS_ +
@@ -1491,7 +1496,35 @@ module.exports = (app) => {
       sumTotalesApMT_ +
       sumTotalesSpMT_;
 
-    // Diferencias
+    // Suma las cantidades de los ingresos mes actual
+    for (let t of losIngresosMesAct) {
+      totalGenINCuotaSocial_ += parseInt(t.CUOTA_SOCIAL);
+      totalGenINTratamiento_ += parseInt(t.TRATAMIENTO);
+      totalGenINCobrador_ += parseInt(t.COBRADOR);
+      totalGenINVentaNueva_ += parseInt(t.VENTA_NUEVA);
+      totalGenINMontoTotal_ += parseInt(t.MONTO_TOTAL);
+
+      // Totales por TIPO
+      if (t.TIPO == "PAGOS ELECTRONICOS") {
+        totalPagosElectronicos_ = parseFloat(t.MONTO_TOTAL);
+      }
+
+      if (t.TIPO == "ASO. DEB.") {
+        totalAsoDeb_ = parseFloat(t.MONTO_TOTAL);
+      }
+
+      if (t.TIPO == "LICITACIONES") {
+        totalLicitaciones_ = parseFloat(t.MONTO_TOTAL);
+      }
+
+      if (t.TIPO == "TRANSF. GIROS PALMA") {
+        totalTransGirosPalma_ = parseFloat(t.MONTO_TOTAL);
+      }
+    }
+
+    /**
+     *  DIFERENCIAS ACUMULADOS
+     */
     totalDifAdministracion = parseInt(totalAdministracion_ - totalAdministracion);
     totalDifML = parseInt(totalML_ - totalML);
     totalDifMLU = parseInt(totalMLU_ - totalMLU);
@@ -1525,7 +1558,7 @@ module.exports = (app) => {
 
     totalDifSANTANI = parseInt(totalSANTANI_ - totalSANTANI);
 
-    // Diferencias de totales
+    /** DIFERENCIAS TOTALES ACUMULADOS */
     difTotalesAsuncionMT = parseInt(sumTotalesAsuncionMT_ - sumTotalesAsuncionMT);
     difTotalesGAsuncionMT = parseInt(sumTotalesGAsuncionMT_ - sumTotalesGAsuncionMT);
     difTotalesR2MT = parseInt(sumTotalesR2MT_ - sumTotalesR2MT);
@@ -1533,64 +1566,13 @@ module.exports = (app) => {
     difTotalesApMT = parseInt(sumTotalesApMT_ - sumTotalesApMT);
     difTotalesSpMT = parseInt(sumTotalesSpMT_ - sumTotalesSpMT);
 
-    // Suma las cantidades de los turnos
-    // for (let t of losTurnosCantidades) {
-    //   if (arrayAsuncion.includes(t.SUCURSAL)) {
-    //     sumTotalesAsuncionAG += parseInt(t.AGENDADOS);
-    //     sumTotalesAsuncionAS += parseInt(t.ASISTIDOS);
-    //     sumTotalesAsuncionPR += parseInt(t.PROFESIONAL);
-    //   }
+    /** DIFERENCIAS TOTALES INGRESOS */
+    totalDifPagoElectronico = parseInt(totalPagosElectronicos_ - totalPagosElectronicos);
+    totalDifAsoDeb = parseInt(totalAsoDeb_ - totalAsoDeb);
+    totalDifLicitaciones = parseInt(totalLicitaciones_ - totalLicitaciones);
+    totalDifTransGirosPalma = parseInt(totalTransGirosPalma_ - totalTransGirosPalma);
 
-    //   if (arrayGAsuncion.includes(t.SUCURSAL)) {
-    //     sumTotalesGAsuncionAG += parseInt(t.AGENDADOS);
-    //     sumTotalesGAsuncionAS += parseInt(t.ASISTIDOS);
-    //     sumTotalesGAsuncionPR += parseInt(t.PROFESIONAL);
-    //   }
-
-    //   if (arrayRuta2.includes(t.SUCURSAL)) {
-    //     sumTotalesR2AG += parseInt(t.AGENDADOS);
-    //     sumTotalesR2AS += parseInt(t.ASISTIDOS);
-    //     sumTotalesR2PR += parseInt(t.PROFESIONAL);
-    //   }
-
-    //   if (arrayItapua.includes(t.SUCURSAL)) {
-    //     sumTotalesItaAG += parseInt(t.AGENDADOS);
-    //     sumTotalesItaAS += parseInt(t.ASISTIDOS);
-    //     sumTotalesItaPR += parseInt(t.PROFESIONAL);
-    //   }
-
-    //   if (arrayAltop.includes(t.SUCURSAL)) {
-    //     sumTotalesApAG += parseInt(t.AGENDADOS);
-    //     sumTotalesApAS += parseInt(t.ASISTIDOS);
-    //     sumTotalesApPR += parseInt(t.PROFESIONAL);
-    //   }
-
-    //   if (arraySanpe.includes(t.SUCURSAL)) {
-    //     sumTotalesSpAG += parseInt(t.AGENDADOS);
-    //     sumTotalesSpAS += parseInt(t.ASISTIDOS);
-    //     sumTotalesSpPR += parseInt(t.PROFESIONAL);
-    //   }
-    // }
-
-    // Totales Generales - CANTIDAD DE TURNOS
-    // totalGenAgendado =
-    //   sumTotalesAsuncionAG +
-    //   sumTotalesGAsuncionAG +
-    //   sumTotalesR2AG +
-    //   sumTotalesItaAG +
-    //   sumTotalesApAG;
-    // totalGenAsistido =
-    //   sumTotalesAsuncionAS +
-    //   sumTotalesGAsuncionAS +
-    //   sumTotalesR2AS +
-    //   sumTotalesItaAS +
-    //   sumTotalesApAS;
-    // totalGenProfesional =
-    //   sumTotalesAsuncionPR +
-    //   sumTotalesGAsuncionPR +
-    //   sumTotalesR2PR +
-    //   sumTotalesItaPR +
-    //   sumTotalesApPR;
+    totalDifTotalADM = parseInt(totalGenINMontoTotal_ - totalGenINMontoTotal);
   }
 
   // Envia los mensajes
@@ -1626,11 +1608,6 @@ module.exports = (app) => {
         let ejeXventa_ = 1020;
         let ejeXmonto_ = 1120;
         let ejeXdiferencia_ = 1220;
-
-        // Eje X de cada celda
-        let ejeXagendado = 1060;
-        let ejeXasistido = 1160;
-        let ejeXprofesional = 1260;
 
         /** */
 
@@ -1682,6 +1659,15 @@ module.exports = (app) => {
 
         // Eje Y Total General
         let ejeYTotalGeneral = 820;
+
+        // Eje Y Ingresos
+        let ejeYPagosElectronicos = 850;
+        let ejeYAsoDebito = 870;
+        let ejeYLicitacion = 890;
+        let ejeYTransGirosPalma = 910;
+        let ejeYTotalADM = 940;
+
+        let ejeYtotalGeneralDoc = 990;
 
         // Dibujar el cuadro de mes anterior
         for (let r of losAcumuladosMesAntForma) {
@@ -3201,6 +3187,277 @@ module.exports = (app) => {
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.MONTO_TOTAL, ejeXmonto, ejeYsantani);
+          }
+        }
+
+        // Recorre los ingresos de mes anterior
+        for (let r of losIngresosMesAnt) {
+          if (r.TIPO == "PAGOS ELECTRONICOS") {
+            context.font = "bold 15px Arial";
+            context.fillStyle = "#34495E";
+            context.textAlign = "left";
+            context.fillText(r.TIPO, ejeXsucu, ejeYPagosElectronicos);
+
+            context.font = "bold 15px Arial";
+            context.fillStyle = "#34495E";
+            context.textAlign = "center";
+            context.fillText(
+              parseFloat(r.CUOTA_SOCIAL).toLocaleString("es", {
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0,
+              }),
+              ejeXcuota,
+              ejeYPagosElectronicos
+            );
+
+            context.font = "bold 15px Arial";
+            context.fillStyle = "#34495E";
+            context.textAlign = "center";
+            context.fillText(
+              parseFloat(r.TRATAMIENTO).toLocaleString("es", {
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0,
+              }),
+              ejeXtrata,
+              ejeYPagosElectronicos
+            );
+
+            context.font = "bold 15px Arial";
+            context.fillStyle = "#34495E";
+            context.textAlign = "center";
+            context.fillText(
+              parseFloat(r.COBRADOR).toLocaleString("es", {
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0,
+              }),
+              ejeXcobra,
+              ejeYPagosElectronicos
+            );
+
+            context.font = "bold 15px Arial";
+            context.fillStyle = "#34495E";
+            context.textAlign = "center";
+            context.fillText(
+              parseFloat(r.VENTA_NUEVA).toLocaleString("es", {
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0,
+              }),
+              ejeXventa,
+              ejeYPagosElectronicos
+            );
+
+            context.font = "bold 15px Arial";
+            context.fillStyle = "#34495E";
+            context.textAlign = "center";
+            context.fillText(
+              parseFloat(r.MONTO_TOTAL).toLocaleString("es", {
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0,
+              }),
+              ejeXmonto,
+              ejeYPagosElectronicos
+            );
+          }
+
+          if (r.TIPO == "ASO. DEB.") {
+            context.font = "bold 15px Arial";
+            context.fillStyle = "#34495E";
+            context.textAlign = "left";
+            context.fillText(r.TIPO, ejeXsucu, ejeYAsoDebito);
+
+            context.font = "bold 15px Arial";
+            context.fillStyle = "#34495E";
+            context.textAlign = "center";
+            context.fillText(
+              parseFloat(r.CUOTA_SOCIAL).toLocaleString("es", {
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0,
+              }),
+              ejeXcuota,
+              ejeYAsoDebito
+            );
+
+            context.font = "bold 15px Arial";
+            context.fillStyle = "#34495E";
+            context.textAlign = "center";
+            context.fillText(
+              parseFloat(r.TRATAMIENTO).toLocaleString("es", {
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0,
+              }),
+              ejeXtrata,
+              ejeYAsoDebito
+            );
+
+            context.font = "bold 15px Arial";
+            context.fillStyle = "#34495E";
+            context.textAlign = "center";
+            context.fillText(
+              parseFloat(r.COBRADOR).toLocaleString("es", {
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0,
+              }),
+              ejeXcobra,
+              ejeYAsoDebito
+            );
+
+            context.font = "bold 15px Arial";
+            context.fillStyle = "#34495E";
+            context.textAlign = "center";
+            context.fillText(
+              parseFloat(r.VENTA_NUEVA).toLocaleString("es", {
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0,
+              }),
+              ejeXventa,
+              ejeYAsoDebito
+            );
+
+            context.font = "bold 15px Arial";
+            context.fillStyle = "#34495E";
+            context.textAlign = "center";
+            context.fillText(
+              parseFloat(r.MONTO_TOTAL).toLocaleString("es", {
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0,
+              }),
+              ejeXmonto,
+              ejeYAsoDebito
+            );
+          }
+
+          if (r.TIPO == "LICITACIONES") {
+            context.font = "bold 15px Arial";
+            context.fillStyle = "#34495E";
+            context.textAlign = "left";
+            context.fillText(r.TIPO, ejeXsucu, ejeYLicitacion);
+
+            context.font = "bold 15px Arial";
+            context.fillStyle = "#34495E";
+            context.textAlign = "center";
+            context.fillText(
+              parseFloat(r.CUOTA_SOCIAL).toLocaleString("es", {
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0,
+              }),
+              ejeXcuota,
+              ejeYLicitacion
+            );
+
+            context.font = "bold 15px Arial";
+            context.fillStyle = "#34495E";
+            context.textAlign = "center";
+            context.fillText(
+              parseFloat(r.TRATAMIENTO).toLocaleString("es", {
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0,
+              }),
+              ejeXtrata,
+              ejeYLicitacion
+            );
+
+            context.font = "bold 15px Arial";
+            context.fillStyle = "#34495E";
+            context.textAlign = "center";
+            context.fillText(
+              parseFloat(r.COBRADOR).toLocaleString("es", {
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0,
+              }),
+              ejeXcobra,
+              ejeYLicitacion
+            );
+
+            context.font = "bold 15px Arial";
+            context.fillStyle = "#34495E";
+            context.textAlign = "center";
+            context.fillText(
+              parseFloat(r.VENTA_NUEVA).toLocaleString("es", {
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0,
+              }),
+              ejeXventa,
+              ejeYLicitacion
+            );
+
+            context.font = "bold 15px Arial";
+            context.fillStyle = "#34495E";
+            context.textAlign = "center";
+            context.fillText(
+              parseFloat(r.MONTO_TOTAL).toLocaleString("es", {
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0,
+              }),
+              ejeXmonto,
+              ejeYLicitacion
+            );
+          }
+
+          if (r.TIPO == "TRANSF. GIROS PALMA") {
+            context.font = "bold 15px Arial";
+            context.fillStyle = "#34495E";
+            context.textAlign = "left";
+            context.fillText(r.TIPO, ejeXsucu, ejeYTransGirosPalma);
+
+            context.font = "bold 15px Arial";
+            context.fillStyle = "#34495E";
+            context.textAlign = "center";
+            context.fillText(
+              parseFloat(r.CUOTA_SOCIAL).toLocaleString("es", {
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0,
+              }),
+              ejeXcuota,
+              ejeYTransGirosPalma
+            );
+
+            context.font = "bold 15px Arial";
+            context.fillStyle = "#34495E";
+            context.textAlign = "center";
+            context.fillText(
+              parseFloat(r.TRATAMIENTO).toLocaleString("es", {
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0,
+              }),
+              ejeXtrata,
+              ejeYTransGirosPalma
+            );
+
+            context.font = "bold 15px Arial";
+            context.fillStyle = "#34495E";
+            context.textAlign = "center";
+            context.fillText(
+              parseFloat(r.COBRADOR).toLocaleString("es", {
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0,
+              }),
+              ejeXcobra,
+              ejeYTransGirosPalma
+            );
+
+            context.font = "bold 15px Arial";
+            context.fillStyle = "#34495E";
+            context.textAlign = "center";
+            context.fillText(
+              parseFloat(r.VENTA_NUEVA).toLocaleString("es", {
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0,
+              }),
+              ejeXventa,
+              ejeYTransGirosPalma
+            );
+
+            context.font = "bold 15px Arial";
+            context.fillStyle = "#34495E";
+            context.textAlign = "center";
+            context.fillText(
+              parseFloat(r.MONTO_TOTAL).toLocaleString("es", {
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0,
+              }),
+              ejeXmonto,
+              ejeYTransGirosPalma
+            );
           }
         }
 
@@ -4947,6 +5204,309 @@ module.exports = (app) => {
           }
         }
 
+        // Recorre los ingresos de mes actual
+        for (let r of losIngresosMesAct) {
+          if (r.TIPO == "PAGOS ELECTRONICOS") {
+            context.font = "bold 15px Arial";
+            context.fillStyle = "#34495E";
+            context.textAlign = "center";
+            context.fillText(
+              parseFloat(r.CUOTA_SOCIAL).toLocaleString("es", {
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0,
+              }),
+              ejeXcuota_,
+              ejeYPagosElectronicos
+            );
+
+            context.font = "bold 15px Arial";
+            context.fillStyle = "#34495E";
+            context.textAlign = "center";
+            context.fillText(
+              parseFloat(r.TRATAMIENTO).toLocaleString("es", {
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0,
+              }),
+              ejeXtrata_,
+              ejeYPagosElectronicos
+            );
+
+            context.font = "bold 15px Arial";
+            context.fillStyle = "#34495E";
+            context.textAlign = "center";
+            context.fillText(
+              parseFloat(r.COBRADOR).toLocaleString("es", {
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0,
+              }),
+              ejeXcobra_,
+              ejeYPagosElectronicos
+            );
+
+            context.font = "bold 15px Arial";
+            context.fillStyle = "#34495E";
+            context.textAlign = "center";
+            context.fillText(
+              parseFloat(r.VENTA_NUEVA).toLocaleString("es", {
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0,
+              }),
+              ejeXventa_,
+              ejeYPagosElectronicos
+            );
+
+            context.font = "bold 15px Arial";
+            context.fillStyle = "#34495E";
+            context.textAlign = "center";
+            context.fillText(
+              parseFloat(r.MONTO_TOTAL).toLocaleString("es", {
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0,
+              }),
+              ejeXmonto_,
+              ejeYPagosElectronicos
+            );
+
+            // Diferencia ingresos pagos electronicos
+            context.font = "bold 15px Arial";
+            context.fillStyle = "#34495E";
+            context.textAlign = "center";
+            context.fillText(
+              totalDifPagoElectronico.toLocaleString("es", {
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0,
+              }),
+              ejeXdiferencia_,
+              ejeYPagosElectronicos
+            );
+          }
+
+          if (r.TIPO == "ASO. DEB.") {
+            context.font = "bold 15px Arial";
+            context.fillStyle = "#34495E";
+            context.textAlign = "center";
+            context.fillText(
+              parseFloat(r.CUOTA_SOCIAL).toLocaleString("es", {
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0,
+              }),
+              ejeXcuota_,
+              ejeYAsoDebito
+            );
+
+            context.font = "bold 15px Arial";
+            context.fillStyle = "#34495E";
+            context.textAlign = "center";
+            context.fillText(
+              parseFloat(r.TRATAMIENTO).toLocaleString("es", {
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0,
+              }),
+              ejeXtrata_,
+              ejeYAsoDebito
+            );
+
+            context.font = "bold 15px Arial";
+            context.fillStyle = "#34495E";
+            context.textAlign = "center";
+            context.fillText(
+              parseFloat(r.COBRADOR).toLocaleString("es", {
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0,
+              }),
+              ejeXcobra_,
+              ejeYAsoDebito
+            );
+
+            context.font = "bold 15px Arial";
+            context.fillStyle = "#34495E";
+            context.textAlign = "center";
+            context.fillText(
+              parseFloat(r.VENTA_NUEVA).toLocaleString("es", {
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0,
+              }),
+              ejeXventa_,
+              ejeYAsoDebito
+            );
+
+            context.font = "bold 15px Arial";
+            context.fillStyle = "#34495E";
+            context.textAlign = "center";
+            context.fillText(
+              parseFloat(r.MONTO_TOTAL).toLocaleString("es", {
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0,
+              }),
+              ejeXmonto_,
+              ejeYAsoDebito
+            );
+
+            // Diferencia ingresos aso deb
+            context.font = "bold 15px Arial";
+            context.fillStyle = "#34495E";
+            context.textAlign = "center";
+            context.fillText(
+              totalDifAsoDeb.toLocaleString("es", {
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0,
+              }),
+              ejeXdiferencia_,
+              ejeYAsoDebito
+            );
+          }
+
+          if (r.TIPO == "LICITACIONES") {
+            context.font = "bold 15px Arial";
+            context.fillStyle = "#34495E";
+            context.textAlign = "center";
+            context.fillText(
+              parseFloat(r.CUOTA_SOCIAL).toLocaleString("es", {
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0,
+              }),
+              ejeXcuota_,
+              ejeYLicitacion
+            );
+
+            context.font = "bold 15px Arial";
+            context.fillStyle = "#34495E";
+            context.textAlign = "center";
+            context.fillText(
+              parseFloat(r.TRATAMIENTO).toLocaleString("es", {
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0,
+              }),
+              ejeXtrata_,
+              ejeYLicitacion
+            );
+
+            context.font = "bold 15px Arial";
+            context.fillStyle = "#34495E";
+            context.textAlign = "center";
+            context.fillText(
+              parseFloat(r.COBRADOR).toLocaleString("es", {
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0,
+              }),
+              ejeXcobra_,
+              ejeYLicitacion
+            );
+
+            context.font = "bold 15px Arial";
+            context.fillStyle = "#34495E";
+            context.textAlign = "center";
+            context.fillText(
+              parseFloat(r.VENTA_NUEVA).toLocaleString("es", {
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0,
+              }),
+              ejeXventa_,
+              ejeYLicitacion
+            );
+
+            context.font = "bold 15px Arial";
+            context.fillStyle = "#34495E";
+            context.textAlign = "center";
+            context.fillText(
+              parseFloat(r.MONTO_TOTAL).toLocaleString("es", {
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0,
+              }),
+              ejeXmonto_,
+              ejeYLicitacion
+            );
+
+            // Diferencia ingresos licitaciones
+            context.font = "bold 15px Arial";
+            context.fillStyle = "#34495E";
+            context.textAlign = "center";
+            context.fillText(
+              totalDifLicitaciones.toLocaleString("es", {
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0,
+              }),
+              ejeXdiferencia_,
+              ejeYLicitacion
+            );
+          }
+
+          if (r.TIPO == "TRANSF. GIROS PALMA") {
+            context.font = "bold 15px Arial";
+            context.fillStyle = "#34495E";
+            context.textAlign = "center";
+            context.fillText(
+              parseFloat(r.CUOTA_SOCIAL).toLocaleString("es", {
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0,
+              }),
+              ejeXcuota_,
+              ejeYTransGirosPalma
+            );
+
+            context.font = "bold 15px Arial";
+            context.fillStyle = "#34495E";
+            context.textAlign = "center";
+            context.fillText(
+              parseFloat(r.TRATAMIENTO).toLocaleString("es", {
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0,
+              }),
+              ejeXtrata_,
+              ejeYTransGirosPalma
+            );
+
+            context.font = "bold 15px Arial";
+            context.fillStyle = "#34495E";
+            context.textAlign = "center";
+            context.fillText(
+              parseFloat(r.COBRADOR).toLocaleString("es", {
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0,
+              }),
+              ejeXcobra_,
+              ejeYTransGirosPalma
+            );
+
+            context.font = "bold 15px Arial";
+            context.fillStyle = "#34495E";
+            context.textAlign = "center";
+            context.fillText(
+              parseFloat(r.VENTA_NUEVA).toLocaleString("es", {
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0,
+              }),
+              ejeXventa_,
+              ejeYTransGirosPalma
+            );
+
+            context.font = "bold 15px Arial";
+            context.fillStyle = "#34495E";
+            context.textAlign = "center";
+            context.fillText(
+              parseFloat(r.MONTO_TOTAL).toLocaleString("es", {
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0,
+              }),
+              ejeXmonto_,
+              ejeYTransGirosPalma
+            );
+
+            // Diferencia ingresos trans giros palma
+            context.font = "bold 15px Arial";
+            context.fillStyle = "#34495E";
+            context.textAlign = "center";
+            context.fillText(
+              totalDifLicitaciones.toLocaleString("es", {
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0,
+              }),
+              ejeXdiferencia_,
+              ejeYTransGirosPalma
+            );
+          }
+        }
+
         // Dibujar las fechas
         // Mes Anterior
         context.font = "bold 13px Arial";
@@ -5991,44 +6551,9 @@ module.exports = (app) => {
           ejeYtotalesSanPe
         );
 
-        // AGENDADOS
-        /*context.font = "bold 15px Arial";
-        context.fillStyle = "#34495E";
-        context.textAlign = "left";
-        context.fillText(
-          sumTotalesSpAG.toLocaleString("es", {
-            minimumFractionDigits: 0,
-            maximumFractionDigits: 0,
-          }),
-          ejeXagendado,
-          ejeYtotalesSanPe
-        );
-
-        context.font = "bold 15px Arial";
-        context.fillStyle = "#34495E";
-        context.textAlign = "left";
-        context.fillText(
-          sumTotalesSpAS.toLocaleString("es", {
-            minimumFractionDigits: 0,
-            maximumFractionDigits: 0,
-          }),
-          ejeXasistido,
-          ejeYtotalesSanPe
-        );
-
-        context.font = "bold 15px Arial";
-        context.fillStyle = "#34495E";
-        context.textAlign = "left";
-        context.fillText(
-          sumTotalesSpPR.toLocaleString("es", {
-            minimumFractionDigits: 0,
-            maximumFractionDigits: 0,
-          }),
-          ejeXprofesional,
-          ejeYtotalesSanPe
-        );*/
-
-        // SUM - TOTALES GENERALES - MES ANTERIOR
+        /**
+         *  TOTAL SUCURSAL - MES ANTERIOR
+         */
         context.font = "bold 15px Arial";
         context.fillStyle = "#34495E";
         context.textAlign = "left";
@@ -6095,7 +6620,9 @@ module.exports = (app) => {
           ejeYTotalGeneral
         );
 
-        // SUM - TOTALES GENERALES - MES ACTUAL
+        /**
+         *  TOTAL SUCURSAL - MES ACTUAL
+         */
         context.font = "bold 15px Arial";
         context.fillStyle = "#34495E";
         context.textAlign = "center";
@@ -6157,7 +6684,7 @@ module.exports = (app) => {
           ejeYTotalGeneral
         );
 
-        // DIFERENCIA TOTAL GENERAL
+        // DIFERENCIA TOTAL SUCURSAL
         context.font = "bold 15px Arial";
         context.fillStyle = "#34495E";
         context.textAlign = "center";
@@ -6170,42 +6697,298 @@ module.exports = (app) => {
           ejeYTotalGeneral
         );
 
-        // AGENDADOS
-        /*context.font = "bold 15px Arial";
+        /**
+         *   TOTAL ADM - INGRESOS MES ANTERIOR
+         */
+        context.font = "bold 15px Arial";
         context.fillStyle = "#34495E";
         context.textAlign = "left";
+        context.fillText("TOTAL ADM", ejeXsucu, ejeYTotalADM);
+
+        context.font = "bold 15px Arial";
+        context.fillStyle = "#34495E";
+        context.textAlign = "center";
         context.fillText(
-          totalGenAgendado.toLocaleString("es", {
+          totalGenINCuotaSocial.toLocaleString("es", {
             minimumFractionDigits: 0,
             maximumFractionDigits: 0,
           }),
-          ejeXagendado,
-          ejeYTotalGeneral
+          ejeXcuota,
+          ejeYTotalADM
         );
 
         context.font = "bold 15px Arial";
         context.fillStyle = "#34495E";
-        context.textAlign = "left";
+        context.textAlign = "center";
         context.fillText(
-          totalGenAsistido.toLocaleString("es", {
+          totalGenINTratamiento.toLocaleString("es", {
             minimumFractionDigits: 0,
             maximumFractionDigits: 0,
           }),
-          ejeXasistido,
-          ejeYTotalGeneral
+          ejeXtrata,
+          ejeYTotalADM
         );
 
         context.font = "bold 15px Arial";
         context.fillStyle = "#34495E";
-        context.textAlign = "left";
+        context.textAlign = "center";
         context.fillText(
-          totalGenProfesional.toLocaleString("es", {
+          totalGenINCobrador.toLocaleString("es", {
             minimumFractionDigits: 0,
             maximumFractionDigits: 0,
           }),
-          ejeXprofesional,
-          ejeYTotalGeneral
-        );*/
+          ejeXcobra,
+          ejeYTotalADM
+        );
+
+        context.font = "bold 15px Arial";
+        context.fillStyle = "#34495E";
+        context.textAlign = "center";
+        context.fillText(
+          totalGenINVentaNueva.toLocaleString("es", {
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0,
+          }),
+          ejeXventa,
+          ejeYTotalADM
+        );
+
+        // MONTO TOTAL
+        context.font = "bold 15px Arial";
+        context.fillStyle = "#34495E";
+        context.textAlign = "center";
+        context.fillText(
+          totalGenINMontoTotal.toLocaleString("es", {
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0,
+          }),
+          ejeXmonto,
+          ejeYTotalADM
+        );
+
+        /**
+         *   TOTAL ADM - INGRESOS MES ACTUAL
+         */
+
+        context.font = "bold 15px Arial";
+        context.fillStyle = "#34495E";
+        context.textAlign = "center";
+        context.fillText(
+          totalGenINCuotaSocial_.toLocaleString("es", {
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0,
+          }),
+          ejeXcuota_,
+          ejeYTotalADM
+        );
+
+        context.font = "bold 15px Arial";
+        context.fillStyle = "#34495E";
+        context.textAlign = "center";
+        context.fillText(
+          totalGenINTratamiento_.toLocaleString("es", {
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0,
+          }),
+          ejeXtrata_,
+          ejeYTotalADM
+        );
+
+        context.font = "bold 15px Arial";
+        context.fillStyle = "#34495E";
+        context.textAlign = "center";
+        context.fillText(
+          totalGenINCobrador_.toLocaleString("es", {
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0,
+          }),
+          ejeXcobra_,
+          ejeYTotalADM
+        );
+
+        context.font = "bold 15px Arial";
+        context.fillStyle = "#34495E";
+        context.textAlign = "center";
+        context.fillText(
+          totalGenINVentaNueva_.toLocaleString("es", {
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0,
+          }),
+          ejeXventa_,
+          ejeYTotalADM
+        );
+
+        // MONTO TOTAL
+        context.font = "bold 15px Arial";
+        context.fillStyle = "#34495E";
+        context.textAlign = "center";
+        context.fillText(
+          totalGenINMontoTotal_.toLocaleString("es", {
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0,
+          }),
+          ejeXmonto_,
+          ejeYTotalADM
+        );
+
+        // Diferencia monto total adm
+        context.font = "bold 15px Arial";
+        context.fillStyle = "#34495E";
+        context.textAlign = "center";
+        context.fillText(
+          totalDifTotalADM.toLocaleString("es", {
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0,
+          }),
+          ejeXdiferencia_,
+          ejeYTotalADM
+        );
+
+        /**
+         *   TOTAL GENERAL - TOTAL DOC mes anterior
+         */
+
+        context.font = "bold 15px Arial";
+        context.fillStyle = "#34495E";
+        context.textAlign = "left";
+        context.fillText("TOTAL GENERAL", ejeXsucu, ejeYtotalGeneralDoc);
+
+        context.font = "bold 15px Arial";
+        context.fillStyle = "#34495E";
+        context.textAlign = "center";
+        context.fillText(
+          (totalGenCuotaSocial + totalGenINCuotaSocial).toLocaleString("es", {
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0,
+          }),
+          ejeXcuota,
+          ejeYtotalGeneralDoc
+        );
+
+        context.font = "bold 15px Arial";
+        context.fillStyle = "#34495E";
+        context.textAlign = "center";
+        context.fillText(
+          (totalGenTratamiento + totalGenINTratamiento).toLocaleString("es", {
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0,
+          }),
+          ejeXtrata,
+          ejeYtotalGeneralDoc
+        );
+
+        context.font = "bold 15px Arial";
+        context.fillStyle = "#34495E";
+        context.textAlign = "center";
+        context.fillText(
+          (totalGenCobrador + totalGenINCobrador).toLocaleString("es", {
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0,
+          }),
+          ejeXcobra,
+          ejeYtotalGeneralDoc
+        );
+
+        context.font = "bold 15px Arial";
+        context.fillStyle = "#34495E";
+        context.textAlign = "center";
+        context.fillText(
+          (totalGenVentaNueva + totalGenINVentaNueva).toLocaleString("es", {
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0,
+          }),
+          ejeXventa,
+          ejeYtotalGeneralDoc
+        );
+
+        // MONTO TOTAL
+        context.font = "bold 15px Arial";
+        context.fillStyle = "#34495E";
+        context.textAlign = "center";
+        context.fillText(
+          (totalGenMontoTotal + totalGenINMontoTotal).toLocaleString("es", {
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0,
+          }),
+          ejeXmonto,
+          ejeYtotalGeneralDoc
+        );
+
+        // TOTAL GENERAL - TOTAL DOC mes actual
+
+        context.font = "bold 15px Arial";
+        context.fillStyle = "#34495E";
+        context.textAlign = "center";
+        context.fillText(
+          (totalGenCuotaSocial_ + totalGenINCuotaSocial_).toLocaleString("es", {
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0,
+          }),
+          ejeXcuota_,
+          ejeYtotalGeneralDoc
+        );
+
+        context.font = "bold 15px Arial";
+        context.fillStyle = "#34495E";
+        context.textAlign = "center";
+        context.fillText(
+          (totalGenTratamiento_ + totalGenINTratamiento_).toLocaleString("es", {
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0,
+          }),
+          ejeXtrata_,
+          ejeYtotalGeneralDoc
+        );
+
+        context.font = "bold 15px Arial";
+        context.fillStyle = "#34495E";
+        context.textAlign = "center";
+        context.fillText(
+          (totalGenCobrador_ + totalGenINCobrador_).toLocaleString("es", {
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0,
+          }),
+          ejeXcobra_,
+          ejeYtotalGeneralDoc
+        );
+
+        context.font = "bold 15px Arial";
+        context.fillStyle = "#34495E";
+        context.textAlign = "center";
+        context.fillText(
+          (totalGenVentaNueva_ + totalGenINVentaNueva_).toLocaleString("es", {
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0,
+          }),
+          ejeXventa_,
+          ejeYtotalGeneralDoc
+        );
+
+        // MONTO TOTAL
+        context.font = "bold 15px Arial";
+        context.fillStyle = "#34495E";
+        context.textAlign = "center";
+        context.fillText(
+          (totalGenMontoTotal_ + totalGenINMontoTotal_).toLocaleString("es", {
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0,
+          }),
+          ejeXmonto_,
+          ejeYtotalGeneralDoc
+        );
+
+        // Diferencia monto TOTAL GENERAL DOC
+        context.font = "bold 15px Arial";
+        context.fillStyle = "#34495E";
+        context.textAlign = "center";
+        context.fillText(
+          ((totalGenMontoTotal_ - totalGenMontoTotal) + totalDifTotalADM).toLocaleString("es", {
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0,
+          }),
+          ejeXdiferencia_,
+          ejeYtotalGeneralDoc
+        );
 
         // Escribe la imagen a archivo
         const buffer = canvas.toBuffer("image/png");
@@ -6312,9 +7095,9 @@ module.exports = (app) => {
     sumTotalesAsuncionCO = 0;
     sumTotalesAsuncionVN = 0;
     sumTotalesAsuncionMT = 0;
-    sumTotalesAsuncionAG = 0;
-    sumTotalesAsuncionAS = 0;
-    sumTotalesAsuncionPR = 0;
+    // sumTotalesAsuncionAG = 0;
+    // sumTotalesAsuncionAS = 0;
+    // sumTotalesAsuncionPR = 0;
 
     // Sub Totales Zona Gran Asuncion
     sumTotalesGAsuncionCS = 0;
@@ -6322,9 +7105,9 @@ module.exports = (app) => {
     sumTotalesGAsuncionCO = 0;
     sumTotalesGAsuncionVN = 0;
     sumTotalesGAsuncionMT = 0;
-    sumTotalesGAsuncionAG = 0;
-    sumTotalesGAsuncionAS = 0;
-    sumTotalesGAsuncionPR = 0;
+    // sumTotalesGAsuncionAG = 0;
+    // sumTotalesGAsuncionAS = 0;
+    // sumTotalesGAsuncionPR = 0;
 
     // Sub Totales Zona Ruta 2
     sumTotalesR2CS = 0;
@@ -6332,9 +7115,9 @@ module.exports = (app) => {
     sumTotalesR2CO = 0;
     sumTotalesR2VN = 0;
     sumTotalesR2MT = 0;
-    sumTotalesR2AG = 0;
-    sumTotalesR2AS = 0;
-    sumTotalesR2PR = 0;
+    // sumTotalesR2AG = 0;
+    // sumTotalesR2AS = 0;
+    // sumTotalesR2PR = 0;
 
     // Sub Totales Zona Itapua
     sumTotalesItaCS = 0;
@@ -6342,9 +7125,9 @@ module.exports = (app) => {
     sumTotalesItaCO = 0;
     sumTotalesItaVN = 0;
     sumTotalesItaMT = 0;
-    sumTotalesItaAG = 0;
-    sumTotalesItaAS = 0;
-    sumTotalesItaPR = 0;
+    // sumTotalesItaAG = 0;
+    // sumTotalesItaAS = 0;
+    // sumTotalesItaPR = 0;
 
     // Sub Totales Zona Alto Parana
     sumTotalesApCS = 0;
@@ -6352,9 +7135,9 @@ module.exports = (app) => {
     sumTotalesApCO = 0;
     sumTotalesApVN = 0;
     sumTotalesApMT = 0;
-    sumTotalesApAG = 0;
-    sumTotalesApAS = 0;
-    sumTotalesApPR = 0;
+    // sumTotalesApAG = 0;
+    // sumTotalesApAS = 0;
+    // sumTotalesApPR = 0;
 
     // Sub Totales Zona San Pedro
     sumTotalesSpCS = 0;
@@ -6362,9 +7145,9 @@ module.exports = (app) => {
     sumTotalesSpCO = 0;
     sumTotalesSpVN = 0;
     sumTotalesSpMT = 0;
-    sumTotalesSpAG = 0;
-    sumTotalesSpAS = 0;
-    sumTotalesSpPR = 0;
+    // sumTotalesSpAG = 0;
+    // sumTotalesSpAS = 0;
+    // sumTotalesSpPR = 0;
 
     // Totales Generales
     totalGenCuotaSocial = 0;
@@ -6372,8 +7155,8 @@ module.exports = (app) => {
     totalGenCobrador = 0;
     totalGenVentaNueva = 0;
     totalGenMontoTotal = 0;
-    totalGenAgendado = 0;
-    totalGenAsistido = 0;
-    totalGenProfesional = 0;
+    // totalGenAgendado = 0;
+    // totalGenAsistido = 0;
+    // totalGenProfesional = 0;
   }
 };
