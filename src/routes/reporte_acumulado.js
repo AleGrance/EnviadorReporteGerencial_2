@@ -1673,28 +1673,7 @@ module.exports = (app) => {
         for (let r of losAcumuladosMesAntForma) {
           // Zona ASU
           if (r.SUCURSAL == "ADMINISTRACION") {
-            // Busca los turnos por sucursal y los dibuja en el canva
-            // for (let t of losTurnosCantidades) {
-            //   if (r.SUCURSAL == t.SUCURSAL) {
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.AGENDADOS, ejeXagendado, ejeYadm);
-
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.ASISTIDOS, ejeXasistido, ejeYadm);
-
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.PROFESIONAL, ejeXprofesional, ejeYadm);
-            //   }
-            // }
+            
 
             // Se dibuja los datos del cierre
             context.font = "bold 15px Arial";
@@ -1729,29 +1708,7 @@ module.exports = (app) => {
           }
 
           if (r.SUCURSAL == "MARISCAL LOPEZ") {
-            // Busca los turnos por sucursal y los dibuja en el canva
-            // for (let t of losTurnosCantidades) {
-            //   if (r.SUCURSAL == t.SUCURSAL) {
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.AGENDADOS, ejeXagendado, ejeYml);
-
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.ASISTIDOS, ejeXasistido, ejeYml);
-
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.PROFESIONAL, ejeXprofesional, ejeYml);
-            //   }
-            // }
-
+           
             // Se dibuja los datos del acumulado mes anterior
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
@@ -1785,28 +1742,7 @@ module.exports = (app) => {
           }
 
           if (r.SUCURSAL == "MCAL. LOPEZ URGENCIAS") {
-            // Busca los turnos por sucursal y los dibuja en el canva
-            // for (let t of losTurnosCantidades) {
-            //   if (r.SUCURSAL == t.SUCURSAL) {
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.AGENDADOS, ejeXagendado, ejeYmlurg);
-
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.ASISTIDOS, ejeXasistido, ejeYmlurg);
-
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.PROFESIONAL, ejeXprofesional, ejeYmlurg);
-            //   }
-            // }
+           
 
             // Se dibuja los datos del cierre
             context.font = "bold 13px Arial";
@@ -1841,28 +1777,7 @@ module.exports = (app) => {
           }
 
           if (r.SUCURSAL == "AVENIDA QUINTA") {
-            // Busca los turnos por sucursal y los dibuja en el canva
-            // for (let t of losTurnosCantidades) {
-            //   if (r.SUCURSAL == t.SUCURSAL) {
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.AGENDADOS, ejeXagendado, ejeYaq);
-
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.ASISTIDOS, ejeXasistido, ejeYaq);
-
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.PROFESIONAL, ejeXprofesional, ejeYaq);
-            //   }
-            // }
+            
 
             // Se dibuja los datos del acumulado mes anterior
             context.font = "bold 15px Arial";
@@ -1897,28 +1812,7 @@ module.exports = (app) => {
           }
 
           if (r.SUCURSAL == "VILLA MORRA") {
-            // Busca los turnos por sucursal y los dibuja en el canva
-            // for (let t of losTurnosCantidades) {
-            //   if (r.SUCURSAL == t.SUCURSAL) {
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.AGENDADOS, ejeXagendado, ejeYvm);
-
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.ASISTIDOS, ejeXasistido, ejeYvm);
-
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.PROFESIONAL, ejeXprofesional, ejeYvm);
-            //   }
-            // }
+            
 
             // Se dibuja los datos del acumulado mes anterior
             context.font = "bold 15px Arial";
@@ -1953,28 +1847,6 @@ module.exports = (app) => {
           }
 
           if (r.SUCURSAL == "ARTIGAS") {
-            // Busca los turnos por sucursal y los dibuja en el canva
-            // for (let t of losTurnosCantidades) {
-            //   if (r.SUCURSAL == t.SUCURSAL) {
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.AGENDADOS, ejeXagendado, ejeYar);
-
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.ASISTIDOS, ejeXasistido, ejeYar);
-
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.PROFESIONAL, ejeXprofesional, ejeYar);
-            //   }
-            // }
 
             // Se dibuja los datos del acumulado mes anterior
             context.font = "bold 15px Arial";
@@ -2009,28 +1881,6 @@ module.exports = (app) => {
           }
 
           if (r.SUCURSAL == "LUISITO") {
-            // Busca los turnos por sucursal y los dibuja en el canva
-            // for (let t of losTurnosCantidades) {
-            //   if (r.SUCURSAL == t.SUCURSAL) {
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.AGENDADOS, ejeXagendado, ejeYlu);
-
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.ASISTIDOS, ejeXasistido, ejeYlu);
-
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.PROFESIONAL, ejeXprofesional, ejeYlu);
-            //   }
-            // }
 
             // Se dibuja los datos del acumulado mes anterior
             context.font = "bold 15px Arial";
@@ -2065,28 +1915,6 @@ module.exports = (app) => {
           }
 
           if (r.SUCURSAL == "PALMA") {
-            // Busca los turnos por sucursal y los dibuja en el canva
-            // for (let t of losTurnosCantidades) {
-            //   if (r.SUCURSAL == t.SUCURSAL) {
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.AGENDADOS, ejeXagendado, ejeYpa);
-
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.ASISTIDOS, ejeXasistido, ejeYpa);
-
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.PROFESIONAL, ejeXprofesional, ejeYpa);
-            //   }
-            // }
 
             // Se dibuja los datos del acumulado mes anterior
             context.font = "bold 15px Arial";
@@ -2122,28 +1950,6 @@ module.exports = (app) => {
 
           // Zona Gran ASU
           if (r.SUCURSAL == "LAMBARE") {
-            // Busca los turnos por sucursal y los dibuja en el canva
-            // for (let t of losTurnosCantidades) {
-            //   if (r.SUCURSAL == t.SUCURSAL) {
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.AGENDADOS, ejeXagendado, ejeYlam);
-
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.ASISTIDOS, ejeXasistido, ejeYlam);
-
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.PROFESIONAL, ejeXprofesional, ejeYlam);
-            //   }
-            // }
 
             // Se dibuja los datos del acumulado mes anterior
             context.font = "bold 15px Arial";
@@ -2178,28 +1984,6 @@ module.exports = (app) => {
           }
 
           if (r.SUCURSAL == "CATEDRAL") {
-            // Busca los turnos por sucursal y los dibuja en el canva
-            // for (let t of losTurnosCantidades) {
-            //   if (r.SUCURSAL == t.SUCURSAL) {
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.AGENDADOS, ejeXagendado, ejeYcat);
-
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.ASISTIDOS, ejeXasistido, ejeYcat);
-
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.PROFESIONAL, ejeXprofesional, ejeYcat);
-            //   }
-            // }
 
             // Se dibuja los datos del acumulado mes anterior
             context.font = "bold 15px Arial";
@@ -2234,28 +2018,6 @@ module.exports = (app) => {
           }
 
           if (r.SUCURSAL == "LUQUE") {
-            // Busca los turnos por sucursal y los dibuja en el canva
-            // for (let t of losTurnosCantidades) {
-            //   if (r.SUCURSAL == t.SUCURSAL) {
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.AGENDADOS, ejeXagendado, ejeYluq);
-
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.ASISTIDOS, ejeXasistido, ejeYluq);
-
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.PROFESIONAL, ejeXprofesional, ejeYluq);
-            //   }
-            // }
 
             // Se dibuja los datos del acumulado mes anterior
             context.font = "bold 15px Arial";
@@ -2290,28 +2052,6 @@ module.exports = (app) => {
           }
 
           if (r.SUCURSAL == "LA RURAL") {
-            // Busca los turnos por sucursal y los dibuja en el canva
-            // for (let t of losTurnosCantidades) {
-            //   if (r.SUCURSAL == t.SUCURSAL) {
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.AGENDADOS, ejeXagendado, ejeYlar);
-
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.ASISTIDOS, ejeXasistido, ejeYlar);
-
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.PROFESIONAL, ejeXprofesional, ejeYlar);
-            //   }
-            // }
 
             // Se dibuja los datos del acumulado mes anterior
             context.font = "bold 15px Arial";
@@ -2346,28 +2086,6 @@ module.exports = (app) => {
           }
 
           if (r.SUCURSAL == "ÑEMBY") {
-            // Busca los turnos por sucursal y los dibuja en el canva
-            // for (let t of losTurnosCantidades) {
-            //   if (r.SUCURSAL == t.SUCURSAL) {
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.AGENDADOS, ejeXagendado, ejeYnem);
-
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.ASISTIDOS, ejeXasistido, ejeYnem);
-
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.PROFESIONAL, ejeXprofesional, ejeYnem);
-            //   }
-            // }
 
             // Se dibuja los datos del acumulado mes anterior
             context.font = "bold 15px Arial";
@@ -2402,28 +2120,6 @@ module.exports = (app) => {
           }
 
           if (r.SUCURSAL == "ITAUGUA") {
-            // Busca los turnos por sucursal y los dibuja en el canva
-            // for (let t of losTurnosCantidades) {
-            //   if (r.SUCURSAL == t.SUCURSAL) {
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.AGENDADOS, ejeXagendado, ejeYita);
-
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.ASISTIDOS, ejeXasistido, ejeYita);
-
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.PROFESIONAL, ejeXprofesional, ejeYita);
-            //   }
-            // }
 
             // Se dibuja los datos del acumulado mes anterior
             context.font = "bold 15px Arial";
@@ -2458,28 +2154,6 @@ module.exports = (app) => {
           }
 
           if (r.SUCURSAL == "1811 SUCURSAL") {
-            // Busca los turnos por sucursal y los dibuja en el canva
-            // for (let t of losTurnosCantidades) {
-            //   if (r.SUCURSAL == t.SUCURSAL) {
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.AGENDADOS, ejeXagendado, ejeY1811);
-
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.ASISTIDOS, ejeXasistido, ejeY1811);
-
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.PROFESIONAL, ejeXprofesional, ejeY1811);
-            //   }
-            // }
 
             // Se dibuja los datos del acumulado mes anterior
             context.font = "bold 15px Arial";
@@ -2514,28 +2188,6 @@ module.exports = (app) => {
           }
 
           if (r.SUCURSAL == "KM 14 Y MEDIO") {
-            // Busca los turnos por sucursal y los dibuja en el canva
-            // for (let t of losTurnosCantidades) {
-            //   if (r.SUCURSAL == t.SUCURSAL) {
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.AGENDADOS, ejeXagendado, ejeYkm14);
-
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.ASISTIDOS, ejeXasistido, ejeYkm14);
-
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.PROFESIONAL, ejeXprofesional, ejeYkm14);
-            //   }
-            // }
 
             // Se dibuja los datos del acumulado mes anterior
             context.font = "bold 15px Arial";
@@ -2570,28 +2222,6 @@ module.exports = (app) => {
           }
 
           if (r.SUCURSAL == "CAPIATA") {
-            // Busca los turnos por sucursal y los dibuja en el canva
-            // for (let t of losTurnosCantidades) {
-            //   if (r.SUCURSAL == t.SUCURSAL) {
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.AGENDADOS, ejeXagendado, ejeYcap);
-
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.ASISTIDOS, ejeXasistido, ejeYcap);
-
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.PROFESIONAL, ejeXprofesional, ejeYcap);
-            //   }
-            // }
 
             // Se dibuja los datos del acumulado mes anterior
             context.font = "bold 15px Arial";
@@ -2627,28 +2257,6 @@ module.exports = (app) => {
 
           // Zona Ruta 2
           if (r.SUCURSAL == "CAACUPE") {
-            // Busca los turnos por sucursal y los dibuja en el canva
-            // for (let t of losTurnosCantidades) {
-            //   if (r.SUCURSAL == t.SUCURSAL) {
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.AGENDADOS, ejeXagendado, ejeYcaac);
-
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.ASISTIDOS, ejeXasistido, ejeYcaac);
-
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.PROFESIONAL, ejeXprofesional, ejeYcaac);
-            //   }
-            // }
 
             // Se dibuja los datos del acumulado mes anterior
             context.font = "bold 15px Arial";
@@ -2683,28 +2291,6 @@ module.exports = (app) => {
           }
 
           if (r.SUCURSAL == "CORONEL OVIEDO") {
-            // Busca los turnos por sucursal y los dibuja en el canva
-            // for (let t of losTurnosCantidades) {
-            //   if (r.SUCURSAL == t.SUCURSAL) {
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.AGENDADOS, ejeXagendado, ejeYcoro);
-
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.ASISTIDOS, ejeXasistido, ejeYcoro);
-
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.PROFESIONAL, ejeXprofesional, ejeYcoro);
-            //   }
-            // }
 
             // Se dibuja los datos del acumulado mes anterior
             context.font = "bold 15px Arial";
@@ -2740,28 +2326,6 @@ module.exports = (app) => {
 
           // Zona Itapua
           if (r.SUCURSAL == "HOHENAU") {
-            // Busca los turnos por sucursal y los dibuja en el canva
-            // for (let t of losTurnosCantidades) {
-            //   if (r.SUCURSAL == t.SUCURSAL) {
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.AGENDADOS, ejeXagendado, ejeYhohe);
-
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.ASISTIDOS, ejeXasistido, ejeYhohe);
-
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.PROFESIONAL, ejeXprofesional, ejeYhohe);
-            //   }
-            // }
 
             // Se dibuja los datos del acumulado mes anterior
             context.font = "bold 15px Arial";
@@ -2796,28 +2360,6 @@ module.exports = (app) => {
           }
 
           if (r.SUCURSAL == "ENCARNACION CENTRO") {
-            // Busca los turnos por sucursal y los dibuja en el canva
-            // for (let t of losTurnosCantidades) {
-            //   if (r.SUCURSAL == t.SUCURSAL) {
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.AGENDADOS, ejeXagendado, ejeYencar);
-
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.ASISTIDOS, ejeXasistido, ejeYencar);
-
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.PROFESIONAL, ejeXprofesional, ejeYencar);
-            //   }
-            // }
 
             // Se dibuja los datos del acumulado mes anterior
             context.font = "bold 15px Arial";
@@ -2852,28 +2394,6 @@ module.exports = (app) => {
           }
 
           if (r.SUCURSAL == "MARIA AUXILIADORA") {
-            // Busca los turnos por sucursal y los dibuja en el canva
-            // for (let t of losTurnosCantidades) {
-            //   if (r.SUCURSAL == t.SUCURSAL) {
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.AGENDADOS, ejeXagendado, ejeYmaria);
-
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.ASISTIDOS, ejeXasistido, ejeYmaria);
-
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.PROFESIONAL, ejeXprofesional, ejeYmaria);
-            //   }
-            // }
 
             // Se dibuja los datos del acumulado mes anterior
             context.font = "bold 15px Arial";
@@ -2908,28 +2428,6 @@ module.exports = (app) => {
           }
 
           if (r.SUCURSAL == "AYOLAS") {
-            // Busca los turnos por sucursal y los dibuja en el canva
-            // for (let t of losTurnosCantidades) {
-            //   if (r.SUCURSAL == t.SUCURSAL) {
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.AGENDADOS, ejeXagendado, ejeYayo);
-
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.ASISTIDOS, ejeXasistido, ejeYayo);
-
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.PROFESIONAL, ejeXprofesional, ejeYayo);
-            //   }
-            // }
 
             // Se dibuja los datos del acumulado mes anterior
             context.font = "bold 15px Arial";
@@ -2965,28 +2463,6 @@ module.exports = (app) => {
 
           // Zona Alto Parana
           if (r.SUCURSAL == "KM 7") {
-            // Busca los turnos por sucursal y los dibuja en el canva
-            // for (let t of losTurnosCantidades) {
-            //   if (r.SUCURSAL == t.SUCURSAL) {
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.AGENDADOS, ejeXagendado, ejeYkm7);
-
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.ASISTIDOS, ejeXasistido, ejeYkm7);
-
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.PROFESIONAL, ejeXprofesional, ejeYkm7);
-            //   }
-            // }
 
             // Se dibuja los datos del acumulado mes anterior
             context.font = "bold 15px Arial";
@@ -3021,28 +2497,7 @@ module.exports = (app) => {
           }
 
           if (r.SUCURSAL == "SANTA RITA") {
-            // Busca los turnos por sucursal y los dibuja en el canva
-            // for (let t of losTurnosCantidades) {
-            //   if (r.SUCURSAL == t.SUCURSAL) {
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.AGENDADOS, ejeXagendado, ejeYsanta);
-
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.ASISTIDOS, ejeXasistido, ejeYsanta);
-
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.PROFESIONAL, ejeXprofesional, ejeYsanta);
-            //   }
-            // }
+           
 
             // Se dibuja los datos acumulado mes anterior
             context.font = "bold 15px Arial";
@@ -3077,28 +2532,7 @@ module.exports = (app) => {
           }
 
           if (r.SUCURSAL == "CAMPO 9") {
-            // Busca los turnos por sucursal y los dibuja en el canva
-            // for (let t of losTurnosCantidades) {
-            //   if (r.SUCURSAL == t.SUCURSAL) {
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.AGENDADOS, ejeXagendado, ejeYcampo);
-
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.ASISTIDOS, ejeXasistido, ejeYcampo);
-
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.PROFESIONAL, ejeXprofesional, ejeYcampo);
-            //   }
-            // }
+            
 
             // Se dibuja los datos del acumulado mes anterior
             context.font = "bold 15px Arial";
@@ -3134,28 +2568,7 @@ module.exports = (app) => {
 
           // Zona San Pedro
           if (r.SUCURSAL == "SANTANI") {
-            // Busca los turnos por sucursal y los dibuja en el canva
-            // for (let t of losTurnosCantidades) {
-            //   if (r.SUCURSAL == t.SUCURSAL) {
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.AGENDADOS, ejeXagendado, ejeYsantani);
-
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.ASISTIDOS, ejeXasistido, ejeYsantani);
-
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.PROFESIONAL, ejeXprofesional, ejeYsantani);
-            //   }
-            // }
+            
 
             // Se dibuja los datos del acumulado mes anterior
             context.font = "bold 15px Arial";
@@ -3465,34 +2878,7 @@ module.exports = (app) => {
         for (let r of losAcumuladosMesActForma) {
           // Zona ASU
           if (r.SUCURSAL == "ADMINISTRACION") {
-            // Busca los turnos por sucursal y los dibuja en el canva
-            // for (let t of losTurnosCantidades) {
-            //   if (r.SUCURSAL == t.SUCURSAL) {
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.AGENDADOS, ejeXagendado, ejeYadm);
-
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.ASISTIDOS, ejeXasistido, ejeYadm);
-
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.PROFESIONAL, ejeXprofesional, ejeYadm);
-            //   }
-            // }
-
-            // Se dibuja los datos del cierre
-            // context.font = "bold 15px Arial";
-            // context.fillStyle = "#34495E";
-            // context.textAlign = "left";
-            // context.fillText(r.SUCURSAL, ejeXsucu_, ejeYadm);
+            
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
@@ -3533,34 +2919,10 @@ module.exports = (app) => {
           }
 
           if (r.SUCURSAL == "MARISCAL LOPEZ") {
-            // Busca los turnos por sucursal y los dibuja en el canva
-            // for (let t of losTurnosCantidades) {
-            //   if (r.SUCURSAL == t.SUCURSAL) {
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.AGENDADOS, ejeXagendado, ejeYml);
-
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.ASISTIDOS, ejeXasistido, ejeYml);
-
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.PROFESIONAL, ejeXprofesional, ejeYml);
-            //   }
-            // }
+            
 
             // Se dibuja los datos del acumulado mes actual
-            // context.font = "bold 15px Arial";
-            // context.fillStyle = "#34495E";
-            // context.textAlign = "left";
-            // context.fillText(r.SUCURSAL, ejeXsucu_, ejeYml);
+            
 
             context.font = "bold 15px Arial";
             context.fillStyle = "#34495E";
@@ -3601,28 +2963,7 @@ module.exports = (app) => {
           }
 
           if (r.SUCURSAL == "MCAL. LOPEZ URGENCIAS") {
-            // Busca los turnos por sucursal y los dibuja en el canva
-            // for (let t of losTurnosCantidades) {
-            //   if (r.SUCURSAL == t.SUCURSAL) {
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.AGENDADOS, ejeXagendado, ejeYmlurg);
-
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.ASISTIDOS, ejeXasistido, ejeYmlurg);
-
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.PROFESIONAL, ejeXprofesional, ejeYmlurg);
-            //   }
-            // }
+           
 
             // Se dibuja los datos del acumulado mes actual
 
@@ -3665,28 +3006,7 @@ module.exports = (app) => {
           }
 
           if (r.SUCURSAL == "AVENIDA QUINTA") {
-            // Busca los turnos por sucursal y los dibuja en el canva
-            // for (let t of losTurnosCantidades) {
-            //   if (r.SUCURSAL == t.SUCURSAL) {
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.AGENDADOS, ejeXagendado, ejeYaq);
-
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.ASISTIDOS, ejeXasistido, ejeYaq);
-
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.PROFESIONAL, ejeXprofesional, ejeYaq);
-            //   }
-            // }
+        
 
             // Se dibuja los datos del acumulado mes actual
 
@@ -3729,28 +3049,7 @@ module.exports = (app) => {
           }
 
           if (r.SUCURSAL == "VILLA MORRA") {
-            // Busca los turnos por sucursal y los dibuja en el canva
-            // for (let t of losTurnosCantidades) {
-            //   if (r.SUCURSAL == t.SUCURSAL) {
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.AGENDADOS, ejeXagendado, ejeYvm);
-
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.ASISTIDOS, ejeXasistido, ejeYvm);
-
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.PROFESIONAL, ejeXprofesional, ejeYvm);
-            //   }
-            // }
+    
 
             // Se dibuja los datos del acumulado mes actual
 
@@ -3793,28 +3092,7 @@ module.exports = (app) => {
           }
 
           if (r.SUCURSAL == "ARTIGAS") {
-            // Busca los turnos por sucursal y los dibuja en el canva
-            // for (let t of losTurnosCantidades) {
-            //   if (r.SUCURSAL == t.SUCURSAL) {
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.AGENDADOS, ejeXagendado, ejeYar);
-
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.ASISTIDOS, ejeXasistido, ejeYar);
-
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.PROFESIONAL, ejeXprofesional, ejeYar);
-            //   }
-            // }
+  
 
             // Se dibuja los datos del acumulado mes actual
 
@@ -3857,28 +3135,7 @@ module.exports = (app) => {
           }
 
           if (r.SUCURSAL == "LUISITO") {
-            // Busca los turnos por sucursal y los dibuja en el canva
-            // for (let t of losTurnosCantidades) {
-            //   if (r.SUCURSAL == t.SUCURSAL) {
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.AGENDADOS, ejeXagendado, ejeYlu);
-
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.ASISTIDOS, ejeXasistido, ejeYlu);
-
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.PROFESIONAL, ejeXprofesional, ejeYlu);
-            //   }
-            // }
+  
 
             // Se dibuja los datos del acumulado mes actual
 
@@ -3921,28 +3178,7 @@ module.exports = (app) => {
           }
 
           if (r.SUCURSAL == "PALMA") {
-            // Busca los turnos por sucursal y los dibuja en el canva
-            // for (let t of losTurnosCantidades) {
-            //   if (r.SUCURSAL == t.SUCURSAL) {
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.AGENDADOS, ejeXagendado, ejeYpa);
 
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.ASISTIDOS, ejeXasistido, ejeYpa);
-
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.PROFESIONAL, ejeXprofesional, ejeYpa);
-            //   }
-            // }
 
             // Se dibuja los datos del acumulado mes actual
 
@@ -3986,28 +3222,7 @@ module.exports = (app) => {
 
           // Zona Gran ASU
           if (r.SUCURSAL == "LAMBARE") {
-            // Busca los turnos por sucursal y los dibuja en el canva
-            // for (let t of losTurnosCantidades) {
-            //   if (r.SUCURSAL == t.SUCURSAL) {
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.AGENDADOS, ejeXagendado, ejeYlam);
 
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.ASISTIDOS, ejeXasistido, ejeYlam);
-
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.PROFESIONAL, ejeXprofesional, ejeYlam);
-            //   }
-            // }
 
             // Se dibuja los datos del acumulado mes actual
 
@@ -4050,28 +3265,7 @@ module.exports = (app) => {
           }
 
           if (r.SUCURSAL == "CATEDRAL") {
-            // Busca los turnos por sucursal y los dibuja en el canva
-            // for (let t of losTurnosCantidades) {
-            //   if (r.SUCURSAL == t.SUCURSAL) {
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.AGENDADOS, ejeXagendado, ejeYcat);
 
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.ASISTIDOS, ejeXasistido, ejeYcat);
-
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.PROFESIONAL, ejeXprofesional, ejeYcat);
-            //   }
-            // }
 
             // Se dibuja los datos del acumulado mes actual
             context.font = "bold 15px Arial";
@@ -4113,28 +3307,7 @@ module.exports = (app) => {
           }
 
           if (r.SUCURSAL == "LUQUE") {
-            // Busca los turnos por sucursal y los dibuja en el canva
-            // for (let t of losTurnosCantidades) {
-            //   if (r.SUCURSAL == t.SUCURSAL) {
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.AGENDADOS, ejeXagendado, ejeYluq);
 
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.ASISTIDOS, ejeXasistido, ejeYluq);
-
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.PROFESIONAL, ejeXprofesional, ejeYluq);
-            //   }
-            // }
 
             // Se dibuja los datos del acumulado mes actual
 
@@ -4177,28 +3350,7 @@ module.exports = (app) => {
           }
 
           if (r.SUCURSAL == "LA RURAL") {
-            // Busca los turnos por sucursal y los dibuja en el canva
-            // for (let t of losTurnosCantidades) {
-            //   if (r.SUCURSAL == t.SUCURSAL) {
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.AGENDADOS, ejeXagendado, ejeYlar);
-
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.ASISTIDOS, ejeXasistido, ejeYlar);
-
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.PROFESIONAL, ejeXprofesional, ejeYlar);
-            //   }
-            // }
+ 
 
             // Se dibuja los datos del acumulado mes actual
 
@@ -4241,28 +3393,7 @@ module.exports = (app) => {
           }
 
           if (r.SUCURSAL == "ÑEMBY") {
-            // Busca los turnos por sucursal y los dibuja en el canva
-            // for (let t of losTurnosCantidades) {
-            //   if (r.SUCURSAL == t.SUCURSAL) {
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.AGENDADOS, ejeXagendado, ejeYnem);
 
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.ASISTIDOS, ejeXasistido, ejeYnem);
-
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.PROFESIONAL, ejeXprofesional, ejeYnem);
-            //   }
-            // }
 
             // Se dibuja los datos del acumulado mes actual
 
@@ -4305,28 +3436,7 @@ module.exports = (app) => {
           }
 
           if (r.SUCURSAL == "ITAUGUA") {
-            // Busca los turnos por sucursal y los dibuja en el canva
-            // for (let t of losTurnosCantidades) {
-            //   if (r.SUCURSAL == t.SUCURSAL) {
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.AGENDADOS, ejeXagendado, ejeYita);
-
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.ASISTIDOS, ejeXasistido, ejeYita);
-
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.PROFESIONAL, ejeXprofesional, ejeYita);
-            //   }
-            // }
+ 
 
             // Se dibuja los datos del acumulado mes actual
 
@@ -4369,28 +3479,7 @@ module.exports = (app) => {
           }
 
           if (r.SUCURSAL == "1811 SUCURSAL") {
-            // Busca los turnos por sucursal y los dibuja en el canva
-            // for (let t of losTurnosCantidades) {
-            //   if (r.SUCURSAL == t.SUCURSAL) {
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.AGENDADOS, ejeXagendado, ejeY1811);
 
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.ASISTIDOS, ejeXasistido, ejeY1811);
-
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.PROFESIONAL, ejeXprofesional, ejeY1811);
-            //   }
-            // }
 
             // Se dibuja los datos del acumulado mes actual
 
@@ -4433,28 +3522,7 @@ module.exports = (app) => {
           }
 
           if (r.SUCURSAL == "KM 14 Y MEDIO") {
-            // Busca los turnos por sucursal y los dibuja en el canva
-            // for (let t of losTurnosCantidades) {
-            //   if (r.SUCURSAL == t.SUCURSAL) {
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.AGENDADOS, ejeXagendado, ejeYkm14);
 
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.ASISTIDOS, ejeXasistido, ejeYkm14);
-
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.PROFESIONAL, ejeXprofesional, ejeYkm14);
-            //   }
-            // }
 
             // Se dibuja los datos del acumulado mes actual
 
@@ -4497,28 +3565,7 @@ module.exports = (app) => {
           }
 
           if (r.SUCURSAL == "CAPIATA") {
-            // Busca los turnos por sucursal y los dibuja en el canva
-            // for (let t of losTurnosCantidades) {
-            //   if (r.SUCURSAL == t.SUCURSAL) {
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.AGENDADOS, ejeXagendado, ejeYcap);
 
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.ASISTIDOS, ejeXasistido, ejeYcap);
-
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.PROFESIONAL, ejeXprofesional, ejeYcap);
-            //   }
-            // }
 
             // Se dibuja los datos del acumulado mes actual
 
@@ -4562,28 +3609,7 @@ module.exports = (app) => {
 
           // Zona Ruta 2
           if (r.SUCURSAL == "CAACUPE") {
-            // Busca los turnos por sucursal y los dibuja en el canva
-            // for (let t of losTurnosCantidades) {
-            //   if (r.SUCURSAL == t.SUCURSAL) {
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.AGENDADOS, ejeXagendado, ejeYcaac);
 
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.ASISTIDOS, ejeXasistido, ejeYcaac);
-
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.PROFESIONAL, ejeXprofesional, ejeYcaac);
-            //   }
-            // }
 
             // Se dibuja los datos del acumulado mes actual
 
@@ -4626,28 +3652,7 @@ module.exports = (app) => {
           }
 
           if (r.SUCURSAL == "CORONEL OVIEDO") {
-            // Busca los turnos por sucursal y los dibuja en el canva
-            // for (let t of losTurnosCantidades) {
-            //   if (r.SUCURSAL == t.SUCURSAL) {
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.AGENDADOS, ejeXagendado, ejeYcoro);
 
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.ASISTIDOS, ejeXasistido, ejeYcoro);
-
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.PROFESIONAL, ejeXprofesional, ejeYcoro);
-            //   }
-            // }
 
             // Se dibuja los datos del acumulado mes actual
 
@@ -4691,28 +3696,7 @@ module.exports = (app) => {
 
           // Zona Itapua
           if (r.SUCURSAL == "HOHENAU") {
-            // Busca los turnos por sucursal y los dibuja en el canva
-            // for (let t of losTurnosCantidades) {
-            //   if (r.SUCURSAL == t.SUCURSAL) {
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.AGENDADOS, ejeXagendado, ejeYhohe);
 
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.ASISTIDOS, ejeXasistido, ejeYhohe);
-
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.PROFESIONAL, ejeXprofesional, ejeYhohe);
-            //   }
-            // }
 
             // Se dibuja los datos del acumulado mes actual
 
@@ -4755,28 +3739,7 @@ module.exports = (app) => {
           }
 
           if (r.SUCURSAL == "ENCARNACION CENTRO") {
-            // Busca los turnos por sucursal y los dibuja en el canva
-            // for (let t of losTurnosCantidades) {
-            //   if (r.SUCURSAL == t.SUCURSAL) {
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.AGENDADOS, ejeXagendado, ejeYencar);
-
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.ASISTIDOS, ejeXasistido, ejeYencar);
-
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.PROFESIONAL, ejeXprofesional, ejeYencar);
-            //   }
-            // }
+ 
 
             // Se dibuja los datos del acumulado mes actual
             context.font = "bold 15px Arial";
@@ -4818,28 +3781,7 @@ module.exports = (app) => {
           }
 
           if (r.SUCURSAL == "MARIA AUXILIADORA") {
-            // Busca los turnos por sucursal y los dibuja en el canva
-            // for (let t of losTurnosCantidades) {
-            //   if (r.SUCURSAL == t.SUCURSAL) {
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.AGENDADOS, ejeXagendado, ejeYmaria);
 
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.ASISTIDOS, ejeXasistido, ejeYmaria);
-
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.PROFESIONAL, ejeXprofesional, ejeYmaria);
-            //   }
-            // }
 
             // Se dibuja los datos del acumulado mes actual
 
@@ -4882,28 +3824,7 @@ module.exports = (app) => {
           }
 
           if (r.SUCURSAL == "AYOLAS") {
-            // Busca los turnos por sucursal y los dibuja en el canva
-            // for (let t of losTurnosCantidades) {
-            //   if (r.SUCURSAL == t.SUCURSAL) {
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.AGENDADOS, ejeXagendado, ejeYayo);
 
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.ASISTIDOS, ejeXasistido, ejeYayo);
-
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.PROFESIONAL, ejeXprofesional, ejeYayo);
-            //   }
-            // }
 
             // Se dibuja los datos del acumulado mes actual
 
@@ -4947,28 +3868,7 @@ module.exports = (app) => {
 
           // Zona Alto Parana
           if (r.SUCURSAL == "KM 7") {
-            // Busca los turnos por sucursal y los dibuja en el canva
-            // for (let t of losTurnosCantidades) {
-            //   if (r.SUCURSAL == t.SUCURSAL) {
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.AGENDADOS, ejeXagendado, ejeYkm7);
 
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.ASISTIDOS, ejeXasistido, ejeYkm7);
-
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.PROFESIONAL, ejeXprofesional, ejeYkm7);
-            //   }
-            // }
 
             // Se dibuja los datos del acumulado mes actual
 
@@ -5011,28 +3911,7 @@ module.exports = (app) => {
           }
 
           if (r.SUCURSAL == "SANTA RITA") {
-            // Busca los turnos por sucursal y los dibuja en el canva
-            // for (let t of losTurnosCantidades) {
-            //   if (r.SUCURSAL == t.SUCURSAL) {
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.AGENDADOS, ejeXagendado, ejeYsanta);
 
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.ASISTIDOS, ejeXasistido, ejeYsanta);
-
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.PROFESIONAL, ejeXprofesional, ejeYsanta);
-            //   }
-            // }
 
             // Se dibuja los datos del acumulado mes actual
 
@@ -5075,28 +3954,7 @@ module.exports = (app) => {
           }
 
           if (r.SUCURSAL == "CAMPO 9") {
-            // Busca los turnos por sucursal y los dibuja en el canva
-            // for (let t of losTurnosCantidades) {
-            //   if (r.SUCURSAL == t.SUCURSAL) {
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.AGENDADOS, ejeXagendado, ejeYcampo);
 
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.ASISTIDOS, ejeXasistido, ejeYcampo);
-
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.PROFESIONAL, ejeXprofesional, ejeYcampo);
-            //   }
-            // }
 
             // Se dibuja los datos acumulado mes actual
 
@@ -5140,28 +3998,7 @@ module.exports = (app) => {
 
           // Zona San Pedro
           if (r.SUCURSAL == "SANTANI") {
-            // Busca los turnos por sucursal y los dibuja en el canva
-            // for (let t of losTurnosCantidades) {
-            //   if (r.SUCURSAL == t.SUCURSAL) {
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.AGENDADOS, ejeXagendado, ejeYsantani);
 
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.ASISTIDOS, ejeXasistido, ejeYsantani);
-
-            //     context.font = "bold 15px Arial";
-            //     context.fillStyle = "#34495E";
-            //     context.textAlign = "left";
-            //     context.shadowColor = "red";
-            //     context.fillText(t.PROFESIONAL, ejeXprofesional, ejeYsantani);
-            //   }
-            // }
 
             // Se dibuja los datos del acumulado mes actual
 
@@ -5661,43 +4498,6 @@ module.exports = (app) => {
           ejeYtotalesAsu
         );
 
-        // AGENDADOS
-        /*context.font = "bold 15px Arial";
-        context.fillStyle = "#34495E";
-        context.textAlign = "left";
-        context.fillText(
-          sumTotalesAsuncionAG.toLocaleString("es", {
-            minimumFractionDigits: 0,
-            maximumFractionDigits: 0,
-          }),
-          ejeXagendado,
-          ejeYtotalesAsu
-        );
-
-        context.font = "bold 15px Arial";
-        context.fillStyle = "#34495E";
-        context.textAlign = "left";
-        context.fillText(
-          sumTotalesAsuncionAS.toLocaleString("es", {
-            minimumFractionDigits: 0,
-            maximumFractionDigits: 0,
-          }),
-          ejeXasistido,
-          ejeYtotalesAsu
-        );
-
-        context.font = "bold 15px Arial";
-        context.fillStyle = "#34495E";
-        context.textAlign = "left";
-        context.fillText(
-          sumTotalesAsuncionPR.toLocaleString("es", {
-            minimumFractionDigits: 0,
-            maximumFractionDigits: 0,
-          }),
-          ejeXprofesional,
-          ejeYtotalesAsu
-        ); */
-
         // SUM - Monto Total ZONA GRAN ASUNCION - MES ANTERIOR
         context.font = "bold 15px Arial";
         context.fillStyle = "#34495E";
@@ -5838,43 +4638,6 @@ module.exports = (app) => {
           ejeXdiferencia_,
           ejeYtotalesGranAsu
         );
-
-        // AGENDADOS
-        /*context.font = "bold 15px Arial";
-        context.fillStyle = "#34495E";
-        context.textAlign = "left";
-        context.fillText(
-          sumTotalesGAsuncionAG.toLocaleString("es", {
-            minimumFractionDigits: 0,
-            maximumFractionDigits: 0,
-          }),
-          ejeXagendado,
-          ejeYtotalesGranAsu
-        );
-
-        context.font = "bold 15px Arial";
-        context.fillStyle = "#34495E";
-        context.textAlign = "left";
-        context.fillText(
-          sumTotalesGAsuncionAS.toLocaleString("es", {
-            minimumFractionDigits: 0,
-            maximumFractionDigits: 0,
-          }),
-          ejeXasistido,
-          ejeYtotalesGranAsu
-        );
-
-        context.font = "bold 15px Arial";
-        context.fillStyle = "#34495E";
-        context.textAlign = "left";
-        context.fillText(
-          sumTotalesGAsuncionPR.toLocaleString("es", {
-            minimumFractionDigits: 0,
-            maximumFractionDigits: 0,
-          }),
-          ejeXprofesional,
-          ejeYtotalesGranAsu
-        );*/
 
         // SUM - Monto Total ZONA RUTA 2 - MES ANTERIOR
         context.font = "bold 15px Arial";
@@ -6017,43 +4780,6 @@ module.exports = (app) => {
           ejeYtotalesRuta2
         );
 
-        // AGENDADOS
-        /*context.font = "bold 15px Arial";
-        context.fillStyle = "#34495E";
-        context.textAlign = "left";
-        context.fillText(
-          sumTotalesR2AG.toLocaleString("es", {
-            minimumFractionDigits: 0,
-            maximumFractionDigits: 0,
-          }),
-          ejeXagendado,
-          ejeYtotalesRuta2
-        );
-
-        context.font = "bold 15px Arial";
-        context.fillStyle = "#34495E";
-        context.textAlign = "left";
-        context.fillText(
-          sumTotalesR2AS.toLocaleString("es", {
-            minimumFractionDigits: 0,
-            maximumFractionDigits: 0,
-          }),
-          ejeXasistido,
-          ejeYtotalesRuta2
-        );
-
-        context.font = "bold 15px Arial";
-        context.fillStyle = "#34495E";
-        context.textAlign = "left";
-        context.fillText(
-          sumTotalesR2PR.toLocaleString("es", {
-            minimumFractionDigits: 0,
-            maximumFractionDigits: 0,
-          }),
-          ejeXprofesional,
-          ejeYtotalesRuta2
-        );*/
-
         // SUM - Monto Total ZONA ITAPUA - MES ANTERIOR
         context.font = "bold 15px Arial";
         context.fillStyle = "#34495E";
@@ -6195,43 +4921,6 @@ module.exports = (app) => {
           ejeYtotalesItapua
         );
 
-        // AGENDADOS
-        /*context.font = "bold 15px Arial";
-        context.fillStyle = "#34495E";
-        context.textAlign = "left";
-        context.fillText(
-          sumTotalesItaAG.toLocaleString("es", {
-            minimumFractionDigits: 0,
-            maximumFractionDigits: 0,
-          }),
-          ejeXagendado,
-          ejeYtotalesItapua
-        );
-
-        context.font = "bold 15px Arial";
-        context.fillStyle = "#34495E";
-        context.textAlign = "left";
-        context.fillText(
-          sumTotalesItaAS.toLocaleString("es", {
-            minimumFractionDigits: 0,
-            maximumFractionDigits: 0,
-          }),
-          ejeXasistido,
-          ejeYtotalesItapua
-        );
-
-        context.font = "bold 15px Arial";
-        context.fillStyle = "#34495E";
-        context.textAlign = "left";
-        context.fillText(
-          sumTotalesItaPR.toLocaleString("es", {
-            minimumFractionDigits: 0,
-            maximumFractionDigits: 0,
-          }),
-          ejeXprofesional,
-          ejeYtotalesItapua
-        );*/
-
         // SUM - Monto Total ZONA ALTO PARANA - MES ANTERIOR
         context.font = "bold 15px Arial";
         context.fillStyle = "#34495E";
@@ -6372,43 +5061,6 @@ module.exports = (app) => {
           ejeXdiferencia_,
           ejeYtotalesAltoP
         );
-
-        // AGENDADOS
-        /*context.font = "bold 15px Arial";
-        context.fillStyle = "#34495E";
-        context.textAlign = "left";
-        context.fillText(
-          sumTotalesApAG.toLocaleString("es", {
-            minimumFractionDigits: 0,
-            maximumFractionDigits: 0,
-          }),
-          ejeXagendado,
-          ejeYtotalesAltoP
-        );
-
-        context.font = "bold 15px Arial";
-        context.fillStyle = "#34495E";
-        context.textAlign = "left";
-        context.fillText(
-          sumTotalesApAS.toLocaleString("es", {
-            minimumFractionDigits: 0,
-            maximumFractionDigits: 0,
-          }),
-          ejeXasistido,
-          ejeYtotalesAltoP
-        );
-
-        context.font = "bold 15px Arial";
-        context.fillStyle = "#34495E";
-        context.textAlign = "left";
-        context.fillText(
-          sumTotalesApPR.toLocaleString("es", {
-            minimumFractionDigits: 0,
-            maximumFractionDigits: 0,
-          }),
-          ejeXprofesional,
-          ejeYtotalesAltoP
-        );*/
 
         // SUM - Monto Total ZONA SAN PEDRO - MES ANTERIOR
         context.font = "bold 15px Arial";
