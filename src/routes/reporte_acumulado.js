@@ -26,6 +26,10 @@ odontos.blobAsText = false;
 const width = 1668;
 const height = 1152;
 
+// Fuente del texto
+const fuenteTexto = '20px Arial';
+const fuenteTextoBold = 'bold 20px Arial';
+
 // Instantiate the canvas object
 const canvas = createCanvas(width, height);
 const context = canvas.getContext("2d");
@@ -1593,81 +1597,72 @@ module.exports = (app) => {
         let ejeYFechaAnt = 75;
 
         // Eje X de cada celda
-        //let ejeXfecha = 125;
         let ejeXsucu = 30;
-        let ejeXcuota = 250;
-        let ejeXtrata = 360;
-        let ejeXcobra = 460;
-        let ejeXventa = 550;
-        let ejeXmonto = 650;
+        let ejeXcuota = 340;
+        let ejeXtrata = 470;
+        let ejeXcobra = 600;
+        let ejeXventa = 720;
+        let ejeXmonto = 840;
 
-        //let ejeXsucu_ = 850;
-        let ejeXcuota_ = 740;
-        let ejeXtrata_ = 840;
-        let ejeXcobra_ = 940;
-        let ejeXventa_ = 1020;
-        let ejeXmonto_ = 1120;
-        let ejeXdiferencia_ = 1220;
+        let ejeXcuota_ = 980;
+        let ejeXtrata_ = 1100;
+        let ejeXcobra_ = 1220;
+        let ejeXventa_ = 1340;
+        let ejeXmonto_ = 1460;
+        let ejeXdiferencia_ = 1590;
 
-        /** */
 
         // Eje Y de cada fila
-        let ejeYadm = 150;
-        let ejeYml = 170;
-        let ejeYmlurg = 190;
-        let ejeYaq = 210;
-        let ejeYvm = 230;
-        let ejeYar = 250;
-        let ejeYlu = 270;
-        let ejeYpa = 290;
+        let ejeYadm = 194;
+        let ejeYml = 218;
+        let ejeYmlurg = 238;
+        let ejeYaq = 258;
+        let ejeYvm = 278;
+        let ejeYar = 298;
+        let ejeYlu = 318;
+        let ejeYpa = 338;
+        let ejeYtotalesAsu = 358;
 
-        let ejeYtotalesAsu = 310;
+        let ejeYlam = 388;
+        let ejeYcat = 408;
+        let ejeYluq = 428;
+        let ejeYlar = 448;
+        let ejeYnem = 468;
+        let ejeYita = 488;
+        let ejeY1811 = 508;
+        let ejeYkm14 = 528;
+        let ejeYcap = 548;
+        let ejeYtotalesGranAsu = 568;
 
-        let ejeYlam = 330;
-        let ejeYcat = 350;
-        let ejeYluq = 370;
-        let ejeYlar = 390;
-        let ejeYnem = 410;
-        let ejeYita = 430;
-        let ejeY1811 = 450;
-        let ejeYkm14 = 470;
-        let ejeYcap = 490;
+        let ejeYcaac = 598;
+        let ejeYcoro = 618;
+        let ejeYtotalesRuta2 = 638;
 
-        let ejeYtotalesGranAsu = 510;
+        let ejeYhohe = 668;
+        let ejeYencar = 688;
+        let ejeYmaria = 708;
+        let ejeYayo = 728;
+        let ejeYtotalesItapua = 748;
 
-        let ejeYcaac = 530;
-        let ejeYcoro = 550;
+        let ejeYkm7 = 778;
+        let ejeYsanta = 798;
+        let ejeYcampo = 818;
+        let ejeYtotalesAltoP = 838;
 
-        let ejeYtotalesRuta2 = 570;
+        let ejeYsantani = 868;
+        let ejeYtotalesSanPe = 888;
 
-        let ejeYhohe = 590;
-        let ejeYencar = 610;
-        let ejeYmaria = 630;
-        let ejeYayo = 650;
-
-        let ejeYtotalesItapua = 670;
-
-        let ejeYkm7 = 690;
-        let ejeYsanta = 710;
-        let ejeYcampo = 730;
-
-        let ejeYtotalesAltoP = 750;
-
-        let ejeYsantani = 770;
-
-        let ejeYtotalesSanPe = 790;
-
-        // Eje Y Total General
-        let ejeYTotalGeneral = 820;
+        // Eje Y Total Sucursales
+        let ejeYTotalGeneral = 928;
 
         // Eje Y Ingresos
-        let ejeYPagosElectronicos = 850;
-        let ejeYAsoDebito = 870;
-        let ejeYLicitacion = 890;
-        let ejeYTransGirosPalma = 910;
-        let ejeYTotalADM = 940;
+        let ejeYPagosElectronicos = 968;
+        let ejeYAsoDebito = 988;
+        let ejeYLicitacion = 1008;
+        let ejeYTransGirosPalma = 1028;
+        let ejeYTotalADM = 1048;
 
-        let ejeYtotalGeneralDoc = 990;
+        let ejeYtotalGeneralDoc = 1088;
 
         // Dibujar el cuadro de mes anterior
         for (let r of losAcumuladosMesAntForma) {
@@ -1676,32 +1671,32 @@ module.exports = (app) => {
             
 
             // Se dibuja los datos del cierre
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "left";
             context.fillText(r.SUCURSAL, ejeXsucu, ejeYadm);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.CUOTA_SOCIAL, ejeXcuota, ejeYadm);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.TRATAMIENTO, ejeXtrata, ejeYadm);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.COBRADOR, ejeXcobra, ejeYadm);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.VENTA_NUEVA, ejeXventa, ejeYadm);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.MONTO_TOTAL, ejeXmonto, ejeYadm);
@@ -1710,32 +1705,32 @@ module.exports = (app) => {
           if (r.SUCURSAL == "MARISCAL LOPEZ") {
            
             // Se dibuja los datos del acumulado mes anterior
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "left";
             context.fillText(r.SUCURSAL, ejeXsucu, ejeYml);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.CUOTA_SOCIAL, ejeXcuota, ejeYml);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.TRATAMIENTO, ejeXtrata, ejeYml);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.COBRADOR, ejeXcobra, ejeYml);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.VENTA_NUEVA, ejeXventa, ejeYml);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.MONTO_TOTAL, ejeXmonto, ejeYml);
@@ -1750,27 +1745,27 @@ module.exports = (app) => {
             context.textAlign = "left";
             context.fillText(r.SUCURSAL, ejeXsucu, ejeYmlurg);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.CUOTA_SOCIAL, ejeXcuota, ejeYmlurg);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.TRATAMIENTO, ejeXtrata, ejeYmlurg);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.COBRADOR, ejeXcobra, ejeYmlurg);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.VENTA_NUEVA, ejeXventa, ejeYmlurg);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.MONTO_TOTAL, ejeXmonto, ejeYmlurg);
@@ -1780,32 +1775,32 @@ module.exports = (app) => {
             
 
             // Se dibuja los datos del acumulado mes anterior
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "left";
             context.fillText(r.SUCURSAL, ejeXsucu, ejeYaq);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.CUOTA_SOCIAL, ejeXcuota, ejeYaq);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.TRATAMIENTO, ejeXtrata, ejeYaq);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.COBRADOR, ejeXcobra, ejeYaq);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.VENTA_NUEVA, ejeXventa, ejeYaq);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.MONTO_TOTAL, ejeXmonto, ejeYaq);
@@ -1815,32 +1810,32 @@ module.exports = (app) => {
             
 
             // Se dibuja los datos del acumulado mes anterior
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "left";
             context.fillText(r.SUCURSAL, ejeXsucu, ejeYvm);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.CUOTA_SOCIAL, ejeXcuota, ejeYvm);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.TRATAMIENTO, ejeXtrata, ejeYvm);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.COBRADOR, ejeXcobra, ejeYvm);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.VENTA_NUEVA, ejeXventa, ejeYvm);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.MONTO_TOTAL, ejeXmonto, ejeYvm);
@@ -1849,32 +1844,32 @@ module.exports = (app) => {
           if (r.SUCURSAL == "ARTIGAS") {
 
             // Se dibuja los datos del acumulado mes anterior
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "left";
             context.fillText(r.SUCURSAL, ejeXsucu, ejeYar);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.CUOTA_SOCIAL, ejeXcuota, ejeYar);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.TRATAMIENTO, ejeXtrata, ejeYar);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.COBRADOR, ejeXcobra, ejeYar);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.VENTA_NUEVA, ejeXventa, ejeYar);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.MONTO_TOTAL, ejeXmonto, ejeYar);
@@ -1883,32 +1878,32 @@ module.exports = (app) => {
           if (r.SUCURSAL == "LUISITO") {
 
             // Se dibuja los datos del acumulado mes anterior
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "left";
             context.fillText(r.SUCURSAL, ejeXsucu, ejeYlu);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.CUOTA_SOCIAL, ejeXcuota, ejeYlu);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.TRATAMIENTO, ejeXtrata, ejeYlu);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.COBRADOR, ejeXcobra, ejeYlu);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.VENTA_NUEVA, ejeXventa, ejeYlu);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.MONTO_TOTAL, ejeXmonto, ejeYlu);
@@ -1917,32 +1912,32 @@ module.exports = (app) => {
           if (r.SUCURSAL == "PALMA") {
 
             // Se dibuja los datos del acumulado mes anterior
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "left";
             context.fillText(r.SUCURSAL, ejeXsucu, ejeYpa);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.CUOTA_SOCIAL, ejeXcuota, ejeYpa);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.TRATAMIENTO, ejeXtrata, ejeYpa);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.COBRADOR, ejeXcobra, ejeYpa);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.VENTA_NUEVA, ejeXventa, ejeYpa);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.MONTO_TOTAL, ejeXmonto, ejeYpa);
@@ -1952,32 +1947,32 @@ module.exports = (app) => {
           if (r.SUCURSAL == "LAMBARE") {
 
             // Se dibuja los datos del acumulado mes anterior
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "left";
             context.fillText(r.SUCURSAL, ejeXsucu, ejeYlam);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.CUOTA_SOCIAL, ejeXcuota, ejeYlam);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.TRATAMIENTO, ejeXtrata, ejeYlam);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.COBRADOR, ejeXcobra, ejeYlam);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.VENTA_NUEVA, ejeXventa, ejeYlam);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.MONTO_TOTAL, ejeXmonto, ejeYlam);
@@ -1986,32 +1981,32 @@ module.exports = (app) => {
           if (r.SUCURSAL == "CATEDRAL") {
 
             // Se dibuja los datos del acumulado mes anterior
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "left";
             context.fillText(r.SUCURSAL, ejeXsucu, ejeYcat);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.CUOTA_SOCIAL, ejeXcuota, ejeYcat);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.TRATAMIENTO, ejeXtrata, ejeYcat);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.COBRADOR, ejeXcobra, ejeYcat);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.VENTA_NUEVA, ejeXventa, ejeYcat);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.MONTO_TOTAL, ejeXmonto, ejeYcat);
@@ -2020,32 +2015,32 @@ module.exports = (app) => {
           if (r.SUCURSAL == "LUQUE") {
 
             // Se dibuja los datos del acumulado mes anterior
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "left";
             context.fillText(r.SUCURSAL, ejeXsucu, ejeYluq);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.CUOTA_SOCIAL, ejeXcuota, ejeYluq);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.TRATAMIENTO, ejeXtrata, ejeYluq);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.COBRADOR, ejeXcobra, ejeYluq);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.VENTA_NUEVA, ejeXventa, ejeYluq);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.MONTO_TOTAL, ejeXmonto, ejeYluq);
@@ -2054,32 +2049,32 @@ module.exports = (app) => {
           if (r.SUCURSAL == "LA RURAL") {
 
             // Se dibuja los datos del acumulado mes anterior
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "left";
             context.fillText(r.SUCURSAL, ejeXsucu, ejeYlar);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.CUOTA_SOCIAL, ejeXcuota, ejeYlar);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.TRATAMIENTO, ejeXtrata, ejeYlar);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.COBRADOR, ejeXcobra, ejeYlar);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.VENTA_NUEVA, ejeXventa, ejeYlar);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.MONTO_TOTAL, ejeXmonto, ejeYlar);
@@ -2088,32 +2083,32 @@ module.exports = (app) => {
           if (r.SUCURSAL == "ÑEMBY") {
 
             // Se dibuja los datos del acumulado mes anterior
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "left";
             context.fillText(r.SUCURSAL, ejeXsucu, ejeYnem);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.CUOTA_SOCIAL, ejeXcuota, ejeYnem);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.TRATAMIENTO, ejeXtrata, ejeYnem);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.COBRADOR, ejeXcobra, ejeYnem);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.VENTA_NUEVA, ejeXventa, ejeYnem);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.MONTO_TOTAL, ejeXmonto, ejeYnem);
@@ -2122,32 +2117,32 @@ module.exports = (app) => {
           if (r.SUCURSAL == "ITAUGUA") {
 
             // Se dibuja los datos del acumulado mes anterior
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "left";
             context.fillText(r.SUCURSAL, ejeXsucu, ejeYita);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.CUOTA_SOCIAL, ejeXcuota, ejeYita);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.TRATAMIENTO, ejeXtrata, ejeYita);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.COBRADOR, ejeXcobra, ejeYita);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.VENTA_NUEVA, ejeXventa, ejeYita);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.MONTO_TOTAL, ejeXmonto, ejeYita);
@@ -2156,32 +2151,32 @@ module.exports = (app) => {
           if (r.SUCURSAL == "1811 SUCURSAL") {
 
             // Se dibuja los datos del acumulado mes anterior
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "left";
             context.fillText(r.SUCURSAL, ejeXsucu, ejeY1811);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.CUOTA_SOCIAL, ejeXcuota, ejeY1811);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.TRATAMIENTO, ejeXtrata, ejeY1811);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.COBRADOR, ejeXcobra, ejeY1811);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.VENTA_NUEVA, ejeXventa, ejeY1811);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.MONTO_TOTAL, ejeXmonto, ejeY1811);
@@ -2190,32 +2185,32 @@ module.exports = (app) => {
           if (r.SUCURSAL == "KM 14 Y MEDIO") {
 
             // Se dibuja los datos del acumulado mes anterior
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "left";
             context.fillText(r.SUCURSAL, ejeXsucu, ejeYkm14);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.CUOTA_SOCIAL, ejeXcuota, ejeYkm14);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.TRATAMIENTO, ejeXtrata, ejeYkm14);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.COBRADOR, ejeXcobra, ejeYkm14);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.VENTA_NUEVA, ejeXventa, ejeYkm14);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.MONTO_TOTAL, ejeXmonto, ejeYkm14);
@@ -2224,32 +2219,32 @@ module.exports = (app) => {
           if (r.SUCURSAL == "CAPIATA") {
 
             // Se dibuja los datos del acumulado mes anterior
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "left";
             context.fillText(r.SUCURSAL, ejeXsucu, ejeYcap);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.CUOTA_SOCIAL, ejeXcuota, ejeYcap);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.TRATAMIENTO, ejeXtrata, ejeYcap);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.COBRADOR, ejeXcobra, ejeYcap);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.VENTA_NUEVA, ejeXventa, ejeYcap);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.MONTO_TOTAL, ejeXmonto, ejeYcap);
@@ -2259,32 +2254,32 @@ module.exports = (app) => {
           if (r.SUCURSAL == "CAACUPE") {
 
             // Se dibuja los datos del acumulado mes anterior
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "left";
             context.fillText(r.SUCURSAL, ejeXsucu, ejeYcaac);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.CUOTA_SOCIAL, ejeXcuota, ejeYcaac);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.TRATAMIENTO, ejeXtrata, ejeYcaac);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.COBRADOR, ejeXcobra, ejeYcaac);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.VENTA_NUEVA, ejeXventa, ejeYcaac);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.MONTO_TOTAL, ejeXmonto, ejeYcaac);
@@ -2293,32 +2288,32 @@ module.exports = (app) => {
           if (r.SUCURSAL == "CORONEL OVIEDO") {
 
             // Se dibuja los datos del acumulado mes anterior
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "left";
             context.fillText(r.SUCURSAL, ejeXsucu, ejeYcoro);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.CUOTA_SOCIAL, ejeXcuota, ejeYcoro);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.TRATAMIENTO, ejeXtrata, ejeYcoro);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.COBRADOR, ejeXcobra, ejeYcoro);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.VENTA_NUEVA, ejeXventa, ejeYcoro);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.MONTO_TOTAL, ejeXmonto, ejeYcoro);
@@ -2328,32 +2323,32 @@ module.exports = (app) => {
           if (r.SUCURSAL == "HOHENAU") {
 
             // Se dibuja los datos del acumulado mes anterior
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "left";
             context.fillText(r.SUCURSAL, ejeXsucu, ejeYhohe);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.CUOTA_SOCIAL, ejeXcuota, ejeYhohe);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.TRATAMIENTO, ejeXtrata, ejeYhohe);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.COBRADOR, ejeXcobra, ejeYhohe);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.VENTA_NUEVA, ejeXventa, ejeYhohe);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.MONTO_TOTAL, ejeXmonto, ejeYhohe);
@@ -2362,32 +2357,32 @@ module.exports = (app) => {
           if (r.SUCURSAL == "ENCARNACION CENTRO") {
 
             // Se dibuja los datos del acumulado mes anterior
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "left";
             context.fillText(r.SUCURSAL, ejeXsucu, ejeYencar);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.CUOTA_SOCIAL, ejeXcuota, ejeYencar);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.TRATAMIENTO, ejeXtrata, ejeYencar);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.COBRADOR, ejeXcobra, ejeYencar);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.VENTA_NUEVA, ejeXventa, ejeYencar);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.MONTO_TOTAL, ejeXmonto, ejeYencar);
@@ -2396,32 +2391,32 @@ module.exports = (app) => {
           if (r.SUCURSAL == "MARIA AUXILIADORA") {
 
             // Se dibuja los datos del acumulado mes anterior
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "left";
             context.fillText(r.SUCURSAL, ejeXsucu, ejeYmaria);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.CUOTA_SOCIAL, ejeXcuota, ejeYmaria);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.TRATAMIENTO, ejeXtrata, ejeYmaria);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.COBRADOR, ejeXcobra, ejeYmaria);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.VENTA_NUEVA, ejeXventa, ejeYmaria);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.MONTO_TOTAL, ejeXmonto, ejeYmaria);
@@ -2430,32 +2425,32 @@ module.exports = (app) => {
           if (r.SUCURSAL == "AYOLAS") {
 
             // Se dibuja los datos del acumulado mes anterior
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "left";
             context.fillText(r.SUCURSAL, ejeXsucu, ejeYayo);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.CUOTA_SOCIAL, ejeXcuota, ejeYayo);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.TRATAMIENTO, ejeXtrata, ejeYayo);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.COBRADOR, ejeXcobra, ejeYayo);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.VENTA_NUEVA, ejeXventa, ejeYayo);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.MONTO_TOTAL, ejeXmonto, ejeYayo);
@@ -2465,32 +2460,32 @@ module.exports = (app) => {
           if (r.SUCURSAL == "KM 7") {
 
             // Se dibuja los datos del acumulado mes anterior
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "left";
             context.fillText(r.SUCURSAL, ejeXsucu, ejeYkm7);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.CUOTA_SOCIAL, ejeXcuota, ejeYkm7);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.TRATAMIENTO, ejeXtrata, ejeYkm7);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.COBRADOR, ejeXcobra, ejeYkm7);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.VENTA_NUEVA, ejeXventa, ejeYkm7);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.MONTO_TOTAL, ejeXmonto, ejeYkm7);
@@ -2500,32 +2495,32 @@ module.exports = (app) => {
            
 
             // Se dibuja los datos acumulado mes anterior
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "left";
             context.fillText(r.SUCURSAL, ejeXsucu, ejeYsanta);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.CUOTA_SOCIAL, ejeXcuota, ejeYsanta);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.TRATAMIENTO, ejeXtrata, ejeYsanta);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.COBRADOR, ejeXcobra, ejeYsanta);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.VENTA_NUEVA, ejeXventa, ejeYsanta);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.MONTO_TOTAL, ejeXmonto, ejeYsanta);
@@ -2535,32 +2530,32 @@ module.exports = (app) => {
             
 
             // Se dibuja los datos del acumulado mes anterior
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "left";
             context.fillText(r.SUCURSAL, ejeXsucu, ejeYcampo);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.CUOTA_SOCIAL, ejeXcuota, ejeYcampo);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.TRATAMIENTO, ejeXtrata, ejeYcampo);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.COBRADOR, ejeXcobra, ejeYcampo);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.VENTA_NUEVA, ejeXventa, ejeYcampo);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.MONTO_TOTAL, ejeXmonto, ejeYcampo);
@@ -2571,32 +2566,32 @@ module.exports = (app) => {
             
 
             // Se dibuja los datos del acumulado mes anterior
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "left";
             context.fillText(r.SUCURSAL, ejeXsucu, ejeYsantani);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.CUOTA_SOCIAL, ejeXcuota, ejeYsantani);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.TRATAMIENTO, ejeXtrata, ejeYsantani);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.COBRADOR, ejeXcobra, ejeYsantani);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.VENTA_NUEVA, ejeXventa, ejeYsantani);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.MONTO_TOTAL, ejeXmonto, ejeYsantani);
@@ -2606,12 +2601,12 @@ module.exports = (app) => {
         // Recorre los ingresos de mes anterior
         for (let r of losIngresosMesAnt) {
           if (r.TIPO == "PAGOS ELECTRONICOS") {
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "left";
             context.fillText(r.TIPO, ejeXsucu, ejeYPagosElectronicos);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(
@@ -2623,7 +2618,7 @@ module.exports = (app) => {
               ejeYPagosElectronicos
             );
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(
@@ -2635,7 +2630,7 @@ module.exports = (app) => {
               ejeYPagosElectronicos
             );
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(
@@ -2647,7 +2642,7 @@ module.exports = (app) => {
               ejeYPagosElectronicos
             );
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(
@@ -2659,7 +2654,7 @@ module.exports = (app) => {
               ejeYPagosElectronicos
             );
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(
@@ -2673,12 +2668,12 @@ module.exports = (app) => {
           }
 
           if (r.TIPO == "ASO. DEB.") {
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "left";
             context.fillText(r.TIPO, ejeXsucu, ejeYAsoDebito);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(
@@ -2690,7 +2685,7 @@ module.exports = (app) => {
               ejeYAsoDebito
             );
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(
@@ -2702,7 +2697,7 @@ module.exports = (app) => {
               ejeYAsoDebito
             );
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(
@@ -2714,7 +2709,7 @@ module.exports = (app) => {
               ejeYAsoDebito
             );
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(
@@ -2726,7 +2721,7 @@ module.exports = (app) => {
               ejeYAsoDebito
             );
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(
@@ -2740,12 +2735,12 @@ module.exports = (app) => {
           }
 
           if (r.TIPO == "LICITACIONES") {
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "left";
             context.fillText(r.TIPO, ejeXsucu, ejeYLicitacion);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(
@@ -2757,7 +2752,7 @@ module.exports = (app) => {
               ejeYLicitacion
             );
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(
@@ -2769,7 +2764,7 @@ module.exports = (app) => {
               ejeYLicitacion
             );
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(
@@ -2781,7 +2776,7 @@ module.exports = (app) => {
               ejeYLicitacion
             );
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(
@@ -2793,7 +2788,7 @@ module.exports = (app) => {
               ejeYLicitacion
             );
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(
@@ -2807,12 +2802,12 @@ module.exports = (app) => {
           }
 
           if (r.TIPO == "TRANSF. GIROS PALMA") {
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "left";
             context.fillText(r.TIPO, ejeXsucu, ejeYTransGirosPalma);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(
@@ -2824,7 +2819,7 @@ module.exports = (app) => {
               ejeYTransGirosPalma
             );
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(
@@ -2836,7 +2831,7 @@ module.exports = (app) => {
               ejeYTransGirosPalma
             );
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(
@@ -2848,7 +2843,7 @@ module.exports = (app) => {
               ejeYTransGirosPalma
             );
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(
@@ -2860,7 +2855,7 @@ module.exports = (app) => {
               ejeYTransGirosPalma
             );
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(
@@ -2880,32 +2875,32 @@ module.exports = (app) => {
           if (r.SUCURSAL == "ADMINISTRACION") {
             
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.CUOTA_SOCIAL, ejeXcuota_, ejeYadm);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.TRATAMIENTO, ejeXtrata_, ejeYadm);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.COBRADOR, ejeXcobra_, ejeYadm);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.VENTA_NUEVA, ejeXventa_, ejeYadm);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYadm);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(
@@ -2924,32 +2919,32 @@ module.exports = (app) => {
             // Se dibuja los datos del acumulado mes actual
             
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.CUOTA_SOCIAL, ejeXcuota_, ejeYml);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.TRATAMIENTO, ejeXtrata_, ejeYml);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.COBRADOR, ejeXcobra_, ejeYml);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.VENTA_NUEVA, ejeXventa_, ejeYml);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYml);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(
@@ -2967,32 +2962,32 @@ module.exports = (app) => {
 
             // Se dibuja los datos del acumulado mes actual
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.CUOTA_SOCIAL, ejeXcuota_, ejeYmlurg);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.TRATAMIENTO, ejeXtrata_, ejeYmlurg);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.COBRADOR, ejeXcobra_, ejeYmlurg);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.VENTA_NUEVA, ejeXventa_, ejeYmlurg);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYmlurg);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(
@@ -3010,32 +3005,32 @@ module.exports = (app) => {
 
             // Se dibuja los datos del acumulado mes actual
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.CUOTA_SOCIAL, ejeXcuota_, ejeYaq);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.TRATAMIENTO, ejeXtrata_, ejeYaq);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.COBRADOR, ejeXcobra_, ejeYaq);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.VENTA_NUEVA, ejeXventa_, ejeYaq);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYaq);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(
@@ -3053,32 +3048,32 @@ module.exports = (app) => {
 
             // Se dibuja los datos del acumulado mes actual
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.CUOTA_SOCIAL, ejeXcuota_, ejeYvm);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.TRATAMIENTO, ejeXtrata_, ejeYvm);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.COBRADOR, ejeXcobra_, ejeYvm);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.VENTA_NUEVA, ejeXventa_, ejeYvm);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYvm);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(
@@ -3096,32 +3091,32 @@ module.exports = (app) => {
 
             // Se dibuja los datos del acumulado mes actual
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.CUOTA_SOCIAL, ejeXcuota_, ejeYar);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.TRATAMIENTO, ejeXtrata_, ejeYar);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.COBRADOR, ejeXcobra_, ejeYar);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.VENTA_NUEVA, ejeXventa_, ejeYar);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYar);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(
@@ -3139,32 +3134,32 @@ module.exports = (app) => {
 
             // Se dibuja los datos del acumulado mes actual
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.CUOTA_SOCIAL, ejeXcuota_, ejeYlu);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.TRATAMIENTO, ejeXtrata_, ejeYlu);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.COBRADOR, ejeXcobra_, ejeYlu);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.VENTA_NUEVA, ejeXventa_, ejeYlu);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYlu);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(
@@ -3182,32 +3177,32 @@ module.exports = (app) => {
 
             // Se dibuja los datos del acumulado mes actual
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.CUOTA_SOCIAL, ejeXcuota_, ejeYpa);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.TRATAMIENTO, ejeXtrata_, ejeYpa);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.COBRADOR, ejeXcobra_, ejeYpa);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.VENTA_NUEVA, ejeXventa_, ejeYpa);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYpa);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(
@@ -3226,32 +3221,32 @@ module.exports = (app) => {
 
             // Se dibuja los datos del acumulado mes actual
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.CUOTA_SOCIAL, ejeXcuota_, ejeYlam);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.TRATAMIENTO, ejeXtrata_, ejeYlam);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.COBRADOR, ejeXcobra_, ejeYlam);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.VENTA_NUEVA, ejeXventa_, ejeYlam);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYlam);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(
@@ -3268,32 +3263,32 @@ module.exports = (app) => {
 
 
             // Se dibuja los datos del acumulado mes actual
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.CUOTA_SOCIAL, ejeXcuota_, ejeYcat);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.TRATAMIENTO, ejeXtrata_, ejeYcat);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.COBRADOR, ejeXcobra_, ejeYcat);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.VENTA_NUEVA, ejeXventa_, ejeYcat);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYcat);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(
@@ -3311,32 +3306,32 @@ module.exports = (app) => {
 
             // Se dibuja los datos del acumulado mes actual
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.CUOTA_SOCIAL, ejeXcuota_, ejeYluq);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.TRATAMIENTO, ejeXtrata_, ejeYluq);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.COBRADOR, ejeXcobra_, ejeYluq);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.VENTA_NUEVA, ejeXventa_, ejeYluq);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYluq);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(
@@ -3354,32 +3349,32 @@ module.exports = (app) => {
 
             // Se dibuja los datos del acumulado mes actual
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.CUOTA_SOCIAL, ejeXcuota_, ejeYlar);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.TRATAMIENTO, ejeXtrata_, ejeYlar);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.COBRADOR, ejeXcobra_, ejeYlar);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.VENTA_NUEVA, ejeXventa_, ejeYlar);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYlar);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(
@@ -3397,32 +3392,32 @@ module.exports = (app) => {
 
             // Se dibuja los datos del acumulado mes actual
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.CUOTA_SOCIAL, ejeXcuota_, ejeYnem);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.TRATAMIENTO, ejeXtrata_, ejeYnem);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.COBRADOR, ejeXcobra_, ejeYnem);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.VENTA_NUEVA, ejeXventa_, ejeYnem);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYnem);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(
@@ -3440,32 +3435,32 @@ module.exports = (app) => {
 
             // Se dibuja los datos del acumulado mes actual
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.CUOTA_SOCIAL, ejeXcuota_, ejeYita);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.TRATAMIENTO, ejeXtrata_, ejeYita);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.COBRADOR, ejeXcobra_, ejeYita);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.VENTA_NUEVA, ejeXventa_, ejeYita);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYita);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(
@@ -3483,32 +3478,32 @@ module.exports = (app) => {
 
             // Se dibuja los datos del acumulado mes actual
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.CUOTA_SOCIAL, ejeXcuota_, ejeY1811);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.TRATAMIENTO, ejeXtrata_, ejeY1811);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.COBRADOR, ejeXcobra_, ejeY1811);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.VENTA_NUEVA, ejeXventa_, ejeY1811);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeY1811);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(
@@ -3526,32 +3521,32 @@ module.exports = (app) => {
 
             // Se dibuja los datos del acumulado mes actual
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.CUOTA_SOCIAL, ejeXcuota_, ejeYkm14);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.TRATAMIENTO, ejeXtrata_, ejeYkm14);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.COBRADOR, ejeXcobra_, ejeYkm14);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.VENTA_NUEVA, ejeXventa_, ejeYkm14);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYkm14);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(
@@ -3569,32 +3564,32 @@ module.exports = (app) => {
 
             // Se dibuja los datos del acumulado mes actual
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.CUOTA_SOCIAL, ejeXcuota_, ejeYcap);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.TRATAMIENTO, ejeXtrata_, ejeYcap);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.COBRADOR, ejeXcobra_, ejeYcap);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.VENTA_NUEVA, ejeXventa_, ejeYcap);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYcap);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(
@@ -3613,32 +3608,32 @@ module.exports = (app) => {
 
             // Se dibuja los datos del acumulado mes actual
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.CUOTA_SOCIAL, ejeXcuota_, ejeYcaac);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.TRATAMIENTO, ejeXtrata_, ejeYcaac);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.COBRADOR, ejeXcobra_, ejeYcaac);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.VENTA_NUEVA, ejeXventa_, ejeYcaac);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYcaac);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(
@@ -3656,32 +3651,32 @@ module.exports = (app) => {
 
             // Se dibuja los datos del acumulado mes actual
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.CUOTA_SOCIAL, ejeXcuota_, ejeYcoro);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.TRATAMIENTO, ejeXtrata_, ejeYcoro);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.COBRADOR, ejeXcobra_, ejeYcoro);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.VENTA_NUEVA, ejeXventa_, ejeYcoro);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYcoro);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(
@@ -3700,32 +3695,32 @@ module.exports = (app) => {
 
             // Se dibuja los datos del acumulado mes actual
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.CUOTA_SOCIAL, ejeXcuota_, ejeYhohe);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.TRATAMIENTO, ejeXtrata_, ejeYhohe);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.COBRADOR, ejeXcobra_, ejeYhohe);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.VENTA_NUEVA, ejeXventa_, ejeYhohe);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYhohe);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(
@@ -3742,32 +3737,32 @@ module.exports = (app) => {
  
 
             // Se dibuja los datos del acumulado mes actual
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.CUOTA_SOCIAL, ejeXcuota_, ejeYencar);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.TRATAMIENTO, ejeXtrata_, ejeYencar);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.COBRADOR, ejeXcobra_, ejeYencar);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.VENTA_NUEVA, ejeXventa_, ejeYencar);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYencar);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(
@@ -3785,32 +3780,32 @@ module.exports = (app) => {
 
             // Se dibuja los datos del acumulado mes actual
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.CUOTA_SOCIAL, ejeXcuota_, ejeYmaria);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.TRATAMIENTO, ejeXtrata_, ejeYmaria);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.COBRADOR, ejeXcobra_, ejeYmaria);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.VENTA_NUEVA, ejeXventa_, ejeYmaria);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYmaria);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(
@@ -3828,32 +3823,32 @@ module.exports = (app) => {
 
             // Se dibuja los datos del acumulado mes actual
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.CUOTA_SOCIAL, ejeXcuota_, ejeYayo);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.TRATAMIENTO, ejeXtrata_, ejeYayo);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.COBRADOR, ejeXcobra_, ejeYayo);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.VENTA_NUEVA, ejeXventa_, ejeYayo);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYayo);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(
@@ -3872,32 +3867,32 @@ module.exports = (app) => {
 
             // Se dibuja los datos del acumulado mes actual
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.CUOTA_SOCIAL, ejeXcuota_, ejeYkm7);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.TRATAMIENTO, ejeXtrata_, ejeYkm7);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.COBRADOR, ejeXcobra_, ejeYkm7);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.VENTA_NUEVA, ejeXventa_, ejeYkm7);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYkm7);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(
@@ -3915,32 +3910,32 @@ module.exports = (app) => {
 
             // Se dibuja los datos del acumulado mes actual
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.CUOTA_SOCIAL, ejeXcuota_, ejeYsanta);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.TRATAMIENTO, ejeXtrata_, ejeYsanta);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.COBRADOR, ejeXcobra_, ejeYsanta);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.VENTA_NUEVA, ejeXventa_, ejeYsanta);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYsanta);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(
@@ -3958,32 +3953,32 @@ module.exports = (app) => {
 
             // Se dibuja los datos acumulado mes actual
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.CUOTA_SOCIAL, ejeXcuota_, ejeYcampo);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.TRATAMIENTO, ejeXtrata_, ejeYcampo);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.COBRADOR, ejeXcobra_, ejeYcampo);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.VENTA_NUEVA, ejeXventa_, ejeYcampo);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYcampo);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(
@@ -4002,32 +3997,32 @@ module.exports = (app) => {
 
             // Se dibuja los datos del acumulado mes actual
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.CUOTA_SOCIAL, ejeXcuota_, ejeYsantani);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.TRATAMIENTO, ejeXtrata_, ejeYsantani);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.COBRADOR, ejeXcobra_, ejeYsantani);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.VENTA_NUEVA, ejeXventa_, ejeYsantani);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYsantani);
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(
@@ -4044,7 +4039,7 @@ module.exports = (app) => {
         // Recorre los ingresos de mes actual
         for (let r of losIngresosMesAct) {
           if (r.TIPO == "PAGOS ELECTRONICOS") {
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(
@@ -4056,7 +4051,7 @@ module.exports = (app) => {
               ejeYPagosElectronicos
             );
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(
@@ -4068,7 +4063,7 @@ module.exports = (app) => {
               ejeYPagosElectronicos
             );
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(
@@ -4080,7 +4075,7 @@ module.exports = (app) => {
               ejeYPagosElectronicos
             );
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(
@@ -4092,7 +4087,7 @@ module.exports = (app) => {
               ejeYPagosElectronicos
             );
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(
@@ -4105,7 +4100,7 @@ module.exports = (app) => {
             );
 
             // Diferencia ingresos pagos electronicos
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(
@@ -4119,7 +4114,7 @@ module.exports = (app) => {
           }
 
           if (r.TIPO == "ASO. DEB.") {
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(
@@ -4131,7 +4126,7 @@ module.exports = (app) => {
               ejeYAsoDebito
             );
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(
@@ -4143,7 +4138,7 @@ module.exports = (app) => {
               ejeYAsoDebito
             );
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(
@@ -4155,7 +4150,7 @@ module.exports = (app) => {
               ejeYAsoDebito
             );
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(
@@ -4167,7 +4162,7 @@ module.exports = (app) => {
               ejeYAsoDebito
             );
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(
@@ -4180,7 +4175,7 @@ module.exports = (app) => {
             );
 
             // Diferencia ingresos aso deb
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(
@@ -4194,7 +4189,7 @@ module.exports = (app) => {
           }
 
           if (r.TIPO == "LICITACIONES") {
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(
@@ -4206,7 +4201,7 @@ module.exports = (app) => {
               ejeYLicitacion
             );
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(
@@ -4218,7 +4213,7 @@ module.exports = (app) => {
               ejeYLicitacion
             );
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(
@@ -4230,7 +4225,7 @@ module.exports = (app) => {
               ejeYLicitacion
             );
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(
@@ -4242,7 +4237,7 @@ module.exports = (app) => {
               ejeYLicitacion
             );
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(
@@ -4255,7 +4250,7 @@ module.exports = (app) => {
             );
 
             // Diferencia ingresos licitaciones
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(
@@ -4269,7 +4264,7 @@ module.exports = (app) => {
           }
 
           if (r.TIPO == "TRANSF. GIROS PALMA") {
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(
@@ -4281,7 +4276,7 @@ module.exports = (app) => {
               ejeYTransGirosPalma
             );
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(
@@ -4293,7 +4288,7 @@ module.exports = (app) => {
               ejeYTransGirosPalma
             );
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(
@@ -4305,7 +4300,7 @@ module.exports = (app) => {
               ejeYTransGirosPalma
             );
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(
@@ -4317,7 +4312,7 @@ module.exports = (app) => {
               ejeYTransGirosPalma
             );
 
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(
@@ -4330,7 +4325,7 @@ module.exports = (app) => {
             );
 
             // Diferencia ingresos trans giros palma
-            context.font = "bold 15px Arial";
+            context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "center";
             context.fillText(
@@ -4358,12 +4353,12 @@ module.exports = (app) => {
 
         // Fila totales ZONA ASUNCION
         // SUM - Monto Total ZONA ASUNCION - MES ANTERIOR
-        context.font = "bold 15px Arial";
+        context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
         context.textAlign = "left";
         context.fillText("ZONA ASUNCIÓN", ejeXsucu, ejeYtotalesAsu);
 
-        context.font = "bold 15px Arial";
+        context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
         context.textAlign = "center";
         context.fillText(
@@ -4375,7 +4370,7 @@ module.exports = (app) => {
           ejeYtotalesAsu
         );
 
-        context.font = "bold 15px Arial";
+        context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
         context.textAlign = "center";
         context.fillText(
@@ -4387,7 +4382,7 @@ module.exports = (app) => {
           ejeYtotalesAsu
         );
 
-        context.font = "bold 15px Arial";
+        context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
         context.textAlign = "center";
         context.fillText(
@@ -4399,7 +4394,7 @@ module.exports = (app) => {
           ejeYtotalesAsu
         );
 
-        context.font = "bold 15px Arial";
+        context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
         context.textAlign = "center";
         context.fillText(
@@ -4412,7 +4407,7 @@ module.exports = (app) => {
         );
 
         // MONTO TOTAL
-        context.font = "bold 15px Arial";
+        context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
         context.textAlign = "center";
         context.fillText(
@@ -4425,7 +4420,7 @@ module.exports = (app) => {
         );
 
         // SUM - Monto Total ZONA ASUNCION - MES ACTUAL
-        context.font = "bold 15px Arial";
+        context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
         context.textAlign = "center";
         context.fillText(
@@ -4437,7 +4432,7 @@ module.exports = (app) => {
           ejeYtotalesAsu
         );
 
-        context.font = "bold 15px Arial";
+        context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
         context.textAlign = "center";
         context.fillText(
@@ -4449,7 +4444,7 @@ module.exports = (app) => {
           ejeYtotalesAsu
         );
 
-        context.font = "bold 15px Arial";
+        context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
         context.textAlign = "center";
         context.fillText(
@@ -4461,7 +4456,7 @@ module.exports = (app) => {
           ejeYtotalesAsu
         );
 
-        context.font = "bold 15px Arial";
+        context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
         context.textAlign = "center";
         context.fillText(
@@ -4474,7 +4469,7 @@ module.exports = (app) => {
         );
 
         // MONTO TOTAL
-        context.font = "bold 15px Arial";
+        context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
         context.textAlign = "center";
         context.fillText(
@@ -4486,7 +4481,7 @@ module.exports = (app) => {
           ejeYtotalesAsu
         );
 
-        context.font = "bold 15px Arial";
+        context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
         context.textAlign = "center";
         context.fillText(
@@ -4499,12 +4494,12 @@ module.exports = (app) => {
         );
 
         // SUM - Monto Total ZONA GRAN ASUNCION - MES ANTERIOR
-        context.font = "bold 15px Arial";
+        context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
         context.textAlign = "left";
         context.fillText("ZONA GRAN ASUNCIÓN", ejeXsucu, ejeYtotalesGranAsu);
 
-        context.font = "bold 15px Arial";
+        context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
         context.textAlign = "center";
         context.fillText(
@@ -4516,7 +4511,7 @@ module.exports = (app) => {
           ejeYtotalesGranAsu
         );
 
-        context.font = "bold 15px Arial";
+        context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
         context.textAlign = "center";
         context.fillText(
@@ -4528,7 +4523,7 @@ module.exports = (app) => {
           ejeYtotalesGranAsu
         );
 
-        context.font = "bold 15px Arial";
+        context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
         context.textAlign = "center";
         context.fillText(
@@ -4540,7 +4535,7 @@ module.exports = (app) => {
           ejeYtotalesGranAsu
         );
 
-        context.font = "bold 15px Arial";
+        context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
         context.textAlign = "center";
         context.fillText(
@@ -4553,7 +4548,7 @@ module.exports = (app) => {
         );
 
         // MONTO TOTAL
-        context.font = "bold 15px Arial";
+        context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
         context.textAlign = "center";
         context.fillText(
@@ -4566,7 +4561,7 @@ module.exports = (app) => {
         );
 
         // SUM - Monto Total ZONA GRAN ASUNCION - MES ACTUAL
-        context.font = "bold 15px Arial";
+        context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
         context.textAlign = "center";
         context.fillText(
@@ -4578,7 +4573,7 @@ module.exports = (app) => {
           ejeYtotalesGranAsu
         );
 
-        context.font = "bold 15px Arial";
+        context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
         context.textAlign = "center";
         context.fillText(
@@ -4590,7 +4585,7 @@ module.exports = (app) => {
           ejeYtotalesGranAsu
         );
 
-        context.font = "bold 15px Arial";
+        context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
         context.textAlign = "center";
         context.fillText(
@@ -4602,7 +4597,7 @@ module.exports = (app) => {
           ejeYtotalesGranAsu
         );
 
-        context.font = "bold 15px Arial";
+        context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
         context.textAlign = "center";
         context.fillText(
@@ -4615,7 +4610,7 @@ module.exports = (app) => {
         );
 
         // MONTO TOTAL
-        context.font = "bold 15px Arial";
+        context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
         context.textAlign = "center";
         context.fillText(
@@ -4627,7 +4622,7 @@ module.exports = (app) => {
           ejeYtotalesGranAsu
         );
 
-        context.font = "bold 15px Arial";
+        context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
         context.textAlign = "center";
         context.fillText(
@@ -4640,12 +4635,12 @@ module.exports = (app) => {
         );
 
         // SUM - Monto Total ZONA RUTA 2 - MES ANTERIOR
-        context.font = "bold 15px Arial";
+        context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
         context.textAlign = "left";
         context.fillText("ZONA RUTA 2", ejeXsucu, ejeYtotalesRuta2);
 
-        context.font = "bold 15px Arial";
+        context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
         context.textAlign = "center";
         context.fillText(
@@ -4657,7 +4652,7 @@ module.exports = (app) => {
           ejeYtotalesRuta2
         );
 
-        context.font = "bold 15px Arial";
+        context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
         context.textAlign = "center";
         context.fillText(
@@ -4669,7 +4664,7 @@ module.exports = (app) => {
           ejeYtotalesRuta2
         );
 
-        context.font = "bold 15px Arial";
+        context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
         context.textAlign = "center";
         context.fillText(
@@ -4681,7 +4676,7 @@ module.exports = (app) => {
           ejeYtotalesRuta2
         );
 
-        context.font = "bold 15px Arial";
+        context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
         context.textAlign = "center";
         context.fillText(
@@ -4694,7 +4689,7 @@ module.exports = (app) => {
         );
 
         // MONTO TOTAL
-        context.font = "bold 15px Arial";
+        context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
         context.textAlign = "center";
         context.fillText(
@@ -4707,7 +4702,7 @@ module.exports = (app) => {
         );
 
         // SUM - Monto Total ZONA RUTA 2 - MES ACTUAL
-        context.font = "bold 15px Arial";
+        context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
         context.textAlign = "center";
         context.fillText(
@@ -4719,7 +4714,7 @@ module.exports = (app) => {
           ejeYtotalesRuta2
         );
 
-        context.font = "bold 15px Arial";
+        context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
         context.textAlign = "center";
         context.fillText(
@@ -4731,7 +4726,7 @@ module.exports = (app) => {
           ejeYtotalesRuta2
         );
 
-        context.font = "bold 15px Arial";
+        context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
         context.textAlign = "center";
         context.fillText(
@@ -4743,7 +4738,7 @@ module.exports = (app) => {
           ejeYtotalesRuta2
         );
 
-        context.font = "bold 15px Arial";
+        context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
         context.textAlign = "center";
         context.fillText(
@@ -4756,7 +4751,7 @@ module.exports = (app) => {
         );
 
         // MONTO TOTAL
-        context.font = "bold 15px Arial";
+        context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
         context.textAlign = "center";
         context.fillText(
@@ -4768,7 +4763,7 @@ module.exports = (app) => {
           ejeYtotalesRuta2
         );
 
-        context.font = "bold 15px Arial";
+        context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
         context.textAlign = "center";
         context.fillText(
@@ -4781,12 +4776,12 @@ module.exports = (app) => {
         );
 
         // SUM - Monto Total ZONA ITAPUA - MES ANTERIOR
-        context.font = "bold 15px Arial";
+        context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
         context.textAlign = "left";
         context.fillText("ZONA ITAPUA", ejeXsucu, ejeYtotalesItapua);
 
-        context.font = "bold 15px Arial";
+        context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
         context.textAlign = "center";
         context.fillText(
@@ -4798,7 +4793,7 @@ module.exports = (app) => {
           ejeYtotalesItapua
         );
 
-        context.font = "bold 15px Arial";
+        context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
         context.textAlign = "center";
         context.fillText(
@@ -4810,7 +4805,7 @@ module.exports = (app) => {
           ejeYtotalesItapua
         );
 
-        context.font = "bold 15px Arial";
+        context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
         context.textAlign = "center";
         context.fillText(
@@ -4822,7 +4817,7 @@ module.exports = (app) => {
           ejeYtotalesItapua
         );
 
-        context.font = "bold 15px Arial";
+        context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
         context.textAlign = "center";
         context.fillText(
@@ -4835,7 +4830,7 @@ module.exports = (app) => {
         );
 
         // MONTO TOTAL
-        context.font = "bold 15px Arial";
+        context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
         context.textAlign = "center";
         context.fillText(
@@ -4848,7 +4843,7 @@ module.exports = (app) => {
         );
 
         // SUM - Monto Total ZONA ITAPUA - MES ACTUAL
-        context.font = "bold 15px Arial";
+        context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
         context.textAlign = "center";
         context.fillText(
@@ -4860,7 +4855,7 @@ module.exports = (app) => {
           ejeYtotalesItapua
         );
 
-        context.font = "bold 15px Arial";
+        context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
         context.textAlign = "center";
         context.fillText(
@@ -4872,7 +4867,7 @@ module.exports = (app) => {
           ejeYtotalesItapua
         );
 
-        context.font = "bold 15px Arial";
+        context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
         context.textAlign = "center";
         context.fillText(
@@ -4884,7 +4879,7 @@ module.exports = (app) => {
           ejeYtotalesItapua
         );
 
-        context.font = "bold 15px Arial";
+        context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
         context.textAlign = "center";
         context.fillText(
@@ -4897,7 +4892,7 @@ module.exports = (app) => {
         );
 
         // MONTO TOTAL
-        context.font = "bold 15px Arial";
+        context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
         context.textAlign = "center";
         context.fillText(
@@ -4909,7 +4904,7 @@ module.exports = (app) => {
           ejeYtotalesItapua
         );
 
-        context.font = "bold 15px Arial";
+        context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
         context.textAlign = "center";
         context.fillText(
@@ -4922,12 +4917,12 @@ module.exports = (app) => {
         );
 
         // SUM - Monto Total ZONA ALTO PARANA - MES ANTERIOR
-        context.font = "bold 15px Arial";
+        context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
         context.textAlign = "left";
         context.fillText("ZONA ALTO PARANA", ejeXsucu, ejeYtotalesAltoP);
 
-        context.font = "bold 15px Arial";
+        context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
         context.textAlign = "center";
         context.fillText(
@@ -4939,7 +4934,7 @@ module.exports = (app) => {
           ejeYtotalesAltoP
         );
 
-        context.font = "bold 15px Arial";
+        context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
         context.textAlign = "center";
         context.fillText(
@@ -4951,7 +4946,7 @@ module.exports = (app) => {
           ejeYtotalesAltoP
         );
 
-        context.font = "bold 15px Arial";
+        context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
         context.textAlign = "center";
         context.fillText(
@@ -4963,7 +4958,7 @@ module.exports = (app) => {
           ejeYtotalesAltoP
         );
 
-        context.font = "bold 15px Arial";
+        context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
         context.textAlign = "center";
         context.fillText(
@@ -4976,7 +4971,7 @@ module.exports = (app) => {
         );
 
         // MONTO TOTAL
-        context.font = "bold 15px Arial";
+        context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
         context.textAlign = "center";
         context.fillText(
@@ -4989,7 +4984,7 @@ module.exports = (app) => {
         );
 
         // SUM - Monto Total ZONA ALTO PARANA - MES ACTUAL
-        context.font = "bold 15px Arial";
+        context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
         context.textAlign = "center";
         context.fillText(
@@ -5001,7 +4996,7 @@ module.exports = (app) => {
           ejeYtotalesAltoP
         );
 
-        context.font = "bold 15px Arial";
+        context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
         context.textAlign = "center";
         context.fillText(
@@ -5013,7 +5008,7 @@ module.exports = (app) => {
           ejeYtotalesAltoP
         );
 
-        context.font = "bold 15px Arial";
+        context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
         context.textAlign = "center";
         context.fillText(
@@ -5025,7 +5020,7 @@ module.exports = (app) => {
           ejeYtotalesAltoP
         );
 
-        context.font = "bold 15px Arial";
+        context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
         context.textAlign = "center";
         context.fillText(
@@ -5038,7 +5033,7 @@ module.exports = (app) => {
         );
 
         // MONTO TOTAL
-        context.font = "bold 15px Arial";
+        context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
         context.textAlign = "center";
         context.fillText(
@@ -5050,7 +5045,7 @@ module.exports = (app) => {
           ejeYtotalesAltoP
         );
 
-        context.font = "bold 15px Arial";
+        context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
         context.textAlign = "center";
         context.fillText(
@@ -5063,12 +5058,12 @@ module.exports = (app) => {
         );
 
         // SUM - Monto Total ZONA SAN PEDRO - MES ANTERIOR
-        context.font = "bold 15px Arial";
+        context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
         context.textAlign = "left";
         context.fillText("ZONA SAN PEDRO", ejeXsucu, ejeYtotalesSanPe);
 
-        context.font = "bold 15px Arial";
+        context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
         context.textAlign = "center";
         context.fillText(
@@ -5080,7 +5075,7 @@ module.exports = (app) => {
           ejeYtotalesSanPe
         );
 
-        context.font = "bold 15px Arial";
+        context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
         context.textAlign = "center";
         context.fillText(
@@ -5092,7 +5087,7 @@ module.exports = (app) => {
           ejeYtotalesSanPe
         );
 
-        context.font = "bold 15px Arial";
+        context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
         context.textAlign = "center";
         context.fillText(
@@ -5104,7 +5099,7 @@ module.exports = (app) => {
           ejeYtotalesSanPe
         );
 
-        context.font = "bold 15px Arial";
+        context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
         context.textAlign = "center";
         context.fillText(
@@ -5117,7 +5112,7 @@ module.exports = (app) => {
         );
 
         // MONTO TOTAL
-        context.font = "bold 15px Arial";
+        context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
         context.textAlign = "center";
         context.fillText(
@@ -5130,7 +5125,7 @@ module.exports = (app) => {
         );
 
         // SUM - Monto Total ZONA SAN PEDRO - MES ACTUAL
-        context.font = "bold 15px Arial";
+        context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
         context.textAlign = "center";
         context.fillText(
@@ -5142,7 +5137,7 @@ module.exports = (app) => {
           ejeYtotalesSanPe
         );
 
-        context.font = "bold 15px Arial";
+        context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
         context.textAlign = "center";
         context.fillText(
@@ -5154,7 +5149,7 @@ module.exports = (app) => {
           ejeYtotalesSanPe
         );
 
-        context.font = "bold 15px Arial";
+        context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
         context.textAlign = "center";
         context.fillText(
@@ -5166,7 +5161,7 @@ module.exports = (app) => {
           ejeYtotalesSanPe
         );
 
-        context.font = "bold 15px Arial";
+        context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
         context.textAlign = "center";
         context.fillText(
@@ -5179,7 +5174,7 @@ module.exports = (app) => {
         );
 
         // MONTO TOTAL
-        context.font = "bold 15px Arial";
+        context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
         context.textAlign = "center";
         context.fillText(
@@ -5191,7 +5186,7 @@ module.exports = (app) => {
           ejeYtotalesSanPe
         );
 
-        context.font = "bold 15px Arial";
+        context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
         context.textAlign = "center";
         context.fillText(
@@ -5206,12 +5201,12 @@ module.exports = (app) => {
         /**
          *  TOTAL SUCURSAL - MES ANTERIOR
          */
-        context.font = "bold 15px Arial";
+        context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
         context.textAlign = "left";
         context.fillText("TOTAL SUCURSALES", ejeXsucu, ejeYTotalGeneral);
 
-        context.font = "bold 15px Arial";
+        context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
         context.textAlign = "center";
         context.fillText(
@@ -5223,7 +5218,7 @@ module.exports = (app) => {
           ejeYTotalGeneral
         );
 
-        context.font = "bold 15px Arial";
+        context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
         context.textAlign = "center";
         context.fillText(
@@ -5235,7 +5230,7 @@ module.exports = (app) => {
           ejeYTotalGeneral
         );
 
-        context.font = "bold 15px Arial";
+        context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
         context.textAlign = "center";
         context.fillText(
@@ -5247,7 +5242,7 @@ module.exports = (app) => {
           ejeYTotalGeneral
         );
 
-        context.font = "bold 15px Arial";
+        context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
         context.textAlign = "center";
         context.fillText(
@@ -5260,7 +5255,7 @@ module.exports = (app) => {
         );
 
         // MONTO TOTAL
-        context.font = "bold 15px Arial";
+        context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
         context.textAlign = "center";
         context.fillText(
@@ -5275,7 +5270,7 @@ module.exports = (app) => {
         /**
          *  TOTAL SUCURSAL - MES ACTUAL
          */
-        context.font = "bold 15px Arial";
+        context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
         context.textAlign = "center";
         context.fillText(
@@ -5287,7 +5282,7 @@ module.exports = (app) => {
           ejeYTotalGeneral
         );
 
-        context.font = "bold 15px Arial";
+        context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
         context.textAlign = "center";
         context.fillText(
@@ -5299,7 +5294,7 @@ module.exports = (app) => {
           ejeYTotalGeneral
         );
 
-        context.font = "bold 15px Arial";
+        context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
         context.textAlign = "center";
         context.fillText(
@@ -5311,7 +5306,7 @@ module.exports = (app) => {
           ejeYTotalGeneral
         );
 
-        context.font = "bold 15px Arial";
+        context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
         context.textAlign = "center";
         context.fillText(
@@ -5324,7 +5319,7 @@ module.exports = (app) => {
         );
 
         // MONTO TOTAL
-        context.font = "bold 15px Arial";
+        context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
         context.textAlign = "center";
         context.fillText(
@@ -5337,7 +5332,7 @@ module.exports = (app) => {
         );
 
         // DIFERENCIA TOTAL SUCURSAL
-        context.font = "bold 15px Arial";
+        context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
         context.textAlign = "center";
         context.fillText(
@@ -5352,12 +5347,12 @@ module.exports = (app) => {
         /**
          *   TOTAL ADM - INGRESOS MES ANTERIOR
          */
-        context.font = "bold 15px Arial";
+        context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
         context.textAlign = "left";
         context.fillText("TOTAL ADM", ejeXsucu, ejeYTotalADM);
 
-        context.font = "bold 15px Arial";
+        context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
         context.textAlign = "center";
         context.fillText(
@@ -5369,7 +5364,7 @@ module.exports = (app) => {
           ejeYTotalADM
         );
 
-        context.font = "bold 15px Arial";
+        context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
         context.textAlign = "center";
         context.fillText(
@@ -5381,7 +5376,7 @@ module.exports = (app) => {
           ejeYTotalADM
         );
 
-        context.font = "bold 15px Arial";
+        context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
         context.textAlign = "center";
         context.fillText(
@@ -5393,7 +5388,7 @@ module.exports = (app) => {
           ejeYTotalADM
         );
 
-        context.font = "bold 15px Arial";
+        context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
         context.textAlign = "center";
         context.fillText(
@@ -5406,7 +5401,7 @@ module.exports = (app) => {
         );
 
         // MONTO TOTAL
-        context.font = "bold 15px Arial";
+        context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
         context.textAlign = "center";
         context.fillText(
@@ -5422,7 +5417,7 @@ module.exports = (app) => {
          *   TOTAL ADM - INGRESOS MES ACTUAL
          */
 
-        context.font = "bold 15px Arial";
+        context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
         context.textAlign = "center";
         context.fillText(
@@ -5434,7 +5429,7 @@ module.exports = (app) => {
           ejeYTotalADM
         );
 
-        context.font = "bold 15px Arial";
+        context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
         context.textAlign = "center";
         context.fillText(
@@ -5446,7 +5441,7 @@ module.exports = (app) => {
           ejeYTotalADM
         );
 
-        context.font = "bold 15px Arial";
+        context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
         context.textAlign = "center";
         context.fillText(
@@ -5458,7 +5453,7 @@ module.exports = (app) => {
           ejeYTotalADM
         );
 
-        context.font = "bold 15px Arial";
+        context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
         context.textAlign = "center";
         context.fillText(
@@ -5471,7 +5466,7 @@ module.exports = (app) => {
         );
 
         // MONTO TOTAL
-        context.font = "bold 15px Arial";
+        context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
         context.textAlign = "center";
         context.fillText(
@@ -5484,7 +5479,7 @@ module.exports = (app) => {
         );
 
         // Diferencia monto total adm
-        context.font = "bold 15px Arial";
+        context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
         context.textAlign = "center";
         context.fillText(
@@ -5500,12 +5495,12 @@ module.exports = (app) => {
          *   TOTAL GENERAL - TOTAL DOC mes anterior
          */
 
-        context.font = "bold 15px Arial";
+        context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
         context.textAlign = "left";
         context.fillText("TOTAL GENERAL", ejeXsucu, ejeYtotalGeneralDoc);
 
-        context.font = "bold 15px Arial";
+        context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
         context.textAlign = "center";
         context.fillText(
@@ -5517,7 +5512,7 @@ module.exports = (app) => {
           ejeYtotalGeneralDoc
         );
 
-        context.font = "bold 15px Arial";
+        context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
         context.textAlign = "center";
         context.fillText(
@@ -5529,7 +5524,7 @@ module.exports = (app) => {
           ejeYtotalGeneralDoc
         );
 
-        context.font = "bold 15px Arial";
+        context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
         context.textAlign = "center";
         context.fillText(
@@ -5541,7 +5536,7 @@ module.exports = (app) => {
           ejeYtotalGeneralDoc
         );
 
-        context.font = "bold 15px Arial";
+        context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
         context.textAlign = "center";
         context.fillText(
@@ -5554,7 +5549,7 @@ module.exports = (app) => {
         );
 
         // MONTO TOTAL
-        context.font = "bold 15px Arial";
+        context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
         context.textAlign = "center";
         context.fillText(
@@ -5568,7 +5563,7 @@ module.exports = (app) => {
 
         // TOTAL GENERAL - TOTAL DOC mes actual
 
-        context.font = "bold 15px Arial";
+        context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
         context.textAlign = "center";
         context.fillText(
@@ -5580,7 +5575,7 @@ module.exports = (app) => {
           ejeYtotalGeneralDoc
         );
 
-        context.font = "bold 15px Arial";
+        context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
         context.textAlign = "center";
         context.fillText(
@@ -5592,7 +5587,7 @@ module.exports = (app) => {
           ejeYtotalGeneralDoc
         );
 
-        context.font = "bold 15px Arial";
+        context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
         context.textAlign = "center";
         context.fillText(
@@ -5604,7 +5599,7 @@ module.exports = (app) => {
           ejeYtotalGeneralDoc
         );
 
-        context.font = "bold 15px Arial";
+        context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
         context.textAlign = "center";
         context.fillText(
@@ -5617,7 +5612,7 @@ module.exports = (app) => {
         );
 
         // MONTO TOTAL
-        context.font = "bold 15px Arial";
+        context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
         context.textAlign = "center";
         context.fillText(
@@ -5630,7 +5625,7 @@ module.exports = (app) => {
         );
 
         // Diferencia monto TOTAL GENERAL DOC
-        context.font = "bold 15px Arial";
+        context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
         context.textAlign = "center";
         context.fillText(
