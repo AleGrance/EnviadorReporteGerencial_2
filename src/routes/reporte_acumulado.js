@@ -62,8 +62,8 @@ let numerosDestinatarios = [
   { NOMBRE: "Ale Corpo", NUMERO: "595974107341" },
   { NOMBRE: "José Aquino", NUMERO: "595985604619" },
   { NOMBRE: "Ale Grance", NUMERO: "595986153301" },
-  //{ NOMBRE: 'Mirna Quiroga', NUMERO: '595975437933' },
-  //{ NOMBRE: 'Odontos Tesoreria', NUMERO: '595972615299' },
+  { NOMBRE: 'Mirna Quiroga', NUMERO: '595975437933' },
+  { NOMBRE: 'Odontos Tesoreria', NUMERO: '595972615299' },
 ];
 
 let todasSucursalesActivas = [];
@@ -80,7 +80,7 @@ module.exports = (app) => {
   const Ingresos_mesant = app.db.models.Ingresos_mesant;
 
   // Ejecutar la funcion a las 22:00 de Lunes(1) a Sabados (6)
-  cron.schedule("03 12 * * 1-6", () => {
+  cron.schedule("05 22 * * 1-6", () => {
     let hoyAhora = new Date();
     let diaHoy = hoyAhora.toString().slice(0, 3);
     let fullHoraAhora = hoyAhora.toString().slice(16, 21);
@@ -165,7 +165,7 @@ module.exports = (app) => {
     });
   }
 
-  // EL QUE TRAE LA COBRANZA DE LAS SUCURSALES ACUMULADAS DEL MES ACTUAL
+  // TRAE LA COBRANZA DE LAS SUCURSALES ACUMULADAS DEL MES ACTUAL
   function getAcumuladosMesAct() {
     console.log("Obteninendo Acumulados Mes Actual");
     let todasSucursalesReporte = [];
@@ -257,7 +257,7 @@ module.exports = (app) => {
     });
   }
 
-  // EL QUE TRAE LA COBRANZA DE LAS SUCURSALES ACUMULADAS DEL MES ATERIOR
+  // TRAE LA COBRANZA DE LAS SUCURSALES ACUMULADAS DEL MES ATERIOR
   function getAcumuladosMesAnt() {
     console.log("Obteninendo Acumulados Mes Anterior");
     let todasSucursalesReporte = [];
@@ -349,7 +349,7 @@ module.exports = (app) => {
     });
   }
 
-  // EL QUE TRAE LAS COBRANZAS POR TIPO DEL MES ACTUAL
+  // TRAE LAS COBRANZAS POR TIPO DEL MES ACTUAL
   function getIngresosMesAct() {
     console.log("Obteninendo Ingresos Mes Actual");
 
@@ -447,7 +447,7 @@ module.exports = (app) => {
     });
   }
 
-  // EL QUE TRAE LAS COBRANZAS POR TIPO DEL MES ANTERIOR
+  // TRAE LAS COBRANZAS POR TIPO DEL MES ANTERIOR
   function getIngresosMesAnt() {
     console.log("Obteninendo Ingresos Mes Anterior");
 
@@ -686,10 +686,40 @@ module.exports = (app) => {
 
   function iniciarEnvio() {
     const fechaActual = moment();
-    //let fechaLocal = fechaActual.format("YYYY-MM-DD");
-    let fechaLocal = "2023-09-18";
+    let fechaLocal = fechaActual.format("YYYY-MM-DD");
+    //let fechaLocal = "2023-09-20";
 
     setTimeout(() => {
+      // Datos ingresos mes Anterior
+      Ingresos_mesant.findAll({
+        where: { FECHA: fechaLocal },
+        //order: [["createdAt", "ASC"]],
+      })
+        .then((result) => {
+          losIngresosMesAnt = result;
+          console.log(losIngresosMesAnt);
+        })
+        .catch((error) => {
+          res.status(402).json({
+            msg: error.menssage,
+          });
+        });
+
+      // Datos ingresos mes Actual
+      Ingresos_mesact.findAll({
+        where: { FECHA: fechaLocal },
+        //order: [["createdAt", "ASC"]],
+      })
+        .then((result) => {
+          losIngresosMesAct = result;
+          console.log(losIngresosMesAct);
+        })
+        .catch((error) => {
+          res.status(402).json({
+            msg: error.menssage,
+          });
+        });
+
       // Datos del mes Anterior
       Acumulado_mesant.findAll({
         where: { FECHA: fechaLocal },
@@ -818,40 +848,10 @@ module.exports = (app) => {
           });
         });
     }, tiempoRetrasoPGSQL);
-
-    // Datos ingresos mes Anterior
-    Ingresos_mesant.findAll({
-      where: { FECHA: fechaLocal },
-      //order: [["createdAt", "ASC"]],
-    })
-      .then((result) => {
-        losIngresosMesAnt = result;
-        //console.log(losTurnosCantidades);
-      })
-      .catch((error) => {
-        res.status(402).json({
-          msg: error.menssage,
-        });
-      });
-
-    // Datos ingresos mes Actual
-    Ingresos_mesact.findAll({
-      where: { FECHA: fechaLocal },
-      //order: [["createdAt", "ASC"]],
-    })
-      .then((result) => {
-        losIngresosMesAct = result;
-        //console.log(losTurnosCantidades);
-      })
-      .catch((error) => {
-        res.status(402).json({
-          msg: error.menssage,
-        });
-      });
   }
 
   // Habilitar para testing
-  iniciarEnvio();
+  //iniciarEnvio();
 
   // Diferencias de montos
   let totalAdministracion = 0;
@@ -1547,13 +1547,13 @@ module.exports = (app) => {
     let colorText = "green";
 
     if (monto < 0) {
-      colorText= "red";
+      colorText = "red";
     }
 
     return colorText;
   }
 
-  // Envia los mensajes
+  // Se dibuja la Imagen - Envia los mensajes
   let retraso = () => new Promise((r) => setTimeout(r, tiempoRetrasoEnvios));
   async function enviarMensaje() {
     console.log("Inicia el recorrido del for para dibujar y enviar el reporte");
@@ -4211,10 +4211,10 @@ module.exports = (app) => {
 
             // Diferencia ingresos trans giros palma
             context.font = fuenteTexto;
-            context.fillStyle = colorSegunMonto(totalDifLicitaciones);
+            context.fillStyle = colorSegunMonto(totalDifTransGirosPalma);
             context.textAlign = "right";
             context.fillText(
-              totalDifLicitaciones.toLocaleString("es", {
+              totalDifTransGirosPalma.toLocaleString("es", {
                 minimumFractionDigits: 0,
                 maximumFractionDigits: 0,
               }),
@@ -5218,7 +5218,7 @@ module.exports = (app) => {
 
         // DIFERENCIA TOTAL SUCURSAL
         context.font = fuenteTextoBold;
-        context.fillStyle = colorSegunMonto((totalGenMontoTotal_ - totalGenMontoTotal));
+        context.fillStyle = colorSegunMonto(totalGenMontoTotal_ - totalGenMontoTotal);
         context.textAlign = "right";
         context.fillText(
           (totalGenMontoTotal_ - totalGenMontoTotal).toLocaleString("es", {
@@ -5511,7 +5511,9 @@ module.exports = (app) => {
 
         // Diferencia monto TOTAL GENERAL DOC
         context.font = fuenteTextoBold;
-        context.fillStyle = colorSegunMonto((totalGenMontoTotal_ - totalGenMontoTotal + totalDifTotalADM));
+        context.fillStyle = colorSegunMonto(
+          totalGenMontoTotal_ - totalGenMontoTotal + totalDifTotalADM
+        );
         context.textAlign = "right";
         context.fillText(
           (totalGenMontoTotal_ - totalGenMontoTotal + totalDifTotalADM).toLocaleString("es", {
@@ -5536,7 +5538,7 @@ module.exports = (app) => {
         for (let n of numerosDestinatarios) {
           console.log(n);
           mensajeBody = {
-            message: "Buenas noches, se envia el reporte de cierre diario.",
+            message: "Buenas noches, se envia el reporte de acumulados mes anterior y mes actual.",
             phone: n.NUMERO,
             mimeType: fileMimeTypeMedia,
             data: fileBase64Media,
@@ -5545,74 +5547,74 @@ module.exports = (app) => {
           };
 
           // Envia el mensaje por la API free WWA
-          // axios
-          //   .post(wwaUrl, mensajeBody)
-          //   .then((response) => {
-          //     const data = response.data;
+          axios
+            .post(wwaUrl, mensajeBody)
+            .then((response) => {
+              const data = response.data;
 
-          //     if (data.responseExSave.id) {
-          //       console.log("Enviado - OK");
-          //       // Se actualiza el estado a 1
-          //       const body = {
-          //         estado_envio: 1,
-          //       };
+              if (data.responseExSave.id) {
+                console.log("Enviado - OK");
+                // Se actualiza el estado a 1
+                const body = {
+                  estado_envio: 1,
+                };
 
-          //       // Tickets.update(body, {
-          //       //   where: { id_turno: turnoId },
-          //       // })
-          //       //   //.then((result) => res.json(result))
-          //       //   .catch((error) => {
-          //       //     res.status(412).json({
-          //       //       msg: error.message,
-          //       //     });
-          //       //   });
-          //     }
+                // Tickets.update(body, {
+                //   where: { id_turno: turnoId },
+                // })
+                //   //.then((result) => res.json(result))
+                //   .catch((error) => {
+                //     res.status(412).json({
+                //       msg: error.message,
+                //     });
+                //   });
+              }
 
-          //     if (data.responseExSave.unknow) {
-          //       console.log("No Enviado - unknow");
-          //       // Se actualiza el estado a 3
-          //       const body = {
-          //         estado_envio: 3,
-          //       };
+              if (data.responseExSave.unknow) {
+                console.log("No Enviado - unknow");
+                // Se actualiza el estado a 3
+                const body = {
+                  estado_envio: 3,
+                };
 
-          //       // Tickets.update(body, {
-          //       //   where: { id_turno: turnoId },
-          //       // })
-          //       //   //.then((result) => res.json(result))
-          //       //   .catch((error) => {
-          //       //     res.status(412).json({
-          //       //       msg: error.message,
-          //       //     });
-          //       //   });
-          //     }
+                // Tickets.update(body, {
+                //   where: { id_turno: turnoId },
+                // })
+                //   //.then((result) => res.json(result))
+                //   .catch((error) => {
+                //     res.status(412).json({
+                //       msg: error.message,
+                //     });
+                //   });
+              }
 
-          //     if (data.responseExSave.error) {
-          //       console.log("No enviado - error");
-          //       const errMsg = data.responseExSave.error.slice(0, 17);
-          //       if (errMsg === "Escanee el código") {
-          //         //updateEstatusERROR(turnoId, 104);
-          //         console.log("Error 104: ", data.responseExSave.error);
-          //       }
-          //       // Sesion cerrada o desvinculada. Puede que se envie al abrir la sesion o al vincular
-          //       if (errMsg === "Protocol error (R") {
-          //         //updateEstatusERROR(turnoId, 105);
-          //         console.log("Error 105: ", data.responseExSave.error);
-          //       }
-          //       // El numero esta mal escrito o supera los 12 caracteres
-          //       if (errMsg === "Evaluation failed") {
-          //         //updateEstatusERROR(turnoId, 106);
-          //         console.log("Error 106: ", data.responseExSave.error);
-          //       }
-          //     }
-          //   })
-          //   .catch((error) => {
-          //     console.error("Ocurrió un error:", error);
-          //   });
+              if (data.responseExSave.error) {
+                console.log("No enviado - error");
+                const errMsg = data.responseExSave.error.slice(0, 17);
+                if (errMsg === "Escanee el código") {
+                  //updateEstatusERROR(turnoId, 104);
+                  console.log("Error 104: ", data.responseExSave.error);
+                }
+                // Sesion cerrada o desvinculada. Puede que se envie al abrir la sesion o al vincular
+                if (errMsg === "Protocol error (R") {
+                  //updateEstatusERROR(turnoId, 105);
+                  console.log("Error 105: ", data.responseExSave.error);
+                }
+                // El numero esta mal escrito o supera los 12 caracteres
+                if (errMsg === "Evaluation failed") {
+                  //updateEstatusERROR(turnoId, 106);
+                  console.log("Error 106: ", data.responseExSave.error);
+                }
+              }
+            })
+            .catch((error) => {
+              console.error("Ocurrió un error:", error);
+            });
 
           await retraso();
         }
 
-        console.log("Fin del envío del reporte");
+        console.log("Fin del envío del reporte de acumulados mes anterior y actual");
       })
       .then(() => {
         //console.log("Se resetean los montos");
