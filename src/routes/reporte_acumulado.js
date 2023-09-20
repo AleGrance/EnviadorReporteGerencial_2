@@ -1598,18 +1598,18 @@ module.exports = (app) => {
 
         // Eje X de cada celda
         let ejeXsucu = 30;
-        let ejeXcuota = 340;
-        let ejeXtrata = 470;
-        let ejeXcobra = 600;
-        let ejeXventa = 720;
-        let ejeXmonto = 840;
+        let ejeXcuota = 380;
+        let ejeXtrata = 520;
+        let ejeXcobra = 650;
+        let ejeXventa = 760;
+        let ejeXmonto = 910;
 
-        let ejeXcuota_ = 980;
-        let ejeXtrata_ = 1100;
-        let ejeXcobra_ = 1220;
-        let ejeXventa_ = 1340;
-        let ejeXmonto_ = 1460;
-        let ejeXdiferencia_ = 1590;
+        let ejeXcuota_ = 1035;
+        let ejeXtrata_ = 1160;
+        let ejeXcobra_ = 1280;
+        let ejeXventa_ = 1380;
+        let ejeXmonto_ = 1520;
+        let ejeXdiferencia_ = 1650;
 
 
         // Eje Y de cada fila
@@ -1678,27 +1678,27 @@ module.exports = (app) => {
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.CUOTA_SOCIAL, ejeXcuota, ejeYadm);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.TRATAMIENTO, ejeXtrata, ejeYadm);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.COBRADOR, ejeXcobra, ejeYadm);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.VENTA_NUEVA, ejeXventa, ejeYadm);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.MONTO_TOTAL, ejeXmonto, ejeYadm);
           }
 
@@ -1712,27 +1712,27 @@ module.exports = (app) => {
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.CUOTA_SOCIAL, ejeXcuota, ejeYml);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.TRATAMIENTO, ejeXtrata, ejeYml);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.COBRADOR, ejeXcobra, ejeYml);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.VENTA_NUEVA, ejeXventa, ejeYml);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.MONTO_TOTAL, ejeXmonto, ejeYml);
           }
 
@@ -1747,27 +1747,27 @@ module.exports = (app) => {
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.CUOTA_SOCIAL, ejeXcuota, ejeYmlurg);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.TRATAMIENTO, ejeXtrata, ejeYmlurg);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.COBRADOR, ejeXcobra, ejeYmlurg);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.VENTA_NUEVA, ejeXventa, ejeYmlurg);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.MONTO_TOTAL, ejeXmonto, ejeYmlurg);
           }
 
@@ -1782,27 +1782,27 @@ module.exports = (app) => {
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.CUOTA_SOCIAL, ejeXcuota, ejeYaq);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.TRATAMIENTO, ejeXtrata, ejeYaq);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.COBRADOR, ejeXcobra, ejeYaq);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.VENTA_NUEVA, ejeXventa, ejeYaq);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.MONTO_TOTAL, ejeXmonto, ejeYaq);
           }
 
@@ -1817,27 +1817,27 @@ module.exports = (app) => {
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.CUOTA_SOCIAL, ejeXcuota, ejeYvm);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.TRATAMIENTO, ejeXtrata, ejeYvm);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.COBRADOR, ejeXcobra, ejeYvm);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.VENTA_NUEVA, ejeXventa, ejeYvm);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.MONTO_TOTAL, ejeXmonto, ejeYvm);
           }
 
@@ -1851,27 +1851,27 @@ module.exports = (app) => {
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.CUOTA_SOCIAL, ejeXcuota, ejeYar);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.TRATAMIENTO, ejeXtrata, ejeYar);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.COBRADOR, ejeXcobra, ejeYar);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.VENTA_NUEVA, ejeXventa, ejeYar);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.MONTO_TOTAL, ejeXmonto, ejeYar);
           }
 
@@ -1885,27 +1885,27 @@ module.exports = (app) => {
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.CUOTA_SOCIAL, ejeXcuota, ejeYlu);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.TRATAMIENTO, ejeXtrata, ejeYlu);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.COBRADOR, ejeXcobra, ejeYlu);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.VENTA_NUEVA, ejeXventa, ejeYlu);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.MONTO_TOTAL, ejeXmonto, ejeYlu);
           }
 
@@ -1919,27 +1919,27 @@ module.exports = (app) => {
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.CUOTA_SOCIAL, ejeXcuota, ejeYpa);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.TRATAMIENTO, ejeXtrata, ejeYpa);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.COBRADOR, ejeXcobra, ejeYpa);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.VENTA_NUEVA, ejeXventa, ejeYpa);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.MONTO_TOTAL, ejeXmonto, ejeYpa);
           }
 
@@ -1954,27 +1954,27 @@ module.exports = (app) => {
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.CUOTA_SOCIAL, ejeXcuota, ejeYlam);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.TRATAMIENTO, ejeXtrata, ejeYlam);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.COBRADOR, ejeXcobra, ejeYlam);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.VENTA_NUEVA, ejeXventa, ejeYlam);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.MONTO_TOTAL, ejeXmonto, ejeYlam);
           }
 
@@ -1988,27 +1988,27 @@ module.exports = (app) => {
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.CUOTA_SOCIAL, ejeXcuota, ejeYcat);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.TRATAMIENTO, ejeXtrata, ejeYcat);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.COBRADOR, ejeXcobra, ejeYcat);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.VENTA_NUEVA, ejeXventa, ejeYcat);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.MONTO_TOTAL, ejeXmonto, ejeYcat);
           }
 
@@ -2022,27 +2022,27 @@ module.exports = (app) => {
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.CUOTA_SOCIAL, ejeXcuota, ejeYluq);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.TRATAMIENTO, ejeXtrata, ejeYluq);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.COBRADOR, ejeXcobra, ejeYluq);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.VENTA_NUEVA, ejeXventa, ejeYluq);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.MONTO_TOTAL, ejeXmonto, ejeYluq);
           }
 
@@ -2056,27 +2056,27 @@ module.exports = (app) => {
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.CUOTA_SOCIAL, ejeXcuota, ejeYlar);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.TRATAMIENTO, ejeXtrata, ejeYlar);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.COBRADOR, ejeXcobra, ejeYlar);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.VENTA_NUEVA, ejeXventa, ejeYlar);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.MONTO_TOTAL, ejeXmonto, ejeYlar);
           }
 
@@ -2090,27 +2090,27 @@ module.exports = (app) => {
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.CUOTA_SOCIAL, ejeXcuota, ejeYnem);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.TRATAMIENTO, ejeXtrata, ejeYnem);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.COBRADOR, ejeXcobra, ejeYnem);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.VENTA_NUEVA, ejeXventa, ejeYnem);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.MONTO_TOTAL, ejeXmonto, ejeYnem);
           }
 
@@ -2124,27 +2124,27 @@ module.exports = (app) => {
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.CUOTA_SOCIAL, ejeXcuota, ejeYita);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.TRATAMIENTO, ejeXtrata, ejeYita);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.COBRADOR, ejeXcobra, ejeYita);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.VENTA_NUEVA, ejeXventa, ejeYita);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.MONTO_TOTAL, ejeXmonto, ejeYita);
           }
 
@@ -2158,27 +2158,27 @@ module.exports = (app) => {
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.CUOTA_SOCIAL, ejeXcuota, ejeY1811);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.TRATAMIENTO, ejeXtrata, ejeY1811);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.COBRADOR, ejeXcobra, ejeY1811);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.VENTA_NUEVA, ejeXventa, ejeY1811);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.MONTO_TOTAL, ejeXmonto, ejeY1811);
           }
 
@@ -2192,27 +2192,27 @@ module.exports = (app) => {
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.CUOTA_SOCIAL, ejeXcuota, ejeYkm14);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.TRATAMIENTO, ejeXtrata, ejeYkm14);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.COBRADOR, ejeXcobra, ejeYkm14);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.VENTA_NUEVA, ejeXventa, ejeYkm14);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.MONTO_TOTAL, ejeXmonto, ejeYkm14);
           }
 
@@ -2226,27 +2226,27 @@ module.exports = (app) => {
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.CUOTA_SOCIAL, ejeXcuota, ejeYcap);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.TRATAMIENTO, ejeXtrata, ejeYcap);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.COBRADOR, ejeXcobra, ejeYcap);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.VENTA_NUEVA, ejeXventa, ejeYcap);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.MONTO_TOTAL, ejeXmonto, ejeYcap);
           }
 
@@ -2261,27 +2261,27 @@ module.exports = (app) => {
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.CUOTA_SOCIAL, ejeXcuota, ejeYcaac);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.TRATAMIENTO, ejeXtrata, ejeYcaac);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.COBRADOR, ejeXcobra, ejeYcaac);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.VENTA_NUEVA, ejeXventa, ejeYcaac);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.MONTO_TOTAL, ejeXmonto, ejeYcaac);
           }
 
@@ -2295,27 +2295,27 @@ module.exports = (app) => {
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.CUOTA_SOCIAL, ejeXcuota, ejeYcoro);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.TRATAMIENTO, ejeXtrata, ejeYcoro);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.COBRADOR, ejeXcobra, ejeYcoro);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.VENTA_NUEVA, ejeXventa, ejeYcoro);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.MONTO_TOTAL, ejeXmonto, ejeYcoro);
           }
 
@@ -2330,27 +2330,27 @@ module.exports = (app) => {
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.CUOTA_SOCIAL, ejeXcuota, ejeYhohe);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.TRATAMIENTO, ejeXtrata, ejeYhohe);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.COBRADOR, ejeXcobra, ejeYhohe);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.VENTA_NUEVA, ejeXventa, ejeYhohe);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.MONTO_TOTAL, ejeXmonto, ejeYhohe);
           }
 
@@ -2364,27 +2364,27 @@ module.exports = (app) => {
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.CUOTA_SOCIAL, ejeXcuota, ejeYencar);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.TRATAMIENTO, ejeXtrata, ejeYencar);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.COBRADOR, ejeXcobra, ejeYencar);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.VENTA_NUEVA, ejeXventa, ejeYencar);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.MONTO_TOTAL, ejeXmonto, ejeYencar);
           }
 
@@ -2398,27 +2398,27 @@ module.exports = (app) => {
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.CUOTA_SOCIAL, ejeXcuota, ejeYmaria);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.TRATAMIENTO, ejeXtrata, ejeYmaria);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.COBRADOR, ejeXcobra, ejeYmaria);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.VENTA_NUEVA, ejeXventa, ejeYmaria);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.MONTO_TOTAL, ejeXmonto, ejeYmaria);
           }
 
@@ -2432,27 +2432,27 @@ module.exports = (app) => {
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.CUOTA_SOCIAL, ejeXcuota, ejeYayo);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.TRATAMIENTO, ejeXtrata, ejeYayo);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.COBRADOR, ejeXcobra, ejeYayo);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.VENTA_NUEVA, ejeXventa, ejeYayo);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.MONTO_TOTAL, ejeXmonto, ejeYayo);
           }
 
@@ -2467,27 +2467,27 @@ module.exports = (app) => {
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.CUOTA_SOCIAL, ejeXcuota, ejeYkm7);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.TRATAMIENTO, ejeXtrata, ejeYkm7);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.COBRADOR, ejeXcobra, ejeYkm7);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.VENTA_NUEVA, ejeXventa, ejeYkm7);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.MONTO_TOTAL, ejeXmonto, ejeYkm7);
           }
 
@@ -2502,27 +2502,27 @@ module.exports = (app) => {
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.CUOTA_SOCIAL, ejeXcuota, ejeYsanta);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.TRATAMIENTO, ejeXtrata, ejeYsanta);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.COBRADOR, ejeXcobra, ejeYsanta);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.VENTA_NUEVA, ejeXventa, ejeYsanta);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.MONTO_TOTAL, ejeXmonto, ejeYsanta);
           }
 
@@ -2537,27 +2537,27 @@ module.exports = (app) => {
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.CUOTA_SOCIAL, ejeXcuota, ejeYcampo);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.TRATAMIENTO, ejeXtrata, ejeYcampo);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.COBRADOR, ejeXcobra, ejeYcampo);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.VENTA_NUEVA, ejeXventa, ejeYcampo);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.MONTO_TOTAL, ejeXmonto, ejeYcampo);
           }
 
@@ -2573,27 +2573,27 @@ module.exports = (app) => {
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.CUOTA_SOCIAL, ejeXcuota, ejeYsantani);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.TRATAMIENTO, ejeXtrata, ejeYsantani);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.COBRADOR, ejeXcobra, ejeYsantani);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.VENTA_NUEVA, ejeXventa, ejeYsantani);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.MONTO_TOTAL, ejeXmonto, ejeYsantani);
           }
         }
@@ -2608,7 +2608,7 @@ module.exports = (app) => {
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(
               parseFloat(r.CUOTA_SOCIAL).toLocaleString("es", {
                 minimumFractionDigits: 0,
@@ -2620,7 +2620,7 @@ module.exports = (app) => {
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(
               parseFloat(r.TRATAMIENTO).toLocaleString("es", {
                 minimumFractionDigits: 0,
@@ -2632,7 +2632,7 @@ module.exports = (app) => {
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(
               parseFloat(r.COBRADOR).toLocaleString("es", {
                 minimumFractionDigits: 0,
@@ -2644,7 +2644,7 @@ module.exports = (app) => {
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(
               parseFloat(r.VENTA_NUEVA).toLocaleString("es", {
                 minimumFractionDigits: 0,
@@ -2656,7 +2656,7 @@ module.exports = (app) => {
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(
               parseFloat(r.MONTO_TOTAL).toLocaleString("es", {
                 minimumFractionDigits: 0,
@@ -2675,7 +2675,7 @@ module.exports = (app) => {
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(
               parseFloat(r.CUOTA_SOCIAL).toLocaleString("es", {
                 minimumFractionDigits: 0,
@@ -2687,7 +2687,7 @@ module.exports = (app) => {
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(
               parseFloat(r.TRATAMIENTO).toLocaleString("es", {
                 minimumFractionDigits: 0,
@@ -2699,7 +2699,7 @@ module.exports = (app) => {
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(
               parseFloat(r.COBRADOR).toLocaleString("es", {
                 minimumFractionDigits: 0,
@@ -2711,7 +2711,7 @@ module.exports = (app) => {
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(
               parseFloat(r.VENTA_NUEVA).toLocaleString("es", {
                 minimumFractionDigits: 0,
@@ -2723,7 +2723,7 @@ module.exports = (app) => {
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(
               parseFloat(r.MONTO_TOTAL).toLocaleString("es", {
                 minimumFractionDigits: 0,
@@ -2742,7 +2742,7 @@ module.exports = (app) => {
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(
               parseFloat(r.CUOTA_SOCIAL).toLocaleString("es", {
                 minimumFractionDigits: 0,
@@ -2754,7 +2754,7 @@ module.exports = (app) => {
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(
               parseFloat(r.TRATAMIENTO).toLocaleString("es", {
                 minimumFractionDigits: 0,
@@ -2766,7 +2766,7 @@ module.exports = (app) => {
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(
               parseFloat(r.COBRADOR).toLocaleString("es", {
                 minimumFractionDigits: 0,
@@ -2778,7 +2778,7 @@ module.exports = (app) => {
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(
               parseFloat(r.VENTA_NUEVA).toLocaleString("es", {
                 minimumFractionDigits: 0,
@@ -2790,7 +2790,7 @@ module.exports = (app) => {
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(
               parseFloat(r.MONTO_TOTAL).toLocaleString("es", {
                 minimumFractionDigits: 0,
@@ -2809,7 +2809,7 @@ module.exports = (app) => {
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(
               parseFloat(r.CUOTA_SOCIAL).toLocaleString("es", {
                 minimumFractionDigits: 0,
@@ -2821,7 +2821,7 @@ module.exports = (app) => {
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(
               parseFloat(r.TRATAMIENTO).toLocaleString("es", {
                 minimumFractionDigits: 0,
@@ -2833,7 +2833,7 @@ module.exports = (app) => {
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(
               parseFloat(r.COBRADOR).toLocaleString("es", {
                 minimumFractionDigits: 0,
@@ -2845,7 +2845,7 @@ module.exports = (app) => {
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(
               parseFloat(r.VENTA_NUEVA).toLocaleString("es", {
                 minimumFractionDigits: 0,
@@ -2857,7 +2857,7 @@ module.exports = (app) => {
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(
               parseFloat(r.MONTO_TOTAL).toLocaleString("es", {
                 minimumFractionDigits: 0,
@@ -2877,32 +2877,32 @@ module.exports = (app) => {
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.CUOTA_SOCIAL, ejeXcuota_, ejeYadm);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.TRATAMIENTO, ejeXtrata_, ejeYadm);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.COBRADOR, ejeXcobra_, ejeYadm);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.VENTA_NUEVA, ejeXventa_, ejeYadm);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYadm);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(
               totalDifAdministracion.toLocaleString("es", {
                 minimumFractionDigits: 0,
@@ -2921,32 +2921,32 @@ module.exports = (app) => {
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.CUOTA_SOCIAL, ejeXcuota_, ejeYml);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.TRATAMIENTO, ejeXtrata_, ejeYml);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.COBRADOR, ejeXcobra_, ejeYml);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.VENTA_NUEVA, ejeXventa_, ejeYml);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYml);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(
               totalDifML.toLocaleString("es", {
                 minimumFractionDigits: 0,
@@ -2964,32 +2964,32 @@ module.exports = (app) => {
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.CUOTA_SOCIAL, ejeXcuota_, ejeYmlurg);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.TRATAMIENTO, ejeXtrata_, ejeYmlurg);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.COBRADOR, ejeXcobra_, ejeYmlurg);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.VENTA_NUEVA, ejeXventa_, ejeYmlurg);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYmlurg);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(
               totalDifMLU.toLocaleString("es", {
                 minimumFractionDigits: 0,
@@ -3007,32 +3007,32 @@ module.exports = (app) => {
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.CUOTA_SOCIAL, ejeXcuota_, ejeYaq);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.TRATAMIENTO, ejeXtrata_, ejeYaq);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.COBRADOR, ejeXcobra_, ejeYaq);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.VENTA_NUEVA, ejeXventa_, ejeYaq);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYaq);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(
               totalDifAQ.toLocaleString("es", {
                 minimumFractionDigits: 0,
@@ -3050,32 +3050,32 @@ module.exports = (app) => {
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.CUOTA_SOCIAL, ejeXcuota_, ejeYvm);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.TRATAMIENTO, ejeXtrata_, ejeYvm);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.COBRADOR, ejeXcobra_, ejeYvm);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.VENTA_NUEVA, ejeXventa_, ejeYvm);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYvm);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(
               totalDifVM.toLocaleString("es", {
                 minimumFractionDigits: 0,
@@ -3093,32 +3093,32 @@ module.exports = (app) => {
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.CUOTA_SOCIAL, ejeXcuota_, ejeYar);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.TRATAMIENTO, ejeXtrata_, ejeYar);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.COBRADOR, ejeXcobra_, ejeYar);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.VENTA_NUEVA, ejeXventa_, ejeYar);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYar);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(
               totalDifART.toLocaleString("es", {
                 minimumFractionDigits: 0,
@@ -3136,32 +3136,32 @@ module.exports = (app) => {
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.CUOTA_SOCIAL, ejeXcuota_, ejeYlu);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.TRATAMIENTO, ejeXtrata_, ejeYlu);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.COBRADOR, ejeXcobra_, ejeYlu);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.VENTA_NUEVA, ejeXventa_, ejeYlu);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYlu);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(
               totalDifLUI.toLocaleString("es", {
                 minimumFractionDigits: 0,
@@ -3179,32 +3179,32 @@ module.exports = (app) => {
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.CUOTA_SOCIAL, ejeXcuota_, ejeYpa);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.TRATAMIENTO, ejeXtrata_, ejeYpa);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.COBRADOR, ejeXcobra_, ejeYpa);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.VENTA_NUEVA, ejeXventa_, ejeYpa);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYpa);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(
               totalDifPAL.toLocaleString("es", {
                 minimumFractionDigits: 0,
@@ -3223,32 +3223,32 @@ module.exports = (app) => {
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.CUOTA_SOCIAL, ejeXcuota_, ejeYlam);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.TRATAMIENTO, ejeXtrata_, ejeYlam);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.COBRADOR, ejeXcobra_, ejeYlam);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.VENTA_NUEVA, ejeXventa_, ejeYlam);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYlam);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(
               totalDifLAM.toLocaleString("es", {
                 minimumFractionDigits: 0,
@@ -3265,32 +3265,32 @@ module.exports = (app) => {
             // Se dibuja los datos del acumulado mes actual
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.CUOTA_SOCIAL, ejeXcuota_, ejeYcat);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.TRATAMIENTO, ejeXtrata_, ejeYcat);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.COBRADOR, ejeXcobra_, ejeYcat);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.VENTA_NUEVA, ejeXventa_, ejeYcat);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYcat);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(
               totalDifCAT.toLocaleString("es", {
                 minimumFractionDigits: 0,
@@ -3308,32 +3308,32 @@ module.exports = (app) => {
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.CUOTA_SOCIAL, ejeXcuota_, ejeYluq);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.TRATAMIENTO, ejeXtrata_, ejeYluq);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.COBRADOR, ejeXcobra_, ejeYluq);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.VENTA_NUEVA, ejeXventa_, ejeYluq);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYluq);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(
               totalDifLUQ.toLocaleString("es", {
                 minimumFractionDigits: 0,
@@ -3351,32 +3351,32 @@ module.exports = (app) => {
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.CUOTA_SOCIAL, ejeXcuota_, ejeYlar);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.TRATAMIENTO, ejeXtrata_, ejeYlar);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.COBRADOR, ejeXcobra_, ejeYlar);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.VENTA_NUEVA, ejeXventa_, ejeYlar);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYlar);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(
               totalDifLAR.toLocaleString("es", {
                 minimumFractionDigits: 0,
@@ -3394,32 +3394,32 @@ module.exports = (app) => {
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.CUOTA_SOCIAL, ejeXcuota_, ejeYnem);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.TRATAMIENTO, ejeXtrata_, ejeYnem);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.COBRADOR, ejeXcobra_, ejeYnem);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.VENTA_NUEVA, ejeXventa_, ejeYnem);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYnem);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(
               totalDifNEM.toLocaleString("es", {
                 minimumFractionDigits: 0,
@@ -3437,32 +3437,32 @@ module.exports = (app) => {
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.CUOTA_SOCIAL, ejeXcuota_, ejeYita);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.TRATAMIENTO, ejeXtrata_, ejeYita);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.COBRADOR, ejeXcobra_, ejeYita);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.VENTA_NUEVA, ejeXventa_, ejeYita);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYita);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(
               totalDifITA.toLocaleString("es", {
                 minimumFractionDigits: 0,
@@ -3480,32 +3480,32 @@ module.exports = (app) => {
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.CUOTA_SOCIAL, ejeXcuota_, ejeY1811);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.TRATAMIENTO, ejeXtrata_, ejeY1811);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.COBRADOR, ejeXcobra_, ejeY1811);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.VENTA_NUEVA, ejeXventa_, ejeY1811);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeY1811);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(
               totalDif1811.toLocaleString("es", {
                 minimumFractionDigits: 0,
@@ -3523,32 +3523,32 @@ module.exports = (app) => {
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.CUOTA_SOCIAL, ejeXcuota_, ejeYkm14);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.TRATAMIENTO, ejeXtrata_, ejeYkm14);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.COBRADOR, ejeXcobra_, ejeYkm14);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.VENTA_NUEVA, ejeXventa_, ejeYkm14);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYkm14);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(
               totalDifKM14.toLocaleString("es", {
                 minimumFractionDigits: 0,
@@ -3566,32 +3566,32 @@ module.exports = (app) => {
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.CUOTA_SOCIAL, ejeXcuota_, ejeYcap);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.TRATAMIENTO, ejeXtrata_, ejeYcap);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.COBRADOR, ejeXcobra_, ejeYcap);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.VENTA_NUEVA, ejeXventa_, ejeYcap);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYcap);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(
               totalDifCAP.toLocaleString("es", {
                 minimumFractionDigits: 0,
@@ -3610,32 +3610,32 @@ module.exports = (app) => {
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.CUOTA_SOCIAL, ejeXcuota_, ejeYcaac);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.TRATAMIENTO, ejeXtrata_, ejeYcaac);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.COBRADOR, ejeXcobra_, ejeYcaac);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.VENTA_NUEVA, ejeXventa_, ejeYcaac);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYcaac);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(
               totalDifCAACU.toLocaleString("es", {
                 minimumFractionDigits: 0,
@@ -3653,32 +3653,32 @@ module.exports = (app) => {
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.CUOTA_SOCIAL, ejeXcuota_, ejeYcoro);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.TRATAMIENTO, ejeXtrata_, ejeYcoro);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.COBRADOR, ejeXcobra_, ejeYcoro);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.VENTA_NUEVA, ejeXventa_, ejeYcoro);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYcoro);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(
               totalDifCORO.toLocaleString("es", {
                 minimumFractionDigits: 0,
@@ -3697,32 +3697,32 @@ module.exports = (app) => {
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.CUOTA_SOCIAL, ejeXcuota_, ejeYhohe);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.TRATAMIENTO, ejeXtrata_, ejeYhohe);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.COBRADOR, ejeXcobra_, ejeYhohe);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.VENTA_NUEVA, ejeXventa_, ejeYhohe);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYhohe);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(
               totalDifHOHE.toLocaleString("es", {
                 minimumFractionDigits: 0,
@@ -3739,32 +3739,32 @@ module.exports = (app) => {
             // Se dibuja los datos del acumulado mes actual
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.CUOTA_SOCIAL, ejeXcuota_, ejeYencar);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.TRATAMIENTO, ejeXtrata_, ejeYencar);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.COBRADOR, ejeXcobra_, ejeYencar);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.VENTA_NUEVA, ejeXventa_, ejeYencar);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYencar);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(
               totalDifENCAR.toLocaleString("es", {
                 minimumFractionDigits: 0,
@@ -3782,32 +3782,32 @@ module.exports = (app) => {
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.CUOTA_SOCIAL, ejeXcuota_, ejeYmaria);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.TRATAMIENTO, ejeXtrata_, ejeYmaria);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.COBRADOR, ejeXcobra_, ejeYmaria);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.VENTA_NUEVA, ejeXventa_, ejeYmaria);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYmaria);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(
               totalDifMARAUX.toLocaleString("es", {
                 minimumFractionDigits: 0,
@@ -3825,32 +3825,32 @@ module.exports = (app) => {
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.CUOTA_SOCIAL, ejeXcuota_, ejeYayo);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.TRATAMIENTO, ejeXtrata_, ejeYayo);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.COBRADOR, ejeXcobra_, ejeYayo);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.VENTA_NUEVA, ejeXventa_, ejeYayo);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYayo);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(
               totalDifAYO.toLocaleString("es", {
                 minimumFractionDigits: 0,
@@ -3869,32 +3869,32 @@ module.exports = (app) => {
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.CUOTA_SOCIAL, ejeXcuota_, ejeYkm7);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.TRATAMIENTO, ejeXtrata_, ejeYkm7);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.COBRADOR, ejeXcobra_, ejeYkm7);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.VENTA_NUEVA, ejeXventa_, ejeYkm7);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYkm7);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(
               totalDifKM7.toLocaleString("es", {
                 minimumFractionDigits: 0,
@@ -3912,32 +3912,32 @@ module.exports = (app) => {
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.CUOTA_SOCIAL, ejeXcuota_, ejeYsanta);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.TRATAMIENTO, ejeXtrata_, ejeYsanta);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.COBRADOR, ejeXcobra_, ejeYsanta);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.VENTA_NUEVA, ejeXventa_, ejeYsanta);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYsanta);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(
               totalDifSANRIT.toLocaleString("es", {
                 minimumFractionDigits: 0,
@@ -3955,32 +3955,32 @@ module.exports = (app) => {
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.CUOTA_SOCIAL, ejeXcuota_, ejeYcampo);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.TRATAMIENTO, ejeXtrata_, ejeYcampo);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.COBRADOR, ejeXcobra_, ejeYcampo);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.VENTA_NUEVA, ejeXventa_, ejeYcampo);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYcampo);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(
               totalDifCAM9.toLocaleString("es", {
                 minimumFractionDigits: 0,
@@ -3999,32 +3999,32 @@ module.exports = (app) => {
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.CUOTA_SOCIAL, ejeXcuota_, ejeYsantani);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.TRATAMIENTO, ejeXtrata_, ejeYsantani);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.COBRADOR, ejeXcobra_, ejeYsantani);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.VENTA_NUEVA, ejeXventa_, ejeYsantani);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYsantani);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(
               totalDifSANTANI.toLocaleString("es", {
                 minimumFractionDigits: 0,
@@ -4041,7 +4041,7 @@ module.exports = (app) => {
           if (r.TIPO == "PAGOS ELECTRONICOS") {
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(
               parseFloat(r.CUOTA_SOCIAL).toLocaleString("es", {
                 minimumFractionDigits: 0,
@@ -4053,7 +4053,7 @@ module.exports = (app) => {
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(
               parseFloat(r.TRATAMIENTO).toLocaleString("es", {
                 minimumFractionDigits: 0,
@@ -4065,7 +4065,7 @@ module.exports = (app) => {
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(
               parseFloat(r.COBRADOR).toLocaleString("es", {
                 minimumFractionDigits: 0,
@@ -4077,7 +4077,7 @@ module.exports = (app) => {
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(
               parseFloat(r.VENTA_NUEVA).toLocaleString("es", {
                 minimumFractionDigits: 0,
@@ -4089,7 +4089,7 @@ module.exports = (app) => {
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(
               parseFloat(r.MONTO_TOTAL).toLocaleString("es", {
                 minimumFractionDigits: 0,
@@ -4102,7 +4102,7 @@ module.exports = (app) => {
             // Diferencia ingresos pagos electronicos
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(
               totalDifPagoElectronico.toLocaleString("es", {
                 minimumFractionDigits: 0,
@@ -4116,7 +4116,7 @@ module.exports = (app) => {
           if (r.TIPO == "ASO. DEB.") {
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(
               parseFloat(r.CUOTA_SOCIAL).toLocaleString("es", {
                 minimumFractionDigits: 0,
@@ -4128,7 +4128,7 @@ module.exports = (app) => {
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(
               parseFloat(r.TRATAMIENTO).toLocaleString("es", {
                 minimumFractionDigits: 0,
@@ -4140,7 +4140,7 @@ module.exports = (app) => {
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(
               parseFloat(r.COBRADOR).toLocaleString("es", {
                 minimumFractionDigits: 0,
@@ -4152,7 +4152,7 @@ module.exports = (app) => {
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(
               parseFloat(r.VENTA_NUEVA).toLocaleString("es", {
                 minimumFractionDigits: 0,
@@ -4164,7 +4164,7 @@ module.exports = (app) => {
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(
               parseFloat(r.MONTO_TOTAL).toLocaleString("es", {
                 minimumFractionDigits: 0,
@@ -4177,7 +4177,7 @@ module.exports = (app) => {
             // Diferencia ingresos aso deb
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(
               totalDifAsoDeb.toLocaleString("es", {
                 minimumFractionDigits: 0,
@@ -4191,7 +4191,7 @@ module.exports = (app) => {
           if (r.TIPO == "LICITACIONES") {
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(
               parseFloat(r.CUOTA_SOCIAL).toLocaleString("es", {
                 minimumFractionDigits: 0,
@@ -4203,7 +4203,7 @@ module.exports = (app) => {
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(
               parseFloat(r.TRATAMIENTO).toLocaleString("es", {
                 minimumFractionDigits: 0,
@@ -4215,7 +4215,7 @@ module.exports = (app) => {
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(
               parseFloat(r.COBRADOR).toLocaleString("es", {
                 minimumFractionDigits: 0,
@@ -4227,7 +4227,7 @@ module.exports = (app) => {
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(
               parseFloat(r.VENTA_NUEVA).toLocaleString("es", {
                 minimumFractionDigits: 0,
@@ -4239,7 +4239,7 @@ module.exports = (app) => {
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(
               parseFloat(r.MONTO_TOTAL).toLocaleString("es", {
                 minimumFractionDigits: 0,
@@ -4252,7 +4252,7 @@ module.exports = (app) => {
             // Diferencia ingresos licitaciones
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(
               totalDifLicitaciones.toLocaleString("es", {
                 minimumFractionDigits: 0,
@@ -4266,7 +4266,7 @@ module.exports = (app) => {
           if (r.TIPO == "TRANSF. GIROS PALMA") {
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(
               parseFloat(r.CUOTA_SOCIAL).toLocaleString("es", {
                 minimumFractionDigits: 0,
@@ -4278,7 +4278,7 @@ module.exports = (app) => {
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(
               parseFloat(r.TRATAMIENTO).toLocaleString("es", {
                 minimumFractionDigits: 0,
@@ -4290,7 +4290,7 @@ module.exports = (app) => {
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(
               parseFloat(r.COBRADOR).toLocaleString("es", {
                 minimumFractionDigits: 0,
@@ -4302,7 +4302,7 @@ module.exports = (app) => {
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(
               parseFloat(r.VENTA_NUEVA).toLocaleString("es", {
                 minimumFractionDigits: 0,
@@ -4314,7 +4314,7 @@ module.exports = (app) => {
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(
               parseFloat(r.MONTO_TOTAL).toLocaleString("es", {
                 minimumFractionDigits: 0,
@@ -4327,7 +4327,7 @@ module.exports = (app) => {
             // Diferencia ingresos trans giros palma
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
-            context.textAlign = "center";
+            context.textAlign = "right";
             context.fillText(
               totalDifLicitaciones.toLocaleString("es", {
                 minimumFractionDigits: 0,
@@ -4360,7 +4360,7 @@ module.exports = (app) => {
 
         context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
-        context.textAlign = "center";
+        context.textAlign = "right";
         context.fillText(
           sumTotalesAsuncionCS.toLocaleString("es", {
             minimumFractionDigits: 0,
@@ -4372,7 +4372,7 @@ module.exports = (app) => {
 
         context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
-        context.textAlign = "center";
+        context.textAlign = "right";
         context.fillText(
           sumTotalesAsuncionTT.toLocaleString("es", {
             minimumFractionDigits: 0,
@@ -4384,7 +4384,7 @@ module.exports = (app) => {
 
         context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
-        context.textAlign = "center";
+        context.textAlign = "right";
         context.fillText(
           sumTotalesAsuncionCO.toLocaleString("es", {
             minimumFractionDigits: 0,
@@ -4396,7 +4396,7 @@ module.exports = (app) => {
 
         context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
-        context.textAlign = "center";
+        context.textAlign = "right";
         context.fillText(
           sumTotalesAsuncionVN.toLocaleString("es", {
             minimumFractionDigits: 0,
@@ -4409,7 +4409,7 @@ module.exports = (app) => {
         // MONTO TOTAL
         context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
-        context.textAlign = "center";
+        context.textAlign = "right";
         context.fillText(
           sumTotalesAsuncionMT.toLocaleString("es", {
             minimumFractionDigits: 0,
@@ -4422,7 +4422,7 @@ module.exports = (app) => {
         // SUM - Monto Total ZONA ASUNCION - MES ACTUAL
         context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
-        context.textAlign = "center";
+        context.textAlign = "right";
         context.fillText(
           sumTotalesAsuncionCS_.toLocaleString("es", {
             minimumFractionDigits: 0,
@@ -4434,7 +4434,7 @@ module.exports = (app) => {
 
         context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
-        context.textAlign = "center";
+        context.textAlign = "right";
         context.fillText(
           sumTotalesAsuncionTT_.toLocaleString("es", {
             minimumFractionDigits: 0,
@@ -4446,7 +4446,7 @@ module.exports = (app) => {
 
         context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
-        context.textAlign = "center";
+        context.textAlign = "right";
         context.fillText(
           sumTotalesAsuncionCO_.toLocaleString("es", {
             minimumFractionDigits: 0,
@@ -4458,7 +4458,7 @@ module.exports = (app) => {
 
         context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
-        context.textAlign = "center";
+        context.textAlign = "right";
         context.fillText(
           sumTotalesAsuncionVN_.toLocaleString("es", {
             minimumFractionDigits: 0,
@@ -4471,7 +4471,7 @@ module.exports = (app) => {
         // MONTO TOTAL
         context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
-        context.textAlign = "center";
+        context.textAlign = "right";
         context.fillText(
           sumTotalesAsuncionMT_.toLocaleString("es", {
             minimumFractionDigits: 0,
@@ -4483,7 +4483,7 @@ module.exports = (app) => {
 
         context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
-        context.textAlign = "center";
+        context.textAlign = "right";
         context.fillText(
           difTotalesAsuncionMT.toLocaleString("es", {
             minimumFractionDigits: 0,
@@ -4501,7 +4501,7 @@ module.exports = (app) => {
 
         context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
-        context.textAlign = "center";
+        context.textAlign = "right";
         context.fillText(
           sumTotalesGAsuncionCS.toLocaleString("es", {
             minimumFractionDigits: 0,
@@ -4513,7 +4513,7 @@ module.exports = (app) => {
 
         context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
-        context.textAlign = "center";
+        context.textAlign = "right";
         context.fillText(
           sumTotalesGAsuncionTT.toLocaleString("es", {
             minimumFractionDigits: 0,
@@ -4525,7 +4525,7 @@ module.exports = (app) => {
 
         context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
-        context.textAlign = "center";
+        context.textAlign = "right";
         context.fillText(
           sumTotalesGAsuncionCO.toLocaleString("es", {
             minimumFractionDigits: 0,
@@ -4537,7 +4537,7 @@ module.exports = (app) => {
 
         context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
-        context.textAlign = "center";
+        context.textAlign = "right";
         context.fillText(
           sumTotalesGAsuncionVN.toLocaleString("es", {
             minimumFractionDigits: 0,
@@ -4550,7 +4550,7 @@ module.exports = (app) => {
         // MONTO TOTAL
         context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
-        context.textAlign = "center";
+        context.textAlign = "right";
         context.fillText(
           sumTotalesGAsuncionMT.toLocaleString("es", {
             minimumFractionDigits: 0,
@@ -4563,7 +4563,7 @@ module.exports = (app) => {
         // SUM - Monto Total ZONA GRAN ASUNCION - MES ACTUAL
         context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
-        context.textAlign = "center";
+        context.textAlign = "right";
         context.fillText(
           sumTotalesGAsuncionCS_.toLocaleString("es", {
             minimumFractionDigits: 0,
@@ -4575,7 +4575,7 @@ module.exports = (app) => {
 
         context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
-        context.textAlign = "center";
+        context.textAlign = "right";
         context.fillText(
           sumTotalesGAsuncionTT_.toLocaleString("es", {
             minimumFractionDigits: 0,
@@ -4587,7 +4587,7 @@ module.exports = (app) => {
 
         context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
-        context.textAlign = "center";
+        context.textAlign = "right";
         context.fillText(
           sumTotalesGAsuncionCO_.toLocaleString("es", {
             minimumFractionDigits: 0,
@@ -4599,7 +4599,7 @@ module.exports = (app) => {
 
         context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
-        context.textAlign = "center";
+        context.textAlign = "right";
         context.fillText(
           sumTotalesGAsuncionVN_.toLocaleString("es", {
             minimumFractionDigits: 0,
@@ -4612,7 +4612,7 @@ module.exports = (app) => {
         // MONTO TOTAL
         context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
-        context.textAlign = "center";
+        context.textAlign = "right";
         context.fillText(
           sumTotalesGAsuncionMT_.toLocaleString("es", {
             minimumFractionDigits: 0,
@@ -4624,7 +4624,7 @@ module.exports = (app) => {
 
         context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
-        context.textAlign = "center";
+        context.textAlign = "right";
         context.fillText(
           difTotalesGAsuncionMT.toLocaleString("es", {
             minimumFractionDigits: 0,
@@ -4642,7 +4642,7 @@ module.exports = (app) => {
 
         context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
-        context.textAlign = "center";
+        context.textAlign = "right";
         context.fillText(
           sumTotalesR2CS.toLocaleString("es", {
             minimumFractionDigits: 0,
@@ -4654,7 +4654,7 @@ module.exports = (app) => {
 
         context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
-        context.textAlign = "center";
+        context.textAlign = "right";
         context.fillText(
           sumTotalesR2TT.toLocaleString("es", {
             minimumFractionDigits: 0,
@@ -4666,7 +4666,7 @@ module.exports = (app) => {
 
         context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
-        context.textAlign = "center";
+        context.textAlign = "right";
         context.fillText(
           sumTotalesR2CO.toLocaleString("es", {
             minimumFractionDigits: 0,
@@ -4678,7 +4678,7 @@ module.exports = (app) => {
 
         context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
-        context.textAlign = "center";
+        context.textAlign = "right";
         context.fillText(
           sumTotalesR2VN.toLocaleString("es", {
             minimumFractionDigits: 0,
@@ -4691,7 +4691,7 @@ module.exports = (app) => {
         // MONTO TOTAL
         context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
-        context.textAlign = "center";
+        context.textAlign = "right";
         context.fillText(
           sumTotalesR2MT.toLocaleString("es", {
             minimumFractionDigits: 0,
@@ -4704,7 +4704,7 @@ module.exports = (app) => {
         // SUM - Monto Total ZONA RUTA 2 - MES ACTUAL
         context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
-        context.textAlign = "center";
+        context.textAlign = "right";
         context.fillText(
           sumTotalesR2CS_.toLocaleString("es", {
             minimumFractionDigits: 0,
@@ -4716,7 +4716,7 @@ module.exports = (app) => {
 
         context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
-        context.textAlign = "center";
+        context.textAlign = "right";
         context.fillText(
           sumTotalesR2TT_.toLocaleString("es", {
             minimumFractionDigits: 0,
@@ -4728,7 +4728,7 @@ module.exports = (app) => {
 
         context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
-        context.textAlign = "center";
+        context.textAlign = "right";
         context.fillText(
           sumTotalesR2CO_.toLocaleString("es", {
             minimumFractionDigits: 0,
@@ -4740,7 +4740,7 @@ module.exports = (app) => {
 
         context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
-        context.textAlign = "center";
+        context.textAlign = "right";
         context.fillText(
           sumTotalesR2VN_.toLocaleString("es", {
             minimumFractionDigits: 0,
@@ -4753,7 +4753,7 @@ module.exports = (app) => {
         // MONTO TOTAL
         context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
-        context.textAlign = "center";
+        context.textAlign = "right";
         context.fillText(
           sumTotalesR2MT_.toLocaleString("es", {
             minimumFractionDigits: 0,
@@ -4765,7 +4765,7 @@ module.exports = (app) => {
 
         context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
-        context.textAlign = "center";
+        context.textAlign = "right";
         context.fillText(
           difTotalesR2MT.toLocaleString("es", {
             minimumFractionDigits: 0,
@@ -4783,7 +4783,7 @@ module.exports = (app) => {
 
         context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
-        context.textAlign = "center";
+        context.textAlign = "right";
         context.fillText(
           sumTotalesItaCS.toLocaleString("es", {
             minimumFractionDigits: 0,
@@ -4795,7 +4795,7 @@ module.exports = (app) => {
 
         context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
-        context.textAlign = "center";
+        context.textAlign = "right";
         context.fillText(
           sumTotalesItaTT.toLocaleString("es", {
             minimumFractionDigits: 0,
@@ -4807,7 +4807,7 @@ module.exports = (app) => {
 
         context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
-        context.textAlign = "center";
+        context.textAlign = "right";
         context.fillText(
           sumTotalesItaCO.toLocaleString("es", {
             minimumFractionDigits: 0,
@@ -4819,7 +4819,7 @@ module.exports = (app) => {
 
         context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
-        context.textAlign = "center";
+        context.textAlign = "right";
         context.fillText(
           sumTotalesItaVN.toLocaleString("es", {
             minimumFractionDigits: 0,
@@ -4832,7 +4832,7 @@ module.exports = (app) => {
         // MONTO TOTAL
         context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
-        context.textAlign = "center";
+        context.textAlign = "right";
         context.fillText(
           sumTotalesItaMT.toLocaleString("es", {
             minimumFractionDigits: 0,
@@ -4845,7 +4845,7 @@ module.exports = (app) => {
         // SUM - Monto Total ZONA ITAPUA - MES ACTUAL
         context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
-        context.textAlign = "center";
+        context.textAlign = "right";
         context.fillText(
           sumTotalesItaCS_.toLocaleString("es", {
             minimumFractionDigits: 0,
@@ -4857,7 +4857,7 @@ module.exports = (app) => {
 
         context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
-        context.textAlign = "center";
+        context.textAlign = "right";
         context.fillText(
           sumTotalesItaTT_.toLocaleString("es", {
             minimumFractionDigits: 0,
@@ -4869,7 +4869,7 @@ module.exports = (app) => {
 
         context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
-        context.textAlign = "center";
+        context.textAlign = "right";
         context.fillText(
           sumTotalesItaCO_.toLocaleString("es", {
             minimumFractionDigits: 0,
@@ -4881,7 +4881,7 @@ module.exports = (app) => {
 
         context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
-        context.textAlign = "center";
+        context.textAlign = "right";
         context.fillText(
           sumTotalesItaVN_.toLocaleString("es", {
             minimumFractionDigits: 0,
@@ -4894,7 +4894,7 @@ module.exports = (app) => {
         // MONTO TOTAL
         context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
-        context.textAlign = "center";
+        context.textAlign = "right";
         context.fillText(
           sumTotalesItaMT_.toLocaleString("es", {
             minimumFractionDigits: 0,
@@ -4906,7 +4906,7 @@ module.exports = (app) => {
 
         context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
-        context.textAlign = "center";
+        context.textAlign = "right";
         context.fillText(
           difTotalesItaMT.toLocaleString("es", {
             minimumFractionDigits: 0,
@@ -4924,7 +4924,7 @@ module.exports = (app) => {
 
         context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
-        context.textAlign = "center";
+        context.textAlign = "right";
         context.fillText(
           sumTotalesApCS.toLocaleString("es", {
             minimumFractionDigits: 0,
@@ -4936,7 +4936,7 @@ module.exports = (app) => {
 
         context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
-        context.textAlign = "center";
+        context.textAlign = "right";
         context.fillText(
           sumTotalesApTT.toLocaleString("es", {
             minimumFractionDigits: 0,
@@ -4948,7 +4948,7 @@ module.exports = (app) => {
 
         context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
-        context.textAlign = "center";
+        context.textAlign = "right";
         context.fillText(
           sumTotalesApCO.toLocaleString("es", {
             minimumFractionDigits: 0,
@@ -4960,7 +4960,7 @@ module.exports = (app) => {
 
         context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
-        context.textAlign = "center";
+        context.textAlign = "right";
         context.fillText(
           sumTotalesApVN.toLocaleString("es", {
             minimumFractionDigits: 0,
@@ -4973,7 +4973,7 @@ module.exports = (app) => {
         // MONTO TOTAL
         context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
-        context.textAlign = "center";
+        context.textAlign = "right";
         context.fillText(
           sumTotalesApMT.toLocaleString("es", {
             minimumFractionDigits: 0,
@@ -4986,7 +4986,7 @@ module.exports = (app) => {
         // SUM - Monto Total ZONA ALTO PARANA - MES ACTUAL
         context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
-        context.textAlign = "center";
+        context.textAlign = "right";
         context.fillText(
           sumTotalesApCS_.toLocaleString("es", {
             minimumFractionDigits: 0,
@@ -4998,7 +4998,7 @@ module.exports = (app) => {
 
         context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
-        context.textAlign = "center";
+        context.textAlign = "right";
         context.fillText(
           sumTotalesApTT_.toLocaleString("es", {
             minimumFractionDigits: 0,
@@ -5010,7 +5010,7 @@ module.exports = (app) => {
 
         context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
-        context.textAlign = "center";
+        context.textAlign = "right";
         context.fillText(
           sumTotalesApCO_.toLocaleString("es", {
             minimumFractionDigits: 0,
@@ -5022,7 +5022,7 @@ module.exports = (app) => {
 
         context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
-        context.textAlign = "center";
+        context.textAlign = "right";
         context.fillText(
           sumTotalesApVN_.toLocaleString("es", {
             minimumFractionDigits: 0,
@@ -5035,7 +5035,7 @@ module.exports = (app) => {
         // MONTO TOTAL
         context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
-        context.textAlign = "center";
+        context.textAlign = "right";
         context.fillText(
           sumTotalesApMT_.toLocaleString("es", {
             minimumFractionDigits: 0,
@@ -5047,7 +5047,7 @@ module.exports = (app) => {
 
         context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
-        context.textAlign = "center";
+        context.textAlign = "right";
         context.fillText(
           difTotalesApMT.toLocaleString("es", {
             minimumFractionDigits: 0,
@@ -5065,7 +5065,7 @@ module.exports = (app) => {
 
         context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
-        context.textAlign = "center";
+        context.textAlign = "right";
         context.fillText(
           sumTotalesSpCS.toLocaleString("es", {
             minimumFractionDigits: 0,
@@ -5077,7 +5077,7 @@ module.exports = (app) => {
 
         context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
-        context.textAlign = "center";
+        context.textAlign = "right";
         context.fillText(
           sumTotalesSpTT.toLocaleString("es", {
             minimumFractionDigits: 0,
@@ -5089,7 +5089,7 @@ module.exports = (app) => {
 
         context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
-        context.textAlign = "center";
+        context.textAlign = "right";
         context.fillText(
           sumTotalesSpCO.toLocaleString("es", {
             minimumFractionDigits: 0,
@@ -5101,7 +5101,7 @@ module.exports = (app) => {
 
         context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
-        context.textAlign = "center";
+        context.textAlign = "right";
         context.fillText(
           sumTotalesSpVN.toLocaleString("es", {
             minimumFractionDigits: 0,
@@ -5114,7 +5114,7 @@ module.exports = (app) => {
         // MONTO TOTAL
         context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
-        context.textAlign = "center";
+        context.textAlign = "right";
         context.fillText(
           sumTotalesSpMT.toLocaleString("es", {
             minimumFractionDigits: 0,
@@ -5127,7 +5127,7 @@ module.exports = (app) => {
         // SUM - Monto Total ZONA SAN PEDRO - MES ACTUAL
         context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
-        context.textAlign = "center";
+        context.textAlign = "right";
         context.fillText(
           sumTotalesSpCS_.toLocaleString("es", {
             minimumFractionDigits: 0,
@@ -5139,7 +5139,7 @@ module.exports = (app) => {
 
         context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
-        context.textAlign = "center";
+        context.textAlign = "right";
         context.fillText(
           sumTotalesSpTT_.toLocaleString("es", {
             minimumFractionDigits: 0,
@@ -5151,7 +5151,7 @@ module.exports = (app) => {
 
         context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
-        context.textAlign = "center";
+        context.textAlign = "right";
         context.fillText(
           sumTotalesSpCO_.toLocaleString("es", {
             minimumFractionDigits: 0,
@@ -5163,7 +5163,7 @@ module.exports = (app) => {
 
         context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
-        context.textAlign = "center";
+        context.textAlign = "right";
         context.fillText(
           sumTotalesSpVN_.toLocaleString("es", {
             minimumFractionDigits: 0,
@@ -5176,7 +5176,7 @@ module.exports = (app) => {
         // MONTO TOTAL
         context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
-        context.textAlign = "center";
+        context.textAlign = "right";
         context.fillText(
           sumTotalesSpMT_.toLocaleString("es", {
             minimumFractionDigits: 0,
@@ -5188,7 +5188,7 @@ module.exports = (app) => {
 
         context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
-        context.textAlign = "center";
+        context.textAlign = "right";
         context.fillText(
           difTotalesSpMT.toLocaleString("es", {
             minimumFractionDigits: 0,
@@ -5208,7 +5208,7 @@ module.exports = (app) => {
 
         context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
-        context.textAlign = "center";
+        context.textAlign = "right";
         context.fillText(
           totalGenCuotaSocial.toLocaleString("es", {
             minimumFractionDigits: 0,
@@ -5220,7 +5220,7 @@ module.exports = (app) => {
 
         context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
-        context.textAlign = "center";
+        context.textAlign = "right";
         context.fillText(
           totalGenTratamiento.toLocaleString("es", {
             minimumFractionDigits: 0,
@@ -5232,7 +5232,7 @@ module.exports = (app) => {
 
         context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
-        context.textAlign = "center";
+        context.textAlign = "right";
         context.fillText(
           totalGenCobrador.toLocaleString("es", {
             minimumFractionDigits: 0,
@@ -5244,7 +5244,7 @@ module.exports = (app) => {
 
         context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
-        context.textAlign = "center";
+        context.textAlign = "right";
         context.fillText(
           totalGenVentaNueva.toLocaleString("es", {
             minimumFractionDigits: 0,
@@ -5257,7 +5257,7 @@ module.exports = (app) => {
         // MONTO TOTAL
         context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
-        context.textAlign = "center";
+        context.textAlign = "right";
         context.fillText(
           totalGenMontoTotal.toLocaleString("es", {
             minimumFractionDigits: 0,
@@ -5272,7 +5272,7 @@ module.exports = (app) => {
          */
         context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
-        context.textAlign = "center";
+        context.textAlign = "right";
         context.fillText(
           totalGenCuotaSocial_.toLocaleString("es", {
             minimumFractionDigits: 0,
@@ -5284,7 +5284,7 @@ module.exports = (app) => {
 
         context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
-        context.textAlign = "center";
+        context.textAlign = "right";
         context.fillText(
           totalGenTratamiento_.toLocaleString("es", {
             minimumFractionDigits: 0,
@@ -5296,7 +5296,7 @@ module.exports = (app) => {
 
         context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
-        context.textAlign = "center";
+        context.textAlign = "right";
         context.fillText(
           totalGenCobrador_.toLocaleString("es", {
             minimumFractionDigits: 0,
@@ -5308,7 +5308,7 @@ module.exports = (app) => {
 
         context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
-        context.textAlign = "center";
+        context.textAlign = "right";
         context.fillText(
           totalGenVentaNueva_.toLocaleString("es", {
             minimumFractionDigits: 0,
@@ -5321,7 +5321,7 @@ module.exports = (app) => {
         // MONTO TOTAL
         context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
-        context.textAlign = "center";
+        context.textAlign = "right";
         context.fillText(
           totalGenMontoTotal_.toLocaleString("es", {
             minimumFractionDigits: 0,
@@ -5334,7 +5334,7 @@ module.exports = (app) => {
         // DIFERENCIA TOTAL SUCURSAL
         context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
-        context.textAlign = "center";
+        context.textAlign = "right";
         context.fillText(
           (totalGenMontoTotal_ - totalGenMontoTotal).toLocaleString("es", {
             minimumFractionDigits: 0,
@@ -5354,7 +5354,7 @@ module.exports = (app) => {
 
         context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
-        context.textAlign = "center";
+        context.textAlign = "right";
         context.fillText(
           totalGenINCuotaSocial.toLocaleString("es", {
             minimumFractionDigits: 0,
@@ -5366,7 +5366,7 @@ module.exports = (app) => {
 
         context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
-        context.textAlign = "center";
+        context.textAlign = "right";
         context.fillText(
           totalGenINTratamiento.toLocaleString("es", {
             minimumFractionDigits: 0,
@@ -5378,7 +5378,7 @@ module.exports = (app) => {
 
         context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
-        context.textAlign = "center";
+        context.textAlign = "right";
         context.fillText(
           totalGenINCobrador.toLocaleString("es", {
             minimumFractionDigits: 0,
@@ -5390,7 +5390,7 @@ module.exports = (app) => {
 
         context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
-        context.textAlign = "center";
+        context.textAlign = "right";
         context.fillText(
           totalGenINVentaNueva.toLocaleString("es", {
             minimumFractionDigits: 0,
@@ -5403,7 +5403,7 @@ module.exports = (app) => {
         // MONTO TOTAL
         context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
-        context.textAlign = "center";
+        context.textAlign = "right";
         context.fillText(
           totalGenINMontoTotal.toLocaleString("es", {
             minimumFractionDigits: 0,
@@ -5419,7 +5419,7 @@ module.exports = (app) => {
 
         context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
-        context.textAlign = "center";
+        context.textAlign = "right";
         context.fillText(
           totalGenINCuotaSocial_.toLocaleString("es", {
             minimumFractionDigits: 0,
@@ -5431,7 +5431,7 @@ module.exports = (app) => {
 
         context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
-        context.textAlign = "center";
+        context.textAlign = "right";
         context.fillText(
           totalGenINTratamiento_.toLocaleString("es", {
             minimumFractionDigits: 0,
@@ -5443,7 +5443,7 @@ module.exports = (app) => {
 
         context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
-        context.textAlign = "center";
+        context.textAlign = "right";
         context.fillText(
           totalGenINCobrador_.toLocaleString("es", {
             minimumFractionDigits: 0,
@@ -5455,7 +5455,7 @@ module.exports = (app) => {
 
         context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
-        context.textAlign = "center";
+        context.textAlign = "right";
         context.fillText(
           totalGenINVentaNueva_.toLocaleString("es", {
             minimumFractionDigits: 0,
@@ -5468,7 +5468,7 @@ module.exports = (app) => {
         // MONTO TOTAL
         context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
-        context.textAlign = "center";
+        context.textAlign = "right";
         context.fillText(
           totalGenINMontoTotal_.toLocaleString("es", {
             minimumFractionDigits: 0,
@@ -5481,7 +5481,7 @@ module.exports = (app) => {
         // Diferencia monto total adm
         context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
-        context.textAlign = "center";
+        context.textAlign = "right";
         context.fillText(
           totalDifTotalADM.toLocaleString("es", {
             minimumFractionDigits: 0,
@@ -5502,7 +5502,7 @@ module.exports = (app) => {
 
         context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
-        context.textAlign = "center";
+        context.textAlign = "right";
         context.fillText(
           (totalGenCuotaSocial + totalGenINCuotaSocial).toLocaleString("es", {
             minimumFractionDigits: 0,
@@ -5514,7 +5514,7 @@ module.exports = (app) => {
 
         context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
-        context.textAlign = "center";
+        context.textAlign = "right";
         context.fillText(
           (totalGenTratamiento + totalGenINTratamiento).toLocaleString("es", {
             minimumFractionDigits: 0,
@@ -5526,7 +5526,7 @@ module.exports = (app) => {
 
         context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
-        context.textAlign = "center";
+        context.textAlign = "right";
         context.fillText(
           (totalGenCobrador + totalGenINCobrador).toLocaleString("es", {
             minimumFractionDigits: 0,
@@ -5538,7 +5538,7 @@ module.exports = (app) => {
 
         context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
-        context.textAlign = "center";
+        context.textAlign = "right";
         context.fillText(
           (totalGenVentaNueva + totalGenINVentaNueva).toLocaleString("es", {
             minimumFractionDigits: 0,
@@ -5551,7 +5551,7 @@ module.exports = (app) => {
         // MONTO TOTAL
         context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
-        context.textAlign = "center";
+        context.textAlign = "right";
         context.fillText(
           (totalGenMontoTotal + totalGenINMontoTotal).toLocaleString("es", {
             minimumFractionDigits: 0,
@@ -5565,7 +5565,7 @@ module.exports = (app) => {
 
         context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
-        context.textAlign = "center";
+        context.textAlign = "right";
         context.fillText(
           (totalGenCuotaSocial_ + totalGenINCuotaSocial_).toLocaleString("es", {
             minimumFractionDigits: 0,
@@ -5577,7 +5577,7 @@ module.exports = (app) => {
 
         context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
-        context.textAlign = "center";
+        context.textAlign = "right";
         context.fillText(
           (totalGenTratamiento_ + totalGenINTratamiento_).toLocaleString("es", {
             minimumFractionDigits: 0,
@@ -5589,7 +5589,7 @@ module.exports = (app) => {
 
         context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
-        context.textAlign = "center";
+        context.textAlign = "right";
         context.fillText(
           (totalGenCobrador_ + totalGenINCobrador_).toLocaleString("es", {
             minimumFractionDigits: 0,
@@ -5601,7 +5601,7 @@ module.exports = (app) => {
 
         context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
-        context.textAlign = "center";
+        context.textAlign = "right";
         context.fillText(
           (totalGenVentaNueva_ + totalGenINVentaNueva_).toLocaleString("es", {
             minimumFractionDigits: 0,
@@ -5614,7 +5614,7 @@ module.exports = (app) => {
         // MONTO TOTAL
         context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
-        context.textAlign = "center";
+        context.textAlign = "right";
         context.fillText(
           (totalGenMontoTotal_ + totalGenINMontoTotal_).toLocaleString("es", {
             minimumFractionDigits: 0,
@@ -5627,7 +5627,7 @@ module.exports = (app) => {
         // Diferencia monto TOTAL GENERAL DOC
         context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
-        context.textAlign = "center";
+        context.textAlign = "right";
         context.fillText(
           ((totalGenMontoTotal_ - totalGenMontoTotal) + totalDifTotalADM).toLocaleString("es", {
             minimumFractionDigits: 0,
