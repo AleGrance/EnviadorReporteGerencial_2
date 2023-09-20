@@ -27,8 +27,8 @@ const width = 1668;
 const height = 1152;
 
 // Fuente del texto
-const fuenteTexto = '20px Arial';
-const fuenteTextoBold = 'bold 20px Arial';
+const fuenteTexto = "20px Arial";
+const fuenteTextoBold = "bold 20px Arial";
 
 // Instantiate the canvas object
 const canvas = createCanvas(width, height);
@@ -574,8 +574,6 @@ module.exports = (app) => {
   //   });
 
   // Inicia los envios - Consulta al PGSQL
-  let losReportes = [];
-  let losReportesFormateado = [];
   let losAcumuladosMesAct = [];
   let losAcumuladosMesActForma = [];
 
@@ -591,18 +589,12 @@ module.exports = (app) => {
   let sumTotalesAsuncionCO = 0;
   let sumTotalesAsuncionVN = 0;
   let sumTotalesAsuncionMT = 0;
-  // let sumTotalesAsuncionAG = 0;
-  // let sumTotalesAsuncionAS = 0;
-  // let sumTotalesAsuncionPR = 0;
 
   let sumTotalesAsuncionCS_ = 0;
   let sumTotalesAsuncionTT_ = 0;
   let sumTotalesAsuncionCO_ = 0;
   let sumTotalesAsuncionVN_ = 0;
   let sumTotalesAsuncionMT_ = 0;
-  // let sumTotalesAsuncionAG_ = 0;
-  // let sumTotalesAsuncionAS_ = 0;
-  // let sumTotalesAsuncionPR_ = 0;
 
   // Sub Totales Zona Gran Asuncion
   let sumTotalesGAsuncionCS = 0;
@@ -610,18 +602,12 @@ module.exports = (app) => {
   let sumTotalesGAsuncionCO = 0;
   let sumTotalesGAsuncionVN = 0;
   let sumTotalesGAsuncionMT = 0;
-  // let sumTotalesGAsuncionAG = 0;
-  // let sumTotalesGAsuncionAS = 0;
-  // let sumTotalesGAsuncionPR = 0;
 
   let sumTotalesGAsuncionCS_ = 0;
   let sumTotalesGAsuncionTT_ = 0;
   let sumTotalesGAsuncionCO_ = 0;
   let sumTotalesGAsuncionVN_ = 0;
   let sumTotalesGAsuncionMT_ = 0;
-  // let sumTotalesGAsuncionAG_ = 0;
-  // let sumTotalesGAsuncionAS_ = 0;
-  // let sumTotalesGAsuncionPR_ = 0;
 
   // Sub Totales Zona Ruta 2
   let sumTotalesR2CS = 0;
@@ -629,18 +615,12 @@ module.exports = (app) => {
   let sumTotalesR2CO = 0;
   let sumTotalesR2VN = 0;
   let sumTotalesR2MT = 0;
-  // let sumTotalesR2AG = 0;
-  // let sumTotalesR2AS = 0;
-  // let sumTotalesR2PR = 0;
 
   let sumTotalesR2CS_ = 0;
   let sumTotalesR2TT_ = 0;
   let sumTotalesR2CO_ = 0;
   let sumTotalesR2VN_ = 0;
   let sumTotalesR2MT_ = 0;
-  // let sumTotalesR2AG_ = 0;
-  // let sumTotalesR2AS_ = 0;
-  // let sumTotalesR2PR_ = 0;
 
   // Sub Totales Zona Itapua
   let sumTotalesItaCS = 0;
@@ -648,18 +628,12 @@ module.exports = (app) => {
   let sumTotalesItaCO = 0;
   let sumTotalesItaVN = 0;
   let sumTotalesItaMT = 0;
-  // let sumTotalesItaAG = 0;
-  // let sumTotalesItaAS = 0;
-  // let sumTotalesItaPR = 0;
 
   let sumTotalesItaCS_ = 0;
   let sumTotalesItaTT_ = 0;
   let sumTotalesItaCO_ = 0;
   let sumTotalesItaVN_ = 0;
   let sumTotalesItaMT_ = 0;
-  // let sumTotalesItaAG_ = 0;
-  // let sumTotalesItaAS_ = 0;
-  // let sumTotalesItaPR_ = 0;
 
   // Sub Totales Zona Alto Parana
   let sumTotalesApCS = 0;
@@ -667,18 +641,12 @@ module.exports = (app) => {
   let sumTotalesApCO = 0;
   let sumTotalesApVN = 0;
   let sumTotalesApMT = 0;
-  // let sumTotalesApAG = 0;
-  // let sumTotalesApAS = 0;
-  // let sumTotalesApPR = 0;
 
   let sumTotalesApCS_ = 0;
   let sumTotalesApTT_ = 0;
   let sumTotalesApCO_ = 0;
   let sumTotalesApVN_ = 0;
   let sumTotalesApMT_ = 0;
-  // let sumTotalesApAG_ = 0;
-  // let sumTotalesApAS_ = 0;
-  // let sumTotalesApPR_ = 0;
 
   // Sub Totales Zona San Pedro
   let sumTotalesSpCS = 0;
@@ -686,18 +654,12 @@ module.exports = (app) => {
   let sumTotalesSpCO = 0;
   let sumTotalesSpVN = 0;
   let sumTotalesSpMT = 0;
-  // let sumTotalesSpAG = 0;
-  // let sumTotalesSpAS = 0;
-  // let sumTotalesSpPR = 0;
 
   let sumTotalesSpCS_ = 0;
   let sumTotalesSpTT_ = 0;
   let sumTotalesSpCO_ = 0;
   let sumTotalesSpVN_ = 0;
   let sumTotalesSpMT_ = 0;
-  // let sumTotalesSpAG_ = 0;
-  // let sumTotalesSpAS_ = 0;
-  // let sumTotalesSpPR_ = 0;
 
   // Totales Generales
   let totalGenCuotaSocial = 0;
@@ -888,6 +850,7 @@ module.exports = (app) => {
       });
   }
 
+  // Habilitar para testing
   iniciarEnvio();
 
   // Diferencias de montos
@@ -1579,6 +1542,17 @@ module.exports = (app) => {
     totalDifTotalADM = parseInt(totalGenINMontoTotal_ - totalGenINMontoTotal);
   }
 
+  // Define el color del texto segun el monto
+  function colorSegunMonto(monto) {
+    let colorText = "green";
+
+    if (monto < 0) {
+      colorText= "red";
+    }
+
+    return colorText;
+  }
+
   // Envia los mensajes
   let retraso = () => new Promise((r) => setTimeout(r, tiempoRetrasoEnvios));
   async function enviarMensaje() {
@@ -1591,26 +1565,26 @@ module.exports = (app) => {
         context.drawImage(image, 0, 0, width, height);
 
         // Eje X e Y de las fechas
-        let ejeXFechaAct = 1010;
-        let ejeXFechaAnt = 550;
-        let ejeYFechaAct = 75;
-        let ejeYFechaAnt = 75;
+        let ejeXFechaAnt = 700;
+        let ejeXFechaAct = 1330;
+
+        let ejeYFechaAnt = 115;
+        let ejeYFechaAct = 115;
 
         // Eje X de cada celda
-        let ejeXsucu = 30;
-        let ejeXcuota = 380;
-        let ejeXtrata = 520;
-        let ejeXcobra = 650;
+        let ejeXsucu = 27;
+        let ejeXcuota = 385;
+        let ejeXtrata = 530;
+        let ejeXcobra = 660;
         let ejeXventa = 760;
         let ejeXmonto = 910;
 
         let ejeXcuota_ = 1035;
         let ejeXtrata_ = 1160;
         let ejeXcobra_ = 1280;
-        let ejeXventa_ = 1380;
+        let ejeXventa_ = 1390;
         let ejeXmonto_ = 1520;
         let ejeXdiferencia_ = 1650;
-
 
         // Eje Y de cada fila
         let ejeYadm = 194;
@@ -1668,8 +1642,6 @@ module.exports = (app) => {
         for (let r of losAcumuladosMesAntForma) {
           // Zona ASU
           if (r.SUCURSAL == "ADMINISTRACION") {
-            
-
             // Se dibuja los datos del cierre
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
@@ -1703,7 +1675,6 @@ module.exports = (app) => {
           }
 
           if (r.SUCURSAL == "MARISCAL LOPEZ") {
-           
             // Se dibuja los datos del acumulado mes anterior
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
@@ -1737,8 +1708,6 @@ module.exports = (app) => {
           }
 
           if (r.SUCURSAL == "MCAL. LOPEZ URGENCIAS") {
-           
-
             // Se dibuja los datos del cierre
             context.font = "bold 13px Arial";
             context.fillStyle = "#34495E";
@@ -1772,8 +1741,6 @@ module.exports = (app) => {
           }
 
           if (r.SUCURSAL == "AVENIDA QUINTA") {
-            
-
             // Se dibuja los datos del acumulado mes anterior
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
@@ -1807,8 +1774,6 @@ module.exports = (app) => {
           }
 
           if (r.SUCURSAL == "VILLA MORRA") {
-            
-
             // Se dibuja los datos del acumulado mes anterior
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
@@ -1842,7 +1807,6 @@ module.exports = (app) => {
           }
 
           if (r.SUCURSAL == "ARTIGAS") {
-
             // Se dibuja los datos del acumulado mes anterior
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
@@ -1876,7 +1840,6 @@ module.exports = (app) => {
           }
 
           if (r.SUCURSAL == "LUISITO") {
-
             // Se dibuja los datos del acumulado mes anterior
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
@@ -1910,7 +1873,6 @@ module.exports = (app) => {
           }
 
           if (r.SUCURSAL == "PALMA") {
-
             // Se dibuja los datos del acumulado mes anterior
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
@@ -1945,7 +1907,6 @@ module.exports = (app) => {
 
           // Zona Gran ASU
           if (r.SUCURSAL == "LAMBARE") {
-
             // Se dibuja los datos del acumulado mes anterior
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
@@ -1979,7 +1940,6 @@ module.exports = (app) => {
           }
 
           if (r.SUCURSAL == "CATEDRAL") {
-
             // Se dibuja los datos del acumulado mes anterior
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
@@ -2013,7 +1973,6 @@ module.exports = (app) => {
           }
 
           if (r.SUCURSAL == "LUQUE") {
-
             // Se dibuja los datos del acumulado mes anterior
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
@@ -2047,7 +2006,6 @@ module.exports = (app) => {
           }
 
           if (r.SUCURSAL == "LA RURAL") {
-
             // Se dibuja los datos del acumulado mes anterior
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
@@ -2081,7 +2039,6 @@ module.exports = (app) => {
           }
 
           if (r.SUCURSAL == "ÑEMBY") {
-
             // Se dibuja los datos del acumulado mes anterior
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
@@ -2115,7 +2072,6 @@ module.exports = (app) => {
           }
 
           if (r.SUCURSAL == "ITAUGUA") {
-
             // Se dibuja los datos del acumulado mes anterior
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
@@ -2149,7 +2105,6 @@ module.exports = (app) => {
           }
 
           if (r.SUCURSAL == "1811 SUCURSAL") {
-
             // Se dibuja los datos del acumulado mes anterior
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
@@ -2183,7 +2138,6 @@ module.exports = (app) => {
           }
 
           if (r.SUCURSAL == "KM 14 Y MEDIO") {
-
             // Se dibuja los datos del acumulado mes anterior
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
@@ -2217,7 +2171,6 @@ module.exports = (app) => {
           }
 
           if (r.SUCURSAL == "CAPIATA") {
-
             // Se dibuja los datos del acumulado mes anterior
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
@@ -2252,7 +2205,6 @@ module.exports = (app) => {
 
           // Zona Ruta 2
           if (r.SUCURSAL == "CAACUPE") {
-
             // Se dibuja los datos del acumulado mes anterior
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
@@ -2286,7 +2238,6 @@ module.exports = (app) => {
           }
 
           if (r.SUCURSAL == "CORONEL OVIEDO") {
-
             // Se dibuja los datos del acumulado mes anterior
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
@@ -2321,7 +2272,6 @@ module.exports = (app) => {
 
           // Zona Itapua
           if (r.SUCURSAL == "HOHENAU") {
-
             // Se dibuja los datos del acumulado mes anterior
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
@@ -2355,7 +2305,6 @@ module.exports = (app) => {
           }
 
           if (r.SUCURSAL == "ENCARNACION CENTRO") {
-
             // Se dibuja los datos del acumulado mes anterior
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
@@ -2389,7 +2338,6 @@ module.exports = (app) => {
           }
 
           if (r.SUCURSAL == "MARIA AUXILIADORA") {
-
             // Se dibuja los datos del acumulado mes anterior
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
@@ -2423,7 +2371,6 @@ module.exports = (app) => {
           }
 
           if (r.SUCURSAL == "AYOLAS") {
-
             // Se dibuja los datos del acumulado mes anterior
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
@@ -2458,7 +2405,6 @@ module.exports = (app) => {
 
           // Zona Alto Parana
           if (r.SUCURSAL == "KM 7") {
-
             // Se dibuja los datos del acumulado mes anterior
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
@@ -2492,8 +2438,6 @@ module.exports = (app) => {
           }
 
           if (r.SUCURSAL == "SANTA RITA") {
-           
-
             // Se dibuja los datos acumulado mes anterior
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
@@ -2527,8 +2471,6 @@ module.exports = (app) => {
           }
 
           if (r.SUCURSAL == "CAMPO 9") {
-            
-
             // Se dibuja los datos del acumulado mes anterior
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
@@ -2563,8 +2505,6 @@ module.exports = (app) => {
 
           // Zona San Pedro
           if (r.SUCURSAL == "SANTANI") {
-            
-
             // Se dibuja los datos del acumulado mes anterior
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
@@ -2873,8 +2813,6 @@ module.exports = (app) => {
         for (let r of losAcumuladosMesActForma) {
           // Zona ASU
           if (r.SUCURSAL == "ADMINISTRACION") {
-            
-
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "right";
@@ -2901,7 +2839,7 @@ module.exports = (app) => {
             context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYadm);
 
             context.font = fuenteTexto;
-            context.fillStyle = "#34495E";
+            context.fillStyle = colorSegunMonto(totalDifAdministracion);
             context.textAlign = "right";
             context.fillText(
               totalDifAdministracion.toLocaleString("es", {
@@ -2914,10 +2852,7 @@ module.exports = (app) => {
           }
 
           if (r.SUCURSAL == "MARISCAL LOPEZ") {
-            
-
             // Se dibuja los datos del acumulado mes actual
-            
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
@@ -2945,7 +2880,7 @@ module.exports = (app) => {
             context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYml);
 
             context.font = fuenteTexto;
-            context.fillStyle = "#34495E";
+            context.fillStyle = colorSegunMonto(totalDifML);
             context.textAlign = "right";
             context.fillText(
               totalDifML.toLocaleString("es", {
@@ -2958,8 +2893,6 @@ module.exports = (app) => {
           }
 
           if (r.SUCURSAL == "MCAL. LOPEZ URGENCIAS") {
-           
-
             // Se dibuja los datos del acumulado mes actual
 
             context.font = fuenteTexto;
@@ -2988,7 +2921,7 @@ module.exports = (app) => {
             context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYmlurg);
 
             context.font = fuenteTexto;
-            context.fillStyle = "#34495E";
+            context.fillStyle = colorSegunMonto(totalDifMLU);
             context.textAlign = "right";
             context.fillText(
               totalDifMLU.toLocaleString("es", {
@@ -3001,8 +2934,6 @@ module.exports = (app) => {
           }
 
           if (r.SUCURSAL == "AVENIDA QUINTA") {
-        
-
             // Se dibuja los datos del acumulado mes actual
 
             context.font = fuenteTexto;
@@ -3031,7 +2962,7 @@ module.exports = (app) => {
             context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYaq);
 
             context.font = fuenteTexto;
-            context.fillStyle = "#34495E";
+            context.fillStyle = colorSegunMonto(totalDifAQ);
             context.textAlign = "right";
             context.fillText(
               totalDifAQ.toLocaleString("es", {
@@ -3044,8 +2975,6 @@ module.exports = (app) => {
           }
 
           if (r.SUCURSAL == "VILLA MORRA") {
-    
-
             // Se dibuja los datos del acumulado mes actual
 
             context.font = fuenteTexto;
@@ -3074,7 +3003,7 @@ module.exports = (app) => {
             context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYvm);
 
             context.font = fuenteTexto;
-            context.fillStyle = "#34495E";
+            context.fillStyle = colorSegunMonto(totalDifVM);
             context.textAlign = "right";
             context.fillText(
               totalDifVM.toLocaleString("es", {
@@ -3087,8 +3016,6 @@ module.exports = (app) => {
           }
 
           if (r.SUCURSAL == "ARTIGAS") {
-  
-
             // Se dibuja los datos del acumulado mes actual
 
             context.font = fuenteTexto;
@@ -3117,7 +3044,7 @@ module.exports = (app) => {
             context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYar);
 
             context.font = fuenteTexto;
-            context.fillStyle = "#34495E";
+            context.fillStyle = colorSegunMonto(totalDifART);
             context.textAlign = "right";
             context.fillText(
               totalDifART.toLocaleString("es", {
@@ -3130,8 +3057,6 @@ module.exports = (app) => {
           }
 
           if (r.SUCURSAL == "LUISITO") {
-  
-
             // Se dibuja los datos del acumulado mes actual
 
             context.font = fuenteTexto;
@@ -3160,7 +3085,7 @@ module.exports = (app) => {
             context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYlu);
 
             context.font = fuenteTexto;
-            context.fillStyle = "#34495E";
+            context.fillStyle = colorSegunMonto(totalDifLUI);
             context.textAlign = "right";
             context.fillText(
               totalDifLUI.toLocaleString("es", {
@@ -3173,8 +3098,6 @@ module.exports = (app) => {
           }
 
           if (r.SUCURSAL == "PALMA") {
-
-
             // Se dibuja los datos del acumulado mes actual
 
             context.font = fuenteTexto;
@@ -3203,7 +3126,7 @@ module.exports = (app) => {
             context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYpa);
 
             context.font = fuenteTexto;
-            context.fillStyle = "#34495E";
+            context.fillStyle = colorSegunMonto(totalDifPAL);
             context.textAlign = "right";
             context.fillText(
               totalDifPAL.toLocaleString("es", {
@@ -3217,8 +3140,6 @@ module.exports = (app) => {
 
           // Zona Gran ASU
           if (r.SUCURSAL == "LAMBARE") {
-
-
             // Se dibuja los datos del acumulado mes actual
 
             context.font = fuenteTexto;
@@ -3247,7 +3168,7 @@ module.exports = (app) => {
             context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYlam);
 
             context.font = fuenteTexto;
-            context.fillStyle = "#34495E";
+            context.fillStyle = colorSegunMonto(totalDifLAM);
             context.textAlign = "right";
             context.fillText(
               totalDifLAM.toLocaleString("es", {
@@ -3260,8 +3181,6 @@ module.exports = (app) => {
           }
 
           if (r.SUCURSAL == "CATEDRAL") {
-
-
             // Se dibuja los datos del acumulado mes actual
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
@@ -3289,7 +3208,7 @@ module.exports = (app) => {
             context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYcat);
 
             context.font = fuenteTexto;
-            context.fillStyle = "#34495E";
+            context.fillStyle = colorSegunMonto(totalDifCAT);
             context.textAlign = "right";
             context.fillText(
               totalDifCAT.toLocaleString("es", {
@@ -3302,8 +3221,6 @@ module.exports = (app) => {
           }
 
           if (r.SUCURSAL == "LUQUE") {
-
-
             // Se dibuja los datos del acumulado mes actual
 
             context.font = fuenteTexto;
@@ -3332,7 +3249,7 @@ module.exports = (app) => {
             context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYluq);
 
             context.font = fuenteTexto;
-            context.fillStyle = "#34495E";
+            context.fillStyle = colorSegunMonto(totalDifLUQ);
             context.textAlign = "right";
             context.fillText(
               totalDifLUQ.toLocaleString("es", {
@@ -3345,8 +3262,6 @@ module.exports = (app) => {
           }
 
           if (r.SUCURSAL == "LA RURAL") {
- 
-
             // Se dibuja los datos del acumulado mes actual
 
             context.font = fuenteTexto;
@@ -3375,7 +3290,7 @@ module.exports = (app) => {
             context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYlar);
 
             context.font = fuenteTexto;
-            context.fillStyle = "#34495E";
+            context.fillStyle = colorSegunMonto(totalDifLAR);
             context.textAlign = "right";
             context.fillText(
               totalDifLAR.toLocaleString("es", {
@@ -3388,8 +3303,6 @@ module.exports = (app) => {
           }
 
           if (r.SUCURSAL == "ÑEMBY") {
-
-
             // Se dibuja los datos del acumulado mes actual
 
             context.font = fuenteTexto;
@@ -3418,7 +3331,7 @@ module.exports = (app) => {
             context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYnem);
 
             context.font = fuenteTexto;
-            context.fillStyle = "#34495E";
+            context.fillStyle = colorSegunMonto(totalDifNEM);
             context.textAlign = "right";
             context.fillText(
               totalDifNEM.toLocaleString("es", {
@@ -3431,8 +3344,6 @@ module.exports = (app) => {
           }
 
           if (r.SUCURSAL == "ITAUGUA") {
- 
-
             // Se dibuja los datos del acumulado mes actual
 
             context.font = fuenteTexto;
@@ -3461,7 +3372,7 @@ module.exports = (app) => {
             context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYita);
 
             context.font = fuenteTexto;
-            context.fillStyle = "#34495E";
+            context.fillStyle = colorSegunMonto(totalDifITA);
             context.textAlign = "right";
             context.fillText(
               totalDifITA.toLocaleString("es", {
@@ -3474,8 +3385,6 @@ module.exports = (app) => {
           }
 
           if (r.SUCURSAL == "1811 SUCURSAL") {
-
-
             // Se dibuja los datos del acumulado mes actual
 
             context.font = fuenteTexto;
@@ -3504,7 +3413,7 @@ module.exports = (app) => {
             context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeY1811);
 
             context.font = fuenteTexto;
-            context.fillStyle = "#34495E";
+            context.fillStyle = colorSegunMonto(totalDif1811);
             context.textAlign = "right";
             context.fillText(
               totalDif1811.toLocaleString("es", {
@@ -3517,8 +3426,6 @@ module.exports = (app) => {
           }
 
           if (r.SUCURSAL == "KM 14 Y MEDIO") {
-
-
             // Se dibuja los datos del acumulado mes actual
 
             context.font = fuenteTexto;
@@ -3547,7 +3454,7 @@ module.exports = (app) => {
             context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYkm14);
 
             context.font = fuenteTexto;
-            context.fillStyle = "#34495E";
+            context.fillStyle = colorSegunMonto(totalDifKM14);
             context.textAlign = "right";
             context.fillText(
               totalDifKM14.toLocaleString("es", {
@@ -3560,8 +3467,6 @@ module.exports = (app) => {
           }
 
           if (r.SUCURSAL == "CAPIATA") {
-
-
             // Se dibuja los datos del acumulado mes actual
 
             context.font = fuenteTexto;
@@ -3590,7 +3495,7 @@ module.exports = (app) => {
             context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYcap);
 
             context.font = fuenteTexto;
-            context.fillStyle = "#34495E";
+            context.fillStyle = colorSegunMonto(totalDifCAP);
             context.textAlign = "right";
             context.fillText(
               totalDifCAP.toLocaleString("es", {
@@ -3604,8 +3509,6 @@ module.exports = (app) => {
 
           // Zona Ruta 2
           if (r.SUCURSAL == "CAACUPE") {
-
-
             // Se dibuja los datos del acumulado mes actual
 
             context.font = fuenteTexto;
@@ -3634,7 +3537,7 @@ module.exports = (app) => {
             context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYcaac);
 
             context.font = fuenteTexto;
-            context.fillStyle = "#34495E";
+            context.fillStyle = colorSegunMonto(totalDifCAACU);
             context.textAlign = "right";
             context.fillText(
               totalDifCAACU.toLocaleString("es", {
@@ -3647,8 +3550,6 @@ module.exports = (app) => {
           }
 
           if (r.SUCURSAL == "CORONEL OVIEDO") {
-
-
             // Se dibuja los datos del acumulado mes actual
 
             context.font = fuenteTexto;
@@ -3677,7 +3578,7 @@ module.exports = (app) => {
             context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYcoro);
 
             context.font = fuenteTexto;
-            context.fillStyle = "#34495E";
+            context.fillStyle = colorSegunMonto(totalDifCORO);
             context.textAlign = "right";
             context.fillText(
               totalDifCORO.toLocaleString("es", {
@@ -3691,8 +3592,6 @@ module.exports = (app) => {
 
           // Zona Itapua
           if (r.SUCURSAL == "HOHENAU") {
-
-
             // Se dibuja los datos del acumulado mes actual
 
             context.font = fuenteTexto;
@@ -3721,7 +3620,7 @@ module.exports = (app) => {
             context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYhohe);
 
             context.font = fuenteTexto;
-            context.fillStyle = "#34495E";
+            context.fillStyle = colorSegunMonto(totalDifHOHE);
             context.textAlign = "right";
             context.fillText(
               totalDifHOHE.toLocaleString("es", {
@@ -3734,8 +3633,6 @@ module.exports = (app) => {
           }
 
           if (r.SUCURSAL == "ENCARNACION CENTRO") {
- 
-
             // Se dibuja los datos del acumulado mes actual
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
@@ -3763,7 +3660,7 @@ module.exports = (app) => {
             context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYencar);
 
             context.font = fuenteTexto;
-            context.fillStyle = "#34495E";
+            context.fillStyle = colorSegunMonto(totalDifENCAR);
             context.textAlign = "right";
             context.fillText(
               totalDifENCAR.toLocaleString("es", {
@@ -3776,8 +3673,6 @@ module.exports = (app) => {
           }
 
           if (r.SUCURSAL == "MARIA AUXILIADORA") {
-
-
             // Se dibuja los datos del acumulado mes actual
 
             context.font = fuenteTexto;
@@ -3806,7 +3701,7 @@ module.exports = (app) => {
             context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYmaria);
 
             context.font = fuenteTexto;
-            context.fillStyle = "#34495E";
+            context.fillStyle = colorSegunMonto(totalDifMARAUX);
             context.textAlign = "right";
             context.fillText(
               totalDifMARAUX.toLocaleString("es", {
@@ -3819,8 +3714,6 @@ module.exports = (app) => {
           }
 
           if (r.SUCURSAL == "AYOLAS") {
-
-
             // Se dibuja los datos del acumulado mes actual
 
             context.font = fuenteTexto;
@@ -3849,7 +3742,7 @@ module.exports = (app) => {
             context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYayo);
 
             context.font = fuenteTexto;
-            context.fillStyle = "#34495E";
+            context.fillStyle = colorSegunMonto(totalDifAYO);
             context.textAlign = "right";
             context.fillText(
               totalDifAYO.toLocaleString("es", {
@@ -3863,8 +3756,6 @@ module.exports = (app) => {
 
           // Zona Alto Parana
           if (r.SUCURSAL == "KM 7") {
-
-
             // Se dibuja los datos del acumulado mes actual
 
             context.font = fuenteTexto;
@@ -3893,7 +3784,7 @@ module.exports = (app) => {
             context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYkm7);
 
             context.font = fuenteTexto;
-            context.fillStyle = "#34495E";
+            context.fillStyle = colorSegunMonto(totalDifKM7);
             context.textAlign = "right";
             context.fillText(
               totalDifKM7.toLocaleString("es", {
@@ -3906,8 +3797,6 @@ module.exports = (app) => {
           }
 
           if (r.SUCURSAL == "SANTA RITA") {
-
-
             // Se dibuja los datos del acumulado mes actual
 
             context.font = fuenteTexto;
@@ -3936,7 +3825,7 @@ module.exports = (app) => {
             context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYsanta);
 
             context.font = fuenteTexto;
-            context.fillStyle = "#34495E";
+            context.fillStyle = colorSegunMonto(totalDifSANRIT);
             context.textAlign = "right";
             context.fillText(
               totalDifSANRIT.toLocaleString("es", {
@@ -3949,8 +3838,6 @@ module.exports = (app) => {
           }
 
           if (r.SUCURSAL == "CAMPO 9") {
-
-
             // Se dibuja los datos acumulado mes actual
 
             context.font = fuenteTexto;
@@ -3979,7 +3866,7 @@ module.exports = (app) => {
             context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYcampo);
 
             context.font = fuenteTexto;
-            context.fillStyle = "#34495E";
+            context.fillStyle = colorSegunMonto(totalDifCAM9);
             context.textAlign = "right";
             context.fillText(
               totalDifCAM9.toLocaleString("es", {
@@ -3993,8 +3880,6 @@ module.exports = (app) => {
 
           // Zona San Pedro
           if (r.SUCURSAL == "SANTANI") {
-
-
             // Se dibuja los datos del acumulado mes actual
 
             context.font = fuenteTexto;
@@ -4023,7 +3908,7 @@ module.exports = (app) => {
             context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYsantani);
 
             context.font = fuenteTexto;
-            context.fillStyle = "#34495E";
+            context.fillStyle = colorSegunMonto(totalDifSANTANI);
             context.textAlign = "right";
             context.fillText(
               totalDifSANTANI.toLocaleString("es", {
@@ -4101,7 +3986,7 @@ module.exports = (app) => {
 
             // Diferencia ingresos pagos electronicos
             context.font = fuenteTexto;
-            context.fillStyle = "#34495E";
+            context.fillStyle = colorSegunMonto(totalDifPagoElectronico);
             context.textAlign = "right";
             context.fillText(
               totalDifPagoElectronico.toLocaleString("es", {
@@ -4176,7 +4061,7 @@ module.exports = (app) => {
 
             // Diferencia ingresos aso deb
             context.font = fuenteTexto;
-            context.fillStyle = "#34495E";
+            context.fillStyle = colorSegunMonto(totalDifAsoDeb);
             context.textAlign = "right";
             context.fillText(
               totalDifAsoDeb.toLocaleString("es", {
@@ -4251,7 +4136,7 @@ module.exports = (app) => {
 
             // Diferencia ingresos licitaciones
             context.font = fuenteTexto;
-            context.fillStyle = "#34495E";
+            context.fillStyle = colorSegunMonto(totalDifLicitaciones);
             context.textAlign = "right";
             context.fillText(
               totalDifLicitaciones.toLocaleString("es", {
@@ -4326,7 +4211,7 @@ module.exports = (app) => {
 
             // Diferencia ingresos trans giros palma
             context.font = fuenteTexto;
-            context.fillStyle = "#34495E";
+            context.fillStyle = colorSegunMonto(totalDifLicitaciones);
             context.textAlign = "right";
             context.fillText(
               totalDifLicitaciones.toLocaleString("es", {
@@ -4482,7 +4367,7 @@ module.exports = (app) => {
         );
 
         context.font = fuenteTextoBold;
-        context.fillStyle = "#34495E";
+        context.fillStyle = colorSegunMonto(difTotalesAsuncionMT);
         context.textAlign = "right";
         context.fillText(
           difTotalesAsuncionMT.toLocaleString("es", {
@@ -4623,7 +4508,7 @@ module.exports = (app) => {
         );
 
         context.font = fuenteTextoBold;
-        context.fillStyle = "#34495E";
+        context.fillStyle = colorSegunMonto(difTotalesGAsuncionMT);
         context.textAlign = "right";
         context.fillText(
           difTotalesGAsuncionMT.toLocaleString("es", {
@@ -4764,7 +4649,7 @@ module.exports = (app) => {
         );
 
         context.font = fuenteTextoBold;
-        context.fillStyle = "#34495E";
+        context.fillStyle = colorSegunMonto(difTotalesR2MT);
         context.textAlign = "right";
         context.fillText(
           difTotalesR2MT.toLocaleString("es", {
@@ -4905,7 +4790,7 @@ module.exports = (app) => {
         );
 
         context.font = fuenteTextoBold;
-        context.fillStyle = "#34495E";
+        context.fillStyle = colorSegunMonto(difTotalesItaMT);
         context.textAlign = "right";
         context.fillText(
           difTotalesItaMT.toLocaleString("es", {
@@ -5046,7 +4931,7 @@ module.exports = (app) => {
         );
 
         context.font = fuenteTextoBold;
-        context.fillStyle = "#34495E";
+        context.fillStyle = colorSegunMonto(difTotalesApMT);
         context.textAlign = "right";
         context.fillText(
           difTotalesApMT.toLocaleString("es", {
@@ -5187,7 +5072,7 @@ module.exports = (app) => {
         );
 
         context.font = fuenteTextoBold;
-        context.fillStyle = "#34495E";
+        context.fillStyle = colorSegunMonto(difTotalesSpMT);
         context.textAlign = "right";
         context.fillText(
           difTotalesSpMT.toLocaleString("es", {
@@ -5333,7 +5218,7 @@ module.exports = (app) => {
 
         // DIFERENCIA TOTAL SUCURSAL
         context.font = fuenteTextoBold;
-        context.fillStyle = "#34495E";
+        context.fillStyle = colorSegunMonto((totalGenMontoTotal_ - totalGenMontoTotal));
         context.textAlign = "right";
         context.fillText(
           (totalGenMontoTotal_ - totalGenMontoTotal).toLocaleString("es", {
@@ -5480,7 +5365,7 @@ module.exports = (app) => {
 
         // Diferencia monto total adm
         context.font = fuenteTextoBold;
-        context.fillStyle = "#34495E";
+        context.fillStyle = colorSegunMonto(totalDifTotalADM);
         context.textAlign = "right";
         context.fillText(
           totalDifTotalADM.toLocaleString("es", {
@@ -5626,10 +5511,10 @@ module.exports = (app) => {
 
         // Diferencia monto TOTAL GENERAL DOC
         context.font = fuenteTextoBold;
-        context.fillStyle = "#34495E";
+        context.fillStyle = colorSegunMonto((totalGenMontoTotal_ - totalGenMontoTotal + totalDifTotalADM));
         context.textAlign = "right";
         context.fillText(
-          ((totalGenMontoTotal_ - totalGenMontoTotal) + totalDifTotalADM).toLocaleString("es", {
+          (totalGenMontoTotal_ - totalGenMontoTotal + totalDifTotalADM).toLocaleString("es", {
             minimumFractionDigits: 0,
             maximumFractionDigits: 0,
           }),
@@ -5742,9 +5627,6 @@ module.exports = (app) => {
     sumTotalesAsuncionCO = 0;
     sumTotalesAsuncionVN = 0;
     sumTotalesAsuncionMT = 0;
-    // sumTotalesAsuncionAG = 0;
-    // sumTotalesAsuncionAS = 0;
-    // sumTotalesAsuncionPR = 0;
 
     // Sub Totales Zona Gran Asuncion
     sumTotalesGAsuncionCS = 0;
@@ -5752,9 +5634,6 @@ module.exports = (app) => {
     sumTotalesGAsuncionCO = 0;
     sumTotalesGAsuncionVN = 0;
     sumTotalesGAsuncionMT = 0;
-    // sumTotalesGAsuncionAG = 0;
-    // sumTotalesGAsuncionAS = 0;
-    // sumTotalesGAsuncionPR = 0;
 
     // Sub Totales Zona Ruta 2
     sumTotalesR2CS = 0;
@@ -5762,9 +5641,6 @@ module.exports = (app) => {
     sumTotalesR2CO = 0;
     sumTotalesR2VN = 0;
     sumTotalesR2MT = 0;
-    // sumTotalesR2AG = 0;
-    // sumTotalesR2AS = 0;
-    // sumTotalesR2PR = 0;
 
     // Sub Totales Zona Itapua
     sumTotalesItaCS = 0;
@@ -5772,9 +5648,6 @@ module.exports = (app) => {
     sumTotalesItaCO = 0;
     sumTotalesItaVN = 0;
     sumTotalesItaMT = 0;
-    // sumTotalesItaAG = 0;
-    // sumTotalesItaAS = 0;
-    // sumTotalesItaPR = 0;
 
     // Sub Totales Zona Alto Parana
     sumTotalesApCS = 0;
@@ -5782,9 +5655,6 @@ module.exports = (app) => {
     sumTotalesApCO = 0;
     sumTotalesApVN = 0;
     sumTotalesApMT = 0;
-    // sumTotalesApAG = 0;
-    // sumTotalesApAS = 0;
-    // sumTotalesApPR = 0;
 
     // Sub Totales Zona San Pedro
     sumTotalesSpCS = 0;
@@ -5792,9 +5662,6 @@ module.exports = (app) => {
     sumTotalesSpCO = 0;
     sumTotalesSpVN = 0;
     sumTotalesSpMT = 0;
-    // sumTotalesSpAG = 0;
-    // sumTotalesSpAS = 0;
-    // sumTotalesSpPR = 0;
 
     // Totales Generales
     totalGenCuotaSocial = 0;
@@ -5802,8 +5669,5 @@ module.exports = (app) => {
     totalGenCobrador = 0;
     totalGenVentaNueva = 0;
     totalGenMontoTotal = 0;
-    // totalGenAgendado = 0;
-    // totalGenAsistido = 0;
-    // totalGenProfesional = 0;
   }
 };
