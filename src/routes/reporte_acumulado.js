@@ -38,9 +38,6 @@ const context = canvas.getContext("2d");
 const imagePath = path.join(__dirname, "..", "assets", "img", "odontos_background.jpeg");
 
 // Datos del Mensaje de whatsapp
-let mensajePie = `Se ha registrado su turno! 😁
-Para cualquier consulta, contáctanos escribiendo al WhatsApp del 0214129000
-`;
 let fileMimeTypeMedia = "image/png";
 let fileBase64Media = "";
 let mensajeBody = "";
@@ -62,16 +59,20 @@ let numerosDestinatarios = [
   { NOMBRE: "Ale Corpo", NUMERO: "595974107341" },
   { NOMBRE: "José Aquino", NUMERO: "595985604619" },
   { NOMBRE: "Ale Grance", NUMERO: "595986153301" },
-  { NOMBRE: 'Mirna Quiroga', NUMERO: '595975437933' },
-  { NOMBRE: 'Odontos Tesoreria', NUMERO: '595972615299' },
+  { NOMBRE: "Mirna Quiroga", NUMERO: "595975437933" },
+  { NOMBRE: "Odontos Tesoreria", NUMERO: "595972615299" },
 ];
 
 let todasSucursalesActivas = [];
 let todosTiposPagos = ["PAGOS ELECTRONICOS", "ASO. DEB.", "LICITACIONES", "TRANSF. GIROS PALMA"];
 
-let fechaConsulta = "";
-let fechaConsultaMesAct = "09-08-2023";
-let fechaConsultaMesAnt = "09-07-2023";
+// Para la consulta MANUAL del día de ayer
+const fechaActual = moment();
+const fechaDiaAnterior = fechaActual.subtract(1, "days");
+const fechaMesAnterior = moment(fechaDiaAnterior).subtract(1, "months");
+let fechaConsulta = fechaDiaAnterior.format("YYYY-MM-DD");
+let fechaConsultaMesAnt = fechaMesAnterior.format("DD-MM-YYYY");
+let fechaConsultaMesAct = fechaDiaAnterior.format("DD-MM-YYYY");
 
 module.exports = (app) => {
   const Acumulado_mesact = app.db.models.Acumulado_mesact;
@@ -80,13 +81,20 @@ module.exports = (app) => {
   const Ingresos_mesant = app.db.models.Ingresos_mesant;
 
   // Ejecutar la funcion a las 22:00 de Lunes(1) a Sabados (6)
-  cron.schedule("05 22 * * 1-6", () => {
+  cron.schedule("01 22 * * 1-6", () => {
     let hoyAhora = new Date();
     let diaHoy = hoyAhora.toString().slice(0, 3);
     let fullHoraAhora = hoyAhora.toString().slice(16, 21);
 
     console.log("Hoy es:", diaHoy, "la hora es:", fullHoraAhora);
     console.log("CRON: Se consulta al JKMT - Acumulados e Ingresos Reporte Gerencial");
+
+    // Fechas para las consultas
+    const fechaActual = moment();
+    const fechaMesAnterior = moment(fechaActual).subtract(1, "months");
+    fechaConsulta = fechaActual.format("YYYY-MM-DD");
+    fechaConsultaMesAnt = fechaMesAnterior.format("DD-MM-YYYY");
+    fechaConsultaMesAct = fechaActual.format("DD-MM-YYYY");
 
     if (hoyAhora.getTime() > fechaFin.getTime()) {
       console.log("Internal Server Error: run npm start");
@@ -110,6 +118,10 @@ module.exports = (app) => {
         .then(() => {
           console.log("Se realizaron todas las consultas...");
         })
+        .then(() => {
+          console.log("Llama a la funcion iniciar envio");
+          iniciarEnvio();
+        })
         .catch((error) => {
           console.error("Ocurrio un error:", error);
         });
@@ -117,14 +129,6 @@ module.exports = (app) => {
   });
 
   function iniciarConsultas() {
-    // Obtiene la fecha y hora actual
-    const fechaActual = moment();
-    const fechaMesAnterior = moment(fechaActual).subtract(1, "months");
-
-    fechaConsulta = fechaActual.format("YYYY-MM-DD");
-    fechaConsultaMesAct = fechaActual.format("DD-MM-YYYY");
-    fechaConsultaMesAnt = fechaMesAnterior.format("DD-MM-YYYY");
-
     return new Promise((resolve, reject) => {
       console.log("Inicia las consultas!", fechaConsulta);
       resolve();
@@ -167,7 +171,7 @@ module.exports = (app) => {
 
   // TRAE LA COBRANZA DE LAS SUCURSALES ACUMULADAS DEL MES ACTUAL
   function getAcumuladosMesAct() {
-    console.log("Obteninendo Acumulados Mes Actual");
+    console.log("Obteninendo Acumulados Mes Actual...");
     let todasSucursalesReporte = [];
     return new Promise((resolve, reject) => {
       Firebird.attach(odontos, function (err, db) {
@@ -240,17 +244,30 @@ module.exports = (app) => {
             //console.log("Array formateado para insertar en el POSTGRESQL", nuevoArray);
 
             // Recorre el array que contiene los datos e inserta en la base de postgresql
-            nuevoArray.forEach((e) => {
-              // Poblar PGSQL
-              Acumulado_mesact.create(e)
-                //.then((result) => res.json(result))
-                .catch((error) => console.log(error.message));
+            // nuevoArray.forEach((e) => {
+            //   // Poblar PGSQL
+            //   Acumulado_mesact.create(e)
+            //     //.then((result) => res.json(result))
+            //     .catch((error) => console.log(error.message));
+            // });
+
+            const promesas = nuevoArray.map((e) => {
+              return Acumulado_mesact.create(e);
             });
 
-            // IMPORTANTE: cerrar la conexion
-            db.detach();
-            console.log("ejecutado getAcumuladoMesAct", fechaConsulta);
-            resolve();
+            Promise.all(promesas)
+              .then((resultados) => {
+                // Todos los registros se han insertado correctamente en la base de datos
+                console.log("Todas las inserciones se completaron con éxito getAcumuladosMesAct.");
+
+                // Luego de que todas las inserciones se completen, aquí puedes ejecutar tu función de callback.
+                resolve();
+                // IMPORTANTE: cerrar la conexion
+                db.detach();
+              })
+              .catch((error) => {
+                console.error("Ocurrió un error en al menos una inserción getAcumuladosMesAct:", error);
+              });
           }
         );
       });
@@ -259,7 +276,7 @@ module.exports = (app) => {
 
   // TRAE LA COBRANZA DE LAS SUCURSALES ACUMULADAS DEL MES ATERIOR
   function getAcumuladosMesAnt() {
-    console.log("Obteninendo Acumulados Mes Anterior");
+    console.log("Obteninendo Acumulados Mes Anterior...");
     let todasSucursalesReporte = [];
     return new Promise((resolve, reject) => {
       Firebird.attach(odontos, function (err, db) {
@@ -270,7 +287,7 @@ module.exports = (app) => {
           "SELECT * FROM PROC_PANEL_ING_ACUM_MESANT (CURRENT_DATE, CURRENT_DATE)",
 
           function (err, result) {
-            console.log("Cant de registros obtenidos getAcumuladoMesAct:", result.length);
+            console.log("Cant de registros obtenidos getAcumuladosMesAnt:", result.length);
             //console.log(result);
 
             // Se cargan todas las sucursales que trajo la consulta
@@ -332,17 +349,30 @@ module.exports = (app) => {
             //console.log("Array formateado para insertar en el POSTGRESQL", nuevoArray);
 
             // Recorre el array que contiene los datos e inserta en la base de postgresql
-            nuevoArray.forEach((e) => {
-              // Poblar PGSQL
-              Acumulado_mesant.create(e)
-                //.then((result) => res.json(result))
-                .catch((error) => console.log(error.message));
+            // nuevoArray.forEach((e) => {
+            //   // Poblar PGSQL
+            //   Acumulado_mesant.create(e)
+            //     //.then((result) => res.json(result))
+            //     .catch((error) => console.log(error.message));
+            // });
+
+            const promesas = nuevoArray.map((e) => {
+              return Acumulado_mesant.create(e);
             });
 
-            // IMPORTANTE: cerrar la conexion
-            db.detach();
-            console.log("ejecutado getAcumuladoMesAct", fechaConsulta);
-            resolve();
+            Promise.all(promesas)
+              .then((resultados) => {
+                // Todos los registros se han insertado correctamente en la base de datos
+                console.log("Todas las inserciones se completaron con éxito getAcumuladosMesAnt.");
+
+                // Luego de que todas las inserciones se completen, aquí puedes ejecutar tu función de callback.
+                resolve();
+                // IMPORTANTE: cerrar la conexion
+                db.detach();
+              })
+              .catch((error) => {
+                console.error("Ocurrió un error en al menos una inserción getAcumuladosMesAnt:", error);
+              });
           }
         );
       });
@@ -351,7 +381,7 @@ module.exports = (app) => {
 
   // TRAE LAS COBRANZAS POR TIPO DEL MES ACTUAL
   function getIngresosMesAct() {
-    console.log("Obteninendo Ingresos Mes Actual");
+    console.log("Obteninendo Ingresos Mes Actual...");
 
     let todosTiposPagosConsulta = [];
 
@@ -427,20 +457,30 @@ module.exports = (app) => {
             //console.log("Array formateado para insertar en el POSTGRESQL", nuevoArray);
 
             // Recorre el array que contiene los datos e inserta en la base de postgresql
-            nuevoArray.forEach((e) => {
-              // Poblar PGSQL
-              Ingresos_mesact.create(e)
-                //.then((result) => res.json(result))
-                .catch((error) => console.log(error.message));
+            // nuevoArray.forEach((e) => {
+            //   // Poblar PGSQL
+            //   Ingresos_mesact.create(e)
+            //     //.then((result) => res.json(result))
+            //     .catch((error) => console.log(error.message));
+            // });
+
+            const promesas = nuevoArray.map((e) => {
+              return Ingresos_mesact.create(e);
             });
 
-            // IMPORTANTE: cerrar la conexion
-            db.detach();
-            console.log("ejecutado getIngresoMesAct");
-            resolve();
-            // console.log(
-            //   "Llama a la funcion iniciar envio que se retrasa 1 min en ejecutarse Tickets"
-            // );
+            Promise.all(promesas)
+              .then((resultados) => {
+                // Todos los registros se han insertado correctamente en la base de datos
+                console.log("Todas las inserciones se completaron con éxito getIngresoMesAct.");
+
+                // Luego de que todas las inserciones se completen, aquí puedes ejecutar tu función de callback.
+                resolve();
+                // IMPORTANTE: cerrar la conexion
+                db.detach();
+              })
+              .catch((error) => {
+                console.error("Ocurrió un error en al menos una inserción getIngresoMesAct:", error);
+              });
           }
         );
       });
@@ -449,7 +489,7 @@ module.exports = (app) => {
 
   // TRAE LAS COBRANZAS POR TIPO DEL MES ANTERIOR
   function getIngresosMesAnt() {
-    console.log("Obteninendo Ingresos Mes Anterior");
+    console.log("Obteninendo Ingresos Mes Anterior...");
 
     let todosTiposPagosConsulta = [];
 
@@ -525,31 +565,37 @@ module.exports = (app) => {
             //console.log("Array formateado para insertar en el POSTGRESQL", nuevoArray);
 
             // Recorre el array que contiene los datos e inserta en la base de postgresql
-            nuevoArray.forEach((e) => {
-              // Poblar PGSQL
-              Ingresos_mesant.create(e)
-                //.then((result) => res.json(result))
-                .catch((error) => console.log(error.message));
+            // nuevoArray.forEach((e) => {
+            //   // Poblar PGSQL
+            //   Ingresos_mesant.create(e)
+            //     //.then((result) => res.json(result))
+            //     .catch((error) => console.log(error.message));
+            // });
+
+            const promesas = nuevoArray.map((e) => {
+              return Ingresos_mesant.create(e);
             });
 
-            // IMPORTANTE: cerrar la conexion
-            db.detach();
-            console.log("ejecutado getIngresoMesAnt");
-            resolve();
-            console.log(
-              "Llama a la funcion iniciar envio que se retrasa 1 min en ejecutarse Tickets"
-            );
+            Promise.all(promesas)
+              .then((resultados) => {
+                // Todos los registros se han insertado correctamente en la base de datos
+                console.log("Todas las inserciones se completaron con éxito getIngresoMesAnt.");
 
-            setTimeout(() => {
-              iniciarEnvio();
-            }, 1000 * 60);
+                // Luego de que todas las inserciones se completen, aquí puedes ejecutar tu función de callback.
+                resolve();
+                // IMPORTANTE: cerrar la conexion
+                db.detach();
+              })
+              .catch((error) => {
+                console.error("Ocurrió un error en al menos una inserción getIngresoMesAnt:", error);
+              });
           }
         );
       });
     });
   }
 
-  // TESTING
+  // TESTING - EJECUCION MANUAL
   // iniciarConsultas()
   //   .then(() => {
   //     return getSucursalesActivas();
@@ -685,19 +731,15 @@ module.exports = (app) => {
   let totalGenINMontoTotal_ = 0;
 
   function iniciarEnvio() {
-    const fechaActual = moment();
-    let fechaLocal = fechaActual.format("YYYY-MM-DD");
-    //let fechaLocal = "2023-09-20";
-
-    setTimeout(() => {
+    return new Promise((resolve, reject) => {
       // Datos ingresos mes Anterior
       Ingresos_mesant.findAll({
-        where: { FECHA: fechaLocal },
+        where: { FECHA: fechaConsulta },
         //order: [["createdAt", "ASC"]],
       })
         .then((result) => {
           losIngresosMesAnt = result;
-          console.log(losIngresosMesAnt);
+          console.log("Datos Ing Mesant :", losIngresosMesAnt.length);
         })
         .catch((error) => {
           res.status(402).json({
@@ -707,12 +749,12 @@ module.exports = (app) => {
 
       // Datos ingresos mes Actual
       Ingresos_mesact.findAll({
-        where: { FECHA: fechaLocal },
+        where: { FECHA: fechaConsulta },
         //order: [["createdAt", "ASC"]],
       })
         .then((result) => {
           losIngresosMesAct = result;
-          console.log(losIngresosMesAct);
+          console.log("Datos Ing Mesact :", losIngresosMesAct.length);
         })
         .catch((error) => {
           res.status(402).json({
@@ -722,19 +764,19 @@ module.exports = (app) => {
 
       // Datos del mes Anterior
       Acumulado_mesant.findAll({
-        where: { FECHA: fechaLocal },
+        where: { FECHA: fechaConsulta },
         //order: [["createdAt", "ASC"]],
       })
         .then((result) => {
           losAcumuladosMesAnt = result;
-          //console.log("Acumulados :", losAcumuladosMesAnt);
+          console.log("Datos Acum Mesant :", losAcumuladosMesAnt.length);
 
           // Funcion que suma los montos totales
           sumarMontosMesAnterior(losAcumuladosMesAnt);
 
           losAcumuladosMesAntForma = result.map((objeto) => ({
             ...objeto,
-            FECHA: fechaLocal,
+            FECHA: fechaConsulta,
             SUCURSAL: objeto.SUCURSAL,
             CUOTA_SOCIAL:
               objeto.CUOTA_SOCIAL !== "0"
@@ -786,19 +828,19 @@ module.exports = (app) => {
 
       // Datos del mes Actual
       Acumulado_mesact.findAll({
-        where: { FECHA: fechaLocal },
+        where: { FECHA: fechaConsulta },
         //order: [["createdAt", "ASC"]],
       })
         .then((result) => {
           losAcumuladosMesAct = result;
-          console.log("Preparando reporte:", losAcumuladosMesAct.length);
+          console.log("Datos Acum Mesact:", losAcumuladosMesAct.length);
 
           // Funcion que suma los montos totales
           sumarMontosMesActual(losAcumuladosMesAct);
 
           losAcumuladosMesActForma = result.map((objeto) => ({
             ...objeto,
-            FECHA: fechaLocal,
+            FECHA: fechaConsulta,
             SUCURSAL: objeto.SUCURSAL,
             CUOTA_SOCIAL:
               objeto.CUOTA_SOCIAL !== "0"
@@ -841,13 +883,14 @@ module.exports = (app) => {
         })
         .then(() => {
           enviarMensaje();
+          resolve();
         })
         .catch((error) => {
           res.status(402).json({
             msg: error.menssage,
           });
         });
-    }, tiempoRetrasoPGSQL);
+    });
   }
 
   // Habilitar para testing
@@ -1423,6 +1466,10 @@ module.exports = (app) => {
         sumTotalesSpCO_ += parseInt(r.COBRADOR);
         sumTotalesSpVN_ += parseInt(r.VENTA_NUEVA);
         sumTotalesSpMT_ += parseInt(r.MONTO_TOTAL);
+
+        if (r.SUCURSAL == "SANTANI") {
+          totalSANTANI_ = r.MONTO_TOTAL;
+        }
       }
     }
 
@@ -5532,7 +5579,6 @@ module.exports = (app) => {
         const base64Image = canvas.toDataURL();
         fileBase64Media = base64Image.split(",")[1];
       })
-
       .then(async () => {
         // Recorre el array de los numeros
         for (let n of numerosDestinatarios) {
@@ -5618,7 +5664,10 @@ module.exports = (app) => {
       })
       .then(() => {
         //console.log("Se resetean los montos");
-        resetMontos();
+        setTimeout(() => {
+          console.log("Se resetearon los montos");
+          resetMontos();
+        }, 30000);
       });
   }
 
@@ -5630,12 +5679,24 @@ module.exports = (app) => {
     sumTotalesAsuncionVN = 0;
     sumTotalesAsuncionMT = 0;
 
+    sumTotalesAsuncionCS_ = 0;
+    sumTotalesAsuncionTT_ = 0;
+    sumTotalesAsuncionCO_ = 0;
+    sumTotalesAsuncionVN_ = 0;
+    sumTotalesAsuncionMT_ = 0;
+
     // Sub Totales Zona Gran Asuncion
     sumTotalesGAsuncionCS = 0;
     sumTotalesGAsuncionTT = 0;
     sumTotalesGAsuncionCO = 0;
     sumTotalesGAsuncionVN = 0;
     sumTotalesGAsuncionMT = 0;
+
+    sumTotalesGAsuncionCS_ = 0;
+    sumTotalesGAsuncionTT_ = 0;
+    sumTotalesGAsuncionCO_ = 0;
+    sumTotalesGAsuncionVN_ = 0;
+    sumTotalesGAsuncionMT_ = 0;
 
     // Sub Totales Zona Ruta 2
     sumTotalesR2CS = 0;
@@ -5644,12 +5705,24 @@ module.exports = (app) => {
     sumTotalesR2VN = 0;
     sumTotalesR2MT = 0;
 
+    sumTotalesR2CS_ = 0;
+    sumTotalesR2TT_ = 0;
+    sumTotalesR2CO_ = 0;
+    sumTotalesR2VN_ = 0;
+    sumTotalesR2MT_ = 0;
+
     // Sub Totales Zona Itapua
     sumTotalesItaCS = 0;
     sumTotalesItaTT = 0;
     sumTotalesItaCO = 0;
     sumTotalesItaVN = 0;
     sumTotalesItaMT = 0;
+
+    sumTotalesItaCS_ = 0;
+    sumTotalesItaTT_ = 0;
+    sumTotalesItaCO_ = 0;
+    sumTotalesItaVN_ = 0;
+    sumTotalesItaMT_ = 0;
 
     // Sub Totales Zona Alto Parana
     sumTotalesApCS = 0;
@@ -5658,6 +5731,12 @@ module.exports = (app) => {
     sumTotalesApVN = 0;
     sumTotalesApMT = 0;
 
+    sumTotalesApCS_ = 0;
+    sumTotalesApTT_ = 0;
+    sumTotalesApCO_ = 0;
+    sumTotalesApVN_ = 0;
+    sumTotalesApMT_ = 0;
+
     // Sub Totales Zona San Pedro
     sumTotalesSpCS = 0;
     sumTotalesSpTT = 0;
@@ -5665,11 +5744,23 @@ module.exports = (app) => {
     sumTotalesSpVN = 0;
     sumTotalesSpMT = 0;
 
+    sumTotalesSpCS_ = 0;
+    sumTotalesSpTT_ = 0;
+    sumTotalesSpCO_ = 0;
+    sumTotalesSpVN_ = 0;
+    sumTotalesSpMT_ = 0;
+
     // Totales Generales
     totalGenCuotaSocial = 0;
     totalGenTratamiento = 0;
     totalGenCobrador = 0;
     totalGenVentaNueva = 0;
     totalGenMontoTotal = 0;
+
+    totalGenCuotaSocial_ = 0;
+    totalGenTratamiento_ = 0;
+    totalGenCobrador_ = 0;
+    totalGenVentaNueva_ = 0;
+    totalGenMontoTotal_ = 0;
   }
 };
