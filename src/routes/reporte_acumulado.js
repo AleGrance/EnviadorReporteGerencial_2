@@ -81,7 +81,7 @@ module.exports = (app) => {
   const Ingresos_mesant = app.db.models.Ingresos_mesant;
 
   // Ejecutar la funcion a las 22:00 de Lunes(1) a Sabados (6)
-  cron.schedule("01 22 * * 1-6", () => {
+  cron.schedule("00 22 * * 1-6", () => {
     let hoyAhora = new Date();
     let diaHoy = hoyAhora.toString().slice(0, 3);
     let fullHoraAhora = hoyAhora.toString().slice(16, 21);
@@ -266,7 +266,10 @@ module.exports = (app) => {
                 db.detach();
               })
               .catch((error) => {
-                console.error("Ocurrió un error en al menos una inserción getAcumuladosMesAct:", error);
+                console.error(
+                  "Ocurrió un error en al menos una inserción getAcumuladosMesAct:",
+                  error
+                );
               });
           }
         );
@@ -371,7 +374,10 @@ module.exports = (app) => {
                 db.detach();
               })
               .catch((error) => {
-                console.error("Ocurrió un error en al menos una inserción getAcumuladosMesAnt:", error);
+                console.error(
+                  "Ocurrió un error en al menos una inserción getAcumuladosMesAnt:",
+                  error
+                );
               });
           }
         );
@@ -479,7 +485,10 @@ module.exports = (app) => {
                 db.detach();
               })
               .catch((error) => {
-                console.error("Ocurrió un error en al menos una inserción getIngresoMesAct:", error);
+                console.error(
+                  "Ocurrió un error en al menos una inserción getIngresoMesAct:",
+                  error
+                );
               });
           }
         );
@@ -587,7 +596,10 @@ module.exports = (app) => {
                 db.detach();
               })
               .catch((error) => {
-                console.error("Ocurrió un error en al menos una inserción getIngresoMesAnt:", error);
+                console.error(
+                  "Ocurrió un error en al menos una inserción getIngresoMesAnt:",
+                  error
+                );
               });
           }
         );
@@ -817,9 +829,6 @@ module.exports = (app) => {
 
           //console.log(losAcumuladosMesAntForma[0]);
         })
-        .then(() => {
-          //enviarMensaje();
-        })
         .catch((error) => {
           res.status(402).json({
             msg: error.menssage,
@@ -881,15 +890,16 @@ module.exports = (app) => {
 
           //console.log(losAcumuladosMesActForma[0]);
         })
-        .then(() => {
-          enviarMensaje();
-          resolve();
-        })
         .catch((error) => {
           res.status(402).json({
             msg: error.menssage,
           });
         });
+
+      setTimeout(() => {
+        enviarMensaje();
+        resolve();
+      }, 15000);
     });
   }
 
