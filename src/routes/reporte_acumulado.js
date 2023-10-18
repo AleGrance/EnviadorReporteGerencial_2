@@ -744,37 +744,7 @@ module.exports = (app) => {
 
   function iniciarEnvio() {
     return new Promise((resolve, reject) => {
-      // Datos ingresos mes Anterior
-      Ingresos_mesant.findAll({
-        where: { FECHA: fechaConsulta },
-        //order: [["createdAt", "ASC"]],
-      })
-        .then((result) => {
-          losIngresosMesAnt = result;
-          console.log("Datos Ing Mesant :", losIngresosMesAnt.length);
-        })
-        .catch((error) => {
-          res.status(402).json({
-            msg: error.menssage,
-          });
-        });
-
-      // Datos ingresos mes Actual
-      Ingresos_mesact.findAll({
-        where: { FECHA: fechaConsulta },
-        //order: [["createdAt", "ASC"]],
-      })
-        .then((result) => {
-          losIngresosMesAct = result;
-          console.log("Datos Ing Mesact :", losIngresosMesAct.length);
-        })
-        .catch((error) => {
-          res.status(402).json({
-            msg: error.menssage,
-          });
-        });
-
-      // Datos del mes Anterior
+      // Datos acumulados del mes Anterior
       Acumulado_mesant.findAll({
         where: { FECHA: fechaConsulta },
         //order: [["createdAt", "ASC"]],
@@ -782,9 +752,6 @@ module.exports = (app) => {
         .then((result) => {
           losAcumuladosMesAnt = result;
           console.log("Datos Acum Mesant :", losAcumuladosMesAnt.length);
-
-          // Funcion que suma los montos totales
-          sumarMontosMesAnterior(losAcumuladosMesAnt);
 
           losAcumuladosMesAntForma = result.map((objeto) => ({
             ...objeto,
@@ -827,7 +794,23 @@ module.exports = (app) => {
                 : objeto.MONTO_TOTAL,
           }));
 
-          //console.log(losAcumuladosMesAntForma[0]);
+          // Datos ingresos mes Anterior
+          Ingresos_mesant.findAll({
+            where: { FECHA: fechaConsulta },
+            //order: [["createdAt", "ASC"]],
+          })
+            .then((result) => {
+              losIngresosMesAnt = result;
+              console.log("Datos Ing Mesant :", losIngresosMesAnt.length);
+
+              // Funcion que suma los montos totales - Acumulados e Ingresos de mes Anterior
+              sumarMontosMesAnterior(losAcumuladosMesAnt);
+            })
+            .catch((error) => {
+              res.status(402).json({
+                msg: error.menssage,
+              });
+            });
         })
         .catch((error) => {
           res.status(402).json({
@@ -843,9 +826,6 @@ module.exports = (app) => {
         .then((result) => {
           losAcumuladosMesAct = result;
           console.log("Datos Acum Mesact:", losAcumuladosMesAct.length);
-
-          // Funcion que suma los montos totales
-          sumarMontosMesActual(losAcumuladosMesAct);
 
           losAcumuladosMesActForma = result.map((objeto) => ({
             ...objeto,
@@ -888,7 +868,23 @@ module.exports = (app) => {
                 : objeto.MONTO_TOTAL,
           }));
 
-          //console.log(losAcumuladosMesActForma[0]);
+          // Datos ingresos mes Actual
+          Ingresos_mesact.findAll({
+            where: { FECHA: fechaConsulta },
+            //order: [["createdAt", "ASC"]],
+          })
+            .then((result) => {
+              losIngresosMesAct = result;
+              console.log("Datos Ing Mesact :", losIngresosMesAct.length);
+
+              // Funcion que suma los montos totales Acumulados e Ingresos de mes Actual
+              sumarMontosMesActual(losAcumuladosMesAct);
+            })
+            .catch((error) => {
+              res.status(402).json({
+                msg: error.menssage,
+              });
+            });
         })
         .catch((error) => {
           res.status(402).json({
