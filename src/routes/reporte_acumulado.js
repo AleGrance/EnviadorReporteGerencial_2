@@ -5768,5 +5768,18 @@ module.exports = (app) => {
     totalGenCobrador_ = 0;
     totalGenVentaNueva_ = 0;
     totalGenMontoTotal_ = 0;
+
+    // Totales ADM
+    totalGenINCuotaSocial = 0;
+    totalGenINTratamiento = 0;
+    totalGenINCobrador = 0;
+    totalGenINVentaNueva = 0;
+    totalGenINMontoTotal = 0;
+
+    totalGenINCuotaSocial_ = 0;
+    totalGenINTratamiento_ = 0;
+    totalGenINCobrador_ = 0;
+    totalGenINVentaNueva_ = 0;
+    totalGenINMontoTotal_ = 0;
   }
 };
