@@ -100,11 +100,11 @@ var todasSucursalesActivas = [];
 var todosTiposPagos = ["PAGOS ELECTRONICOS", "ASO. DEB.", "LICITACIONES", "TRANSF. GIROS PALMA"]; // Para la consulta MANUAL del día de ayer
 
 var fechaActual = moment();
-var fechaDiaAnterior = fechaActual.subtract(1, 'days');
+var fechaDiaAnterior = fechaActual.subtract(1, "days");
 var fechaMesAnterior = moment(fechaDiaAnterior).subtract(1, "months");
-var fechaConsulta = fechaDiaAnterior.format('YYYY-MM-DD');
+var fechaConsulta = fechaDiaAnterior.format("YYYY-MM-DD");
 var fechaConsultaMesAnt = fechaMesAnterior.format("DD-MM-YYYY");
-var fechaConsultaMesAct = fechaDiaAnterior.format('DD-MM-YYYY');
+var fechaConsultaMesAct = fechaDiaAnterior.format("DD-MM-YYYY");
 
 module.exports = function (app) {
   var Acumulado_mesact = app.db.models.Acumulado_mesact;
@@ -112,13 +112,12 @@ module.exports = function (app) {
   var Ingresos_mesact = app.db.models.Ingresos_mesact;
   var Ingresos_mesant = app.db.models.Ingresos_mesant; // Ejecutar la funcion a las 22:00 de Lunes(1) a Sabados (6)
 
-  cron.schedule("05 22 * * 1-6", function () {
+  cron.schedule("00 22 * * 1-6", function () {
     var hoyAhora = new Date();
     var diaHoy = hoyAhora.toString().slice(0, 3);
     var fullHoraAhora = hoyAhora.toString().slice(16, 21);
     console.log("Hoy es:", diaHoy, "la hora es:", fullHoraAhora);
     console.log("CRON: Se consulta al JKMT - Acumulados e Ingresos Reporte Gerencial"); // Fechas para las consultas
-    // Obtiene la fecha y hora actual
 
     var fechaActual = moment();
     var fechaMesAnterior = moment(fechaActual).subtract(1, "months");
@@ -141,6 +140,9 @@ module.exports = function (app) {
         return getIngresosMesAnt();
       }).then(function () {
         console.log("Se realizaron todas las consultas...");
+      }).then(function () {
+        console.log("Llama a la funcion iniciar envio");
+        iniciarEnvio();
       })["catch"](function (error) {
         console.error("Ocurrio un error:", error);
       });
@@ -182,7 +184,7 @@ module.exports = function (app) {
 
 
   function getAcumuladosMesAct() {
-    console.log("Obteninendo Acumulados Mes Actual");
+    console.log("Obteninendo Acumulados Mes Actual...");
     var todasSucursalesReporte = [];
     return new Promise(function (resolve, reject) {
       Firebird.attach(odontos, function (err, db) {
@@ -263,18 +265,26 @@ module.exports = function (app) {
             return acumulador;
           }, []); //console.log("Array formateado para insertar en el POSTGRESQL", nuevoArray);
           // Recorre el array que contiene los datos e inserta en la base de postgresql
+          // nuevoArray.forEach((e) => {
+          //   // Poblar PGSQL
+          //   Acumulado_mesact.create(e)
+          //     //.then((result) => res.json(result))
+          //     .catch((error) => console.log(error.message));
+          // });
 
-          nuevoArray.forEach(function (e) {
-            // Poblar PGSQL
-            Acumulado_mesact.create(e) //.then((result) => res.json(result))
-            ["catch"](function (error) {
-              return console.log(error.message);
-            });
-          }); // IMPORTANTE: cerrar la conexion
+          var promesas = nuevoArray.map(function (e) {
+            return Acumulado_mesact.create(e);
+          });
+          Promise.all(promesas).then(function (resultados) {
+            // Todos los registros se han insertado correctamente en la base de datos
+            console.log("Todas las inserciones se completaron con éxito getAcumuladosMesAct."); // Luego de que todas las inserciones se completen, aquí puedes ejecutar tu función de callback.
 
-          db.detach();
-          console.log("ejecutado getAcumuladoMesAct", fechaConsulta);
-          resolve();
+            resolve(); // IMPORTANTE: cerrar la conexion
+
+            db.detach();
+          })["catch"](function (error) {
+            console.error("Ocurrió un error en al menos una inserción getAcumuladosMesAct:", error);
+          });
         });
       });
     });
@@ -282,14 +292,14 @@ module.exports = function (app) {
 
 
   function getAcumuladosMesAnt() {
-    console.log("Obteninendo Acumulados Mes Anterior");
+    console.log("Obteninendo Acumulados Mes Anterior...");
     var todasSucursalesReporte = [];
     return new Promise(function (resolve, reject) {
       Firebird.attach(odontos, function (err, db) {
         if (err) throw err;
         db.query( // QUERY
         "SELECT * FROM PROC_PANEL_ING_ACUM_MESANT (CURRENT_DATE, CURRENT_DATE)", function (err, result) {
-          console.log("Cant de registros obtenidos getAcumuladoMesAct:", result.length); //console.log(result);
+          console.log("Cant de registros obtenidos getAcumuladosMesAnt:", result.length); //console.log(result);
           // Se cargan todas las sucursales que trajo la consulta
 
           var _iterator3 = _createForOfIteratorHelper(result),
@@ -363,18 +373,26 @@ module.exports = function (app) {
             return acumulador;
           }, []); //console.log("Array formateado para insertar en el POSTGRESQL", nuevoArray);
           // Recorre el array que contiene los datos e inserta en la base de postgresql
+          // nuevoArray.forEach((e) => {
+          //   // Poblar PGSQL
+          //   Acumulado_mesant.create(e)
+          //     //.then((result) => res.json(result))
+          //     .catch((error) => console.log(error.message));
+          // });
 
-          nuevoArray.forEach(function (e) {
-            // Poblar PGSQL
-            Acumulado_mesant.create(e) //.then((result) => res.json(result))
-            ["catch"](function (error) {
-              return console.log(error.message);
-            });
-          }); // IMPORTANTE: cerrar la conexion
+          var promesas = nuevoArray.map(function (e) {
+            return Acumulado_mesant.create(e);
+          });
+          Promise.all(promesas).then(function (resultados) {
+            // Todos los registros se han insertado correctamente en la base de datos
+            console.log("Todas las inserciones se completaron con éxito getAcumuladosMesAnt."); // Luego de que todas las inserciones se completen, aquí puedes ejecutar tu función de callback.
 
-          db.detach();
-          console.log("ejecutado getAcumuladoMesAct", fechaConsulta);
-          resolve();
+            resolve(); // IMPORTANTE: cerrar la conexion
+
+            db.detach();
+          })["catch"](function (error) {
+            console.error("Ocurrió un error en al menos una inserción getAcumuladosMesAnt:", error);
+          });
         });
       });
     });
@@ -382,7 +400,7 @@ module.exports = function (app) {
 
 
   function getIngresosMesAct() {
-    console.log("Obteninendo Ingresos Mes Actual");
+    console.log("Obteninendo Ingresos Mes Actual...");
     var todosTiposPagosConsulta = [];
     return new Promise(function (resolve, reject) {
       //console.log("getIngresoMesAct", fechaHoyFormateado);
@@ -464,20 +482,26 @@ module.exports = function (app) {
             return acumulador;
           }, []); //console.log("Array formateado para insertar en el POSTGRESQL", nuevoArray);
           // Recorre el array que contiene los datos e inserta en la base de postgresql
+          // nuevoArray.forEach((e) => {
+          //   // Poblar PGSQL
+          //   Ingresos_mesact.create(e)
+          //     //.then((result) => res.json(result))
+          //     .catch((error) => console.log(error.message));
+          // });
 
-          nuevoArray.forEach(function (e) {
-            // Poblar PGSQL
-            Ingresos_mesact.create(e) //.then((result) => res.json(result))
-            ["catch"](function (error) {
-              return console.log(error.message);
-            });
-          }); // IMPORTANTE: cerrar la conexion
+          var promesas = nuevoArray.map(function (e) {
+            return Ingresos_mesact.create(e);
+          });
+          Promise.all(promesas).then(function (resultados) {
+            // Todos los registros se han insertado correctamente en la base de datos
+            console.log("Todas las inserciones se completaron con éxito getIngresoMesAct."); // Luego de que todas las inserciones se completen, aquí puedes ejecutar tu función de callback.
 
-          db.detach();
-          console.log("ejecutado getIngresoMesAct");
-          resolve(); // console.log(
-          //   "Llama a la funcion iniciar envio que se retrasa 1 min en ejecutarse Tickets"
-          // );
+            resolve(); // IMPORTANTE: cerrar la conexion
+
+            db.detach();
+          })["catch"](function (error) {
+            console.error("Ocurrió un error en al menos una inserción getIngresoMesAct:", error);
+          });
         });
       });
     });
@@ -485,7 +509,7 @@ module.exports = function (app) {
 
 
   function getIngresosMesAnt() {
-    console.log("Obteninendo Ingresos Mes Anterior");
+    console.log("Obteninendo Ingresos Mes Anterior...");
     var todosTiposPagosConsulta = [];
     return new Promise(function (resolve, reject) {
       //console.log("getIngresoMesAct", fechaHoyFormateado);
@@ -567,22 +591,26 @@ module.exports = function (app) {
             return acumulador;
           }, []); //console.log("Array formateado para insertar en el POSTGRESQL", nuevoArray);
           // Recorre el array que contiene los datos e inserta en la base de postgresql
+          // nuevoArray.forEach((e) => {
+          //   // Poblar PGSQL
+          //   Ingresos_mesant.create(e)
+          //     //.then((result) => res.json(result))
+          //     .catch((error) => console.log(error.message));
+          // });
 
-          nuevoArray.forEach(function (e) {
-            // Poblar PGSQL
-            Ingresos_mesant.create(e) //.then((result) => res.json(result))
-            ["catch"](function (error) {
-              return console.log(error.message);
-            });
-          }); // IMPORTANTE: cerrar la conexion
+          var promesas = nuevoArray.map(function (e) {
+            return Ingresos_mesant.create(e);
+          });
+          Promise.all(promesas).then(function (resultados) {
+            // Todos los registros se han insertado correctamente en la base de datos
+            console.log("Todas las inserciones se completaron con éxito getIngresoMesAnt."); // Luego de que todas las inserciones se completen, aquí puedes ejecutar tu función de callback.
 
-          db.detach();
-          console.log("ejecutado getIngresoMesAnt");
-          resolve();
-          console.log("Llama a la funcion iniciar envio que se retrasa 1 min en ejecutarse Tickets");
-          setTimeout(function () {
-            iniciarEnvio();
-          }, 1000 * 60);
+            resolve(); // IMPORTANTE: cerrar la conexion
+
+            db.detach();
+          })["catch"](function (error) {
+            console.error("Ocurrió un error en al menos una inserción getIngresoMesAnt:", error);
+          });
         });
       });
     });
@@ -601,6 +629,9 @@ module.exports = function (app) {
     return getIngresosMesAnt();
   }).then(function () {
     console.log("Se realizaron todas las consultas...");
+  }).then(function () {
+    console.log("Llama a la funcion iniciar envio");
+    iniciarEnvio();
   })["catch"](function (error) {
     console.error("Ocurrio un error:", error);
   }); // Inicia los envios - Consulta al PGSQL
@@ -700,44 +731,16 @@ module.exports = function (app) {
   var totalGenINMontoTotal_ = 0;
 
   function iniciarEnvio() {
-    setTimeout(function () {
-      // Datos ingresos mes Anterior
-      Ingresos_mesant.findAll({
-        where: {
-          FECHA: fechaConsulta
-        } //order: [["createdAt", "ASC"]],
-
-      }).then(function (result) {
-        losIngresosMesAnt = result; //console.log(losIngresosMesAnt);
-      })["catch"](function (error) {
-        res.status(402).json({
-          msg: error.menssage
-        });
-      }); // Datos ingresos mes Actual
-
-      Ingresos_mesact.findAll({
-        where: {
-          FECHA: fechaConsulta
-        } //order: [["createdAt", "ASC"]],
-
-      }).then(function (result) {
-        losIngresosMesAct = result; //console.log(losIngresosMesAct);
-      })["catch"](function (error) {
-        res.status(402).json({
-          msg: error.menssage
-        });
-      }); // Datos del mes Anterior
-
+    return new Promise(function (resolve, reject) {
+      // Datos acumulados del mes Anterior
       Acumulado_mesant.findAll({
         where: {
           FECHA: fechaConsulta
         } //order: [["createdAt", "ASC"]],
 
       }).then(function (result) {
-        losAcumuladosMesAnt = result; //console.log("Acumulados :", losAcumuladosMesAnt);
-        // Funcion que suma los montos totales
-
-        sumarMontosMesAnterior(losAcumuladosMesAnt);
+        losAcumuladosMesAnt = result;
+        console.log("Datos Acum Mesant :", losAcumuladosMesAnt.length);
         losAcumuladosMesAntForma = result.map(function (objeto) {
           return _objectSpread(_objectSpread({}, objeto), {}, {
             FECHA: fechaConsulta,
@@ -763,8 +766,23 @@ module.exports = function (app) {
               maximumFractionDigits: 0
             }) : objeto.MONTO_TOTAL
           });
-        }); //console.log(losAcumuladosMesAntForma[0]);
-      }).then(function () {//enviarMensaje();
+        }); // Datos ingresos mes Anterior
+
+        Ingresos_mesant.findAll({
+          where: {
+            FECHA: fechaConsulta
+          } //order: [["createdAt", "ASC"]],
+
+        }).then(function (result) {
+          losIngresosMesAnt = result;
+          console.log("Datos Ing Mesant :", losIngresosMesAnt.length); // Funcion que suma los montos totales - Acumulados e Ingresos de mes Anterior
+
+          sumarMontosMesAnterior(losAcumuladosMesAnt);
+        })["catch"](function (error) {
+          res.status(402).json({
+            msg: error.menssage
+          });
+        });
       })["catch"](function (error) {
         res.status(402).json({
           msg: error.menssage
@@ -778,9 +796,7 @@ module.exports = function (app) {
 
       }).then(function (result) {
         losAcumuladosMesAct = result;
-        console.log("Preparando reporte:", losAcumuladosMesAct.length); // Funcion que suma los montos totales
-
-        sumarMontosMesActual(losAcumuladosMesAct);
+        console.log("Datos Acum Mesact:", losAcumuladosMesAct.length);
         losAcumuladosMesActForma = result.map(function (objeto) {
           return _objectSpread(_objectSpread({}, objeto), {}, {
             FECHA: fechaConsulta,
@@ -806,15 +822,33 @@ module.exports = function (app) {
               maximumFractionDigits: 0
             }) : objeto.MONTO_TOTAL
           });
-        }); //console.log(losAcumuladosMesActForma[0]);
-      }).then(function () {
-        enviarMensaje();
+        }); // Datos ingresos mes Actual
+
+        Ingresos_mesact.findAll({
+          where: {
+            FECHA: fechaConsulta
+          } //order: [["createdAt", "ASC"]],
+
+        }).then(function (result) {
+          losIngresosMesAct = result;
+          console.log("Datos Ing Mesact :", losIngresosMesAct.length); // Funcion que suma los montos totales Acumulados e Ingresos de mes Actual
+
+          sumarMontosMesActual(losAcumuladosMesAct);
+        })["catch"](function (error) {
+          res.status(402).json({
+            msg: error.menssage
+          });
+        });
       })["catch"](function (error) {
         res.status(402).json({
           msg: error.menssage
         });
       });
-    }, tiempoRetrasoPGSQL);
+      setTimeout(function () {
+        enviarMensaje();
+        resolve();
+      }, 15000);
+    });
   } // Habilitar para testing
   //iniciarEnvio();
   // Diferencias de montos
@@ -4441,7 +4475,7 @@ module.exports = function (app) {
               }))).then(function () {
                 //console.log("Se resetean los montos");
                 setTimeout(function () {
-                  console.log('Se resetearon los montos');
+                  console.log("Se resetearon los montos");
                   resetMontos();
                 }, 30000);
               });
@@ -4533,6 +4567,17 @@ module.exports = function (app) {
     totalGenTratamiento_ = 0;
     totalGenCobrador_ = 0;
     totalGenVentaNueva_ = 0;
-    totalGenMontoTotal_ = 0;
+    totalGenMontoTotal_ = 0; // Totales ADM
+
+    totalGenINCuotaSocial = 0;
+    totalGenINTratamiento = 0;
+    totalGenINCobrador = 0;
+    totalGenINVentaNueva = 0;
+    totalGenINMontoTotal = 0;
+    totalGenINCuotaSocial_ = 0;
+    totalGenINTratamiento_ = 0;
+    totalGenINCobrador_ = 0;
+    totalGenINVentaNueva_ = 0;
+    totalGenINMontoTotal_ = 0;
   }
 };

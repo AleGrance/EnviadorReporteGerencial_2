@@ -627,6 +627,10 @@ module.exports = (app) => {
   //   .then(() => {
   //     console.log("Se realizaron todas las consultas...");
   //   })
+  //   .then(() => {
+  //     console.log("Llama a la funcion iniciar envio");
+  //     iniciarEnvio();
+  //   })
   //   .catch((error) => {
   //     console.error("Ocurrio un error:", error);
   //   });
