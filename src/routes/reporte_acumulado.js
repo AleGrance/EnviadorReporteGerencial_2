@@ -897,6 +897,11 @@ module.exports = (app) => {
         });
 
       setTimeout(() => {
+        calcularDiferencias();
+        console.log('Se calculan las diferencias...');
+      }, 10000);
+
+      setTimeout(() => {
         enviarMensaje();
         resolve();
       }, 15000);
@@ -1071,7 +1076,7 @@ module.exports = (app) => {
     //console.log('DESDE SUMAR MONTOS');
 
     for (let r of los_acumulados_mes_ant) {
-      // Suma los montos de los acumulados mes actual
+      // Suma los montos de los acumulados mes anterior
       if (arrayAsuncion.includes(r.SUCURSAL)) {
         sumTotalesAsuncionCS += parseInt(r.CUOTA_SOCIAL);
         sumTotalesAsuncionTT += parseInt(r.TRATAMIENTO);
@@ -1545,10 +1550,10 @@ module.exports = (app) => {
         totalTransGirosPalma_ = parseFloat(t.MONTO_TOTAL);
       }
     }
+  }
 
-    /**
-     *  DIFERENCIAS ACUMULADOS
-     */
+  // Se calculan las diferencias
+  function calcularDiferencias() {
     totalDifAdministracion = parseInt(totalAdministracion_ - totalAdministracion);
     totalDifML = parseInt(totalML_ - totalML);
     totalDifMLU = parseInt(totalMLU_ - totalMLU);

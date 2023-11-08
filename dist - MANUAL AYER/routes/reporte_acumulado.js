@@ -845,6 +845,10 @@ module.exports = function (app) {
         });
       });
       setTimeout(function () {
+        calcularDiferencias();
+        console.log('Se calculan las diferencias...');
+      }, 10000);
+      setTimeout(function () {
         enviarMensaje();
         resolve();
       }, 15000);
@@ -970,7 +974,7 @@ module.exports = function (app) {
       for (_iterator9.s(); !(_step9 = _iterator9.n()).done;) {
         var r = _step9.value;
 
-        // Suma los montos de los acumulados mes actual
+        // Suma los montos de los acumulados mes anterior
         if (arrayAsuncion.includes(r.SUCURSAL)) {
           sumTotalesAsuncionCS += parseInt(r.CUOTA_SOCIAL);
           sumTotalesAsuncionTT += parseInt(r.TRATAMIENTO);
@@ -1390,16 +1394,15 @@ module.exports = function (app) {
           totalTransGirosPalma_ = parseFloat(t.MONTO_TOTAL);
         }
       }
-      /**
-       *  DIFERENCIAS ACUMULADOS
-       */
-
     } catch (err) {
       _iterator12.e(err);
     } finally {
       _iterator12.f();
     }
+  } // Se calculan las diferencias
 
+
+  function calcularDiferencias() {
     totalDifAdministracion = parseInt(totalAdministracion_ - totalAdministracion);
     totalDifML = parseInt(totalML_ - totalML);
     totalDifMLU = parseInt(totalMLU_ - totalMLU);
