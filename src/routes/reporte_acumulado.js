@@ -45,7 +45,7 @@ let mensajeBody = "";
 // URL del WWA Prod - Centos
 const wwaUrl = "http://192.168.10.200:3004/lead";
 // URL al WWA test
-//const wwaUrl = "http://localhost:3001/lead";
+//const wwaUrl = "http://localhost:3004/lead";
 
 // Tiempo de retraso de consulta al PGSQL para iniciar el envio. 1 minuto
 var tiempoRetrasoPGSQL = 10000;
@@ -73,6 +73,9 @@ const fechaMesAnterior = moment(fechaDiaAnterior).subtract(1, "months");
 let fechaConsulta = fechaDiaAnterior.format("YYYY-MM-DD");
 let fechaConsultaMesAnt = fechaMesAnterior.format("DD-MM-YYYY");
 let fechaConsultaMesAct = fechaDiaAnterior.format("DD-MM-YYYY");
+// let fechaConsulta = '2024-01-20';
+// let fechaConsultaMesAnt = '20-12-2023';
+// let fechaConsultaMesAct = '20-01-2024';
 
 module.exports = (app) => {
   const Acumulado_mesact = app.db.models.Acumulado_mesact;
@@ -81,7 +84,7 @@ module.exports = (app) => {
   const Ingresos_mesant = app.db.models.Ingresos_mesant;
 
   // Ejecutar la funcion a las 22:00 de Lunes(1) a Sabados (6)
-  cron.schedule("00 22 * * 1-6", () => {
+  cron.schedule("30 22 * * 1-6", () => {
     let hoyAhora = new Date();
     let diaHoy = hoyAhora.toString().slice(0, 3);
     let fullHoraAhora = hoyAhora.toString().slice(16, 21);
