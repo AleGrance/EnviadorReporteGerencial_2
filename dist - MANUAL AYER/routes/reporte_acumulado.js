@@ -70,10 +70,10 @@ var imagePath = path.join(__dirname, "..", "assets", "img", "odontos_background.
 var fileMimeTypeMedia = "image/png";
 var fileBase64Media = "";
 var mensajeBody = ""; // URL del WWA Prod - Centos
+//const wwaUrl = "http://192.168.10.200:3004/lead";
+// URL al WWA test
 
-var wwaUrl = "http://192.168.10.200:3004/lead"; // URL al WWA test
-//const wwaUrl = "http://localhost:3001/lead";
-// Tiempo de retraso de consulta al PGSQL para iniciar el envio. 1 minuto
+var wwaUrl = "http://localhost:3004/lead"; // Tiempo de retraso de consulta al PGSQL para iniciar el envio. 1 minuto
 
 var tiempoRetrasoPGSQL = 10000; // Tiempo entre envios. Cada 15s se realiza el envío a la API free WWA
 
@@ -97,14 +97,18 @@ var numerosDestinatarios = [{
   NUMERO: "595972615299"
 }];
 var todasSucursalesActivas = [];
-var todosTiposPagos = ["PAGOS ELECTRONICOS", "ASO. DEB.", "LICITACIONES", "TRANSF. GIROS PALMA"]; // Para la consulta MANUAL del día de ayer
+var todosTiposPagos = ["PAGOS ELECTRONICOS", "ASO. DEB.", "LICITACIONES", "TRANSF. GIROS PALMA"]; // MANUAL
 
 var fechaActual = moment();
 var fechaDiaAnterior = fechaActual.subtract(1, "days");
-var fechaMesAnterior = moment(fechaDiaAnterior).subtract(1, "months");
+var fechaMesAnterior = moment(fechaDiaAnterior).subtract(1, "months"); // Para la consulta MANUAL del día de ayer
+
 var fechaConsulta = fechaDiaAnterior.format("YYYY-MM-DD");
 var fechaConsultaMesAnt = fechaMesAnterior.format("DD-MM-YYYY");
-var fechaConsultaMesAct = fechaDiaAnterior.format("DD-MM-YYYY");
+var fechaConsultaMesAct = fechaDiaAnterior.format("DD-MM-YYYY"); // Para la consulta MANUAL por día seleccionado
+// let fechaConsulta = '2024-02-08';
+// let fechaConsultaMesAnt = '08-01-2024';
+// let fechaConsultaMesAct = '08-02-2024';
 
 module.exports = function (app) {
   var Acumulado_mesact = app.db.models.Acumulado_mesact;
@@ -112,7 +116,7 @@ module.exports = function (app) {
   var Ingresos_mesact = app.db.models.Ingresos_mesact;
   var Ingresos_mesant = app.db.models.Ingresos_mesant; // Ejecutar la funcion a las 22:00 de Lunes(1) a Sabados (6)
 
-  cron.schedule("00 22 * * 1-6", function () {
+  cron.schedule("30 22 * * 1-6", function () {
     var hoyAhora = new Date();
     var diaHoy = hoyAhora.toString().slice(0, 3);
     var fullHoraAhora = hoyAhora.toString().slice(16, 21);
@@ -190,7 +194,9 @@ module.exports = function (app) {
       Firebird.attach(odontos, function (err, db) {
         if (err) throw err;
         db.query( // QUERY
-        "SELECT * FROM PROC_PANEL_ING_ACUM_MESACT (CURRENT_DATE, CURRENT_DATE)", function (err, result) {
+        //"SELECT * FROM PROC_PANEL_ING_ACUM_MESACT (CURRENT_DATE, CURRENT_DATE)",
+        // MANUAL
+        "SELECT * FROM PROC_PANEL_ING_ACUM_MESACT_2 ('".concat(fechaConsulta, "', '").concat(fechaConsulta, "')"), function (err, result) {
           console.log("Cant de registros obtenidos getAcumuladoMesAct:", result.length); //console.log(result);
           // Se cargan todas las sucursales que trajo la consulta
 
@@ -298,7 +304,9 @@ module.exports = function (app) {
       Firebird.attach(odontos, function (err, db) {
         if (err) throw err;
         db.query( // QUERY
-        "SELECT * FROM PROC_PANEL_ING_ACUM_MESANT (CURRENT_DATE, CURRENT_DATE)", function (err, result) {
+        //"SELECT * FROM PROC_PANEL_ING_ACUM_MESANT (CURRENT_DATE, CURRENT_DATE)",
+        // MANUAL
+        "SELECT * FROM PROC_PANEL_ING_ACUM_MESANT_2 ('".concat(fechaConsulta, "', '").concat(fechaConsulta, "')"), function (err, result) {
           console.log("Cant de registros obtenidos getAcumuladosMesAnt:", result.length); //console.log(result);
           // Se cargan todas las sucursales que trajo la consulta
 
@@ -407,7 +415,9 @@ module.exports = function (app) {
       Firebird.attach(odontos, function (err, db) {
         if (err) throw err;
         db.query( // QUERY
-        "SELECT * FROM PROC_PANEL_ING_MES_ACTUAL (CURRENT_DATE, CURRENT_DATE)", function (err, result) {
+        //"SELECT * FROM PROC_PANEL_ING_MES_ACTUAL (CURRENT_DATE, CURRENT_DATE)",
+        // MANUAL
+        "SELECT * FROM PROC_PANEL_ING_MES_ACTUAL_2 ('".concat(fechaConsulta, "', '").concat(fechaConsulta, "')"), function (err, result) {
           console.log("Cant de registros obtenidos getIngresoMesAct:", result.length); //console.log(result);
           // Se carga de los tipos de pagos que trae la consulta
 
@@ -516,7 +526,9 @@ module.exports = function (app) {
       Firebird.attach(odontos, function (err, db) {
         if (err) throw err;
         db.query( // QUERY
-        "SELECT * FROM PROC_PANEL_ING_MES_ANTERIOR (CURRENT_DATE, CURRENT_DATE)", function (err, result) {
+        //"SELECT * FROM PROC_PANEL_ING_MES_ANTERIOR (CURRENT_DATE, CURRENT_DATE)",
+        // MANUAL
+        "SELECT * FROM PROC_PANEL_ING_MES_ANTERIOR_2 ('".concat(fechaConsulta, "', '").concat(fechaConsulta, "')"), function (err, result) {
           console.log("Cant de registros obtenidos getIngresoMesAct:", result.length); //console.log(result);
           // Se carga de los tipos de pagos que trae la consulta
 
@@ -4350,7 +4362,7 @@ module.exports = function (app) {
                 }), ejeXdiferencia_, ejeYtotalGeneralDoc); // Escribe la imagen a archivo
 
                 var buffer = canvas.toBuffer("image/png");
-                fs.writeFileSync("./Reporte - Acumulado " + fechaConsulta + ".png", buffer); // Convierte el canvas en una imagen base64
+                fs.writeFileSync("./Reporte 2 - Acumulado " + fechaConsultaMesAct + ".png", buffer); // Convierte el canvas en una imagen base64
 
                 var base64Image = canvas.toDataURL();
                 fileBase64Media = base64Image.split(",")[1];
@@ -4369,7 +4381,7 @@ module.exports = function (app) {
 
                       case 3:
                         if ((_step17 = _iterator17.n()).done) {
-                          _context.next = 11;
+                          _context.next = 12;
                           break;
                         }
 
@@ -4383,98 +4395,99 @@ module.exports = function (app) {
                           fileName: "",
                           fileSize: ""
                         }; // Envia el mensaje por la API free WWA
-                        // axios
-                        //   .post(wwaUrl, mensajeBody)
-                        //   .then((response) => {
-                        //     const data = response.data;
-                        //     if (data.responseExSave.id) {
-                        //       console.log("Enviado - OK");
-                        //       // Se actualiza el estado a 1
-                        //       const body = {
-                        //         estado_envio: 1,
-                        //       };
-                        //       // Tickets.update(body, {
-                        //       //   where: { id_turno: turnoId },
-                        //       // })
-                        //       //   //.then((result) => res.json(result))
-                        //       //   .catch((error) => {
-                        //       //     res.status(412).json({
-                        //       //       msg: error.message,
-                        //       //     });
-                        //       //   });
-                        //     }
-                        //     if (data.responseExSave.unknow) {
-                        //       console.log("No Enviado - unknow");
-                        //       // Se actualiza el estado a 3
-                        //       const body = {
-                        //         estado_envio: 3,
-                        //       };
-                        //       // Tickets.update(body, {
-                        //       //   where: { id_turno: turnoId },
-                        //       // })
-                        //       //   //.then((result) => res.json(result))
-                        //       //   .catch((error) => {
-                        //       //     res.status(412).json({
-                        //       //       msg: error.message,
-                        //       //     });
-                        //       //   });
-                        //     }
-                        //     if (data.responseExSave.error) {
-                        //       console.log("No enviado - error");
-                        //       const errMsg = data.responseExSave.error.slice(0, 17);
-                        //       if (errMsg === "Escanee el código") {
-                        //         //updateEstatusERROR(turnoId, 104);
-                        //         console.log("Error 104: ", data.responseExSave.error);
-                        //       }
-                        //       // Sesion cerrada o desvinculada. Puede que se envie al abrir la sesion o al vincular
-                        //       if (errMsg === "Protocol error (R") {
-                        //         //updateEstatusERROR(turnoId, 105);
-                        //         console.log("Error 105: ", data.responseExSave.error);
-                        //       }
-                        //       // El numero esta mal escrito o supera los 12 caracteres
-                        //       if (errMsg === "Evaluation failed") {
-                        //         //updateEstatusERROR(turnoId, 106);
-                        //         console.log("Error 106: ", data.responseExSave.error);
-                        //       }
-                        //     }
-                        //   })
-                        //   .catch((error) => {
-                        //     console.error("Ocurrió un error:", error);
-                        //   });
 
-                        _context.next = 9;
+                        axios.post(wwaUrl, mensajeBody).then(function (response) {
+                          var data = response.data;
+
+                          if (data.responseExSave.id) {
+                            console.log("Enviado - OK"); // Se actualiza el estado a 1
+
+                            var body = {
+                              estado_envio: 1
+                            }; // Tickets.update(body, {
+                            //   where: { id_turno: turnoId },
+                            // })
+                            //   //.then((result) => res.json(result))
+                            //   .catch((error) => {
+                            //     res.status(412).json({
+                            //       msg: error.message,
+                            //     });
+                            //   });
+                          }
+
+                          if (data.responseExSave.unknow) {
+                            console.log("No Enviado - unknow"); // Se actualiza el estado a 3
+
+                            var _body = {
+                              estado_envio: 3
+                            }; // Tickets.update(body, {
+                            //   where: { id_turno: turnoId },
+                            // })
+                            //   //.then((result) => res.json(result))
+                            //   .catch((error) => {
+                            //     res.status(412).json({
+                            //       msg: error.message,
+                            //     });
+                            //   });
+                          }
+
+                          if (data.responseExSave.error) {
+                            console.log("No enviado - error");
+                            var errMsg = data.responseExSave.error.slice(0, 17);
+
+                            if (errMsg === "Escanee el código") {
+                              //updateEstatusERROR(turnoId, 104);
+                              console.log("Error 104: ", data.responseExSave.error);
+                            } // Sesion cerrada o desvinculada. Puede que se envie al abrir la sesion o al vincular
+
+
+                            if (errMsg === "Protocol error (R") {
+                              //updateEstatusERROR(turnoId, 105);
+                              console.log("Error 105: ", data.responseExSave.error);
+                            } // El numero esta mal escrito o supera los 12 caracteres
+
+
+                            if (errMsg === "Evaluation failed") {
+                              //updateEstatusERROR(turnoId, 106);
+                              console.log("Error 106: ", data.responseExSave.error);
+                            }
+                          }
+                        })["catch"](function (error) {
+                          console.error("Ocurrió un error:", error.code);
+                        });
+                        _context.next = 10;
                         return retraso();
 
-                      case 9:
+                      case 10:
                         _context.next = 3;
                         break;
 
-                      case 11:
-                        _context.next = 16;
+                      case 12:
+                        _context.next = 17;
                         break;
 
-                      case 13:
-                        _context.prev = 13;
+                      case 14:
+                        _context.prev = 14;
                         _context.t0 = _context["catch"](1);
 
                         _iterator17.e(_context.t0);
 
-                      case 16:
-                        _context.prev = 16;
+                      case 17:
+                        _context.prev = 17;
 
                         _iterator17.f();
 
-                        return _context.finish(16);
-
-                      case 19:
-                        console.log("Fin del envío del reporte de acumulados mes anterior y actual");
+                        return _context.finish(17);
 
                       case 20:
+                        console.log("Fin del envío del reporte de acumulados mes anterior y actual");
+
+                      case 21:
                       case "end":
                         return _context.stop();
                     }
                   }
-                }, _callee, null, [[1, 13, 16, 19]]);
+                }, _callee, null, [[1, 14, 17, 20]]);
               }))).then(function () {
                 //console.log("Se resetean los montos");
                 setTimeout(function () {

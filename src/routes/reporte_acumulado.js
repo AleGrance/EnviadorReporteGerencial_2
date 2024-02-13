@@ -66,16 +66,20 @@ let numerosDestinatarios = [
 let todasSucursalesActivas = [];
 let todosTiposPagos = ["PAGOS ELECTRONICOS", "ASO. DEB.", "LICITACIONES", "TRANSF. GIROS PALMA"];
 
-// Para la consulta MANUAL del día de ayer
+// MANUAL
 const fechaActual = moment();
 const fechaDiaAnterior = fechaActual.subtract(1, "days");
 const fechaMesAnterior = moment(fechaDiaAnterior).subtract(1, "months");
+
+// Para la consulta MANUAL del día de ayer
 let fechaConsulta = fechaDiaAnterior.format("YYYY-MM-DD");
 let fechaConsultaMesAnt = fechaMesAnterior.format("DD-MM-YYYY");
 let fechaConsultaMesAct = fechaDiaAnterior.format("DD-MM-YYYY");
-// let fechaConsulta = '2024-01-20';
-// let fechaConsultaMesAnt = '20-12-2023';
-// let fechaConsultaMesAct = '20-01-2024';
+
+// Para la consulta MANUAL por día seleccionado
+// let fechaConsulta = '2024-02-08';
+// let fechaConsultaMesAnt = '08-01-2024';
+// let fechaConsultaMesAct = '08-02-2024';
 
 module.exports = (app) => {
   const Acumulado_mesact = app.db.models.Acumulado_mesact;
@@ -84,7 +88,7 @@ module.exports = (app) => {
   const Ingresos_mesant = app.db.models.Ingresos_mesant;
 
   // Ejecutar la funcion a las 22:00 de Lunes(1) a Sabados (6)
-  cron.schedule("30 22 * * 1-6", () => {
+  cron.schedule("00 22 * * 1-6", () => {
     let hoyAhora = new Date();
     let diaHoy = hoyAhora.toString().slice(0, 3);
     let fullHoraAhora = hoyAhora.toString().slice(16, 21);
@@ -183,6 +187,8 @@ module.exports = (app) => {
         db.query(
           // QUERY
           "SELECT * FROM PROC_PANEL_ING_ACUM_MESACT (CURRENT_DATE, CURRENT_DATE)",
+          // MANUAL
+          //`SELECT * FROM PROC_PANEL_ING_ACUM_MESACT_2 ('${fechaConsulta}', '${fechaConsulta}')`,
 
           function (err, result) {
             console.log("Cant de registros obtenidos getAcumuladoMesAct:", result.length);
@@ -291,6 +297,8 @@ module.exports = (app) => {
         db.query(
           // QUERY
           "SELECT * FROM PROC_PANEL_ING_ACUM_MESANT (CURRENT_DATE, CURRENT_DATE)",
+          // MANUAL
+          //`SELECT * FROM PROC_PANEL_ING_ACUM_MESANT_2 ('${fechaConsulta}', '${fechaConsulta}')`,
 
           function (err, result) {
             console.log("Cant de registros obtenidos getAcumuladosMesAnt:", result.length);
@@ -403,6 +411,8 @@ module.exports = (app) => {
         db.query(
           // QUERY
           "SELECT * FROM PROC_PANEL_ING_MES_ACTUAL (CURRENT_DATE, CURRENT_DATE)",
+          // MANUAL
+          //`SELECT * FROM PROC_PANEL_ING_MES_ACTUAL_2 ('${fechaConsulta}', '${fechaConsulta}')`,
 
           function (err, result) {
             console.log("Cant de registros obtenidos getIngresoMesAct:", result.length);
@@ -514,6 +524,8 @@ module.exports = (app) => {
         db.query(
           // QUERY
           "SELECT * FROM PROC_PANEL_ING_MES_ANTERIOR (CURRENT_DATE, CURRENT_DATE)",
+          // MANUAL
+          //`SELECT * FROM PROC_PANEL_ING_MES_ANTERIOR_2 ('${fechaConsulta}', '${fechaConsulta}')`,
 
           function (err, result) {
             console.log("Cant de registros obtenidos getIngresoMesAct:", result.length);
@@ -5591,7 +5603,7 @@ module.exports = (app) => {
 
         // Escribe la imagen a archivo
         const buffer = canvas.toBuffer("image/png");
-        fs.writeFileSync("./Reporte - Acumulado " + fechaConsulta + ".png", buffer);
+        fs.writeFileSync("./Reporte 2 - Acumulado " + fechaConsultaMesAct + ".png", buffer);
 
         // Convierte el canvas en una imagen base64
         const base64Image = canvas.toDataURL();
@@ -5672,7 +5684,7 @@ module.exports = (app) => {
               }
             })
             .catch((error) => {
-              console.error("Ocurrió un error:", error);
+              console.error("Ocurrió un error:", error.code);
             });
 
           await retraso();
