@@ -15,7 +15,7 @@ module.exports = (sequelize, DataType) => {
 
       SUCURSAL: {
         type: DataType.STRING,
-        allowNull: false,
+        allowNull: true,
       },
 
       CUOTA_SOCIAL: {
@@ -34,6 +34,11 @@ module.exports = (sequelize, DataType) => {
       },
 
       VENTA_NUEVA: {
+        type: DataType.STRING,
+        allowNull: false,
+      },
+
+      ONIX: {
         type: DataType.STRING,
         allowNull: false,
       },

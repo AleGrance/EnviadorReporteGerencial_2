@@ -8,6 +8,7 @@ const moment = require("moment");
 const { createCanvas, loadImage } = require("canvas");
 // Conexion con firebird
 var Firebird = require("node-firebird");
+require('dotenv').config()
 
 // Conexion con JKMT
 var odontos = {};
@@ -23,8 +24,8 @@ odontos.retryConnectionInterval = 1000; // reconnect interval in case of connect
 odontos.blobAsText = false;
 
 // Dimensiones del flyer
-const width = 1668;
-const height = 1152;
+const width = 2102;
+const height = 1116;
 
 // Fuente del texto
 const fuenteTexto = "20px Arial";
@@ -52,7 +53,7 @@ var tiempoRetrasoPGSQL = 10000;
 // Tiempo entre envios. Cada 15s se realiza el envío a la API free WWA
 var tiempoRetrasoEnvios = 15000;
 
-var fechaFin = new Date("2024-03-01 08:00:00");
+var fechaFin = new Date("2024-05-01 08:00:00");
 
 // Destinatarios a quien enviar el reporte
 let numerosDestinatarios = [
@@ -72,14 +73,19 @@ const fechaDiaAnterior = fechaActual.subtract(1, "days");
 const fechaMesAnterior = moment(fechaDiaAnterior).subtract(1, "months");
 
 // Para la consulta MANUAL del día de ayer
-let fechaConsulta = fechaDiaAnterior.format("YYYY-MM-DD");
-let fechaConsultaMesAnt = fechaMesAnterior.format("DD-MM-YYYY");
-let fechaConsultaMesAct = fechaDiaAnterior.format("DD-MM-YYYY");
+// let fechaConsulta = fechaDiaAnterior.format("YYYY-MM-DD");
+// let fechaConsultaMesAnt = fechaMesAnterior.format("DD-MM-YYYY");
+// let fechaConsultaMesAct = fechaDiaAnterior.format("DD-MM-YYYY");
 
 // Para la consulta MANUAL por día seleccionado
 // let fechaConsulta = '2024-02-08';
 // let fechaConsultaMesAnt = '08-01-2024';
 // let fechaConsultaMesAct = '08-02-2024';
+
+// Para la consulta usando el archivo .env
+// let fechaConsulta = process.env.fechaConsulta;
+// let fechaConsultaMesAnt = process.env.fechaConsultaMesAnt;
+// let fechaConsultaMesAct = process.env.fechaConsultaMesAct;
 
 module.exports = (app) => {
   const Acumulado_mesact = app.db.models.Acumulado_mesact;
@@ -186,9 +192,9 @@ module.exports = (app) => {
 
         db.query(
           // QUERY
-          "SELECT * FROM PROC_PANEL_ING_ACUM_MESACT (CURRENT_DATE, CURRENT_DATE)",
-          // MANUAL
-          //`SELECT * FROM PROC_PANEL_ING_ACUM_MESACT_2 ('${fechaConsulta}', '${fechaConsulta}')`,
+            "SELECT * FROM PROC_PANEL_ING_ACUM_MESACT (CURRENT_DATE, CURRENT_DATE)",
+            // MANUAL
+            //`SELECT * FROM PROC_PANEL_ING_ACUM_MESACT_2 ('${fechaConsulta}', '${fechaConsulta}')`,
 
           function (err, result) {
             console.log("Cant de registros obtenidos getAcumuladoMesAct:", result.length);
@@ -228,22 +234,28 @@ module.exports = (app) => {
                 acumulador.push({
                   FECHA: fechaConsulta,
                   SUCURSAL: objeto.SUCURSAL,
-                  CUOTA_SOCIAL: objeto.CONCEPTO === "CUOTA SOCIAL       " ? objeto.MONTO : 0,
-                  TRATAMIENTO: objeto.CONCEPTO === "TRATAMIENTO        " ? objeto.MONTO : 0,
-                  COBRADOR: objeto.CONCEPTO === "REND COBRADOR      " ? objeto.MONTO : 0,
-                  VENTA_NUEVA: objeto.CONCEPTO === "VENTA NUEVA        " ? objeto.MONTO : 0,
+                  CUOTA_SOCIAL: objeto.CONCEPTO.includes("CUOTA SOCIAL") ? objeto.MONTO : 0,
+                  TRATAMIENTO: objeto.CONCEPTO.includes("TRATAMIENTO") ? objeto.MONTO : 0,
+                  COBRADOR: objeto.CONCEPTO.includes("REND COBRADOR") ? objeto.MONTO : 0,
+                  VENTA_NUEVA: objeto.CONCEPTO.includes("VENTA NUEVA") ? objeto.MONTO : 0,
+                  ONIX: objeto.CONCEPTO.includes("ONIX") ? objeto.MONTO : 0,
                   MONTO_TOTAL: objeto.MONTO,
                   user_id: 1,
                 });
               } else {
-                acumulador[index].CUOTA_SOCIAL +=
-                  objeto.CONCEPTO === "CUOTA SOCIAL       " ? objeto.MONTO : 0;
-                acumulador[index].TRATAMIENTO +=
-                  objeto.CONCEPTO === "TRATAMIENTO        " ? objeto.MONTO : 0;
-                acumulador[index].COBRADOR +=
-                  objeto.CONCEPTO === "REND COBRADOR      " ? objeto.MONTO : 0;
-                acumulador[index].VENTA_NUEVA +=
-                  objeto.CONCEPTO === "VENTA NUEVA        " ? objeto.MONTO : 0;
+                acumulador[index].CUOTA_SOCIAL += objeto.CONCEPTO.includes("CUOTA SOCIAL")
+                  ? objeto.MONTO
+                  : 0;
+                acumulador[index].TRATAMIENTO += objeto.CONCEPTO.includes("TRATAMIENTO")
+                  ? objeto.MONTO
+                  : 0;
+                acumulador[index].COBRADOR += objeto.CONCEPTO.includes("REND COBRADOR")
+                  ? objeto.MONTO
+                  : 0;
+                acumulador[index].VENTA_NUEVA += objeto.CONCEPTO.includes("VENTA NUEVA")
+                  ? objeto.MONTO
+                  : 0;
+                acumulador[index].ONIX += objeto.CONCEPTO.includes("ONIX") ? objeto.MONTO : 0;
                 acumulador[index].MONTO_TOTAL += objeto.MONTO;
               }
 
@@ -338,22 +350,28 @@ module.exports = (app) => {
                 acumulador.push({
                   FECHA: fechaConsulta,
                   SUCURSAL: objeto.SUCURSAL,
-                  CUOTA_SOCIAL: objeto.CONCEPTO === "CUOTA SOCIAL       " ? objeto.MONTO : 0,
-                  TRATAMIENTO: objeto.CONCEPTO === "TRATAMIENTO        " ? objeto.MONTO : 0,
-                  COBRADOR: objeto.CONCEPTO === "REND COBRADOR      " ? objeto.MONTO : 0,
-                  VENTA_NUEVA: objeto.CONCEPTO === "VENTA NUEVA        " ? objeto.MONTO : 0,
+                  CUOTA_SOCIAL: objeto.CONCEPTO.includes("CUOTA SOCIAL") ? objeto.MONTO : 0,
+                  TRATAMIENTO: objeto.CONCEPTO.includes("TRATAMIENTO") ? objeto.MONTO : 0,
+                  COBRADOR: objeto.CONCEPTO.includes("REND COBRADOR") ? objeto.MONTO : 0,
+                  VENTA_NUEVA: objeto.CONCEPTO.includes("VENTA NUEVA") ? objeto.MONTO : 0,
+                  ONIX: objeto.CONCEPTO.includes("ONIX") ? objeto.MONTO : 0,
                   MONTO_TOTAL: objeto.MONTO,
                   user_id: 1,
                 });
               } else {
-                acumulador[index].CUOTA_SOCIAL +=
-                  objeto.CONCEPTO === "CUOTA SOCIAL       " ? objeto.MONTO : 0;
-                acumulador[index].TRATAMIENTO +=
-                  objeto.CONCEPTO === "TRATAMIENTO        " ? objeto.MONTO : 0;
-                acumulador[index].COBRADOR +=
-                  objeto.CONCEPTO === "REND COBRADOR      " ? objeto.MONTO : 0;
-                acumulador[index].VENTA_NUEVA +=
-                  objeto.CONCEPTO === "VENTA NUEVA        " ? objeto.MONTO : 0;
+                acumulador[index].CUOTA_SOCIAL += objeto.CONCEPTO.includes("CUOTA SOCIAL")
+                  ? objeto.MONTO
+                  : 0;
+                acumulador[index].TRATAMIENTO += objeto.CONCEPTO.includes("TRATAMIENTO")
+                  ? objeto.MONTO
+                  : 0;
+                acumulador[index].COBRADOR += objeto.CONCEPTO.includes("REND COBRADOR")
+                  ? objeto.MONTO
+                  : 0;
+                acumulador[index].VENTA_NUEVA += objeto.CONCEPTO.includes("VENTA NUEVA")
+                  ? objeto.MONTO
+                  : 0;
+                acumulador[index].ONIX += objeto.CONCEPTO.includes("ONIX") ? objeto.MONTO : 0;
                 acumulador[index].MONTO_TOTAL += objeto.MONTO;
               }
 
@@ -455,6 +473,7 @@ module.exports = (app) => {
                   TRATAMIENTO: objeto.CONCEPTO === "TRATAMIENTO        " ? objeto.MONTO : 0,
                   COBRADOR: objeto.CONCEPTO === "REND COBRADOR      " ? objeto.MONTO : 0,
                   VENTA_NUEVA: objeto.CONCEPTO === "VENTA NUEVA        " ? objeto.MONTO : 0,
+                  ONIX: objeto.CONCEPTO.includes("ONIX") ? objeto.MONTO : 0,
                   MONTO_TOTAL: objeto.MONTO,
                   user_id: 1,
                 });
@@ -467,6 +486,7 @@ module.exports = (app) => {
                   objeto.CONCEPTO === "REND COBRADOR      " ? objeto.MONTO : 0;
                 acumulador[index].VENTA_NUEVA +=
                   objeto.CONCEPTO === "VENTA NUEVA        " ? objeto.MONTO : 0;
+                acumulador[index].ONIX += objeto.CONCEPTO.includes("ONIX") ? objeto.MONTO : 0;
                 acumulador[index].MONTO_TOTAL += objeto.MONTO;
               }
 
@@ -568,6 +588,7 @@ module.exports = (app) => {
                   TRATAMIENTO: objeto.CONCEPTO === "TRATAMIENTO        " ? objeto.MONTO : 0,
                   COBRADOR: objeto.CONCEPTO === "REND COBRADOR      " ? objeto.MONTO : 0,
                   VENTA_NUEVA: objeto.CONCEPTO === "VENTA NUEVA        " ? objeto.MONTO : 0,
+                  ONIX: objeto.CONCEPTO.includes("ONIX") ? objeto.MONTO : 0,
                   MONTO_TOTAL: objeto.MONTO,
                   user_id: 1,
                 });
@@ -580,6 +601,7 @@ module.exports = (app) => {
                   objeto.CONCEPTO === "REND COBRADOR      " ? objeto.MONTO : 0;
                 acumulador[index].VENTA_NUEVA +=
                   objeto.CONCEPTO === "VENTA NUEVA        " ? objeto.MONTO : 0;
+                acumulador[index].ONIX += objeto.CONCEPTO.includes("ONIX") ? objeto.MONTO : 0;
                 acumulador[index].MONTO_TOTAL += objeto.MONTO;
               }
 
@@ -665,12 +687,14 @@ module.exports = (app) => {
   let sumTotalesAsuncionTT = 0;
   let sumTotalesAsuncionCO = 0;
   let sumTotalesAsuncionVN = 0;
+  let sumTotalesAsuncionONX = 0;
   let sumTotalesAsuncionMT = 0;
 
   let sumTotalesAsuncionCS_ = 0;
   let sumTotalesAsuncionTT_ = 0;
   let sumTotalesAsuncionCO_ = 0;
   let sumTotalesAsuncionVN_ = 0;
+  let sumTotalesAsuncionONX_ = 0;
   let sumTotalesAsuncionMT_ = 0;
 
   // Sub Totales Zona Gran Asuncion
@@ -678,12 +702,14 @@ module.exports = (app) => {
   let sumTotalesGAsuncionTT = 0;
   let sumTotalesGAsuncionCO = 0;
   let sumTotalesGAsuncionVN = 0;
+  let sumTotalesGAsuncionONX = 0;
   let sumTotalesGAsuncionMT = 0;
 
   let sumTotalesGAsuncionCS_ = 0;
   let sumTotalesGAsuncionTT_ = 0;
   let sumTotalesGAsuncionCO_ = 0;
   let sumTotalesGAsuncionVN_ = 0;
+  let sumTotalesGAsuncionONX_ = 0;
   let sumTotalesGAsuncionMT_ = 0;
 
   // Sub Totales Zona Ruta 2
@@ -691,12 +717,14 @@ module.exports = (app) => {
   let sumTotalesR2TT = 0;
   let sumTotalesR2CO = 0;
   let sumTotalesR2VN = 0;
+  let sumTotalesR2ONX = 0;
   let sumTotalesR2MT = 0;
 
   let sumTotalesR2CS_ = 0;
   let sumTotalesR2TT_ = 0;
   let sumTotalesR2CO_ = 0;
   let sumTotalesR2VN_ = 0;
+  let sumTotalesR2ONX_ = 0;
   let sumTotalesR2MT_ = 0;
 
   // Sub Totales Zona Itapua
@@ -704,12 +732,14 @@ module.exports = (app) => {
   let sumTotalesItaTT = 0;
   let sumTotalesItaCO = 0;
   let sumTotalesItaVN = 0;
+  let sumTotalesItaONX = 0;
   let sumTotalesItaMT = 0;
 
   let sumTotalesItaCS_ = 0;
   let sumTotalesItaTT_ = 0;
   let sumTotalesItaCO_ = 0;
   let sumTotalesItaVN_ = 0;
+  let sumTotalesItaONX_ = 0;
   let sumTotalesItaMT_ = 0;
 
   // Sub Totales Zona Alto Parana
@@ -717,12 +747,14 @@ module.exports = (app) => {
   let sumTotalesApTT = 0;
   let sumTotalesApCO = 0;
   let sumTotalesApVN = 0;
+  let sumTotalesApONX = 0;
   let sumTotalesApMT = 0;
 
   let sumTotalesApCS_ = 0;
   let sumTotalesApTT_ = 0;
   let sumTotalesApCO_ = 0;
   let sumTotalesApVN_ = 0;
+  let sumTotalesApONX_ = 0;
   let sumTotalesApMT_ = 0;
 
   // Sub Totales Zona San Pedro
@@ -730,12 +762,14 @@ module.exports = (app) => {
   let sumTotalesSpTT = 0;
   let sumTotalesSpCO = 0;
   let sumTotalesSpVN = 0;
+  let sumTotalesSpONX = 0;
   let sumTotalesSpMT = 0;
 
   let sumTotalesSpCS_ = 0;
   let sumTotalesSpTT_ = 0;
   let sumTotalesSpCO_ = 0;
   let sumTotalesSpVN_ = 0;
+  let sumTotalesSpONX_ = 0;
   let sumTotalesSpMT_ = 0;
 
   // Totales Generales
@@ -743,22 +777,26 @@ module.exports = (app) => {
   let totalGenTratamiento = 0;
   let totalGenCobrador = 0;
   let totalGenVentaNueva = 0;
+  let totalGenONIX = 0;
   let totalGenMontoTotal = 0;
   let totalGenINCuotaSocial = 0;
   let totalGenINTratamiento = 0;
   let totalGenINCobrador = 0;
   let totalGenINVentaNueva = 0;
+  let totalGenINONIX = 0;
   let totalGenINMontoTotal = 0;
 
   let totalGenCuotaSocial_ = 0;
   let totalGenTratamiento_ = 0;
   let totalGenCobrador_ = 0;
   let totalGenVentaNueva_ = 0;
+  let totalGenONIX_ = 0;
   let totalGenMontoTotal_ = 0;
   let totalGenINCuotaSocial_ = 0;
   let totalGenINTratamiento_ = 0;
   let totalGenINCobrador_ = 0;
   let totalGenINVentaNueva_ = 0;
+  let totalGenINONIX_ = 0;
   let totalGenINMontoTotal_ = 0;
 
   function iniciarEnvio() {
@@ -804,6 +842,13 @@ module.exports = (app) => {
                     maximumFractionDigits: 0,
                   })
                 : objeto.VENTA_NUEVA,
+            ONIX:
+                objeto.ONIX !== "0"
+                  ? parseFloat(objeto.ONIX).toLocaleString("es", {
+                      minimumFractionDigits: 0,
+                      maximumFractionDigits: 0,
+                    })
+                  : objeto.ONIX,
             MONTO_TOTAL:
               objeto.MONTO_TOTAL !== "0"
                 ? parseFloat(objeto.MONTO_TOTAL).toLocaleString("es", {
@@ -878,6 +923,13 @@ module.exports = (app) => {
                     maximumFractionDigits: 0,
                   })
                 : objeto.VENTA_NUEVA,
+            ONIX:
+              objeto.ONIX !== "0"
+                ? parseFloat(objeto.ONIX).toLocaleString("es", {
+                    minimumFractionDigits: 0,
+                    maximumFractionDigits: 0,
+                  })
+                : objeto.ONIX,
             MONTO_TOTAL:
               objeto.MONTO_TOTAL !== "0"
                 ? parseFloat(objeto.MONTO_TOTAL).toLocaleString("es", {
@@ -913,7 +965,7 @@ module.exports = (app) => {
 
       setTimeout(() => {
         calcularDiferencias();
-        console.log('Se calculan las diferencias...');
+        console.log("Se calculan las diferencias...");
       }, 10000);
 
       setTimeout(() => {
@@ -1097,6 +1149,7 @@ module.exports = (app) => {
         sumTotalesAsuncionTT += parseInt(r.TRATAMIENTO);
         sumTotalesAsuncionCO += parseInt(r.COBRADOR);
         sumTotalesAsuncionVN += parseInt(r.VENTA_NUEVA);
+        sumTotalesAsuncionONX += parseInt(r.ONIX);
         sumTotalesAsuncionMT += parseInt(r.MONTO_TOTAL);
 
         if (r.SUCURSAL == "ADMINISTRACION") {
@@ -1137,6 +1190,7 @@ module.exports = (app) => {
         sumTotalesGAsuncionTT += parseInt(r.TRATAMIENTO);
         sumTotalesGAsuncionCO += parseInt(r.COBRADOR);
         sumTotalesGAsuncionVN += parseInt(r.VENTA_NUEVA);
+        sumTotalesGAsuncionONX += parseInt(r.ONIX);
         sumTotalesGAsuncionMT += parseInt(r.MONTO_TOTAL);
 
         if (r.SUCURSAL == "LAMBARE") {
@@ -1160,7 +1214,7 @@ module.exports = (app) => {
         }
 
         if (r.SUCURSAL == "ITAUGUA") {
-          totalCAT = r.MONTO_TOTAL;
+          totalITA = r.MONTO_TOTAL;
         }
 
         if (r.SUCURSAL == "1811 SUCURSAL") {
@@ -1181,6 +1235,7 @@ module.exports = (app) => {
         sumTotalesR2TT += parseInt(r.TRATAMIENTO);
         sumTotalesR2CO += parseInt(r.COBRADOR);
         sumTotalesR2VN += parseInt(r.VENTA_NUEVA);
+        sumTotalesR2ONX += parseInt(r.ONIX);
         sumTotalesR2MT += parseInt(r.MONTO_TOTAL);
 
         if (r.SUCURSAL == "CAACUPE") {
@@ -1197,6 +1252,7 @@ module.exports = (app) => {
         sumTotalesItaTT += parseInt(r.TRATAMIENTO);
         sumTotalesItaCO += parseInt(r.COBRADOR);
         sumTotalesItaVN += parseInt(r.VENTA_NUEVA);
+        sumTotalesItaONX += parseInt(r.ONIX);
         sumTotalesItaMT += parseInt(r.MONTO_TOTAL);
 
         if (r.SUCURSAL == "HOHENAU") {
@@ -1221,6 +1277,7 @@ module.exports = (app) => {
         sumTotalesApTT += parseInt(r.TRATAMIENTO);
         sumTotalesApCO += parseInt(r.COBRADOR);
         sumTotalesApVN += parseInt(r.VENTA_NUEVA);
+        sumTotalesApONX += parseInt(r.ONIX);
         sumTotalesApMT += parseInt(r.MONTO_TOTAL);
 
         if (r.SUCURSAL == "KM 7") {
@@ -1241,6 +1298,7 @@ module.exports = (app) => {
         sumTotalesSpTT += parseInt(r.TRATAMIENTO);
         sumTotalesSpCO += parseInt(r.COBRADOR);
         sumTotalesSpVN += parseInt(r.VENTA_NUEVA);
+        sumTotalesSpONX += parseInt(r.ONIX);
         sumTotalesSpMT += parseInt(r.MONTO_TOTAL);
 
         if (r.SUCURSAL == "SANTANI") {
@@ -1278,6 +1336,13 @@ module.exports = (app) => {
       sumTotalesItaVN +
       sumTotalesApVN +
       sumTotalesSpVN;
+    totalGenONIX =
+      sumTotalesAsuncionONX +
+      sumTotalesGAsuncionONX +
+      sumTotalesR2ONX +
+      sumTotalesItaONX +
+      sumTotalesApONX +
+      sumTotalesSpONX;
     totalGenMontoTotal =
       sumTotalesAsuncionMT +
       sumTotalesGAsuncionMT +
@@ -1293,6 +1358,7 @@ module.exports = (app) => {
       totalGenINTratamiento += parseInt(t.TRATAMIENTO);
       totalGenINCobrador += parseInt(t.COBRADOR);
       totalGenINVentaNueva += parseInt(t.VENTA_NUEVA);
+      totalGenINONIX += parseInt(t.ONIX);
       totalGenINMontoTotal += parseInt(t.MONTO_TOTAL);
 
       // Totales por TIPO
@@ -1351,6 +1417,7 @@ module.exports = (app) => {
         sumTotalesAsuncionTT_ += parseInt(r.TRATAMIENTO);
         sumTotalesAsuncionCO_ += parseInt(r.COBRADOR);
         sumTotalesAsuncionVN_ += parseInt(r.VENTA_NUEVA);
+        sumTotalesAsuncionONX_ += parseInt(r.ONIX);
         sumTotalesAsuncionMT_ += parseInt(r.MONTO_TOTAL);
 
         if (r.SUCURSAL == "ADMINISTRACION") {
@@ -1391,6 +1458,7 @@ module.exports = (app) => {
         sumTotalesGAsuncionTT_ += parseInt(r.TRATAMIENTO);
         sumTotalesGAsuncionCO_ += parseInt(r.COBRADOR);
         sumTotalesGAsuncionVN_ += parseInt(r.VENTA_NUEVA);
+        sumTotalesGAsuncionONX_ += parseInt(r.ONIX);
         sumTotalesGAsuncionMT_ += parseInt(r.MONTO_TOTAL);
 
         if (r.SUCURSAL == "LAMBARE") {
@@ -1435,6 +1503,7 @@ module.exports = (app) => {
         sumTotalesR2TT_ += parseInt(r.TRATAMIENTO);
         sumTotalesR2CO_ += parseInt(r.COBRADOR);
         sumTotalesR2VN_ += parseInt(r.VENTA_NUEVA);
+        sumTotalesR2ONX_ += parseInt(r.ONIX);
         sumTotalesR2MT_ += parseInt(r.MONTO_TOTAL);
 
         if (r.SUCURSAL == "CAACUPE") {
@@ -1451,6 +1520,7 @@ module.exports = (app) => {
         sumTotalesItaTT_ += parseInt(r.TRATAMIENTO);
         sumTotalesItaCO_ += parseInt(r.COBRADOR);
         sumTotalesItaVN_ += parseInt(r.VENTA_NUEVA);
+        sumTotalesItaONX_ += parseInt(r.ONIX);
         sumTotalesItaMT_ += parseInt(r.MONTO_TOTAL);
 
         if (r.SUCURSAL == "HOHENAU") {
@@ -1475,6 +1545,7 @@ module.exports = (app) => {
         sumTotalesApTT_ += parseInt(r.TRATAMIENTO);
         sumTotalesApCO_ += parseInt(r.COBRADOR);
         sumTotalesApVN_ += parseInt(r.VENTA_NUEVA);
+        sumTotalesApONX_ += parseInt(r.ONIX);
         sumTotalesApMT_ += parseInt(r.MONTO_TOTAL);
 
         if (r.SUCURSAL == "KM 7") {
@@ -1495,6 +1566,7 @@ module.exports = (app) => {
         sumTotalesSpTT_ += parseInt(r.TRATAMIENTO);
         sumTotalesSpCO_ += parseInt(r.COBRADOR);
         sumTotalesSpVN_ += parseInt(r.VENTA_NUEVA);
+        sumTotalesSpONX_ += parseInt(r.ONIX);
         sumTotalesSpMT_ += parseInt(r.MONTO_TOTAL);
 
         if (r.SUCURSAL == "SANTANI") {
@@ -1532,6 +1604,13 @@ module.exports = (app) => {
       sumTotalesItaVN_ +
       sumTotalesApVN_ +
       sumTotalesSpVN_;
+    totalGenONIX_ =
+      sumTotalesAsuncionONX_ +
+      sumTotalesGAsuncionONX_ +
+      sumTotalesR2ONX_ +
+      sumTotalesItaONX_ +
+      sumTotalesApONX_ +
+      sumTotalesSpONX_;
     totalGenMontoTotal_ =
       sumTotalesAsuncionMT_ +
       sumTotalesGAsuncionMT_ +
@@ -1546,6 +1625,7 @@ module.exports = (app) => {
       totalGenINTratamiento_ += parseInt(t.TRATAMIENTO);
       totalGenINCobrador_ += parseInt(t.COBRADOR);
       totalGenINVentaNueva_ += parseInt(t.VENTA_NUEVA);
+      totalGenINONIX_ += parseInt(t.ONIX);
       totalGenINMontoTotal_ += parseInt(t.MONTO_TOTAL);
 
       // Totales por TIPO
@@ -1643,7 +1723,7 @@ module.exports = (app) => {
 
         // Eje X e Y de las fechas
         let ejeXFechaAnt = 700;
-        let ejeXFechaAct = 1330;
+        let ejeXFechaAct = 1480;
 
         let ejeYFechaAnt = 115;
         let ejeYFechaAct = 115;
@@ -1654,14 +1734,16 @@ module.exports = (app) => {
         let ejeXtrata = 530;
         let ejeXcobra = 660;
         let ejeXventa = 760;
-        let ejeXmonto = 910;
+        let ejeXonix = 910;
+        let ejeXmonto = 1055;
 
-        let ejeXcuota_ = 1035;
-        let ejeXtrata_ = 1160;
-        let ejeXcobra_ = 1280;
-        let ejeXventa_ = 1390;
-        let ejeXmonto_ = 1520;
-        let ejeXdiferencia_ = 1650;
+        let ejeXcuota_ = 1190;
+        let ejeXtrata_ = 1320;
+        let ejeXcobra_ = 1430;
+        let ejeXventa_ = 1550;
+        let ejeXonix_ = 1690;
+        let ejeXmonto_ = 1820;
+        let ejeXdiferencia_ = 1960;
 
         // Eje Y de cada fila
         let ejeYadm = 194;
@@ -1748,6 +1830,11 @@ module.exports = (app) => {
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "right";
+            context.fillText(r.ONIX, ejeXonix, ejeYadm);
+
+            context.font = fuenteTexto;
+            context.fillStyle = "#34495E";
+            context.textAlign = "right";
             context.fillText(r.MONTO_TOTAL, ejeXmonto, ejeYadm);
           }
 
@@ -1777,6 +1864,11 @@ module.exports = (app) => {
             context.fillStyle = "#34495E";
             context.textAlign = "right";
             context.fillText(r.VENTA_NUEVA, ejeXventa, ejeYml);
+
+            context.font = fuenteTexto;
+            context.fillStyle = "#34495E";
+            context.textAlign = "right";
+            context.fillText(r.ONIX, ejeXonix, ejeYml);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
@@ -1814,6 +1906,11 @@ module.exports = (app) => {
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "right";
+            context.fillText(r.ONIX, ejeXonix, ejeYmlurg);
+
+            context.font = fuenteTexto;
+            context.fillStyle = "#34495E";
+            context.textAlign = "right";
             context.fillText(r.MONTO_TOTAL, ejeXmonto, ejeYmlurg);
           }
 
@@ -1843,6 +1940,11 @@ module.exports = (app) => {
             context.fillStyle = "#34495E";
             context.textAlign = "right";
             context.fillText(r.VENTA_NUEVA, ejeXventa, ejeYaq);
+
+            context.font = fuenteTexto;
+            context.fillStyle = "#34495E";
+            context.textAlign = "right";
+            context.fillText(r.ONIX, ejeXonix, ejeYaq);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
@@ -1880,6 +1982,11 @@ module.exports = (app) => {
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "right";
+            context.fillText(r.ONIX, ejeXonix, ejeYvm);
+
+            context.font = fuenteTexto;
+            context.fillStyle = "#34495E";
+            context.textAlign = "right";
             context.fillText(r.MONTO_TOTAL, ejeXmonto, ejeYvm);
           }
 
@@ -1909,6 +2016,11 @@ module.exports = (app) => {
             context.fillStyle = "#34495E";
             context.textAlign = "right";
             context.fillText(r.VENTA_NUEVA, ejeXventa, ejeYar);
+
+            context.font = fuenteTexto;
+            context.fillStyle = "#34495E";
+            context.textAlign = "right";
+            context.fillText(r.ONIX, ejeXonix, ejeYar);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
@@ -1946,6 +2058,11 @@ module.exports = (app) => {
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "right";
+            context.fillText(r.ONIX, ejeXonix, ejeYlu);
+
+            context.font = fuenteTexto;
+            context.fillStyle = "#34495E";
+            context.textAlign = "right";
             context.fillText(r.MONTO_TOTAL, ejeXmonto, ejeYlu);
           }
 
@@ -1975,6 +2092,11 @@ module.exports = (app) => {
             context.fillStyle = "#34495E";
             context.textAlign = "right";
             context.fillText(r.VENTA_NUEVA, ejeXventa, ejeYpa);
+
+            context.font = fuenteTexto;
+            context.fillStyle = "#34495E";
+            context.textAlign = "right";
+            context.fillText(r.ONIX, ejeXonix, ejeYpa);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
@@ -2013,6 +2135,11 @@ module.exports = (app) => {
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "right";
+            context.fillText(r.ONIX, ejeXonix, ejeYlam);
+
+            context.font = fuenteTexto;
+            context.fillStyle = "#34495E";
+            context.textAlign = "right";
             context.fillText(r.MONTO_TOTAL, ejeXmonto, ejeYlam);
           }
 
@@ -2042,6 +2169,11 @@ module.exports = (app) => {
             context.fillStyle = "#34495E";
             context.textAlign = "right";
             context.fillText(r.VENTA_NUEVA, ejeXventa, ejeYcat);
+
+            context.font = fuenteTexto;
+            context.fillStyle = "#34495E";
+            context.textAlign = "right";
+            context.fillText(r.ONIX, ejeXonix, ejeYcat);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
@@ -2079,6 +2211,11 @@ module.exports = (app) => {
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "right";
+            context.fillText(r.ONIX, ejeXonix, ejeYluq);
+
+            context.font = fuenteTexto;
+            context.fillStyle = "#34495E";
+            context.textAlign = "right";
             context.fillText(r.MONTO_TOTAL, ejeXmonto, ejeYluq);
           }
 
@@ -2108,6 +2245,11 @@ module.exports = (app) => {
             context.fillStyle = "#34495E";
             context.textAlign = "right";
             context.fillText(r.VENTA_NUEVA, ejeXventa, ejeYlar);
+
+            context.font = fuenteTexto;
+            context.fillStyle = "#34495E";
+            context.textAlign = "right";
+            context.fillText(r.ONIX, ejeXonix, ejeYlar);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
@@ -2145,6 +2287,11 @@ module.exports = (app) => {
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "right";
+            context.fillText(r.ONIX, ejeXonix, ejeYnem);
+
+            context.font = fuenteTexto;
+            context.fillStyle = "#34495E";
+            context.textAlign = "right";
             context.fillText(r.MONTO_TOTAL, ejeXmonto, ejeYnem);
           }
 
@@ -2174,6 +2321,11 @@ module.exports = (app) => {
             context.fillStyle = "#34495E";
             context.textAlign = "right";
             context.fillText(r.VENTA_NUEVA, ejeXventa, ejeYita);
+
+            context.font = fuenteTexto;
+            context.fillStyle = "#34495E";
+            context.textAlign = "right";
+            context.fillText(r.ONIX, ejeXonix, ejeYita);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
@@ -2211,6 +2363,11 @@ module.exports = (app) => {
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "right";
+            context.fillText(r.ONIX, ejeXonix, ejeY1811);
+
+            context.font = fuenteTexto;
+            context.fillStyle = "#34495E";
+            context.textAlign = "right";
             context.fillText(r.MONTO_TOTAL, ejeXmonto, ejeY1811);
           }
 
@@ -2244,6 +2401,11 @@ module.exports = (app) => {
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "right";
+            context.fillText(r.ONIX, ejeXonix, ejeYkm14);
+
+            context.font = fuenteTexto;
+            context.fillStyle = "#34495E";
+            context.textAlign = "right";
             context.fillText(r.MONTO_TOTAL, ejeXmonto, ejeYkm14);
           }
 
@@ -2273,6 +2435,11 @@ module.exports = (app) => {
             context.fillStyle = "#34495E";
             context.textAlign = "right";
             context.fillText(r.VENTA_NUEVA, ejeXventa, ejeYcap);
+
+            context.font = fuenteTexto;
+            context.fillStyle = "#34495E";
+            context.textAlign = "right";
+            context.fillText(r.ONIX, ejeXonix, ejeYcap);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
@@ -2311,6 +2478,11 @@ module.exports = (app) => {
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "right";
+            context.fillText(r.ONIX, ejeXonix, ejeYcaac);
+
+            context.font = fuenteTexto;
+            context.fillStyle = "#34495E";
+            context.textAlign = "right";
             context.fillText(r.MONTO_TOTAL, ejeXmonto, ejeYcaac);
           }
 
@@ -2340,6 +2512,11 @@ module.exports = (app) => {
             context.fillStyle = "#34495E";
             context.textAlign = "right";
             context.fillText(r.VENTA_NUEVA, ejeXventa, ejeYcoro);
+
+            context.font = fuenteTexto;
+            context.fillStyle = "#34495E";
+            context.textAlign = "right";
+            context.fillText(r.ONIX, ejeXonix, ejeYcoro);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
@@ -2378,6 +2555,11 @@ module.exports = (app) => {
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "right";
+            context.fillText(r.ONIX, ejeXonix, ejeYhohe);
+
+            context.font = fuenteTexto;
+            context.fillStyle = "#34495E";
+            context.textAlign = "right";
             context.fillText(r.MONTO_TOTAL, ejeXmonto, ejeYhohe);
           }
 
@@ -2407,6 +2589,11 @@ module.exports = (app) => {
             context.fillStyle = "#34495E";
             context.textAlign = "right";
             context.fillText(r.VENTA_NUEVA, ejeXventa, ejeYencar);
+
+            context.font = fuenteTexto;
+            context.fillStyle = "#34495E";
+            context.textAlign = "right";
+            context.fillText(r.ONIX, ejeXonix, ejeYencar);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
@@ -2444,6 +2631,11 @@ module.exports = (app) => {
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "right";
+            context.fillText(r.ONIX, ejeXonix, ejeYmaria);
+
+            context.font = fuenteTexto;
+            context.fillStyle = "#34495E";
+            context.textAlign = "right";
             context.fillText(r.MONTO_TOTAL, ejeXmonto, ejeYmaria);
           }
 
@@ -2473,6 +2665,11 @@ module.exports = (app) => {
             context.fillStyle = "#34495E";
             context.textAlign = "right";
             context.fillText(r.VENTA_NUEVA, ejeXventa, ejeYayo);
+
+            context.font = fuenteTexto;
+            context.fillStyle = "#34495E";
+            context.textAlign = "right";
+            context.fillText(r.ONIX, ejeXonix, ejeYayo);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
@@ -2511,6 +2708,11 @@ module.exports = (app) => {
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "right";
+            context.fillText(r.ONIX, ejeXonix, ejeYkm7);
+
+            context.font = fuenteTexto;
+            context.fillStyle = "#34495E";
+            context.textAlign = "right";
             context.fillText(r.MONTO_TOTAL, ejeXmonto, ejeYkm7);
           }
 
@@ -2540,6 +2742,11 @@ module.exports = (app) => {
             context.fillStyle = "#34495E";
             context.textAlign = "right";
             context.fillText(r.VENTA_NUEVA, ejeXventa, ejeYsanta);
+
+            context.font = fuenteTexto;
+            context.fillStyle = "#34495E";
+            context.textAlign = "right";
+            context.fillText(r.ONIX, ejeXonix, ejeYsanta);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
@@ -2577,6 +2784,11 @@ module.exports = (app) => {
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "right";
+            context.fillText(r.ONIX, ejeXonix, ejeYcampo);
+
+            context.font = fuenteTexto;
+            context.fillStyle = "#34495E";
+            context.textAlign = "right";
             context.fillText(r.MONTO_TOTAL, ejeXmonto, ejeYcampo);
           }
 
@@ -2607,6 +2819,11 @@ module.exports = (app) => {
             context.fillStyle = "#34495E";
             context.textAlign = "right";
             context.fillText(r.VENTA_NUEVA, ejeXventa, ejeYsantani);
+
+            context.font = fuenteTexto;
+            context.fillStyle = "#34495E";
+            context.textAlign = "right";
+            context.fillText(r.ONIX, ejeXonix, ejeYsantani);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
@@ -2668,6 +2885,18 @@ module.exports = (app) => {
                 maximumFractionDigits: 0,
               }),
               ejeXventa,
+              ejeYPagosElectronicos
+            );
+
+            context.font = fuenteTexto;
+            context.fillStyle = "#34495E";
+            context.textAlign = "right";
+            context.fillText(
+              parseFloat(r.ONIX).toLocaleString("es", {
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0,
+              }),
+              ejeXonix,
               ejeYPagosElectronicos
             );
 
@@ -2742,6 +2971,18 @@ module.exports = (app) => {
             context.fillStyle = "#34495E";
             context.textAlign = "right";
             context.fillText(
+              parseFloat(r.ONIX).toLocaleString("es", {
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0,
+              }),
+              ejeXonix,
+              ejeYAsoDebito
+            );
+
+            context.font = fuenteTexto;
+            context.fillStyle = "#34495E";
+            context.textAlign = "right";
+            context.fillText(
               parseFloat(r.MONTO_TOTAL).toLocaleString("es", {
                 minimumFractionDigits: 0,
                 maximumFractionDigits: 0,
@@ -2802,6 +3043,18 @@ module.exports = (app) => {
                 maximumFractionDigits: 0,
               }),
               ejeXventa,
+              ejeYLicitacion
+            );
+
+            context.font = fuenteTexto;
+            context.fillStyle = "#34495E";
+            context.textAlign = "right";
+            context.fillText(
+              parseFloat(r.ONIX).toLocaleString("es", {
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0,
+              }),
+              ejeXonix,
               ejeYLicitacion
             );
 
@@ -2876,6 +3129,18 @@ module.exports = (app) => {
             context.fillStyle = "#34495E";
             context.textAlign = "right";
             context.fillText(
+              parseFloat(r.ONIX).toLocaleString("es", {
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0,
+              }),
+              ejeXonix,
+              ejeYTransGirosPalma
+            );
+
+            context.font = fuenteTexto;
+            context.fillStyle = "#34495E";
+            context.textAlign = "right";
+            context.fillText(
               parseFloat(r.MONTO_TOTAL).toLocaleString("es", {
                 minimumFractionDigits: 0,
                 maximumFractionDigits: 0,
@@ -2904,6 +3169,11 @@ module.exports = (app) => {
             context.fillStyle = "#34495E";
             context.textAlign = "right";
             context.fillText(r.COBRADOR, ejeXcobra_, ejeYadm);
+
+            context.font = fuenteTexto;
+            context.fillStyle = "#34495E";
+            context.textAlign = "right";
+            context.fillText(r.ONIX, ejeXonix_, ejeYadm);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
@@ -2954,6 +3224,11 @@ module.exports = (app) => {
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "right";
+            context.fillText(r.ONIX, ejeXonix_, ejeYml);
+
+            context.font = fuenteTexto;
+            context.fillStyle = "#34495E";
+            context.textAlign = "right";
             context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYml);
 
             context.font = fuenteTexto;
@@ -2991,6 +3266,11 @@ module.exports = (app) => {
             context.fillStyle = "#34495E";
             context.textAlign = "right";
             context.fillText(r.VENTA_NUEVA, ejeXventa_, ejeYmlurg);
+
+            context.font = fuenteTexto;
+            context.fillStyle = "#34495E";
+            context.textAlign = "right";
+            context.fillText(r.ONIX, ejeXonix_, ejeYmlurg);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
@@ -3036,6 +3316,11 @@ module.exports = (app) => {
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "right";
+            context.fillText(r.ONIX, ejeXonix_, ejeYaq);
+
+            context.font = fuenteTexto;
+            context.fillStyle = "#34495E";
+            context.textAlign = "right";
             context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYaq);
 
             context.font = fuenteTexto;
@@ -3073,6 +3358,11 @@ module.exports = (app) => {
             context.fillStyle = "#34495E";
             context.textAlign = "right";
             context.fillText(r.VENTA_NUEVA, ejeXventa_, ejeYvm);
+
+            context.font = fuenteTexto;
+            context.fillStyle = "#34495E";
+            context.textAlign = "right";
+            context.fillText(r.ONIX, ejeXonix_, ejeYvm);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
@@ -3118,6 +3408,11 @@ module.exports = (app) => {
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "right";
+            context.fillText(r.ONIX, ejeXonix_, ejeYar);
+
+            context.font = fuenteTexto;
+            context.fillStyle = "#34495E";
+            context.textAlign = "right";
             context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYar);
 
             context.font = fuenteTexto;
@@ -3159,6 +3454,11 @@ module.exports = (app) => {
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "right";
+            context.fillText(r.ONIX, ejeXonix_, ejeYlu);
+
+            context.font = fuenteTexto;
+            context.fillStyle = "#34495E";
+            context.textAlign = "right";
             context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYlu);
 
             context.font = fuenteTexto;
@@ -3196,6 +3496,11 @@ module.exports = (app) => {
             context.fillStyle = "#34495E";
             context.textAlign = "right";
             context.fillText(r.VENTA_NUEVA, ejeXventa_, ejeYpa);
+
+            context.font = fuenteTexto;
+            context.fillStyle = "#34495E";
+            context.textAlign = "right";
+            context.fillText(r.ONIX, ejeXonix_, ejeYpa);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
@@ -3242,6 +3547,11 @@ module.exports = (app) => {
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "right";
+            context.fillText(r.ONIX, ejeXonix_, ejeYlam);
+
+            context.font = fuenteTexto;
+            context.fillStyle = "#34495E";
+            context.textAlign = "right";
             context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYlam);
 
             context.font = fuenteTexto;
@@ -3278,6 +3588,11 @@ module.exports = (app) => {
             context.fillStyle = "#34495E";
             context.textAlign = "right";
             context.fillText(r.VENTA_NUEVA, ejeXventa_, ejeYcat);
+
+            context.font = fuenteTexto;
+            context.fillStyle = "#34495E";
+            context.textAlign = "right";
+            context.fillText(r.ONIX, ejeXonix_, ejeYcat);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
@@ -3323,6 +3638,11 @@ module.exports = (app) => {
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "right";
+            context.fillText(r.ONIX, ejeXonix_, ejeYluq);
+
+            context.font = fuenteTexto;
+            context.fillStyle = "#34495E";
+            context.textAlign = "right";
             context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYluq);
 
             context.font = fuenteTexto;
@@ -3360,6 +3680,11 @@ module.exports = (app) => {
             context.fillStyle = "#34495E";
             context.textAlign = "right";
             context.fillText(r.VENTA_NUEVA, ejeXventa_, ejeYlar);
+
+            context.font = fuenteTexto;
+            context.fillStyle = "#34495E";
+            context.textAlign = "right";
+            context.fillText(r.ONIX, ejeXonix_, ejeYlar);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
@@ -3405,6 +3730,11 @@ module.exports = (app) => {
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "right";
+            context.fillText(r.ONIX, ejeXonix_, ejeYnem);
+
+            context.font = fuenteTexto;
+            context.fillStyle = "#34495E";
+            context.textAlign = "right";
             context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYnem);
 
             context.font = fuenteTexto;
@@ -3442,6 +3772,11 @@ module.exports = (app) => {
             context.fillStyle = "#34495E";
             context.textAlign = "right";
             context.fillText(r.VENTA_NUEVA, ejeXventa_, ejeYita);
+
+            context.font = fuenteTexto;
+            context.fillStyle = "#34495E";
+            context.textAlign = "right";
+            context.fillText(r.ONIX, ejeXonix_, ejeYita);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
@@ -3487,6 +3822,11 @@ module.exports = (app) => {
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "right";
+            context.fillText(r.ONIX, ejeXonix_, ejeY1811);
+
+            context.font = fuenteTexto;
+            context.fillStyle = "#34495E";
+            context.textAlign = "right";
             context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeY1811);
 
             context.font = fuenteTexto;
@@ -3528,6 +3868,11 @@ module.exports = (app) => {
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "right";
+            context.fillText(r.ONIX, ejeXonix_, ejeYkm14);
+
+            context.font = fuenteTexto;
+            context.fillStyle = "#34495E";
+            context.textAlign = "right";
             context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYkm14);
 
             context.font = fuenteTexto;
@@ -3565,6 +3910,11 @@ module.exports = (app) => {
             context.fillStyle = "#34495E";
             context.textAlign = "right";
             context.fillText(r.VENTA_NUEVA, ejeXventa_, ejeYcap);
+
+            context.font = fuenteTexto;
+            context.fillStyle = "#34495E";
+            context.textAlign = "right";
+            context.fillText(r.ONIX, ejeXonix_, ejeYcap);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
@@ -3611,6 +3961,11 @@ module.exports = (app) => {
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "right";
+            context.fillText(r.ONIX, ejeXonix_, ejeYcaac);
+
+            context.font = fuenteTexto;
+            context.fillStyle = "#34495E";
+            context.textAlign = "right";
             context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYcaac);
 
             context.font = fuenteTexto;
@@ -3648,6 +4003,11 @@ module.exports = (app) => {
             context.fillStyle = "#34495E";
             context.textAlign = "right";
             context.fillText(r.VENTA_NUEVA, ejeXventa_, ejeYcoro);
+
+            context.font = fuenteTexto;
+            context.fillStyle = "#34495E";
+            context.textAlign = "right";
+            context.fillText(r.ONIX, ejeXonix_, ejeYcoro);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
@@ -3694,6 +4054,11 @@ module.exports = (app) => {
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "right";
+            context.fillText(r.ONIX, ejeXonix_, ejeYhohe);
+
+            context.font = fuenteTexto;
+            context.fillStyle = "#34495E";
+            context.textAlign = "right";
             context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYhohe);
 
             context.font = fuenteTexto;
@@ -3730,6 +4095,11 @@ module.exports = (app) => {
             context.fillStyle = "#34495E";
             context.textAlign = "right";
             context.fillText(r.VENTA_NUEVA, ejeXventa_, ejeYencar);
+
+            context.font = fuenteTexto;
+            context.fillStyle = "#34495E";
+            context.textAlign = "right";
+            context.fillText(r.ONIX, ejeXonix_, ejeYencar);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
@@ -3775,6 +4145,11 @@ module.exports = (app) => {
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "right";
+            context.fillText(r.ONIX, ejeXonix_, ejeYmaria);
+
+            context.font = fuenteTexto;
+            context.fillStyle = "#34495E";
+            context.textAlign = "right";
             context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYmaria);
 
             context.font = fuenteTexto;
@@ -3812,6 +4187,11 @@ module.exports = (app) => {
             context.fillStyle = "#34495E";
             context.textAlign = "right";
             context.fillText(r.VENTA_NUEVA, ejeXventa_, ejeYayo);
+
+            context.font = fuenteTexto;
+            context.fillStyle = "#34495E";
+            context.textAlign = "right";
+            context.fillText(r.ONIX, ejeXonix_, ejeYayo);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
@@ -3858,6 +4238,11 @@ module.exports = (app) => {
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "right";
+            context.fillText(r.ONIX, ejeXonix_, ejeYkm7);
+
+            context.font = fuenteTexto;
+            context.fillStyle = "#34495E";
+            context.textAlign = "right";
             context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYkm7);
 
             context.font = fuenteTexto;
@@ -3895,6 +4280,11 @@ module.exports = (app) => {
             context.fillStyle = "#34495E";
             context.textAlign = "right";
             context.fillText(r.VENTA_NUEVA, ejeXventa_, ejeYsanta);
+
+            context.font = fuenteTexto;
+            context.fillStyle = "#34495E";
+            context.textAlign = "right";
+            context.fillText(r.ONIX, ejeXonix_, ejeYsanta);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
@@ -3940,6 +4330,11 @@ module.exports = (app) => {
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
             context.textAlign = "right";
+            context.fillText(r.ONIX, ejeXonix_, ejeYcampo);
+
+            context.font = fuenteTexto;
+            context.fillStyle = "#34495E";
+            context.textAlign = "right";
             context.fillText(r.MONTO_TOTAL, ejeXmonto_, ejeYcampo);
 
             context.font = fuenteTexto;
@@ -3978,6 +4373,11 @@ module.exports = (app) => {
             context.fillStyle = "#34495E";
             context.textAlign = "right";
             context.fillText(r.VENTA_NUEVA, ejeXventa_, ejeYsantani);
+
+            context.font = fuenteTexto;
+            context.fillStyle = "#34495E";
+            context.textAlign = "right";
+            context.fillText(r.ONIX, ejeXonix_, ejeYsantani);
 
             context.font = fuenteTexto;
             context.fillStyle = "#34495E";
@@ -4046,6 +4446,18 @@ module.exports = (app) => {
                 maximumFractionDigits: 0,
               }),
               ejeXventa_,
+              ejeYPagosElectronicos
+            );
+
+            context.font = fuenteTexto;
+            context.fillStyle = "#34495E";
+            context.textAlign = "right";
+            context.fillText(
+              parseFloat(r.ONIX).toLocaleString("es", {
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0,
+              }),
+              ejeXonix_,
               ejeYPagosElectronicos
             );
 
@@ -4128,6 +4540,18 @@ module.exports = (app) => {
             context.fillStyle = "#34495E";
             context.textAlign = "right";
             context.fillText(
+              parseFloat(r.ONIX).toLocaleString("es", {
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0,
+              }),
+              ejeXonix_,
+              ejeYAsoDebito
+            );
+
+            context.font = fuenteTexto;
+            context.fillStyle = "#34495E";
+            context.textAlign = "right";
+            context.fillText(
               parseFloat(r.MONTO_TOTAL).toLocaleString("es", {
                 minimumFractionDigits: 0,
                 maximumFractionDigits: 0,
@@ -4203,6 +4627,18 @@ module.exports = (app) => {
             context.fillStyle = "#34495E";
             context.textAlign = "right";
             context.fillText(
+              parseFloat(r.ONIX).toLocaleString("es", {
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0,
+              }),
+              ejeXonix_,
+              ejeYLicitacion
+            );
+
+            context.font = fuenteTexto;
+            context.fillStyle = "#34495E";
+            context.textAlign = "right";
+            context.fillText(
               parseFloat(r.MONTO_TOTAL).toLocaleString("es", {
                 minimumFractionDigits: 0,
                 maximumFractionDigits: 0,
@@ -4271,6 +4707,18 @@ module.exports = (app) => {
                 maximumFractionDigits: 0,
               }),
               ejeXventa_,
+              ejeYTransGirosPalma
+            );
+
+            context.font = fuenteTexto;
+            context.fillStyle = "#34495E";
+            context.textAlign = "right";
+            context.fillText(
+              parseFloat(r.ONIX).toLocaleString("es", {
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0,
+              }),
+              ejeXonix_,
               ejeYTransGirosPalma
             );
 
@@ -4368,6 +4816,18 @@ module.exports = (app) => {
           ejeYtotalesAsu
         );
 
+        context.font = fuenteTextoBold;
+        context.fillStyle = "#34495E";
+        context.textAlign = "right";
+        context.fillText(
+          sumTotalesAsuncionONX.toLocaleString("es", {
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0,
+          }),
+          ejeXonix,
+          ejeYtotalesAsu
+        );
+
         // MONTO TOTAL
         context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
@@ -4427,6 +4887,18 @@ module.exports = (app) => {
             maximumFractionDigits: 0,
           }),
           ejeXventa_,
+          ejeYtotalesAsu
+        );
+
+        context.font = fuenteTextoBold;
+        context.fillStyle = "#34495E";
+        context.textAlign = "right";
+        context.fillText(
+          sumTotalesAsuncionONX_.toLocaleString("es", {
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0,
+          }),
+          ejeXonix_,
           ejeYtotalesAsu
         );
 
@@ -4509,6 +4981,18 @@ module.exports = (app) => {
           ejeYtotalesGranAsu
         );
 
+        context.font = fuenteTextoBold;
+        context.fillStyle = "#34495E";
+        context.textAlign = "right";
+        context.fillText(
+          sumTotalesGAsuncionONX.toLocaleString("es", {
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0,
+          }),
+          ejeXonix,
+          ejeYtotalesGranAsu
+        );
+
         // MONTO TOTAL
         context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
@@ -4568,6 +5052,18 @@ module.exports = (app) => {
             maximumFractionDigits: 0,
           }),
           ejeXventa_,
+          ejeYtotalesGranAsu
+        );
+
+        context.font = fuenteTextoBold;
+        context.fillStyle = "#34495E";
+        context.textAlign = "right";
+        context.fillText(
+          sumTotalesGAsuncionONX_.toLocaleString("es", {
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0,
+          }),
+          ejeXonix_,
           ejeYtotalesGranAsu
         );
 
@@ -4650,6 +5146,18 @@ module.exports = (app) => {
           ejeYtotalesRuta2
         );
 
+        context.font = fuenteTextoBold;
+        context.fillStyle = "#34495E";
+        context.textAlign = "right";
+        context.fillText(
+          sumTotalesR2ONX.toLocaleString("es", {
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0,
+          }),
+          ejeXonix,
+          ejeYtotalesRuta2
+        );
+
         // MONTO TOTAL
         context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
@@ -4709,6 +5217,18 @@ module.exports = (app) => {
             maximumFractionDigits: 0,
           }),
           ejeXventa_,
+          ejeYtotalesRuta2
+        );
+
+        context.font = fuenteTextoBold;
+        context.fillStyle = "#34495E";
+        context.textAlign = "right";
+        context.fillText(
+          sumTotalesR2ONX_.toLocaleString("es", {
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0,
+          }),
+          ejeXonix_,
           ejeYtotalesRuta2
         );
 
@@ -4791,6 +5311,18 @@ module.exports = (app) => {
           ejeYtotalesItapua
         );
 
+        context.font = fuenteTextoBold;
+        context.fillStyle = "#34495E";
+        context.textAlign = "right";
+        context.fillText(
+          sumTotalesItaONX.toLocaleString("es", {
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0,
+          }),
+          ejeXonix,
+          ejeYtotalesItapua
+        );
+
         // MONTO TOTAL
         context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
@@ -4850,6 +5382,18 @@ module.exports = (app) => {
             maximumFractionDigits: 0,
           }),
           ejeXventa_,
+          ejeYtotalesItapua
+        );
+
+        context.font = fuenteTextoBold;
+        context.fillStyle = "#34495E";
+        context.textAlign = "right";
+        context.fillText(
+          sumTotalesItaONX_.toLocaleString("es", {
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0,
+          }),
+          ejeXonix_,
           ejeYtotalesItapua
         );
 
@@ -4932,6 +5476,18 @@ module.exports = (app) => {
           ejeYtotalesAltoP
         );
 
+        context.font = fuenteTextoBold;
+        context.fillStyle = "#34495E";
+        context.textAlign = "right";
+        context.fillText(
+          sumTotalesApONX.toLocaleString("es", {
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0,
+          }),
+          ejeXonix,
+          ejeYtotalesAltoP
+        );
+
         // MONTO TOTAL
         context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
@@ -4991,6 +5547,18 @@ module.exports = (app) => {
             maximumFractionDigits: 0,
           }),
           ejeXventa_,
+          ejeYtotalesAltoP
+        );
+
+        context.font = fuenteTextoBold;
+        context.fillStyle = "#34495E";
+        context.textAlign = "right";
+        context.fillText(
+          sumTotalesApONX_.toLocaleString("es", {
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0,
+          }),
+          ejeXonix_,
           ejeYtotalesAltoP
         );
 
@@ -5073,6 +5641,18 @@ module.exports = (app) => {
           ejeYtotalesSanPe
         );
 
+        context.font = fuenteTextoBold;
+        context.fillStyle = "#34495E";
+        context.textAlign = "right";
+        context.fillText(
+          sumTotalesSpONX.toLocaleString("es", {
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0,
+          }),
+          ejeXonix,
+          ejeYtotalesSanPe
+        );
+
         // MONTO TOTAL
         context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
@@ -5132,6 +5712,18 @@ module.exports = (app) => {
             maximumFractionDigits: 0,
           }),
           ejeXventa_,
+          ejeYtotalesSanPe
+        );
+
+        context.font = fuenteTextoBold;
+        context.fillStyle = "#34495E";
+        context.textAlign = "right";
+        context.fillText(
+          sumTotalesSpONX_.toLocaleString("es", {
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0,
+          }),
+          ejeXonix_,
           ejeYtotalesSanPe
         );
 
@@ -5216,6 +5808,18 @@ module.exports = (app) => {
           ejeYTotalGeneral
         );
 
+        context.font = fuenteTextoBold;
+        context.fillStyle = "#34495E";
+        context.textAlign = "right";
+        context.fillText(
+          totalGenONIX.toLocaleString("es", {
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0,
+          }),
+          ejeXonix,
+          ejeYTotalGeneral
+        );
+
         // MONTO TOTAL
         context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
@@ -5277,6 +5881,18 @@ module.exports = (app) => {
             maximumFractionDigits: 0,
           }),
           ejeXventa_,
+          ejeYTotalGeneral
+        );
+
+        context.font = fuenteTextoBold;
+        context.fillStyle = "#34495E";
+        context.textAlign = "right";
+        context.fillText(
+          totalGenONIX_.toLocaleString("es", {
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0,
+          }),
+          ejeXonix_,
           ejeYTotalGeneral
         );
 
@@ -5362,6 +5978,18 @@ module.exports = (app) => {
           ejeYTotalADM
         );
 
+        context.font = fuenteTextoBold;
+        context.fillStyle = "#34495E";
+        context.textAlign = "right";
+        context.fillText(
+          totalGenINONIX.toLocaleString("es", {
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0,
+          }),
+          ejeXonix,
+          ejeYTotalADM
+        );
+
         // MONTO TOTAL
         context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
@@ -5424,6 +6052,18 @@ module.exports = (app) => {
             maximumFractionDigits: 0,
           }),
           ejeXventa_,
+          ejeYTotalADM
+        );
+
+        context.font = fuenteTextoBold;
+        context.fillStyle = "#34495E";
+        context.textAlign = "right";
+        context.fillText(
+          totalGenINONIX_.toLocaleString("es", {
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0,
+          }),
+          ejeXonix_,
           ejeYTotalADM
         );
 
@@ -5510,6 +6150,18 @@ module.exports = (app) => {
           ejeYtotalGeneralDoc
         );
 
+        context.font = fuenteTextoBold;
+        context.fillStyle = "#34495E";
+        context.textAlign = "right";
+        context.fillText(
+          (totalGenONIX + totalGenINONIX).toLocaleString("es", {
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0,
+          }),
+          ejeXonix,
+          ejeYtotalGeneralDoc
+        );
+
         // MONTO TOTAL
         context.font = fuenteTextoBold;
         context.fillStyle = "#34495E";
@@ -5570,6 +6222,18 @@ module.exports = (app) => {
             maximumFractionDigits: 0,
           }),
           ejeXventa_,
+          ejeYtotalGeneralDoc
+        );
+
+        context.font = fuenteTextoBold;
+        context.fillStyle = "#34495E";
+        context.textAlign = "right";
+        context.fillText(
+          (totalGenONIX_ + totalGenINONIX_).toLocaleString("es", {
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0,
+          }),
+          ejeXonix_,
           ejeYtotalGeneralDoc
         );
 
@@ -5707,12 +6371,14 @@ module.exports = (app) => {
     sumTotalesAsuncionTT = 0;
     sumTotalesAsuncionCO = 0;
     sumTotalesAsuncionVN = 0;
+    sumTotalesAsuncionONX = 0;
     sumTotalesAsuncionMT = 0;
 
     sumTotalesAsuncionCS_ = 0;
     sumTotalesAsuncionTT_ = 0;
     sumTotalesAsuncionCO_ = 0;
     sumTotalesAsuncionVN_ = 0;
+    sumTotalesAsuncionONX_ = 0;
     sumTotalesAsuncionMT_ = 0;
 
     // Sub Totales Zona Gran Asuncion
@@ -5720,12 +6386,14 @@ module.exports = (app) => {
     sumTotalesGAsuncionTT = 0;
     sumTotalesGAsuncionCO = 0;
     sumTotalesGAsuncionVN = 0;
+    sumTotalesGAsuncionONX = 0;
     sumTotalesGAsuncionMT = 0;
 
     sumTotalesGAsuncionCS_ = 0;
     sumTotalesGAsuncionTT_ = 0;
     sumTotalesGAsuncionCO_ = 0;
     sumTotalesGAsuncionVN_ = 0;
+    sumTotalesGAsuncionONX_ = 0;
     sumTotalesGAsuncionMT_ = 0;
 
     // Sub Totales Zona Ruta 2
@@ -5733,12 +6401,14 @@ module.exports = (app) => {
     sumTotalesR2TT = 0;
     sumTotalesR2CO = 0;
     sumTotalesR2VN = 0;
+    sumTotalesR2ONX = 0;
     sumTotalesR2MT = 0;
 
     sumTotalesR2CS_ = 0;
     sumTotalesR2TT_ = 0;
     sumTotalesR2CO_ = 0;
     sumTotalesR2VN_ = 0;
+    sumTotalesR2ONX = 0;
     sumTotalesR2MT_ = 0;
 
     // Sub Totales Zona Itapua
@@ -5746,12 +6416,14 @@ module.exports = (app) => {
     sumTotalesItaTT = 0;
     sumTotalesItaCO = 0;
     sumTotalesItaVN = 0;
+    sumTotalesItaONX = 0;
     sumTotalesItaMT = 0;
 
     sumTotalesItaCS_ = 0;
     sumTotalesItaTT_ = 0;
     sumTotalesItaCO_ = 0;
     sumTotalesItaVN_ = 0;
+    sumTotalesItaONX_ = 0;
     sumTotalesItaMT_ = 0;
 
     // Sub Totales Zona Alto Parana
@@ -5759,12 +6431,14 @@ module.exports = (app) => {
     sumTotalesApTT = 0;
     sumTotalesApCO = 0;
     sumTotalesApVN = 0;
+    sumTotalesApONX = 0;
     sumTotalesApMT = 0;
 
     sumTotalesApCS_ = 0;
     sumTotalesApTT_ = 0;
     sumTotalesApCO_ = 0;
     sumTotalesApVN_ = 0;
+    sumTotalesApONX_ = 0;
     sumTotalesApMT_ = 0;
 
     // Sub Totales Zona San Pedro
@@ -5772,12 +6446,14 @@ module.exports = (app) => {
     sumTotalesSpTT = 0;
     sumTotalesSpCO = 0;
     sumTotalesSpVN = 0;
+    sumTotalesSpONX = 0;
     sumTotalesSpMT = 0;
 
     sumTotalesSpCS_ = 0;
     sumTotalesSpTT_ = 0;
     sumTotalesSpCO_ = 0;
     sumTotalesSpVN_ = 0;
+    sumTotalesSpONX_ = 0;
     sumTotalesSpMT_ = 0;
 
     // Totales Generales
@@ -5785,12 +6461,14 @@ module.exports = (app) => {
     totalGenTratamiento = 0;
     totalGenCobrador = 0;
     totalGenVentaNueva = 0;
+    totalGenONIX = 0;
     totalGenMontoTotal = 0;
 
     totalGenCuotaSocial_ = 0;
     totalGenTratamiento_ = 0;
     totalGenCobrador_ = 0;
     totalGenVentaNueva_ = 0;
+    totalGenONIX_ = 0;
     totalGenMontoTotal_ = 0;
 
     // Totales ADM
@@ -5798,12 +6476,14 @@ module.exports = (app) => {
     totalGenINTratamiento = 0;
     totalGenINCobrador = 0;
     totalGenINVentaNueva = 0;
+    totalGenINONIX = 0;
     totalGenINMontoTotal = 0;
 
     totalGenINCuotaSocial_ = 0;
     totalGenINTratamiento_ = 0;
     totalGenINCobrador_ = 0;
     totalGenINVentaNueva_ = 0;
+    totalGenINONIX_ = 0;
     totalGenINMontoTotal_ = 0;
   }
 };
