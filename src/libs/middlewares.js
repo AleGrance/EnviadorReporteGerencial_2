@@ -2,7 +2,7 @@ import express from "express";
 
 module.exports = (app) => {
   // Settings
-  app.set("port", process.env.PORT || 3041);
+  app.set("port", process.env.PORT || 3050);
 
   //middlewares
   app.use(express.json());

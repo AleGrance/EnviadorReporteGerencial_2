@@ -53,7 +53,7 @@ var tiempoRetrasoPGSQL = 10000;
 // Tiempo entre envios. Cada 15s se realiza el envío a la API free WWA
 var tiempoRetrasoEnvios = 15000;
 
-var fechaFin = new Date("2024-05-01 08:00:00");
+var fechaFin = new Date("2024-07-01 08:00:00");
 
 // Destinatarios a quien enviar el reporte
 let numerosDestinatarios = [
@@ -83,9 +83,9 @@ const fechaMesAnterior = moment(fechaDiaAnterior).subtract(1, "months");
 // let fechaConsultaMesAct = '08-02-2024';
 
 // Para la consulta usando el archivo .env
-// let fechaConsulta = process.env.fechaConsulta;
-// let fechaConsultaMesAnt = process.env.fechaConsultaMesAnt;
-// let fechaConsultaMesAct = process.env.fechaConsultaMesAct;
+let fechaConsulta = process.env.fechaConsulta;
+let fechaConsultaMesAnt = process.env.fechaConsultaMesAnt;
+let fechaConsultaMesAct = process.env.fechaConsultaMesAct;
 
 module.exports = (app) => {
   const Acumulado_mesact = app.db.models.Acumulado_mesact;
@@ -6408,7 +6408,7 @@ module.exports = (app) => {
     sumTotalesR2TT_ = 0;
     sumTotalesR2CO_ = 0;
     sumTotalesR2VN_ = 0;
-    sumTotalesR2ONX = 0;
+    sumTotalesR2ONX_ = 0;
     sumTotalesR2MT_ = 0;
 
     // Sub Totales Zona Itapua
